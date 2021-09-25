@@ -483,9 +483,10 @@ public class GridGroupMgr : MonoBehaviour
             endind = (int)(GameGloab.wh_2 * p_n * Math.Ceiling(num_abs));//向上取整
         else
             endind = (int)(GameGloab.wh_2 * p_n * (float)Math.Floor(num_abs));//向下取整
-        if (M_math.Abs(endind - index) < (GameGloab.wh_2 - 2))//一个格子半径30  28聊胜于无
-            return endind;
-        else
-            return 0;
+        return endind;
+        //if (M_math.Abs(endind - index) < (GameGloab.wh_2 - 2))//一个格子半径30  28聊胜于无
+        //    return endind;
+        //else
+        //    return 0;
     }
 }

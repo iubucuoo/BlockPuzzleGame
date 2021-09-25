@@ -42,16 +42,15 @@ public class UI_SetPanel : MonoBehaviour
         AudioManager.Inst.ButtonClick();
         //展示广告  广告完毕 执行以下操作
         //Debug.Log("点击重开游戏");
+        confirmNo.onClick.RemoveListener(OnBtnConfirmNo);
+        confirmYes.onClick.RemoveListener(OnBtnConfirmYes);
+        Confirm.SetActive(false);
+        gameObject.SetActive(false);
         GoogleAdManager.Inst.GameOver(YesCallBack);
     }
     void YesCallBack()
     {
         //Debug.Log("点击重开游戏----广告播放返回");
-        confirmNo.onClick.RemoveListener(OnBtnConfirmNo);
-        confirmYes.onClick.RemoveListener(OnBtnConfirmYes);
-        Confirm.SetActive(false);
-        gameObject.SetActive(false);
-
         AudioManager.Inst.PlayGameOpen();
         UIManager.Inst.ResetTop();
         GridGroupMgr.Inst.GameReset();//重新启动游戏

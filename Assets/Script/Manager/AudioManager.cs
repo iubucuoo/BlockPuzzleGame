@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour {
 			return;
 		}
 
-		AudioController.PlayMusic (music,.7f,.7f);
+		AudioController.PlayMusic (music,1,.7f);
 	}
     public void UnpauseMusic()
     {
