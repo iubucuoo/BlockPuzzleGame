@@ -1603,17 +1603,17 @@ PrefabInstance:
     - target: {fileID: 219926497407556967, guid: 53459558d34adc94e9132124abb5a8a5,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 219926497498521309, guid: 53459558d34adc94e9132124abb5a8a5,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 219926497498521309, guid: 53459558d34adc94e9132124abb5a8a5,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53459558d34adc94e9132124abb5a8a5, type: 3}
@@ -1628,11 +1628,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: homebg
-      objectReference: {fileID: 0}
-    - target: {fileID: 3112229514655323267, guid: 293595019d1893a4eaf8fe83579214ac,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3112229514655323292, guid: 293595019d1893a4eaf8fe83579214ac,
         type: 3}
@@ -1738,36 +1733,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669884187147936521, guid: 293595019d1893a4eaf8fe83579214ac,
-        type: 3}
-      propertyPath: m_UseGraphicAlpha
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669884187147936521, guid: 293595019d1893a4eaf8fe83579214ac,
-        type: 3}
-      propertyPath: m_EffectDistance.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669884187147936521, guid: 293595019d1893a4eaf8fe83579214ac,
-        type: 3}
-      propertyPath: m_EffectColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669884187147936521, guid: 293595019d1893a4eaf8fe83579214ac,
-        type: 3}
-      propertyPath: m_EffectColor.g
-      value: 0.8714623
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669884187147936521, guid: 293595019d1893a4eaf8fe83579214ac,
-        type: 3}
-      propertyPath: m_EffectColor.b
-      value: 0.48584908
-      objectReference: {fileID: 0}
-    - target: {fileID: 6054988028947222097, guid: 293595019d1893a4eaf8fe83579214ac,
-        type: 3}
-      propertyPath: m_FontData.m_FontStyle
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 293595019d1893a4eaf8fe83579214ac, type: 3}

@@ -52,9 +52,9 @@ public class UI_SetPanel : MonoBehaviour
         Confirm.SetActive(false);
         gameObject.SetActive(false);
 
-        GridGroupMgr.Inst.GameReset();//重新启动游戏
         AudioManager.Inst.PlayGameOpen();
         UIManager.Inst.ResetTop();
+        GridGroupMgr.Inst.GameReset();//重新启动游戏
     }
     private void OnBtnResetGame()
     {

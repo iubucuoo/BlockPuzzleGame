@@ -29,6 +29,11 @@ public class GoogleAdManager : MonoBehaviour
     void Start()
     {
         // Initialize the Google Mobile Ads SDK.
+        MobileAds.Initialize(initStatus =>
+        {
+         //   RequestInterstitial();
+        });
+        // Initialize the Google Mobile Ads SDK.
         //MobileAds.Initialize(initStatus => {
         //    this.rewardedAd = new RewardedAd(adUnitId);
 
@@ -46,9 +51,9 @@ public class GoogleAdManager : MonoBehaviour
     //请求插页式广告
     public void RequestInterstitial()
     {
-        if (interstitial!=null)
+        if (interstitial != null)
         {
-            Debug.LogError("已经实例化过");
+            Debug.LogError("已经加载了插页式广告");
             return;
         }
 #if UNITY_ANDROID
@@ -61,26 +66,27 @@ public class GoogleAdManager : MonoBehaviour
 #endif
 
         // Initialize an InterstitialAd.
-        this.interstitial = new InterstitialAd(adUnitId);
+        interstitial = new InterstitialAd(adUnitId);
         /*
         //添加自定义行为
-        //在成功加载广告请求时调用。
-        this.interstitial.OnAdLoaded += HandleOnAdLoaded;
+        
         //在广告请求加载失败时调用。
         this.interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
         //在显示广告时调用。
         this.interstitial.OnAdOpening += HandleOnAdOpened; */
+        //在成功加载广告请求时调用。
+        interstitial.OnAdLoaded += HandleOnAdLoaded;
         //在广告关闭时调用。
-        this.interstitial.OnAdClosed += HandleOnAdClosed;
+        interstitial.OnAdClosed += HandleOnAdClosed;
         // Called when the ad click caused the user to leave the application.当广告点击导致用户离开应用程序时调用。
         //this.interstitial.OnAdLeavingApplication += HandleOnAdLeavingApplication;
-       
+
 
         //加载广告
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
         // Load the interstitial with the request.
-        this.interstitial.LoadAd(request);
+        interstitial.LoadAd(request);
     }
 
     private void HandleOnAdClosed(object sender, EventArgs e)
@@ -98,7 +104,7 @@ public class GoogleAdManager : MonoBehaviour
 
     private void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
     {
-        Debug.LogError("在广告请求加载失败时调用。"+ e.LoadAdError.GetMessage());
+        Debug.LogError("在广告请求加载失败时调用。" + e.LoadAdError.GetMessage());
     }
 
     private void HandleOnAdLoaded(object sender, EventArgs e)
@@ -117,21 +123,28 @@ public class GoogleAdManager : MonoBehaviour
     //展示广告
     public void GameOver(Action cb)
     {
-        if (this.interstitial.IsLoaded())
+        if (interstitial.IsLoaded())
         {
+            Debug.LogError("展示广告");
             AudioManager.Inst.PauseMusic();
-            this.interstitial.Show();
+            interstitial.Show();
             GameOverA = cb;
+        }
+        else
+        {
+            cb.Invoke();
+            Debug.LogError("广告没有加载");
         }
     }
     //清理插页式广告
     //创建完 InterstitialAd 后，请确保在放弃对它的引用前调用 Destroy() 方法。
     void InterstitialDes()
     {
-        if (interstitial!=null)
+        if (interstitial != null)
         {
             //Debug.LogError("Destroy 插页式广告");
             interstitial.Destroy();
+            Debug.LogError(interstitial == null);
             interstitial = null;
         }
     }

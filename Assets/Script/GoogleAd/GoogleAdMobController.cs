@@ -265,32 +265,37 @@ public class GoogleAdMobController : MonoBehaviour
         {
             if (error != null)
             {
-                MobileAdsEventExecutor.ExecuteInUpdate(() => {
+                MobileAdsEventExecutor.ExecuteInUpdate(() =>
+                {
                     statusText.text = "RewardedInterstitialAd load failed, error: " + error;
                 });
                 return;
             }
             this.rewardedInterstitialAd = rewardedInterstitialAd;
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
+            MobileAdsEventExecutor.ExecuteInUpdate(() =>
+            {
                 statusText.text = "RewardedInterstitialAd loaded";
             });
             // Register for ad events.
             this.rewardedInterstitialAd.OnAdDidPresentFullScreenContent += (sender, args) =>
             {
-                MobileAdsEventExecutor.ExecuteInUpdate(() => {
+                MobileAdsEventExecutor.ExecuteInUpdate(() =>
+                {
                     statusText.text = "Rewarded Interstitial presented.";
                 });
             };
             this.rewardedInterstitialAd.OnAdDidDismissFullScreenContent += (sender, args) =>
             {
-                MobileAdsEventExecutor.ExecuteInUpdate(() => {
+                MobileAdsEventExecutor.ExecuteInUpdate(() =>
+                {
                     statusText.text = "Rewarded Interstitial dismissed.";
                 });
                 this.rewardedInterstitialAd = null;
             };
             this.rewardedInterstitialAd.OnAdFailedToPresentFullScreenContent += (sender, args) =>
             {
-                MobileAdsEventExecutor.ExecuteInUpdate(() => {
+                MobileAdsEventExecutor.ExecuteInUpdate(() =>
+                {
                     statusText.text = "Rewarded Interstitial failed to present.";
                 });
                 this.rewardedInterstitialAd = null;
@@ -302,8 +307,10 @@ public class GoogleAdMobController : MonoBehaviour
     {
         if (rewardedInterstitialAd != null)
         {
-            rewardedInterstitialAd.Show((reward) => {
-                MobileAdsEventExecutor.ExecuteInUpdate(() => {
+            rewardedInterstitialAd.Show((reward) =>
+            {
+                MobileAdsEventExecutor.ExecuteInUpdate(() =>
+                {
                     statusText.text = "User Rewarded: " + reward.Amount;
                 });
             });
@@ -335,12 +342,14 @@ public class GoogleAdMobController : MonoBehaviour
         {
             if (error != null)
             {
-                MobileAdsEventExecutor.ExecuteInUpdate(() => {
+                MobileAdsEventExecutor.ExecuteInUpdate(() =>
+                {
                     statusText.text = "AppOpenAd load failed, error: " + error;
                 });
                 return;
             }
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
+            MobileAdsEventExecutor.ExecuteInUpdate(() =>
+            {
                 statusText.text = "AppOpenAd loaded. Please background the app and return.";
             });
             this.appOpenAd = appOpenAd;
@@ -362,7 +371,8 @@ public class GoogleAdMobController : MonoBehaviour
         this.appOpenAd.OnAdDidDismissFullScreenContent += (sender, args) =>
         {
             isShowingAppOpenAd = false;
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
+            MobileAdsEventExecutor.ExecuteInUpdate(() =>
+            {
                 Debug.Log("AppOpenAd dismissed.");
                 if (this.appOpenAd != null)
                 {
@@ -375,7 +385,8 @@ public class GoogleAdMobController : MonoBehaviour
         {
             isShowingAppOpenAd = false;
             var msg = args.AdError.GetMessage();
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
+            MobileAdsEventExecutor.ExecuteInUpdate(() =>
+            {
                 statusText.text = "AppOpenAd present failed, error: " + msg;
                 if (this.appOpenAd != null)
                 {
@@ -387,13 +398,15 @@ public class GoogleAdMobController : MonoBehaviour
         this.appOpenAd.OnAdDidPresentFullScreenContent += (sender, args) =>
         {
             isShowingAppOpenAd = true;
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
+            MobileAdsEventExecutor.ExecuteInUpdate(() =>
+            {
                 Debug.Log("AppOpenAd presented.");
             });
         };
         this.appOpenAd.OnAdDidRecordImpression += (sender, args) =>
         {
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
+            MobileAdsEventExecutor.ExecuteInUpdate(() =>
+            {
                 Debug.Log("AppOpenAd recorded an impression.");
             });
         };
@@ -402,7 +415,8 @@ public class GoogleAdMobController : MonoBehaviour
             string currencyCode = args.AdValue.CurrencyCode;
             long adValue = args.AdValue.Value;
             string suffix = "AppOpenAd received a paid event.";
-            MobileAdsEventExecutor.ExecuteInUpdate(() => {
+            MobileAdsEventExecutor.ExecuteInUpdate(() =>
+            {
                 string msg = string.Format("{0} (currency: {1}, value: {2}", suffix, currencyCode, adValue);
                 statusText.text = msg;
             });

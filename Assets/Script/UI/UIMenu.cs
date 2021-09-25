@@ -38,11 +38,8 @@ public class UIMenu : MonoBehaviour
         panelbg.SetActive(true);
         homebg.SetActive(false);
         btn_start.gameObject.SetActive(false);
+        AudioManager.Inst.PlayBGMusic();
         GridGroupMgr.Inst.GameStart();
-        if (AudioManager.Inst.isPlaying_Music)
-        {
-            AudioManager.Inst.PlayBGMusic();
-        }
     }
 
     Vector3 oldmousepos;

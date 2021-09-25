@@ -41,9 +41,9 @@ public class UI_GameOverPanel : UIPanelBase
     void RefreshCallBack()
     {
         //Debug.Log("点击重启游戏----广告播放返回");
-        GridGroupMgr.Inst.GameReset();//重新启动游戏
         AudioManager.Inst.PlayGameOpen();
         UIManager.Inst.ResetTop();
+        GridGroupMgr.Inst.GameReset();//重新启动游戏
         gameObject.SetActive(false);
     }
 }
