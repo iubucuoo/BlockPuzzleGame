@@ -1,0 +1,54 @@
+{
+    "datas": [
+        {
+            "LanguageList": 1,
+            "ky": [
+                {
+                    "key": "nihao",
+                    "value": "你好"
+                },
+                {
+                    "key": "nihao1",
+                    "value": "你好1"
+                },
+                {
+                    "key": "nihao2",
+                    "value": "你好2"
+                },
+                {
+                    "key": "nihao3",
+                    "value": "你好3"
+                },
+                {
+                    "key": "nihao4",
+                    "value": "你好4"
+                }
+            ]
+        },
+        {
+            "LanguageList": 0,
+            "ky": [
+                {
+                    "key": "nihao",
+                    "value": "hello"
+                },
+                {
+                    "key": "nihao1",
+                    "value": "hello1"
+                },
+                {
+                    "key": "nihao2",
+                    "value": "hello2"
+                },
+                {
+                    "key": "nihao3",
+                    "value": "hello3"
+                },
+                {
+                    "key": "nihao4",
+                    "value": "hello4"
+                }
+            ]
+        }
+    ]
+}

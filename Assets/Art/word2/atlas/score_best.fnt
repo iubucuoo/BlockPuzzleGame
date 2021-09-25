@@ -1,0 +1,14 @@
+info face="Arial" size=47 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1 outline=0
+common lineHeight=47 base=38 scaleW=380 scaleH=47 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="score_best_0.png"
+chars count=10
+char id=48   x=38    y=0     width=36    height=46    xoffset=0     yoffset=0     xadvance=36    page=0  chnl=15
+char id=49   x=330   y=0     width=30    height=46    xoffset=0     yoffset=0     xadvance=30    page=0  chnl=15
+char id=50   x=223   y=0     width=35    height=46    xoffset=0     yoffset=0     xadvance=35    page=0  chnl=15
+char id=51   x=295   y=0     width=34    height=46    xoffset=0     yoffset=0     xadvance=34    page=0  chnl=15
+char id=52   x=75    y=0     width=36    height=46    xoffset=0     yoffset=0     xadvance=36    page=0  chnl=15
+char id=53   x=112   y=0     width=36    height=46    xoffset=0     yoffset=0     xadvance=36    page=0  chnl=15
+char id=54   x=149   y=0     width=36    height=46    xoffset=0     yoffset=0     xadvance=36    page=0  chnl=15
+char id=55   x=186   y=0     width=36    height=46    xoffset=0     yoffset=0     xadvance=36    page=0  chnl=15
+char id=56   x=259   y=0     width=35    height=46    xoffset=0     yoffset=0     xadvance=35    page=0  chnl=15
+char id=57   x=0     y=0     width=37    height=46    xoffset=0     yoffset=0     xadvance=37    page=0  chnl=15
