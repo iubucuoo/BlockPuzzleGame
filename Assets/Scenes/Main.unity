@@ -1566,11 +1566,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: homebg
       objectReference: {fileID: 0}
-    - target: {fileID: 3112229514655323267, guid: 293595019d1893a4eaf8fe83579214ac,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3112229514655323292, guid: 293595019d1893a4eaf8fe83579214ac,
         type: 3}
       propertyPath: m_LocalPosition.x
