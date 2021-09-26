@@ -45,8 +45,10 @@ public class GoogleAdManager : MonoBehaviour
     {
         // Callbacks from GoogleMobileAds are not guaranteed to be called on
         // main thread.
+        //不能保证在主线程上调用来自 GoogleMobileAds 的回调。
         // In this example we use MobileAdsEventExecutor to schedule these calls on
         // the next Update() loop.
+        //在本例中，我们使用 MobileAdsEventExecutor 在下一个 Update() 循环中安排这些调用。
         MobileAdsEventExecutor.ExecuteInUpdate(() =>
         {
             RequestBannerAd();
@@ -112,18 +114,18 @@ public class GoogleAdManager : MonoBehaviour
 
         // Initialize an InterstitialAd.
         interstitial = new InterstitialAd(adUnitId);
-        /*
+        
         //添加自定义行为
         
         //在广告请求加载失败时调用。
-        this.interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
         //在显示广告时调用。
-        this.interstitial.OnAdOpening += HandleOnAdOpened; */
+        interstitial.OnAdOpening += HandleOnAdOpened; 
         //在成功加载广告请求时调用。
         interstitial.OnAdLoaded += HandleOnAdLoaded;
         //在广告关闭时调用。
         interstitial.OnAdClosed += HandleOnAdClosed;
-        // Called when the ad click caused the user to leave the application.当广告点击导致用户离开应用程序时调用。
+        // 当广告点击导致用户离开应用程序时调用。
         //this.interstitial.OnAdLeavingApplication += HandleOnAdLeavingApplication;
 
 
@@ -148,17 +150,17 @@ public class GoogleAdManager : MonoBehaviour
   
     private void HandleOnAdOpened(object sender, EventArgs e)
     {
-        Debug.LogError("在显示广告");
+        Debug.LogError("显示广告");
     }
 
     private void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
     {
-        Debug.LogError("在广告请求加载失败。" + e.LoadAdError.GetMessage());
+        Debug.LogError("广告请求加载失败。" + e.LoadAdError.GetMessage());
     }
 
     private void HandleOnAdLoaded(object sender, EventArgs e)
     {
-        Debug.LogError("在成功加载广告请求。");
+        Debug.LogError("成功加载广告请求。");
     }
     void CallGameOver()
     {

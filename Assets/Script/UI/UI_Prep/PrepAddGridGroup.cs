@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PrepAddGridGroup : MonoBehaviour
 {
@@ -20,8 +21,18 @@ public class PrepAddGridGroup : MonoBehaviour
     {
         EventTriggerListener.Get(gameObject).onDown = OnPointerDown;
         EventTriggerListener.Get(gameObject).onUp = OnPointerUp;
+        EventTriggerListener.Get(gameObject).onClick = OnClickGroup;
     }
-     void UsePrepGridGroup()
+
+    private void OnClickGroup(GameObject obj)
+    {
+        Debug.Log("OnClick   " + transform.name);
+        //如果当前是 旋转的状态 
+        //点击后 执行 旋转minPrepGroup数据  之后再执行能不能放置
+        //IsGameOver();
+    }
+
+    void UsePrepGridGroup()
     {
         IsUse = true;
         Recycle();
@@ -31,13 +42,16 @@ public class PrepAddGridGroup : MonoBehaviour
             GridGroupMgr.Inst.RefreshPrepGridGroup();
         }
         //就算三个用完重新刷新 也需要判断能不能放置
+        IsGameOver();
+    }
+    void IsGameOver()
+    {
         if (!GridGroupMgr.Inst.IsCanPrepNext())
         {
             Debug.LogError("游戏结束");
             UIManager.Inst.OpenGameOverPanel();
         }
     }
-
     public void SetGridData(GridGroup_MinPrep v)
     {
         minPrepGroup = v;
@@ -51,11 +65,11 @@ public class PrepAddGridGroup : MonoBehaviour
     }
     public void OnPointerUp(GameObject eventData)
     {
-        if (IsUse || !IsCanUse)
+        Debug.Log("OnPointerUp   " + transform.name);
+        if (IsUse|| !IsCanUse)//旋转的状态也不执行这里
         {
             return;
         }
-        //Debug.Log("OnPointerUp   " + transform.name);
         DragingGridMgr.Inst.SetDragUp(this);
         if (GridGroupMgr.Inst.RefreshMainGrid())//如果当前可以放置 刷新主面板显示
         {
@@ -70,12 +84,12 @@ public class PrepAddGridGroup : MonoBehaviour
     }
     public void OnPointerDown(GameObject eventData)
     {
-        if (IsUse || !IsCanUse)
+        Debug.Log("OnPointerDown   " + transform.name);
+        if (IsUse || !IsCanUse)//旋转的状态也不执行这里
         {
             return;
         }
         AudioManager.Inst.PlayPick();
-        //Debug.Log("OnPointerDown   " + transform.name);
         DragingGridMgr.Inst.SetDragDown(minPrepGroup);
         SetChildActive(false);
     }

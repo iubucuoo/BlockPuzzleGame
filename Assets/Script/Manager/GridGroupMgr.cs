@@ -192,12 +192,17 @@ public class GridGroupMgr : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            PrepGroup[i].Reset();
-            var data = PoolMgr.Allocate(IPoolsType.GridGroup_MinPrep) as GridGroup_MinPrep;
-            PrepGroup[i].SetGridData(data);
-            data.SetData(datalist[UnityEngine.Random.Range(0, datalist.Count - 1)], PrepGroup[i].Root);
-            data.CreatGrids();
+            RefreshPrepGroup_i(i);
         }
+    }
+
+    void RefreshPrepGroup_i(int i)
+    {
+        PrepGroup[i].Reset();
+        var data = PoolMgr.Allocate(IPoolsType.GridGroup_MinPrep) as GridGroup_MinPrep;
+        PrepGroup[i].SetGridData(data);
+        data.SetData(datalist[UnityEngine.Random.Range(0, datalist.Count - 1)], PrepGroup[i].Root);
+        data.CreatGrids();
     }
     public bool IsCanPrepNext()
     {

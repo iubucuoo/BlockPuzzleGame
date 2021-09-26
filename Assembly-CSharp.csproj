@@ -100,7 +100,7 @@
     <Compile Include="Assets\Script\UI\UI_Prep\PrepAddGridGroup.cs" />
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModulePhysics2D.cs" />
-    <Compile Include="Assets\Script\Tools\Math\M_math.cs" />
+    <Compile Include="Assets\Script\Frame\Math\M_math.cs" />
     <Compile Include="Assets\Script\UI\UI_Panel\UIPanelBase.cs" />
     <Compile Include="Assets\Script\Manager\UIManager.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\AudioToolkit\AudioLog.cs" />
