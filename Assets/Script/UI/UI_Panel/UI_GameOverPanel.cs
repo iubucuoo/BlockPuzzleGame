@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +16,9 @@ public class UI_GameOverPanel : UIPanelBase
     {
         btnRefresh.onClick.AddListener(OnBtnRefresh);
     }
-    public void ShowGameOver()
+
+    void ShowFinish()
     {
-        gameObject.SetActive(true);
         bool isnewrecord = UIManager.Inst.IsTopScore();
         gameover.SetActive(!isnewrecord);
         newrecord.SetActive(isnewrecord);
@@ -31,19 +32,22 @@ public class UI_GameOverPanel : UIPanelBase
             AudioManager.Inst.PlayGameOver();
         }
     }
+    public void ShowGameOver()
+    {
+        //先来一个屏幕变暗动作 跳出没有可放的位置
+        //再弹出游戏结束面板
+        ShowBoxY(ShowFinish);       
+    }
     private void OnBtnRefresh()
     {
         AudioManager.Inst.ButtonClick();
-        //展示广告  广告完毕 执行以下操作
-        //Debug.Log("点击重启游戏");
+        gameObject.SetActive(false);
         GoogleAdManager.Inst.GameOver(RefreshCallBack);
     }
     void RefreshCallBack()
     {
-        //Debug.Log("点击重启游戏----广告播放返回");
         AudioManager.Inst.PlayGameOpen();
         UIManager.Inst.ResetTop();
         GridGroupMgr.Inst.GameReset();//重新启动游戏
-        gameObject.SetActive(false);
     }
 }

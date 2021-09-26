@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_SetPanel : MonoBehaviour
+public class UI_SetPanel : UIPanelBase
 {
     public Toggle MusicToggle;
     public Toggle SoundToggle;
@@ -45,7 +45,7 @@ public class UI_SetPanel : MonoBehaviour
         confirmNo.onClick.RemoveListener(OnBtnConfirmNo);
         confirmYes.onClick.RemoveListener(OnBtnConfirmYes);
         Confirm.SetActive(false);
-        gameObject.SetActive(false);
+        gameObject.SetActive(false);//弹出广告直接隐藏
         GoogleAdManager.Inst.GameOver(YesCallBack);
     }
     void YesCallBack()
@@ -66,7 +66,7 @@ public class UI_SetPanel : MonoBehaviour
     private void OnBtnAllBg()
     {
         AudioManager.Inst.ButtonClick();
-        gameObject.SetActive(false);
+        HideBox();
     }
 
     public void ChangeSoundIsOn(bool ison)

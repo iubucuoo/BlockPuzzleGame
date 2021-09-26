@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
     public void OnBtnSetSw()
     {
         AudioManager.Inst.ButtonClick();
-        setpanel.SetActive(true);
+        setpanel.GetComponent<UI_SetPanel>().ShowBoxX();
     }
     // Start is called before the first frame update
     void Start()

@@ -148,17 +148,17 @@ public class GoogleAdManager : MonoBehaviour
     }
     private void HandleOnAdOpened(object sender, EventArgs e)
     {
-        Debug.LogError("在显示广告时调用");
+        Debug.LogError("在显示广告");
     }
 
     private void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
     {
-        Debug.LogError("在广告请求加载失败时调用。" + e.LoadAdError.GetMessage());
+        Debug.LogError("在广告请求加载失败。" + e.LoadAdError.GetMessage());
     }
 
     private void HandleOnAdLoaded(object sender, EventArgs e)
     {
-        Debug.LogError("在成功加载广告请求时调用。");
+        Debug.LogError("在成功加载广告请求。");
     }
     void CallGameOver()
     {
