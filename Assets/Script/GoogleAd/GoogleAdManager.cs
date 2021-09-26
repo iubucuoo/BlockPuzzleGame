@@ -136,16 +136,16 @@ public class GoogleAdManager : MonoBehaviour
 
     private void HandleOnAdClosed(object sender, EventArgs e)
     {
-        //Debug.LogError("在广告关闭时调用");
+        Debug.LogError("广告关闭");
         InterstitialDes();
-        StartCoroutine(enumerator());
+        MobileAdsEventExecutor.ExecuteInUpdate(() =>
+        {
+            Debug.LogError("广告关闭下一个update调用");
+            CallGameOver();
+            AudioManager.Inst.UnpauseMusic();
+        });
     }
-    IEnumerator enumerator()
-    {
-        yield return WaitForFixedUpdate;
-        CallGameOver();
-        AudioManager.Inst.UnpauseMusic();
-    }
+  
     private void HandleOnAdOpened(object sender, EventArgs e)
     {
         Debug.LogError("在显示广告");

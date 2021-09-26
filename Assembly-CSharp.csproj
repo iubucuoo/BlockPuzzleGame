@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{F4836962-AE94-798E-AA91-1EB00B117D31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -59,12 +60,12 @@
     <Compile Include="Assets\Script\Data\GridGroup.cs" />
     <Compile Include="Assets\Script\UI\UI_Panel\UI_SetPanel.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\Shared Auxiliary Code\SystemTime.cs" />
-    <Compile Include="Assets\Script\UI\UI_TopPanel.cs" />
+    <Compile Include="Assets\Script\UI\UI_Panel\UI_TopPanel.cs" />
     <Compile Include="Assets\Script\Tools\Mgr\PoolMgr.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\AudioToolkit\AudioFader.cs" />
     <Compile Include="Assets\Script\Tools\Pool\ObjPool.cs" />
     <Compile Include="Assets\Script\GameGloab.cs" />
-    <Compile Include="Assets\Script\UI\UI_MToggle.cs" />
+    <Compile Include="Assets\Script\UI\UI_Component\UI_MToggle.cs" />
     <Compile Include="Assets\Script\Data\GridData.cs" />
     <Compile Include="Assets\Script\UI\UI_Panel\UI_GameOverPanel.cs" />
     <Compile Include="Assets\Script\MainC.cs" />
@@ -97,7 +98,7 @@
     <Compile Include="Assets\ThirdTools\AudioToolkit\Shared Auxiliary Code\FlashSupport.cs" />
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\Shared Auxiliary Code\ArrayHelper.cs" />
-    <Compile Include="Assets\Script\UI\PrepAddGridGroup.cs" />
+    <Compile Include="Assets\Script\UI\UI_Prep\PrepAddGridGroup.cs" />
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets\Script\Tools\Math\M_math.cs" />
@@ -111,25 +112,25 @@
     <Compile Include="Assets\Script\Data\GridGroup_Ground.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.dll" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.1.1_manifest.txt" />
-     <None Include="Assets\Art\word2\atlas\number_days.fnt" />
-     <None Include="Assets\ThirdTools\Toon Particles - Magic Collection\ToonMagic - Readme.txt" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Core.dll" />
-     <None Include="Assets\Art\word2\atlas\score_best.fnt" />
-     <None Include="Assets\GoogleMobileAds\link.xml" />
-     <None Include="Assets\Art\word2\atlas\number_score.fnt" />
-     <None Include="Assets\ThirdTools\DOTween\DOTween\readme.txt" />
-     <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.dll" />
-     <None Include="Assets\Art\word2\atlas\number_bestscore.fnt" />
-     <None Include="Assets\Art\word2\atlas\number_percentage.fnt" />
-     <None Include="Assets\Art\word2\atlas\number_years.fnt" />
-     <None Include="Assets\Art\word2\atlas\number_days_2.fnt" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
-     <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.XML" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Android.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.1.1_manifest.txt" />
+    <None Include="Assets\Art\word2\atlas\number_days.fnt" />
+    <None Include="Assets\ThirdTools\Toon Particles - Magic Collection\ToonMagic - Readme.txt" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Core.dll" />
+    <None Include="Assets\Art\word2\atlas\score_best.fnt" />
+    <None Include="Assets\GoogleMobileAds\link.xml" />
+    <None Include="Assets\Art\word2\atlas\number_score.fnt" />
+    <None Include="Assets\ThirdTools\DOTween\DOTween\readme.txt" />
+    <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.dll" />
+    <None Include="Assets\Art\word2\atlas\number_bestscore.fnt" />
+    <None Include="Assets\Art\word2\atlas\number_percentage.fnt" />
+    <None Include="Assets\Art\word2\atlas\number_years.fnt" />
+    <None Include="Assets\Art\word2\atlas\number_days_2.fnt" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
+    <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.XML" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Android.dll" />
     <Reference Include="UnityEngine">
       <HintPath>D:\UnityOffice\2020.1.0f1\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -708,6 +709,7 @@
       <Name>GoogleMobileAds.Editor</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

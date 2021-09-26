@@ -1,30 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : MonoBehaviour
+{
 
-	public static AudioManager Inst=null;
+    public static AudioManager Inst = null;
 
-	public bool isPlaying_Sound= true;
-	public bool isPlaying_Music= true;
+    public bool isPlaying_Sound = true;
+    public bool isPlaying_Music = true;
 
-	void Awake()
-	{
-		Inst = this;
-	}
-    
+    void Awake()
+    {
+        Inst = this;
+    }
 
-	public void PlayMusic(string music)
-	{
-		if (isPlaying_Music == false) {
-			return;
-		}
 
-		AudioController.PlayMusic (music,1,.7f);
-	}
+    public void PlayMusic(string music)
+    {
+        if (isPlaying_Music == false)
+        {
+            return;
+        }
+        if (AudioController.IsMusicPaused())
+        {
+            UnpauseMusic();
+            return;
+        }
+        AudioController.PlayMusic(music, 1, .7f);
+    }
     public void UnpauseMusic()
     {
-        AudioController.UnpauseMusic();
+        if (AudioController.IsMusicPaused())
+            AudioController.UnpauseMusic();
     }
     public void PauseMusic()
     {
@@ -44,21 +51,23 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void Play(string sound)
-	{
-		if (isPlaying_Sound == false) {
-			return;
-		}
+    {
+        if (isPlaying_Sound == false)
+        {
+            return;
+        }
 
-		AudioController.Play (sound);
-	}
+        AudioController.Play(sound);
+    }
 
-	public void ButtonClick()
-	{
-		if (isPlaying_Sound == false) {
-			return;
-		}
-		Play ("click");
-	}
+    public void ButtonClick()
+    {
+        if (isPlaying_Sound == false)
+        {
+            return;
+        }
+        Play("click");
+    }
     public void PlayGameOver()
     {
         if (isPlaying_Sound == false)
@@ -92,12 +101,13 @@ public class AudioManager : MonoBehaviour {
         Play("newrecord");
     }
     public void PlayPick()
-	{
-		if (isPlaying_Sound == false) {
-			return;
-		}
-		Play ("pick");
-	}
+    {
+        if (isPlaying_Sound == false)
+        {
+            return;
+        }
+        Play("pick");
+    }
     public void PlayReturn()
     {
         if (isPlaying_Sound == false)
@@ -107,10 +117,11 @@ public class AudioManager : MonoBehaviour {
         Play("return");
     }
     public void PlayPlace()
-	{
-		if (isPlaying_Sound == false) {
-			return;
-		}
-		Play ("place");
-	}
+    {
+        if (isPlaying_Sound == false)
+        {
+            return;
+        }
+        Play("place");
+    }
 }
