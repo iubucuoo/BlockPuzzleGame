@@ -6,6 +6,10 @@ using System;
 
 public class UIPanelBase : MonoBehaviour
 {
+    float _y = 2020;
+    float _x = 1480;
+    float swtime = .3f;
+    float hidetime = .2f;
     public virtual void InitBox()
     {
 
@@ -14,30 +18,29 @@ public class UIPanelBase : MonoBehaviour
     {
         gameObject.SetActive(true);
         Vector3 pos = transform.localPosition;
-        pos.y = 2020;
+        pos.y = _y;
         transform.localPosition = pos;
         if (Finish != null)
         {
-            transform.DOLocalMoveY(0, .3f).SetEase(Ease.OutFlash).OnComplete(Finish);
+            transform.DOLocalMoveY(0, swtime).SetEase(Ease.OutFlash).OnComplete(Finish);
         }
         else
-            transform.DOLocalMoveY(0, .3f).SetEase(Ease.OutFlash);
+            transform.DOLocalMoveY(0, swtime).SetEase(Ease.OutFlash);
     }
 
     public virtual void ShowBoxX(TweenCallback Finish = null)
     {
         gameObject.SetActive(true);
         Vector3 pos = transform.localPosition;
-        pos.x = 1480;
+        pos.x = _x;
         transform.localPosition = pos;
-        transform.DOLocalMoveX(0, .3f).SetEase(Ease.OutBack);
         if (Finish != null)
         {
-            transform.DOLocalMoveX(0, .3f).SetEase(Ease.OutBack).OnComplete(Finish);
+            transform.DOLocalMoveX(0, swtime).SetEase(Ease.OutBack).OnComplete(Finish);
         }
         else
         {
-            transform.DOLocalMoveX(0, .3f).SetEase(Ease.OutBack);
+            transform.DOLocalMoveX(0, swtime).SetEase(Ease.OutBack);
         }
     }
 
@@ -47,6 +50,6 @@ public class UIPanelBase : MonoBehaviour
     }
     public virtual void HideBox()
     {
-        transform.DOLocalMoveX(-1480, .2f).SetEase(Ease.InBack).OnComplete(HideFinish);
+        transform.DOLocalMoveX(-_x, hidetime).SetEase(Ease.InBack).OnComplete(HideFinish);
     }
 }

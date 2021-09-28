@@ -10,7 +10,7 @@ public class PrepAddGridGroup : MonoBehaviour
             if (canuse!=value)
             {
                 Debug.Log("cant use   " + transform.name);
-                minPrepGroup.SetCanUseStatus(value);//设置表现
+                minPrepGroup.SetCanUseStatus(value);//设置要不要变灰的表现
             }
             canuse = value;
         } }
