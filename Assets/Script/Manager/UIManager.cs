@@ -7,16 +7,46 @@ public class UIManager : MonoBehaviour
     public static UIManager Inst;
     UI_TopPanel TopPanel;
     UI_GameOverPanel GameOverPanel;
+
+    public Transform ADDROOT { get; private set; }
+    public Transform BGROOT { get; private set; }
+    public Transform DragRoot { get; private set; }
+    public RectTransform BGROOTRect { get; private set; }
+
+    public Dictionary<string, Sprite> Sprites;
     private void Awake()
     {
         Inst = this;
+        Sprites = new Dictionary<string, Sprite>();
+        Canvas = CanvasObj.GetComponent<Canvas>();
+        BGROOT = CanvasObj.transform.Find("gamebg/BGROOT");
+        ADDROOT = CanvasObj.transform.Find("gamebg/ADDROOT");
+        DragRoot = CanvasObj.transform.Find("gamebg/DragRoot");
+        CanvasRect = CanvasObj.GetComponent<RectTransform>();
+        BGROOTRect = BGROOT.GetComponent<RectTransform>();
+
+
         TopPanel = toppanel.GetComponent<UI_TopPanel>();
         GameOverPanel = gameoverpanel.GetComponent<UI_GameOverPanel>();
+
+        DragingGridMgr.Inst.SetDrag(DragRoot);
     }
     public GameObject setpanel;
     public GameObject gameoverpanel;
     public GameObject toppanel;
-    
+    public GameObject CanvasObj;
+    public Canvas Canvas { get; private set; }
+    public RectTransform CanvasRect { get; private set; }
+
+    public bool GetLocalPoint_BgRoot(out Vector2 pos)
+    {
+        return RectTransformUtility.ScreenPointToLocalPointInRectangle(BGROOTRect, Input.mousePosition, Canvas.worldCamera, out pos);
+    }
+    public bool GetLocalPoint_Canv(out Vector2 pos)
+    {
+        return RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasRect, Input.mousePosition, Canvas.worldCamera, out pos);
+    }
+
     public void ResetTop()
     {
         TopPanel.ResetTop();

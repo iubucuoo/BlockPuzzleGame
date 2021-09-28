@@ -24,15 +24,15 @@ public class GridData : IPoolable
     void SetSprites()
     {
         if (TrueStatus == 0)
-        { DefImage.sprite = GameGloab.Sprites["Dark_BG_BS"]; }
+        { DefImage.sprite = UIManager.Inst.Sprites["Dark_BG_BS"]; }
         else if (TrueStatus == 1)
-        { DefImage.sprite = GameGloab.Sprites["Block_Wood"]; }
-        else if (TrueStatus == 2)
-        { DefImage.sprite = GameGloab.Sprites["swgrid"]; }
-        else if (TrueStatus == 3)
-        { DefImage.sprite = GameGloab.Sprites["BlueBubble"]; }
-        else if (TrueStatus == 4)
-        { DefImage.sprite = GameGloab.Sprites["ColorBubble"]; }
+        { DefImage.sprite = UIManager.Inst.Sprites["Block_Wood"]; }
+        //else if (TrueStatus == 2)
+        //{ DefImage.sprite = UIManager.Inst.Sprites["swgrid"]; }
+        //else if (TrueStatus == 3)
+        //{ DefImage.sprite = UIManager.Inst.Sprites["BlueBubble"]; }
+        //else if (TrueStatus == 4)
+        //{ DefImage.sprite = UIManager.Inst.Sprites["ColorBubble"]; }
     }
 
 

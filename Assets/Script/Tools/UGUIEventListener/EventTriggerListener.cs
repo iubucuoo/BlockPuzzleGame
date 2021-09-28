@@ -12,6 +12,7 @@ public class EventTriggerListener : EventTrigger
     public Action<GameObject> onEnter;
     public Action<GameObject> onExit;
     public Action<GameObject> onUp;
+    public Action<GameObject> onMove;
     public Action<GameObject> onSelect;
     public Action<GameObject> onUpdateSelect;
     
@@ -21,6 +22,10 @@ public class EventTriggerListener : EventTrigger
         EventTriggerListener listener = go.GetComponent<EventTriggerListener>();
         if (listener == null) listener = go.AddComponent<EventTriggerListener>();
         return listener;
+    }
+    public override void OnMove(AxisEventData eventData)
+    {
+        if (onMove != null) onMove(gameObject);
     }
     public override void OnPointerClick(PointerEventData eventData)
     {

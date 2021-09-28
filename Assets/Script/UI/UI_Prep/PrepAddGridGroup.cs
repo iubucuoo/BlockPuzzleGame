@@ -21,6 +21,7 @@ public class PrepAddGridGroup : MonoBehaviour
     {
         EventTriggerListener.Get(gameObject).onDown = OnPointerDown;
         EventTriggerListener.Get(gameObject).onUp = OnPointerUp;
+        EventTriggerListener.Get(gameObject).onDrag = OnDrag;
         EventTriggerListener.Get(gameObject).onClick = OnClickGroup;
     }
 
@@ -66,6 +67,7 @@ public class PrepAddGridGroup : MonoBehaviour
     public void OnPointerUp(GameObject eventData)
     {
         Debug.Log("OnPointerUp   " + transform.name);
+        isdrag = false;
         if (IsUse|| !IsCanUse)//旋转的状态也不执行这里
         {
             return;
@@ -85,13 +87,26 @@ public class PrepAddGridGroup : MonoBehaviour
     public void OnPointerDown(GameObject eventData)
     {
         Debug.Log("OnPointerDown   " + transform.name);
+        //return;
         if (IsUse || !IsCanUse)//旋转的状态也不执行这里
         {
             return;
         }
         AudioManager.Inst.PlayPick();
-        DragingGridMgr.Inst.SetDragDown(minPrepGroup);
+        DragingGridMgr.Inst.SetDragDown(this);
         SetChildActive(false);
+    }
+    bool isdrag;
+    void OnDrag(GameObject eventData)
+    {
+        if (!isdrag)
+        {
+            Debug.Log("OnDrag " + transform.name);
+            DragingGridMgr.Inst.SetDrat(true);
+            isdrag = true;
+        }
+           //调整旋转的状态  拖动的时候才开始
+           //Debug.Log("OnDrag " + transform.name);
     }
     void Recycle()
     {

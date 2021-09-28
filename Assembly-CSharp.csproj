@@ -57,6 +57,7 @@
     <Compile Include="Assets\ThirdTools\AudioToolkit\Shared Auxiliary Code\RegisteredComponent.cs" />
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\Script\Data\GridGroup.cs" />
+    <Compile Include="Assets\Script\Frame\Singleton\MonoSingleton.cs" />
     <Compile Include="Assets\Script\UI\UI_Panel\UI_SetPanel.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\Shared Auxiliary Code\SystemTime.cs" />
     <Compile Include="Assets\Script\UI\UI_Panel\UI_TopPanel.cs" />
@@ -104,31 +105,30 @@
     <Compile Include="Assets\Script\UI\UI_Panel\UIPanelBase.cs" />
     <Compile Include="Assets\Script\Manager\UIManager.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\AudioToolkit\AudioLog.cs" />
+    <Compile Include="Assets\Script\Frame\Singleton\Singleton.cs" />
     <Compile Include="Assets\Script\GoogleAd\GoogleAdMobController.cs" />
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Script\Manager\DragingGridMgr.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\Shared Auxiliary Code\PoolableObject.cs" />
     <Compile Include="Assets\Script\Data\GridGroup_Ground.cs" />
-    <Compile Include="Assets\Script\Frame\Singleton\Singleton.cs" />
-    <Compile Include="Assets\Script\Frame\Singleton\MonoSingleton.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.dll" />
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.1.1_manifest.txt" />
-     <None Include="Assets\Art\word2\atlas\number_days.fnt" />
+     <None Include="Assets\Art\OtherArt\word2\atlas\number_days.fnt" />
      <None Include="Assets\ThirdTools\Toon Particles - Magic Collection\ToonMagic - Readme.txt" />
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Core.dll" />
-     <None Include="Assets\Art\word2\atlas\score_best.fnt" />
+     <None Include="Assets\Art\OtherArt\word2\atlas\score_best.fnt" />
      <None Include="Assets\GoogleMobileAds\link.xml" />
-     <None Include="Assets\Art\word2\atlas\number_score.fnt" />
+     <None Include="Assets\Art\OtherArt\word2\atlas\number_score.fnt" />
      <None Include="Assets\ThirdTools\DOTween\DOTween\readme.txt" />
      <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.dll" />
-     <None Include="Assets\Art\word2\atlas\number_bestscore.fnt" />
-     <None Include="Assets\Art\word2\atlas\number_percentage.fnt" />
-     <None Include="Assets\Art\word2\atlas\number_years.fnt" />
-     <None Include="Assets\Art\word2\atlas\number_days_2.fnt" />
+     <None Include="Assets\Art\OtherArt\word2\atlas\number_bestscore.fnt" />
+     <None Include="Assets\Art\OtherArt\word2\atlas\number_percentage.fnt" />
+     <None Include="Assets\Art\OtherArt\word2\atlas\number_years.fnt" />
+     <None Include="Assets\Art\OtherArt\word2\atlas\number_days_2.fnt" />
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
      <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.XML" />
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Android.dll" />
@@ -690,6 +690,9 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
@@ -698,9 +701,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

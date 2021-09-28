@@ -6,11 +6,8 @@ using UnityEngine.UI;
 
 public class UIMenu : MonoBehaviour
 {
-    Canvas canvas;
-    RectTransform rectTr_canvas;
-    RectTransform rectTr_bg;
     public Button btn_start;
-    
+
     public GameObject homebg;
 
     public GameObject panelbg;
@@ -18,9 +15,7 @@ public class UIMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GetComponent<Canvas>();
-        rectTr_bg = GameGloab.root_bg.GetComponent<RectTransform>();
-        rectTr_canvas = gameObject.GetComponent<RectTransform>();
+        homebg.SetActive(true);
         btn_start.onClick.AddListener(OnBtnStart);
     }
     public void OnBtnChinese()
@@ -61,25 +56,33 @@ public class UIMenu : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetMouseButton(0))
         {
-            if (Time.frameCount % 10 == 0 && DragingGridMgr.Inst.IsDrag)//隔10针检测一次
+            if (DragingGridMgr.Inst.IsDrag)
             {
-                PosCheck();
+                if (Time.frameCount % 10 == 0)//隔10针检测一次
+                {
+                    PosCheck();
+                }
+                PosSet();
             }
-        }else if (Input.GetMouseButtonUp(0))
+        }
+        else if (Input.GetMouseButtonUp(0))
         {
             OldDragPos = Vector2.zero;
             DragPos = GameGloab.OutScreenV2;
             //Debug.LogError("GetMouseButtonUp------    " + DragingGridMgr.Inst.IsDrag);
         }
-#endif
+#else
+
         //手机端 检测touch
         if (Input.touchCount > 0)
         {
             if (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(0).phase == TouchPhase.Moved)
             {
-                if (/*Time.frameCount % 5 == 0 && */DragingGridMgr.Inst.IsDrag)
+                if (DragingGridMgr.Inst.IsDrag)
                 {
-                    PosCheck();
+                    if (Time.frameCount % 10 == 0)
+                    { PosCheck(); }
+                    PosSet();
                 }
             }
             else if (Input.GetTouch(0).phase == TouchPhase.Ended)
@@ -88,16 +91,22 @@ public class UIMenu : MonoBehaviour
                 DragPos = GameGloab.OutScreenV2;//防止残留的位置是上次的位置导致显示闪一下
             }
         }
+#endif
     }
-    void PosCheck()
+
+    //设置拖动位置 不限帧
+    void PosSet()
     {
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTr_canvas, Input.mousePosition, canvas.worldCamera, out Vector2 pos))
+        if (UIManager.Inst.GetLocalPoint_Canv(out Vector2 pos))
         {
             DragPos = pos + GameGloab.DragUp;//拖动位置用来显示
         }
+    }
+    void PosCheck()
+    {
         if ((oldmousepos - Input.mousePosition).sqrMagnitude > 90)
         {
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTr_bg, Input.mousePosition, canvas.worldCamera, out Vector2 pos1))
+            if (UIManager.Inst.GetLocalPoint_BgRoot(out Vector2 pos1))
             {
                 //Debug.Log("鼠标相对于bgroot的ui位置" + pos1 + (oldmousepos - Input.mousePosition).sqrMagnitude);
                 GridGroupMgr.Inst.CheckAvailable(pos1 + GameGloab.DragUp);//位置检测 用来判断能否放置
