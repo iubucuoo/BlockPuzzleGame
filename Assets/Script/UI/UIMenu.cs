@@ -29,7 +29,7 @@ public class UIMenu : MonoBehaviour
     void OnBtnStart()
     {
         AudioManager.Inst.ButtonClick();
-        Debug.Log("开始游戏");
+        DebugMgr.Log("开始游戏");
         panelbg.SetActive(true);
         homebg.SetActive(false);
         btn_start.gameObject.SetActive(false);

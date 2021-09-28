@@ -373,7 +373,7 @@ public class GoogleAdMobController : MonoBehaviour
             isShowingAppOpenAd = false;
             MobileAdsEventExecutor.ExecuteInUpdate(() =>
             {
-                Debug.Log("AppOpenAd dismissed.");
+                DebugMgr.Log("AppOpenAd dismissed.");
                 if (this.appOpenAd != null)
                 {
                     this.appOpenAd.Destroy();
@@ -400,14 +400,14 @@ public class GoogleAdMobController : MonoBehaviour
             isShowingAppOpenAd = true;
             MobileAdsEventExecutor.ExecuteInUpdate(() =>
             {
-                Debug.Log("AppOpenAd presented.");
+                DebugMgr.Log("AppOpenAd presented.");
             });
         };
         this.appOpenAd.OnAdDidRecordImpression += (sender, args) =>
         {
             MobileAdsEventExecutor.ExecuteInUpdate(() =>
             {
-                Debug.Log("AppOpenAd recorded an impression.");
+                DebugMgr.Log("AppOpenAd recorded an impression.");
             });
         };
         this.appOpenAd.OnPaidEvent += (sender, args) =>

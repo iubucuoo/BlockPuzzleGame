@@ -9,7 +9,7 @@ public class PrepAddGridGroup : MonoBehaviour
     public bool IsCanUse { get { return canuse; } set {
             if (canuse!=value)
             {
-                Debug.Log("cant use   " + transform.name);
+                DebugMgr.Log("cant use   " + transform.name);
                 minPrepGroup.SetCanUseStatus(value);//设置要不要变灰的表现
             }
             canuse = value;
@@ -27,7 +27,7 @@ public class PrepAddGridGroup : MonoBehaviour
 
     private void OnClickGroup(GameObject obj)
     {
-        Debug.Log("OnClick   " + transform.name);
+        DebugMgr.Log("OnClick   " + transform.name);
         //如果当前是 旋转的状态 
         //点击后 执行 旋转minPrepGroup数据  之后再执行能不能放置
         //IsGameOver();
@@ -49,7 +49,7 @@ public class PrepAddGridGroup : MonoBehaviour
     {
         if (!GridGroupMgr.Inst.IsCanPrepNext())
         {
-            Debug.LogError("游戏结束");
+            DebugMgr.LogError("游戏结束");
             UIManager.Inst.OpenGameOverPanel();
         }
     }
@@ -66,7 +66,7 @@ public class PrepAddGridGroup : MonoBehaviour
     }
     public void OnPointerUp(GameObject eventData)
     {
-        Debug.Log("OnPointerUp   " + transform.name);
+        DebugMgr.Log("OnPointerUp   " + transform.name);
         isdrag = false;
         if (IsUse|| !IsCanUse)//旋转的状态也不执行这里
         {
@@ -86,7 +86,7 @@ public class PrepAddGridGroup : MonoBehaviour
     }
     public void OnPointerDown(GameObject eventData)
     {
-        Debug.Log("OnPointerDown   " + transform.name);
+        DebugMgr.Log("OnPointerDown   " + transform.name);
         //return;
         if (IsUse || !IsCanUse)//旋转的状态也不执行这里
         {
@@ -101,7 +101,7 @@ public class PrepAddGridGroup : MonoBehaviour
     {
         if (!isdrag)
         {
-            Debug.Log("OnDrag " + transform.name);
+            DebugMgr.Log("OnDrag " + transform.name);
             DragingGridMgr.Inst.SetDrat(true);
             isdrag = true;
         }

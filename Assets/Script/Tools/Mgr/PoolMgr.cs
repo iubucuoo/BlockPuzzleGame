@@ -40,7 +40,7 @@ public class PoolMgr
         }
         else
         {
-            Debug.LogError("字典中不存在的类型" + typeint);//字典中不存在的类型
+            DebugMgr.LogError("字典中不存在的类型" + typeint);//字典中不存在的类型
         }
     }
     public static void Recycle(IPoolable pool)

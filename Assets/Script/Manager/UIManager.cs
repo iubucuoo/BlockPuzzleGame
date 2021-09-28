@@ -17,6 +17,9 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Inst = this;
+#if UNITY_EDITOR
+        DebugMgr.EnableLog = true;
+#endif
         Sprites = new Dictionary<string, Sprite>();
         Canvas = CanvasObj.GetComponent<Canvas>();
         BGROOT = CanvasObj.transform.Find("gamebg/BGROOT");

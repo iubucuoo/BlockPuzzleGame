@@ -138,11 +138,11 @@ public class GoogleAdManager : MonoBehaviour
 
     private void HandleOnAdClosed(object sender, EventArgs e)
     {
-        Debug.LogError("广告关闭");
+        DebugMgr.LogError("广告关闭");
         InterstitialDes();
         MobileAdsEventExecutor.ExecuteInUpdate(() =>
         {
-            Debug.LogError("广告关闭下一个update调用");
+            DebugMgr.LogError("广告关闭下一个update调用");
             CallGameOver();
             AudioManager.Inst.UnpauseMusic();
         });
@@ -150,17 +150,17 @@ public class GoogleAdManager : MonoBehaviour
   
     private void HandleOnAdOpened(object sender, EventArgs e)
     {
-        Debug.LogError("显示广告");
+        DebugMgr.LogError("显示广告");
     }
 
     private void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
     {
-        Debug.LogError("广告请求加载失败。" + e.LoadAdError.GetMessage());
+        DebugMgr.LogError("广告请求加载失败。" + e.LoadAdError.GetMessage());
     }
 
     private void HandleOnAdLoaded(object sender, EventArgs e)
     {
-        Debug.LogError("成功加载广告请求。");
+        DebugMgr.LogError("成功加载广告请求。");
     }
     void CallGameOver()
     {
@@ -176,14 +176,14 @@ public class GoogleAdManager : MonoBehaviour
     {
         if (interstitial.IsLoaded())
         {
-            Debug.LogError("展示广告");
+            DebugMgr.LogError("展示广告");
             AudioManager.Inst.PauseMusic();
             interstitial.Show();
             GameOverA = cb;
         }
         else
         {
-            Debug.LogError("广告没有加载完成");
+            DebugMgr.LogError("广告没有加载完成");
             cb.Invoke();
         }
     }
