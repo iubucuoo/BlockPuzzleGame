@@ -22,9 +22,9 @@ public class UIManager : MonoBehaviour
 #endif
         Sprites = new Dictionary<string, Sprite>();
         Canvas = CanvasObj.GetComponent<Canvas>();
-        BGROOT = CanvasObj.transform.Find("gamebg/BGROOT");
-        ADDROOT = CanvasObj.transform.Find("gamebg/ADDROOT");
-        DragRoot = CanvasObj.transform.Find("gamebg/DragRoot");
+        BGROOT = CanvasObj.transform.Find("BGROOT");
+        ADDROOT = CanvasObj.transform.Find("ADDROOT");
+        DragRoot = CanvasObj.transform.Find("DragRoot");
         CanvasRect = CanvasObj.GetComponent<RectTransform>();
         BGROOTRect = BGROOT.GetComponent<RectTransform>();
 

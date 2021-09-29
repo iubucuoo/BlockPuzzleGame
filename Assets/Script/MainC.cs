@@ -6,6 +6,7 @@ public class MainC : MonoBehaviour
 {
     private void Awake()
     {
+        Application.targetFrameRate = 60;
     }
     public List<Sprite> sprites = new List<Sprite>();
     // Start is called before the first frame update

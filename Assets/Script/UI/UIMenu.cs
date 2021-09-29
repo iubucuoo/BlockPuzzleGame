@@ -76,7 +76,7 @@ public class UIMenu : MonoBehaviour
         //手机端 检测touch
         if (Input.touchCount > 0)
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(0).phase == TouchPhase.Moved)
+            if ( Input.GetTouch(0).phase == TouchPhase.Moved ||  Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 if (DragingGridMgr.Inst.IsDrag)
                 {
@@ -120,11 +120,11 @@ public class UIMenu : MonoBehaviour
     {
         if (DragingGridMgr.Inst.IsDrag)
         {
-            if (DragPos != OldDragPos)
-            {
+            //if (DragPos != OldDragPos)
+            //{
                 DragingGridMgr.Inst.DragRoot.localPosition = DragPos;
-                OldDragPos = DragPos;
-            }
+                //OldDragPos = DragPos;
+            //}
         }
     }
 }
