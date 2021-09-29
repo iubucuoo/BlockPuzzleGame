@@ -69,6 +69,7 @@ public class UIMenu : MonoBehaviour
         {
             OldDragPos = Vector2.zero;
             DragPos = GameGloab.OutScreenV2;
+            SetDragRootPos();
             //Debug.LogError("GetMouseButtonUp------    " + DragingGridMgr.Inst.IsDrag);
         }
 #else
@@ -80,7 +81,7 @@ public class UIMenu : MonoBehaviour
             {
                 if (DragingGridMgr.Inst.IsDrag)
                 {
-                    if (Time.frameCount % 10 == 0)
+                    if (Time.frameCount % 5 == 0)
                     { PosCheck(); }
                     PosSet();
                 }
@@ -89,6 +90,7 @@ public class UIMenu : MonoBehaviour
             {
                 OldDragPos = Vector2.zero;//放置同一个位置点击的时候不处理位置改动
                 DragPos = GameGloab.OutScreenV2;//防止残留的位置是上次的位置导致显示闪一下
+                SetDragRootPos();
             }
         }
 #endif
@@ -100,6 +102,7 @@ public class UIMenu : MonoBehaviour
         if (UIManager.Inst.GetLocalPoint_Canv(out Vector2 pos))
         {
             DragPos = pos + GameGloab.DragUp;//拖动位置用来显示
+            SetDragRootPos();
         }
     }
     void PosCheck()
@@ -114,9 +117,13 @@ public class UIMenu : MonoBehaviour
             oldmousepos = Input.mousePosition;
         }
     }
+    void SetDragRootPos()
+    {
+        DragingGridMgr.Inst.DragRoot.localPosition = DragPos;
+    }
     Vector2 DragPos;
     Vector2 OldDragPos;
-    void FixedUpdate()
+    void FixedUpdate2()
     {
         if (DragingGridMgr.Inst.IsDrag)
         {
