@@ -6,8 +6,8 @@ public class GridGroup_Ground : GridGroup,IPoolable
 {
     public GridGroup_Ground()
     {
-        G_width = GameGloab.wh;
-        G_height = GameGloab.wh;
+        G_width = GameGloab._width;
+        G_height = GameGloab._height;
         ResName = "Prefab/blockdef";//默认的背景格子
         DataArray = new int[,]{
             { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 },

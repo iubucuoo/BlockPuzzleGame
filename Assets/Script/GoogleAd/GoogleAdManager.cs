@@ -58,14 +58,12 @@ public class GoogleAdManager : MonoBehaviour
 
     public void RequestBannerAd()
     {
-        
-
         // These ad units are configured to always serve test ads.
-//#if UNITY_EDITOR
-//        string adUnitId = "unused";
-# if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/6300978111";
-        //string adUnitId = "ca-app-pub-1634842308647830/9893645892";
+        //#if UNITY_EDITOR
+        //        string adUnitId = "unused";
+#if UNITY_ANDROID
+        //string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+        string adUnitId = "ca-app-pub-1634842308647830/9893645892";
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-3940256099942544/2934735716";
 #else
@@ -104,8 +102,8 @@ public class GoogleAdManager : MonoBehaviour
         //}
         InterstitialDes();
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
-        //string adUnitId = "ca-app-pub-1634842308647830/9893645892";
+        //string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        string adUnitId = "ca-app-pub-1634842308647830/9893645892";
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else

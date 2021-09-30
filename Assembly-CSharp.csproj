@@ -114,6 +114,7 @@
     <Compile Include="Assets\Script\Data\GridGroup_Ground.cs" />
     <Compile Include="Assets\Script\Test\ChinarAtlas.cs" />
     <Compile Include="Assets\Script\Tools\FPS.cs" />
+    <Compile Include="Assets\text.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />

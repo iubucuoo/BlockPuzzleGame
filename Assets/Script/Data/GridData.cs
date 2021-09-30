@@ -102,18 +102,26 @@ public class GridData : IPoolable
             {
                 DesImage = GridObj.transform.Find("des").GetComponent<Image>();
                 PrepImage = GridObj.transform.Find("prep").GetComponent<Image>();
+
+                DesImage.rectTransform.localScale *= UIManager.Inst.CanvasRect.localScale.x;
+                PrepImage.rectTransform.localScale *= UIManager.Inst.CanvasRect.localScale.x;
             }
             if (GroupType == IPoolsType.GridDataPrep)
             {
-                DefImage.rectTransform.sizeDelta *= 0.8f;
+                DefImage.rectTransform.localScale *= 0.8f* UIManager.Inst.CanvasRect.localScale.x;
             }
+            else if(GroupType != IPoolsType.GridDataMin)
+            {
+                DefImage.rectTransform.localScale *= UIManager.Inst.CanvasRect.localScale.x;
+            }
+
 #if UNITY_EDITOR
             GridObj.name = resName;
             //Text = gridobj.transform.Find("Text").GetComponent<Text>();
 #endif
         }
         GridObj.transform.SetParent(_parent);
-        GridObj.transform.localPosition = _Pos;
+        GridObj.transform.localPosition = _Pos;   
         GridObj.SetActive(true);
         Revert();
     }
