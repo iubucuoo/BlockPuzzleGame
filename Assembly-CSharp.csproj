@@ -66,6 +66,7 @@
     <Compile Include="Assets\Script\Tools\Pool\ObjPool.cs" />
     <Compile Include="Assets\Script\GameGloab.cs" />
     <Compile Include="Assets\Script\UI\UI_Component\UI_MToggle.cs" />
+    <Compile Include="Assets\Script\Manager\DebugMgr.cs" />
     <Compile Include="Assets\Script\Data\GridData.cs" />
     <Compile Include="Assets\Script\UI\UI_Panel\UI_GameOverPanel.cs" />
     <Compile Include="Assets\Script\MainC.cs" />
@@ -111,7 +112,8 @@
     <Compile Include="Assets\Script\Manager\DragingGridMgr.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\Shared Auxiliary Code\PoolableObject.cs" />
     <Compile Include="Assets\Script\Data\GridGroup_Ground.cs" />
-    <Compile Include="Assets\Script\Manager\DebugMgr.cs" />
+    <Compile Include="Assets\Script\Test\ChinarAtlas.cs" />
+    <Compile Include="Assets\Script\Tools\FPS.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />
@@ -119,6 +121,7 @@
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.1.1_manifest.txt" />
      <None Include="Assets\Art\OtherArt\word2\atlas\number_days.fnt" />
+     <None Include="Assets\codeandweb.com\Readme.txt" />
      <None Include="Assets\ThirdTools\Toon Particles - Magic Collection\ToonMagic - Readme.txt" />
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Core.dll" />
      <None Include="Assets\Art\OtherArt\word2\atlas\score_best.fnt" />

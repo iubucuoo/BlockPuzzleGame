@@ -57,18 +57,22 @@
     <Compile Include="Assets\Editor\CreatFont\CreatFontTool.cs" />
     <Compile Include="Assets\Editor\PathologicalGames\Common\PGEditorUtils.cs" />
     <Compile Include="Assets\Editor\PathologicalGames\PoolManager\PreRuntimePoolItemInspector.cs" />
+    <Compile Include="Assets\Editor\AnchorAutoFit.cs" />
     <Compile Include="Assets\Editor\PathologicalGames\PoolManager\SpawnPoolInspector.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\AudioToolkit\Editor\AudioController_Editor.cs" />
     <Compile Include="Assets\Script\UI\Editor\LanguageEditor.cs" />
     <Compile Include="Assets\Editor\Tools\ToolsEditor.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\AudioToolkit\Editor\AudioItemOverview.cs" />
     <Compile Include="Assets\Editor\ArtEditor\ArtEidtorMsg.cs" />
+    <Compile Include="Assets\codeandweb.com\Editor\UIImageSetSizeAndPivot.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\ExternalDependencyManager\Editor\external-dependency-manager_version-1.2.166_manifest.txt" />
      <None Include="Assets\ExternalDependencyManager\Editor\Google.PackageManagerResolver_v1.2.166.dll" />
      <None Include="Assets\ThirdTools\DOTween\DOTween\Editor\DOTweenEditor.dll" />
      <None Include="Assets\ExternalDependencyManager\Editor\Google.JarResolver_v1.2.166.dll" />
+     <None Include="Assets\codeandweb.com\Editor\SettingsTexturePackerImporter.txt" />
+     <None Include="Assets\codeandweb.com\Editor\TexturePackerImporter.dll" />
      <None Include="Assets\ExternalDependencyManager\Editor\Google.IOSResolver_v1.2.166.dll" />
      <None Include="Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll" />
      <None Include="Assets\ExternalDependencyManager\Editor\Google.VersionHandlerImpl_v1.2.166.dll" />
@@ -309,6 +313,9 @@
     </Reference>
     <Reference Include="DOTweenEditor">
       <HintPath>Assets\ThirdTools\DOTween\DOTween\Editor\DOTweenEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="TexturePackerImporter">
+      <HintPath>Assets\codeandweb.com\Editor\TexturePackerImporter.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll</HintPath>

@@ -1,0 +1,766 @@
+fileFormatVersion: 2
+guid: 99dd0ce4826051b4399d5077a18bccf7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -171751762444880263
+    second: banner_big
+  - first:
+      213: 3089471074173084452
+    second: bestflag
+  - first:
+      213: -3129531729989146323
+    second: bestsocer
+  - first:
+      213: 2844687906165780047
+    second: bg_btn2
+  - first:
+      213: -7785920630178806271
+    second: bg_score
+  - first:
+      213: -8650385903057716004
+    second: Block_Nature
+  - first:
+      213: 1926243240974898180
+    second: block_tip
+  - first:
+      213: -3993824124772458005
+    second: Block_Wood
+  - first:
+      213: 5300877936742877120
+    second: btn_buy
+  - first:
+      213: -4668627266807717907
+    second: btn_close
+  - first:
+      213: 7423933608087564890
+    second: btn_rotate_off
+  - first:
+      213: 5457146002455779454
+    second: cup_big
+  - first:
+      213: 2623778879557258
+    second: cup_bottom
+  - first:
+      213: -4049982081064001941
+    second: Dark_BG_BS
+  - first:
+      213: -782403397653762638
+    second: dc_calendar_back
+  - first:
+      213: -6107605681729548113
+    second: Grid_Wood_full
+  - first:
+      213: -3616456509911565692
+    second: label_rotate_tip
+  - first:
+      213: 4346132522125737835
+    second: menu_btn
+  - first:
+      213: 5544447060872974127
+    second: MUSIC-OFF
+  - first:
+      213: -8207502656982221463
+    second: MUSIC-ON
+  - first:
+      213: 2599114322993051572
+    second: popup_pause
+  - first:
+      213: 6654740448071792917
+    second: popup_score_bottom
+  - first:
+      213: -5525759098719218115
+    second: Settings2_0000s_0011_Sound
+  - first:
+      213: 477526624646534306
+    second: Sound_Off
+  - first:
+      213: -2470717937388947050
+    second: Wood_BG_Score
+  - first:
+      213: 7367422222985866208
+    second: Wood_Icon_Rotate
+  - first:
+      213: -3819042601232629061
+    second: btn_navigation
+  - first:
+      213: 8944275861544662918
+    second: menu_btn_clickon
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: -1
+    wrapV: -1
+    wrapW: -1
+  nPOTScale: 1
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: banner_big
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 1755
+        width: 614
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 976fce99ea0dd9df0800000000000000
+      internalID: -171751762444880263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bestflag
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 1940
+        width: 396
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4236eefb29100ea20800000000000000
+      internalID: 3089471074173084452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bestsocer
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 1802
+        width: 168
+        height: 129
+      alignment: 9
+      pivot: {x: 0.50595236, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d29eea8f87ba194d0800000000000000
+      internalID: -3129531729989146323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_btn2
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 1799
+        width: 215
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e6cdf249c5a7720800000000000000
+      internalID: 2844687906165780047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_score
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1981
+        width: 89
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1068ecc307ad2f390800000000000000
+      internalID: -7785920630178806271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Block_Nature
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 1953
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdcb2365ad7a3f780800000000000000
+      internalID: -8650385903057716004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_tip
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 1958
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4045e41a5046bba10800000000000000
+      internalID: 1926243240974898180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Block_Wood
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 1942
+        width: 106
+        height: 106
+      alignment: 9
+      pivot: {x: 0.5235849, y: 0.5235849}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be16d836e161398c0800000000000000
+      internalID: -3993824124772458005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: btn_buy
+      rect:
+        serializedVersion: 2
+        x: 1761
+        y: 1931
+        width: 259
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c7c341f560809940800000000000000
+      internalID: 5300877936742877120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: btn_close
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1958
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: def193d7c34b53fb0800000000000000
+      internalID: -4668627266807717907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: btn_navigation
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 1970
+        width: 67
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb202730df8000bc0800000000000000
+      internalID: -3819042601232629061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: btn_rotate_off
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1990
+        width: 56
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a52b42a684c170760800000000000000
+      internalID: 7423933608087564890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cup_big
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 1065
+        width: 662
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e78d1d3406dabbb40800000000000000
+      internalID: 5457146002455779454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cup_bottom
+      rect:
+        serializedVersion: 2
+        x: 1545
+        y: 1933
+        width: 216
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ec5102052590000800000000000000
+      internalID: 2623778879557258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark_BG_BS
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2047
+        width: 1
+        height: 1
+      alignment: 9
+      pivot: {x: 64, y: -63}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6e9b7741c29bc7c0800000000000000
+      internalID: -4049982081064001941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dc_calendar_back
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1971
+        width: 83
+        height: 77
+      alignment: 9
+      pivot: {x: 0.5060241, y: 0.5064935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bde9c351485425f0800000000000000
+      internalID: -782403397653762638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grid_Wood_full
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 112
+        width: 951
+        height: 953
+      alignment: 9
+      pivot: {x: 0.5031546, y: 0.5020986}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa05a50fdfc6d3ba0800000000000000
+      internalID: -6107605681729548113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: label_rotate_tip
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 1798
+        width: 130
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48a721d07f3cfcdc0800000000000000
+      internalID: -3616456509911565692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_btn
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 1934
+        width: 165
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6fb3188080905c30800000000000000
+      internalID: 4346132522125737835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_btn_clickon
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 1934
+        width: 165
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 687787cd183702c70800000000000000
+      internalID: 8944275861544662918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MUSIC-OFF
+      rect:
+        serializedVersion: 2
+        x: 1709
+        y: 1687
+        width: 206
+        height: 244
+      alignment: 9
+      pivot: {x: 0.5, y: 0.50409836}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2fca43e935d1fc40800000000000000
+      internalID: 5544447060872974127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MUSIC-ON
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 1687
+        width: 163
+        height: 244
+      alignment: 9
+      pivot: {x: 0.63190186, y: 0.50409836}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96dff7591d7191e80800000000000000
+      internalID: -8207502656982221463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popup_pause
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 293
+        width: 952
+        height: 772
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b771a0c4b8e11420800000000000000
+      internalID: 2599114322993051572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popup_score_bottom
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1297
+        width: 760
+        height: 390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5193ebfdd236a5c50800000000000000
+      internalID: 6654740448071792917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Settings2_0000s_0011_Sound
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 1983
+        width: 74
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d36557e506f8053b0800000000000000
+      internalID: -5525759098719218115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sound_Off
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 1989
+        width: 68
+        height: 59
+      alignment: 9
+      pivot: {x: 0.5441176, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a419d06fe380a600800000000000000
+      internalID: 477526624646534306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wood_BG_Score
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1811
+        width: 286
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 699feb9502f36bdd0800000000000000
+      internalID: -2470717937388947050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wood_Icon_Rotate
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1810
+        width: 133
+        height: 121
+      alignment: 9
+      pivot: {x: 0.4774436, y: 0.5041322}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0eb246f3a775e3660800000000000000
+      internalID: 7367422222985866208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

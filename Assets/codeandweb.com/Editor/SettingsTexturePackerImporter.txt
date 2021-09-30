@@ -1,9 +1,15 @@
 version: 2
 importPivots: 1
 tpsheetFileNames:
+- Assets/Art/SpriteAtlas/uisprite.tpsheet
+- Assets/Art/SpriteAtlas/uispritebg.tpsheet
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
 textureFileNames:
+- Assets/Art/SpriteAtlas/uisprite.png
+- Assets/Art/SpriteAtlas/uispritebg.png
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.png
 normalmapFileNames:
+- 
+- 
 - Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
 enableDebugOutput: 0
