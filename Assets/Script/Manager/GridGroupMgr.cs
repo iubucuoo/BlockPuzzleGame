@@ -177,6 +177,7 @@ public class GridGroupMgr : MonoBehaviour
             var obj = ObjectMgr.InstantiateGameObj(ObjectMgr.LoadResource("Prefab/addgridbg") as GameObject);
             obj.transform.SetParent(UIManager.Inst.ADDROOT);
             obj.transform.localPosition = pos;
+            obj.transform.localScale = Vector2.one;
 #if UNITY_EDITOR
             obj.name = i.ToString();
 #endif

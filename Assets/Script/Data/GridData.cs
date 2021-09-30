@@ -110,7 +110,7 @@ public class GridData : IPoolable
             {
                 DefImage.rectTransform.localScale *= 0.8f* UIManager.Inst.CanvasRect.localScale.x;
             }
-            else if(GroupType != IPoolsType.GridDataMin)
+            else //if(GroupType != IPoolsType.GridDataMin)
             {
                 DefImage.rectTransform.localScale *= UIManager.Inst.CanvasRect.localScale.x;
             }
