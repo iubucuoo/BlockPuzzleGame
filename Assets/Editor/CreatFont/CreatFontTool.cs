@@ -7,7 +7,7 @@ using UnityEngine;
 public class CreatFontTool : MonoBehaviour
 {
 
-    [MenuItem("Assets/CreateImageFont")]
+    [MenuItem("Tools/CreateImageFont")]
     static void XFCreateImageFont()
     {
 

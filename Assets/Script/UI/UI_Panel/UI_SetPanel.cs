@@ -12,9 +12,9 @@ public class UI_SetPanel : UIPanelBase
     public GameObject AllBg;
     public GameObject BtnResetGame;
     public GameObject BtnBackGame;
-    public GameObject Confirm;
-    public Button confirmYes;
-    public Button confirmNo;
+    //public GameObject Confirm;
+    //public Button confirmYes;
+    //public Button confirmNo;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,29 +25,29 @@ public class UI_SetPanel : UIPanelBase
         SoundToggle.onValueChanged.AddListener(ChangeSoundIsOn);
         MusicToggle.isOn = GameGloab.MusicOnOff == 0;
         SoundToggle.isOn = GameGloab.SoundIsOnOff == 0;
-        Confirm.GetComponent<Button>().onClick.AddListener(OnBtnConfirmNo);
-        Confirm.SetActive(false);
+        //Confirm.GetComponent<Button>().onClick.AddListener(OnBtnConfirmNo);
+        //Confirm.SetActive(false);
     }
 
-    private void OnBtnConfirmNo()
-    {
-        AudioManager.Inst.ButtonClick();
-        confirmNo.onClick.RemoveListener(OnBtnConfirmNo);
-        confirmYes.onClick.RemoveListener(OnBtnConfirmYes);
-        Confirm.SetActive(false);
-    }
+    //private void OnBtnConfirmNo()
+    //{
+    //    AudioManager.Inst.ButtonClick();
+    //    //confirmNo.onClick.RemoveListener(OnBtnConfirmNo);
+    //    //confirmYes.onClick.RemoveListener(OnBtnConfirmYes);
+    //    Confirm.SetActive(false);
+    //}
 
-    private void OnBtnConfirmYes()
-    {
-        AudioManager.Inst.ButtonClick();
-        //展示广告  广告完毕 执行以下操作
-        //Debug.Log("点击重开游戏");
-        confirmNo.onClick.RemoveListener(OnBtnConfirmNo);
-        confirmYes.onClick.RemoveListener(OnBtnConfirmYes);
-        Confirm.SetActive(false);
-        gameObject.SetActive(false);//弹出广告直接隐藏
-        GoogleAdManager.Inst.GameOver(YesCallBack);
-    }
+    //private void OnBtnConfirmYes()
+    //{
+    //    AudioManager.Inst.ButtonClick();
+    //    //展示广告  广告完毕 执行以下操作
+    //    //Debug.Log("点击重开游戏");
+    //    //confirmNo.onClick.RemoveListener(OnBtnConfirmNo);
+    //    //confirmYes.onClick.RemoveListener(OnBtnConfirmYes);
+    //    Confirm.SetActive(false);
+    //    gameObject.SetActive(false);//弹出广告直接隐藏
+    //    GoogleAdManager.Inst.GameOver(YesCallBack);
+    //}
     void YesCallBack()
     {
         //Debug.Log("点击重开游戏----广告播放返回");
@@ -58,9 +58,11 @@ public class UI_SetPanel : UIPanelBase
     private void OnBtnResetGame()
     {
         AudioManager.Inst.ButtonClick();
-        Confirm.SetActive(true);
-        confirmNo.onClick.AddListener(OnBtnConfirmNo);
-        confirmYes.onClick.AddListener(OnBtnConfirmYes);
+        //Confirm.SetActive(true);
+        gameObject.SetActive(false);//弹出广告直接隐藏
+        GoogleAdManager.Inst.GameOver(YesCallBack);
+        //confirmNo.onClick.AddListener(OnBtnConfirmNo);
+        //confirmYes.onClick.AddListener(OnBtnConfirmYes);
     }
 
     private void OnBtnAllBg()

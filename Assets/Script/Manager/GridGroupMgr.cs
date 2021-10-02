@@ -315,36 +315,38 @@ public class GridGroupMgr : MonoBehaviour
     /// </summary>
     public bool RefreshMainGrid()
     {
-        bool isuse = false;
-        foreach (var v in swPrepGridList)
+        bool canprep= swPrepGridList.Count > 0;
+        if (canprep)
         {
-            v.IsUse = true;
-            v.Revert();
-            if (!isuse)
+            UIManager.Inst.SetNowScore(swPrepGridList.Count);
+            foreach (var v in swPrepGridList)
             {
-                isuse = true;
+                v.SetUseState();
             }
+            swPrepGridList.Clear();
         }
-        swPrepGridList.Clear();
+        if (swClearGridList.Count>0)
+        {
+            foreach (var v in swClearGridList)
+            {
+                v.Initialize();
+                EffectPool.Inst.PlayBubbleExplode(1, v.Position);//播放销毁动画
+                //Debug.LogError("播放销毁动画");
+            }
+            CaneraShaker.Inst.PlayShake();
+            int addscore =(int)Mathf.Ceil( swClearGridList.Count * .1f);
+            int addnum = 0;
+            for (int i = addscore; i > 0; i--)
+            {
+                addnum += addscore * 10;
+            }
+            UIManager.Inst.SetNowScore(addnum);
 
-        bool isswEff=false;
-        foreach (var v in swClearGridList)
-        {
-            UIManager.Inst.SetNowScore(v.TrueStatus);
-            v.IsUse = false;
-            v.TrueStatus = 0;
-            v.Revert();
-            EffectPool.Inst.PlayBubbleExplode(1, v.Position);//播放销毁动画
-            //Debug.LogError("播放销毁动画");
-            isswEff = true;
-        }
-        if (isswEff)
-        {
             AudioManager.Inst.PlayBoom();
+            swClearGridList.Clear();
         }
-        swClearGridList.Clear();
 
-        return isuse;
+        return canprep;
     }
     void RevertswClearGrid()
     {

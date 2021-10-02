@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     UI_TopPanel TopPanel;
     UI_GameOverPanel GameOverPanel;
 
+    public Transform UIRoot;
     public Transform ADDROOT { get; private set; }
     public Transform BGROOT { get; private set; }
     public Transform DragRoot { get; private set; }
@@ -22,9 +23,9 @@ public class UIManager : MonoBehaviour
 #endif
         Sprites = new Dictionary<string, Sprite>();
         Canvas = CanvasObj.GetComponent<Canvas>();
-        BGROOT = CanvasObj.transform.Find("BGROOT");
-        ADDROOT = CanvasObj.transform.Find("ADDROOT");
-        DragRoot = CanvasObj.transform.Find("DragRoot");
+        BGROOT = UIRoot.transform.Find("BGROOT");
+        ADDROOT = UIRoot.transform.Find("ADDROOT");
+        DragRoot = UIRoot.transform.Find("DragRoot");
         CanvasRect = CanvasObj.GetComponent<RectTransform>();
         BGROOTRect = BGROOT.GetComponent<RectTransform>();
 
@@ -38,6 +39,7 @@ public class UIManager : MonoBehaviour
     public GameObject gameoverpanel;
     public GameObject toppanel;
     public GameObject CanvasObj;
+    //public Transform UICanvasObj;
     public Canvas Canvas { get; private set; }
     public RectTransform CanvasRect { get; private set; }
 
@@ -57,6 +59,10 @@ public class UIManager : MonoBehaviour
     public void ResetNowScore()
     {
         TopPanel.ResetNowScore();
+    }
+    public void WriteTopScore()
+    {
+        TopPanel.WriteTopScore();
     }
     public bool IsTopScore()
     {

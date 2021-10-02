@@ -66,6 +66,7 @@ public class PrepAddGridGroup : MonoBehaviour
     }
     public void OnPointerUp(GameObject eventData)
     {
+        //CaneraShaker.Inst.PlayShake();测试代码
         DebugMgr.Log("OnPointerUp   " + transform.name);
         isdrag = false;
         if (IsUse|| !IsCanUse)//旋转的状态也不执行这里

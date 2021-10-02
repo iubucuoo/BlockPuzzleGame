@@ -119,15 +119,15 @@ Font:
     uv:
       serializedVersion: 2
       x: 0.6017857
-      y: 0
+      y: 0.02173913
       width: 0.09464288
-      height: 0.9782609
+      height: 0.95652175
     vert:
       serializedVersion: 2
       x: 0
-      y: 45
+      y: 44
       width: 53
-      height: -90
+      height: -88
     advance: 53
     flipped: 0
   - serializedVersion: 2
@@ -169,13 +169,13 @@ Font:
       x: 0.9035714
       y: 0.02173913
       width: 0.09464288
-      height: 0.9782609
+      height: 0.95652175
     vert:
       serializedVersion: 2
       x: 0
-      y: 45
+      y: 44
       width: 53
-      height: -90
+      height: -88
     advance: 53
     flipped: 0
   m_KerningValues: []

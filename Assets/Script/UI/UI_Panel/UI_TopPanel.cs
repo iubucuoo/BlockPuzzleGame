@@ -16,6 +16,23 @@ public class UI_TopPanel : MonoBehaviour
         setbtn.onClick.AddListener(OnBtnSwSetPanel);
         ResetTop();
     }
+    float speet = .05f;
+    float timer=.05f;
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+        if (timer<0&& swnum < nownum)
+        {
+            SWScore();
+            timer = speet;
+        }
+    }
+    int swnum=0;
+    void SWScore()
+    {
+        swnum++;
+        strnownum.text = swnum.ToString();
+    }
 
     private void OnBtnSwSetPanel()
     {
@@ -34,18 +51,22 @@ public class UI_TopPanel : MonoBehaviour
     public void ResetNowScore()
     {
         nownum = 0;
-        SetNowScore(nownum);
+        swnum = 0;
+        strnownum.text = "0";
     }
     public void SetNowScore(int score)
     {
         nownum += score;
-        strnownum.text = nownum.ToString();
+    }
+
+    public void WriteTopScore()
+    {
+        GameGloab.Topscore = nownum;
     }
     public bool IsTopScore()
     {
         if (nownum > GameGloab.Topscore)
         {
-            GameGloab.Topscore=nownum;
             return true;
         }
         return false;

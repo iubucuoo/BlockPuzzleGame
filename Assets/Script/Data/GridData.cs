@@ -6,7 +6,7 @@ public class GridData : IPoolable
 {
     public virtual IPoolsType GroupType { get { return IPoolsType.GridData; } }
     public bool IsRecycled { get; set; }
-    public bool IsUse;//判断是否存放了格子
+    public bool IsUse { get; private set; }//判断是否存放了格子
     public Transform Parent;
     public Text Text { get; private set; }
     GameObject GridObj;
@@ -35,8 +35,8 @@ public class GridData : IPoolable
         //{ DefImage.sprite = UIManager.Inst.Sprites["ColorBubble"]; }
     }
 
-
-    public void Revert()
+    //删除预览效果 回归当前真是状态
+    public void SWRevert()
     {
         TrueStatus = _TempStatus;
         if (GroupType == IPoolsType.GridDataDef)
@@ -46,6 +46,25 @@ public class GridData : IPoolable
         }
         SetSprites();
     }
+    public void SetUse(bool v)
+    {
+        IsUse = v;
+    }
+    ///<summary>
+    ///设置成使用状态
+    ///</summary>
+    public void SetUseState()
+    {
+        IsUse = true;
+        SWRevert();
+    }
+    //初始状态
+    public void Initialize()
+    {
+        IsUse = false;
+        TrueStatus = 0;
+        SWRevert();
+    }
     /// <summary>
     /// 将要删除的展示
     /// </summary>
@@ -54,7 +73,7 @@ public class GridData : IPoolable
         if (GroupType == IPoolsType.GridDataDef)
         {
             DesImage.gameObject.SetActive(true);
-            PrepImage.gameObject.SetActive(false);
+            //PrepImage.gameObject.SetActive(false);
         }
     }
     /// <summary>
@@ -123,7 +142,7 @@ public class GridData : IPoolable
         GridObj.transform.SetParent(_parent);
         GridObj.transform.localPosition = _Pos;   
         GridObj.SetActive(true);
-        Revert();
+        SWRevert();
     }
     public virtual void OnRecycled()
     {

@@ -24,6 +24,7 @@ public class UI_GameOverPanel : UIPanelBase
         newrecord.SetActive(isnewrecord);
         if (isnewrecord)
         {
+            UIManager.Inst.WriteTopScore();
             AudioManager.Inst.PlayNewRecord();//播放 新记录音乐UI
             newrecordtxt.text = GameGloab.Topscore.ToString();
         }

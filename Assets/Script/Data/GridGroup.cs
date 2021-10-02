@@ -39,7 +39,7 @@ public class GridGroup : IPoolable
                     {
                         Grid[i, j] = PoolMgr.Allocate(GridType) as GridData;
                     }
-                    Grid[i, j].IsUse = DataArray[i, j] >0 ;
+                    Grid[i, j].SetUse( DataArray[i, j] >0 );
                     Grid[i, j].TrueStatus = DataArray[i, j];
                     Pos.x = (j - W_count * 0.5f + 0.5f) * G_width;
                     Pos.y = (h_1 - i - H_count * 0.5f + 0.5f) * G_height;
