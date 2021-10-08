@@ -86,7 +86,6 @@
     <Compile Include="Assets\ThirdTools\SimpleJSON\SimpleJSONBinary.cs" />
     <Compile Include="Assets\Script\Tools\Pool\IPool.cs" />
     <Compile Include="Assets\Script\Test\UIDepth.cs" />
-    <Compile Include="Assets\Script\UI\UIMenu.cs" />
     <Compile Include="Assets\Script\Manager\GridGroupMgr.cs" />
     <Compile Include="Assets\Script\Tools\Mgr\ObjectMgr.cs" />
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModuleEPOOutline.cs" />

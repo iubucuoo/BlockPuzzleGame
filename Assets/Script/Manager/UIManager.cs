@@ -5,14 +5,19 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Inst;
-    UI_TopPanel TopPanel;
-    UI_GameOverPanel GameOverPanel;
 
-    public Transform UIRoot;
+    public Transform UIRoot { get; private set; }
     public Transform ADDROOT { get; private set; }
     public Transform BGROOT { get; private set; }
-    public Transform DragRoot { get; private set; }
-    public RectTransform BGROOTRect { get; private set; }
+    public RectTransform CanvasRect { get; private set; }
+    RectTransform BGROOTRect;
+    Canvas Canvas;
+    Transform DragRoot;
+    Transform CanvasObj;
+
+    UI_TopPanel UI_TopPanel;
+    UI_GameOverPanel UI_GameOverPanel;
+    UI_SetPanel UI_SetPanel;
 
     public Dictionary<string, Sprite> Sprites;
     private void Awake()
@@ -21,27 +26,23 @@ public class UIManager : MonoBehaviour
 #if UNITY_EDITOR
         DebugMgr.EnableLog = true;
 #endif
+        CanvasObj = GameObject.Find("Canvas").transform;
+        UIRoot = CanvasObj.Find("Root");
         Sprites = new Dictionary<string, Sprite>();
         Canvas = CanvasObj.GetComponent<Canvas>();
-        BGROOT = UIRoot.transform.Find("BGROOT");
-        ADDROOT = UIRoot.transform.Find("ADDROOT");
-        DragRoot = UIRoot.transform.Find("DragRoot");
+        BGROOT = UIRoot.Find("BGROOT");
+        ADDROOT = UIRoot.Find("ADDROOT");
+        DragRoot = UIRoot.Find("DragRoot");
+
         CanvasRect = CanvasObj.GetComponent<RectTransform>();
         BGROOTRect = BGROOT.GetComponent<RectTransform>();
 
-
-        TopPanel = toppanel.GetComponent<UI_TopPanel>();
-        GameOverPanel = gameoverpanel.GetComponent<UI_GameOverPanel>();
+        UI_TopPanel = UIRoot.Find("gamebg/PanelTop").GetComponent<UI_TopPanel>();
+        UI_GameOverPanel = UIRoot.Find("gameoverPanel").GetComponent<UI_GameOverPanel>();
+        UI_SetPanel = UIRoot.Find("SetPanel").GetComponent<UI_SetPanel>();
 
         DragingGridMgr.Inst.SetDrag(DragRoot);
     }
-    public GameObject setpanel;
-    public GameObject gameoverpanel;
-    public GameObject toppanel;
-    public GameObject CanvasObj;
-    //public Transform UICanvasObj;
-    public Canvas Canvas { get; private set; }
-    public RectTransform CanvasRect { get; private set; }
 
     public bool GetLocalPoint_BgRoot(out Vector2 pos)
     {
@@ -54,37 +55,32 @@ public class UIManager : MonoBehaviour
 
     public void ResetTop()
     {
-        TopPanel.ResetTop();
+        UI_TopPanel.ResetTop();
     }
     public void ResetNowScore()
     {
-        TopPanel.ResetNowScore();
+        UI_TopPanel.ResetNowScore();
     }
     public void WriteTopScore()
     {
-        TopPanel.WriteTopScore();
+        UI_TopPanel.WriteTopScore();
     }
     public bool IsTopScore()
     {
-       return TopPanel.IsTopScore();
+       return UI_TopPanel.IsTopScore();
     }
     public void SetNowScore(int score)
     {
-        TopPanel.SetNowScore(score);
+        UI_TopPanel.SetNowScore(score);
     }
     public void OpenGameOverPanel()
     {
-        GameOverPanel.ShowGameOver();
-    }
-    public void OnBtnSetHide()
-    {
-        AudioManager.Inst.ButtonClick();
-        setpanel.SetActive(false);
+        UI_GameOverPanel.ShowGameOver();
     }
     public void OnBtnSetSw()
     {
         AudioManager.Inst.ButtonClick();
-        setpanel.GetComponent<UI_SetPanel>().ShowBoxX();
+        UI_SetPanel.ShowBoxX();
     }
     // Start is called before the first frame update
     void Start()

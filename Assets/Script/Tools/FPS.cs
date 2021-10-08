@@ -24,10 +24,6 @@ public class FPS : MonoBehaviour
     private Rect m_fps, m_dtime;
     private GUIStyle m_style = new GUIStyle();
 
-    void Awake()
-    {
-        
-    }
 
     void Start()
     {
