@@ -78,6 +78,8 @@ public class PrepAddGridGroup : MonoBehaviour
         {
             AudioMgr.Inst.PlayPlace();
             UsePrepGridGroup();//设置当前待放入的group为使用过了
+
+            //如果是旋转过的状态 处理旋转所需的金币值，当值达到0时，关闭旋转开关
         }
         else
         {

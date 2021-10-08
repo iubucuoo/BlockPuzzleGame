@@ -117,21 +117,22 @@ public class GridData : IPoolable
         {
             GridObj = ObjectMgr.InstantiateGameObj(ResourceMgr.Inst.LoadRes<GameObject>(res));
             DefImage = GridObj.transform.Find("def").GetComponent<Image>();
+            float scale = UIMgr.Inst.CanvasRect.localScale.x;
             if (GroupType == IPoolsType.GridDataDef)
             {
                 DesImage = GridObj.transform.Find("des").GetComponent<Image>();
                 PrepImage = GridObj.transform.Find("prep").GetComponent<Image>();
 
-                DesImage.rectTransform.localScale *= UIMgr.Inst.CanvasRect.localScale.x;
-                PrepImage.rectTransform.localScale *= UIMgr.Inst.CanvasRect.localScale.x;
+                DesImage.rectTransform.localScale *= scale;
+                PrepImage.rectTransform.localScale *= scale;
             }
             if (GroupType == IPoolsType.GridDataPrep)
             {
-                DefImage.rectTransform.localScale *= 0.8f* UIMgr.Inst.CanvasRect.localScale.x;
+                DefImage.rectTransform.localScale *= 0.8f* scale;
             }
-            else //if(GroupType != IPoolsType.GridDataMin)
+            else
             {
-                DefImage.rectTransform.localScale *= UIMgr.Inst.CanvasRect.localScale.x;
+                DefImage.rectTransform.localScale *= scale;
             }
 
 #if UNITY_EDITOR
