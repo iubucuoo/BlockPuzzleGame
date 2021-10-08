@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AudioManager : MonoBehaviour
+public class AudioMgr : MonoBehaviour
 {
 
-    public static AudioManager Inst = null;
+    public static AudioMgr Inst = null;
 
     public bool isPlaying_Sound = true;
     public bool isPlaying_Music = true;

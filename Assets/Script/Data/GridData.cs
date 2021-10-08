@@ -24,9 +24,9 @@ public class GridData : IPoolable
     void SetSprites()
     {
         if (TrueStatus == 0)
-        { DefImage.sprite = UIManager.Inst.Sprites["Dark_BG_BS"]; }
+        { DefImage.sprite = UIMgr.Inst.Sprites["Dark_BG_BS"]; }
         else if (TrueStatus == 1)
-        { DefImage.sprite = UIManager.Inst.Sprites["Block_Wood"]; }
+        { DefImage.sprite = UIMgr.Inst.Sprites["Block_Wood"]; }
         //else if (TrueStatus == 2)
         //{ DefImage.sprite = UIManager.Inst.Sprites["swgrid"]; }
         //else if (TrueStatus == 3)
@@ -122,16 +122,16 @@ public class GridData : IPoolable
                 DesImage = GridObj.transform.Find("des").GetComponent<Image>();
                 PrepImage = GridObj.transform.Find("prep").GetComponent<Image>();
 
-                DesImage.rectTransform.localScale *= UIManager.Inst.CanvasRect.localScale.x;
-                PrepImage.rectTransform.localScale *= UIManager.Inst.CanvasRect.localScale.x;
+                DesImage.rectTransform.localScale *= UIMgr.Inst.CanvasRect.localScale.x;
+                PrepImage.rectTransform.localScale *= UIMgr.Inst.CanvasRect.localScale.x;
             }
             if (GroupType == IPoolsType.GridDataPrep)
             {
-                DefImage.rectTransform.localScale *= 0.8f* UIManager.Inst.CanvasRect.localScale.x;
+                DefImage.rectTransform.localScale *= 0.8f* UIMgr.Inst.CanvasRect.localScale.x;
             }
             else //if(GroupType != IPoolsType.GridDataMin)
             {
-                DefImage.rectTransform.localScale *= UIManager.Inst.CanvasRect.localScale.x;
+                DefImage.rectTransform.localScale *= UIMgr.Inst.CanvasRect.localScale.x;
             }
 
 #if UNITY_EDITOR

@@ -21,7 +21,7 @@ public class GridGroup_Ground : GridGroup,IPoolable
             { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 }
         };
-        SetData(DataArray, UIManager.Inst.BGROOT);
+        SetData(DataArray, UIMgr.Inst.BGROOT);
     }
 
     public override IPoolsType GroupType { get { return IPoolsType.GridGroup_Ground; } }

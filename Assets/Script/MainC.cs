@@ -23,14 +23,14 @@ public class MainC : MonoBehaviour
         //
 
         gameObject.AddComponent<GridGroupMgr>();
-        gameObject.AddComponent<GoogleAdManager>();
+        gameObject.AddComponent<GoogleAdMgr>();
         gameObject.AddComponent<CaneraShaker>();
-        gameObject.AddComponent<UIManager>();
+        gameObject.AddComponent<UIMgr>();
         gameObject.AddComponent<FPS>();
 
         foreach (var v in sprites)
         {
-            UIManager.Inst.Sprites[v.name] = v;
+            UIMgr.Inst.Sprites[v.name] = v;
         }
         homebg.SetActive(true);
         btn_start.onClick.AddListener(OnBtnStart);
@@ -71,12 +71,12 @@ public class MainC : MonoBehaviour
 
     void OnBtnStart()
     {
-        AudioManager.Inst.ButtonClick();
+        AudioMgr.Inst.ButtonClick();
         DebugMgr.Log("开始游戏");
         panelbg.SetActive(true);
         homebg.SetActive(false);
         btn_start.gameObject.SetActive(false);
-        AudioManager.Inst.PlayBGMusic();
+        AudioMgr.Inst.PlayBGMusic();
         GridGroupMgr.Inst.GameStart();
     }
 
@@ -142,7 +142,7 @@ public class MainC : MonoBehaviour
     //设置拖动位置 不限帧
     void PosSet()
     {
-        if (UIManager.Inst.GetLocalPoint_Canv(out Vector2 pos))
+        if (UIMgr.Inst.GetLocalPoint_Canv(out Vector2 pos))
         {
             DragPos = pos + GameGloab.DragUp;//拖动位置用来显示
             SetDragRootPos();
@@ -152,7 +152,7 @@ public class MainC : MonoBehaviour
     {
         if ((oldmousepos - Input.mousePosition).sqrMagnitude > 90)
         {
-            if (UIManager.Inst.GetLocalPoint_BgRoot(out Vector2 pos1))
+            if (UIMgr.Inst.GetLocalPoint_BgRoot(out Vector2 pos1))
             {
                 //Debug.Log("鼠标相对于bgroot的ui位置" + pos1 + (oldmousepos - Input.mousePosition).sqrMagnitude);
                 GridGroupMgr.Inst.CheckAvailable(pos1 + GameGloab.DragUp);//位置检测 用来判断能否放置

@@ -50,7 +50,7 @@ public class PrepAddGridGroup : MonoBehaviour
         if (!GridGroupMgr.Inst.IsCanPrepNext())
         {
             DebugMgr.LogError("游戏结束");
-            UIManager.Inst.OpenGameOverPanel();
+            UIMgr.Inst.OpenGameOverPanel();
         }
     }
     public void SetGridData(GridGroup_MinPrep v)
@@ -76,12 +76,12 @@ public class PrepAddGridGroup : MonoBehaviour
         DragingGridMgr.Inst.SetDragUp(this);
         if (GridGroupMgr.Inst.RefreshMainGrid())//如果当前可以放置 刷新主面板显示
         {
-            AudioManager.Inst.PlayPlace();
+            AudioMgr.Inst.PlayPlace();
             UsePrepGridGroup();//设置当前待放入的group为使用过了
         }
         else
         {
-            AudioManager.Inst.PlayReturn();
+            AudioMgr.Inst.PlayReturn();
             SetChildActive(true);//使用失败 跑一个回到原始位置的动画
         }
     }
@@ -93,7 +93,7 @@ public class PrepAddGridGroup : MonoBehaviour
         {
             return;
         }
-        AudioManager.Inst.PlayPick();
+        AudioMgr.Inst.PlayPick();
         DragingGridMgr.Inst.SetDragDown(this);
         SetChildActive(false);
     }

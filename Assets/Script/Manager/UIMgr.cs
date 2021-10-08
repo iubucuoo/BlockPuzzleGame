@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIMgr : MonoBehaviour
 {
-    public static UIManager Inst;
+    public static UIMgr Inst;
 
     public Transform UIRoot { get; private set; }
     public Transform ADDROOT { get; private set; }
@@ -79,14 +79,14 @@ public class UIManager : MonoBehaviour
     }
     public void OnBtnSetSw()
     {
-        AudioManager.Inst.ButtonClick();
+        AudioMgr.Inst.ButtonClick();
         UI_SetPanel.ShowBoxX();
     }
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.Inst.isPlaying_Music = GameGloab.MusicOnOff == 0;
-        AudioManager.Inst.isPlaying_Sound = GameGloab.SoundIsOnOff == 0;
+        AudioMgr.Inst.isPlaying_Music = GameGloab.MusicOnOff == 0;
+        AudioMgr.Inst.isPlaying_Sound = GameGloab.SoundIsOnOff == 0;
     }
      
 }

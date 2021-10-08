@@ -173,7 +173,7 @@ public class GridGroupMgr : MonoBehaviour
         gridGroup_Ground = PoolMgr.Allocate(IPoolsType.GridGroup_Ground) as GridGroup_Ground;
         gridGroup_Ground.CreatGrids();
         RefreshPrepGridGroup();
-        GoogleAdManager.Inst.RequestInterstitial();
+        GoogleAdMgr.Inst.RequestInterstitial();
     }
     public void GameStart()
     {
@@ -187,7 +187,7 @@ public class GridGroupMgr : MonoBehaviour
         {
             Vector2 pos = new Vector2((i - 1) * (6*GameGloab.wh_2), 0);
             var obj = ObjectMgr.InstantiateGameObj(ObjectMgr.LoadResource("Prefab/addgridbg") as GameObject);
-            obj.transform.SetParent(UIManager.Inst.ADDROOT);
+            obj.transform.SetParent(UIMgr.Inst.ADDROOT);
             obj.transform.localPosition = pos;
             obj.transform.localScale = Vector2.one;
 #if UNITY_EDITOR
@@ -207,7 +207,7 @@ public class GridGroupMgr : MonoBehaviour
         {
             RefreshPrepGroup_i(i);
         }
-        AudioManager.Inst.PlayNewPrep();
+        AudioMgr.Inst.PlayNewPrep();
     }
     /// <summary>
     /// 随机出现group
@@ -350,7 +350,7 @@ public class GridGroupMgr : MonoBehaviour
         bool canprep= swPrepGridList.Count > 0;
         if (canprep)
         {
-            UIManager.Inst.SetNowScore(swPrepGridList.Count);
+            UIMgr.Inst.SetNowScore(swPrepGridList.Count);
             foreach (var v in swPrepGridList)
             {
                 v.SetUseState();
@@ -372,7 +372,7 @@ public class GridGroupMgr : MonoBehaviour
             {
                 addnum += addscore * 10;
             }
-            UIManager.Inst.SetNowScore(addnum);
+            UIMgr.Inst.SetNowScore(addnum);
             //UI抖动
             if (addscore>1)
             {
@@ -380,14 +380,14 @@ public class GridGroupMgr : MonoBehaviour
             }
             //播放声音
             int lv = GameGloab.ContinuousBoom ++;
-            AudioManager.Inst.PlayBoom(lv);
+            AudioMgr.Inst.PlayBoom(lv);
             if (lv > 1 && lv > addscore)
             {
-                AudioManager.Inst.PlayEffectLevel(lv);
+                AudioMgr.Inst.PlayEffectLevel(lv);
             }
             else
             {
-                AudioManager.Inst.PlayEffectLevel(addscore);
+                AudioMgr.Inst.PlayEffectLevel(addscore);
             }
             swClearGridList.Clear();
         }

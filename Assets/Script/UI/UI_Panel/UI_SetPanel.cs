@@ -51,45 +51,45 @@ public class UI_SetPanel : UIPanelBase
     void YesCallBack()
     {
         //Debug.Log("点击重开游戏----广告播放返回");
-        AudioManager.Inst.PlayGameOpen();
-        UIManager.Inst.ResetTop();
+        AudioMgr.Inst.PlayGameOpen();
+        UIMgr.Inst.ResetTop();
         GridGroupMgr.Inst.GameReset();//重新启动游戏
     }
     private void OnBtnResetGame()
     {
-        AudioManager.Inst.ButtonClick();
+        AudioMgr.Inst.ButtonClick();
         //Confirm.SetActive(true);
         gameObject.SetActive(false);//弹出广告直接隐藏
-        GoogleAdManager.Inst.GameOver(YesCallBack);
+        GoogleAdMgr.Inst.GameOver(YesCallBack);
         //confirmNo.onClick.AddListener(OnBtnConfirmNo);
         //confirmYes.onClick.AddListener(OnBtnConfirmYes);
     }
 
     private void OnBtnAllBg()
     {
-        AudioManager.Inst.ButtonClick();
+        AudioMgr.Inst.ButtonClick();
         HideBox();
     }
 
     public void ChangeSoundIsOn(bool ison)
     {
-        AudioManager.Inst.ButtonClick();
+        AudioMgr.Inst.ButtonClick();
         GameGloab.SoundIsOnOff = ison ? 0 : 1;
-        AudioManager.Inst.isPlaying_Sound = ison;
+        AudioMgr.Inst.isPlaying_Sound = ison;
        
     }
     public void ChangeMusicIsOn(bool ison)
     {
-        AudioManager.Inst.ButtonClick();
+        AudioMgr.Inst.ButtonClick();
         GameGloab.MusicOnOff = ison ? 0 : 1;
-        AudioManager.Inst.isPlaying_Music = ison;
+        AudioMgr.Inst.isPlaying_Music = ison;
         if (ison)
         {
-            AudioManager.Inst.PlayBGMusic();
+            AudioMgr.Inst.PlayBGMusic();
         }
         else
         {
-            AudioManager.Inst.StopBGMusic();
+            AudioMgr.Inst.StopBGMusic();
         }
     }
     

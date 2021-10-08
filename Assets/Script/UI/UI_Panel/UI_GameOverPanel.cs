@@ -19,18 +19,18 @@ public class UI_GameOverPanel : UIPanelBase
 
     void ShowFinish()
     {
-        bool isnewrecord = UIManager.Inst.IsTopScore();
+        bool isnewrecord = UIMgr.Inst.IsTopScore();
         gameover.SetActive(!isnewrecord);
         newrecord.SetActive(isnewrecord);
         if (isnewrecord)
         {
-            UIManager.Inst.WriteTopScore();
-            AudioManager.Inst.PlayNewRecord();//播放 新记录音乐UI
+            UIMgr.Inst.WriteTopScore();
+            AudioMgr.Inst.PlayNewRecord();//播放 新记录音乐UI
             newrecordtxt.text = GameGloab.Topscore.ToString();
         }
         else
         {
-            AudioManager.Inst.PlayGameOver();
+            AudioMgr.Inst.PlayGameOver();
         }
     }
     public void ShowGameOver()
@@ -41,14 +41,14 @@ public class UI_GameOverPanel : UIPanelBase
     }
     private void OnBtnRefresh()
     {
-        AudioManager.Inst.ButtonClick();
+        AudioMgr.Inst.ButtonClick();
         gameObject.SetActive(false);
-        GoogleAdManager.Inst.GameOver(RefreshCallBack);
+        GoogleAdMgr.Inst.GameOver(RefreshCallBack);
     }
     void RefreshCallBack()
     {
-        AudioManager.Inst.PlayGameOpen();
-        UIManager.Inst.ResetTop();
+        AudioMgr.Inst.PlayGameOpen();
+        UIMgr.Inst.ResetTop();
         GridGroupMgr.Inst.GameReset();//重新启动游戏
     }
 }

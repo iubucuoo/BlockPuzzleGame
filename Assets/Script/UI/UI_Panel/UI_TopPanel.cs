@@ -36,7 +36,7 @@ public class UI_TopPanel : MonoBehaviour
 
     private void OnBtnSwSetPanel()
     {
-        UIManager.Inst.OnBtnSetSw();
+        UIMgr.Inst.OnBtnSetSw();
     }
 
     public void ResetTop()

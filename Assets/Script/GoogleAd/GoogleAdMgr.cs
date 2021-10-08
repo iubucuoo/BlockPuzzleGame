@@ -5,9 +5,9 @@ using GoogleMobileAds.Api;
 using System;
 using GoogleMobileAds.Common;
 
-public class GoogleAdManager : MonoBehaviour
+public class GoogleAdMgr : MonoBehaviour
 {
-    public static GoogleAdManager Inst;
+    public static GoogleAdMgr Inst;
     private void Awake()
     {
         Inst = this;
@@ -140,7 +140,7 @@ public class GoogleAdManager : MonoBehaviour
         {
             DebugMgr.LogError("广告关闭下一个update调用");
             CallGameOver();
-            AudioManager.Inst.UnpauseMusic();
+            AudioMgr.Inst.UnpauseMusic();
         });
     }
   
@@ -173,7 +173,7 @@ public class GoogleAdManager : MonoBehaviour
         if (interstitial.IsLoaded())
         {
             DebugMgr.LogError("展示广告");
-            AudioManager.Inst.PauseMusic();
+            AudioMgr.Inst.PauseMusic();
             interstitial.Show();
             GameOverA = cb;
         }

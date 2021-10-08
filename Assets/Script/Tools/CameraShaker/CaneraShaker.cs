@@ -15,7 +15,7 @@ public class CaneraShaker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UIRoot = UIManager.Inst.UIRoot;
+        UIRoot = UIMgr.Inst.UIRoot;
         originalV3 = UIRoot.position;
     }
 

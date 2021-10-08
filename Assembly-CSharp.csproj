@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{F4836962-AE94-798E-AA91-1EB00B117D31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -79,10 +80,10 @@
     <Compile Include="Assets\Script\UI\LanguageChange\LanguageData\LanguageData.cs" />
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModuleSprite.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\AudioToolkit\AudioObject.cs" />
-    <Compile Include="Assets\Script\Manager\AudioManager.cs" />
+    <Compile Include="Assets\Script\Manager\AudioMgr.cs" />
     <Compile Include="Assets\Script\Tools\UGUIEventListener\EventTriggerListener.cs" />
     <Compile Include="Assets\Script\Data\GridDataMin.cs" />
-    <Compile Include="Assets\Script\GoogleAd\GoogleAdManager.cs" />
+    <Compile Include="Assets\Script\GoogleAd\GoogleAdMgr.cs" />
     <Compile Include="Assets\ThirdTools\SimpleJSON\SimpleJSONBinary.cs" />
     <Compile Include="Assets\Script\Tools\Pool\IPool.cs" />
     <Compile Include="Assets\Script\Test\UIDepth.cs" />
@@ -104,7 +105,7 @@
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets\Script\Frame\Math\M_math.cs" />
     <Compile Include="Assets\Script\UI\UI_Panel\UIPanelBase.cs" />
-    <Compile Include="Assets\Script\Manager\UIManager.cs" />
+    <Compile Include="Assets\Script\Manager\UIMgr.cs" />
     <Compile Include="Assets\Script\Tools\FPS.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\AudioToolkit\AudioLog.cs" />
     <Compile Include="Assets\Script\Frame\Singleton\Singleton.cs" />
@@ -115,26 +116,26 @@
     <Compile Include="Assets\Script\Data\GridGroup_Ground.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.dll" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.1.1_manifest.txt" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\number_days.fnt" />
-     <None Include="Assets\codeandweb.com\Readme.txt" />
-     <None Include="Assets\ThirdTools\Toon Particles - Magic Collection\ToonMagic - Readme.txt" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Core.dll" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\score_best.fnt" />
-     <None Include="Assets\GoogleMobileAds\link.xml" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\number_score.fnt" />
-     <None Include="Assets\ThirdTools\DOTween\DOTween\readme.txt" />
-     <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.dll" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\number_bestscore.fnt" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\number_percentage.fnt" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\number_years.fnt" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\number_days_2.fnt" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
-     <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.XML" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Android.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.1.1_manifest.txt" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\number_days.fnt" />
+    <None Include="Assets\codeandweb.com\Readme.txt" />
+    <None Include="Assets\ThirdTools\Toon Particles - Magic Collection\ToonMagic - Readme.txt" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Core.dll" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\score_best.fnt" />
+    <None Include="Assets\GoogleMobileAds\link.xml" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\number_score.fnt" />
+    <None Include="Assets\ThirdTools\DOTween\DOTween\readme.txt" />
+    <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.dll" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\number_bestscore.fnt" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\number_percentage.fnt" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\number_years.fnt" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\number_days_2.fnt" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
+    <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.XML" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Android.dll" />
     <Reference Include="UnityEngine">
       <HintPath>D:\UnityOffice\2020.1.0f1\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
