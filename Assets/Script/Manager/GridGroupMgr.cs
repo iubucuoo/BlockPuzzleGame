@@ -66,64 +66,13 @@ public class GridGroupMgr : MonoBehaviour
     {
         Inst = this;
     }
-    List<int[,]> datalist;
+    List<int[,]> list1;
+    List<int[,]> list2;
+    List<int[,]> list3;
     private void Start()
     {
-        datalist = new List<int[,]>
+        list1 = new List<int[,]>
         {
-            new int[,]{
-                { 1 },
-            },
-            new int[,]{
-                { 1,1},
-            },
-            new int[,]{
-                { 1},
-                { 1},
-            },
-            new int[,]{
-                { 1,1,1 },
-            },
-            new int[,]{
-                { 1},
-                { 1},
-                { 1},
-            },
-            new int[,]{
-                { 1,1 ,1,1},
-            },
-            new int[,]{
-                { 1},
-                { 1},
-                { 1},
-                { 1},
-            },
-            new int[,]{
-                { 1,1 ,1,1,1},
-            },
-            new int[,]{
-                { 1},
-                { 1},
-                { 1},
-                { 1},
-                { 1},
-            },
-            new int[,]{
-                { 1,1 },
-                { 0,1 },
-            },
-            new int[,]{
-                { 0,1 },
-                { 1,1 },
-            },
-            new int[,]{
-                { 1,0 },
-                { 1,1 },
-            },
-            new int[,]{
-                { 1,1 },
-                { 1,0 },
-            },
             new int[,]{
                 { 1,0,0 },
                 { 1,0,0 },
@@ -149,6 +98,69 @@ public class GridGroupMgr : MonoBehaviour
                 { 1,1,1 },
                 { 1,1,1 },
             }
+        };
+        list2 = new List<int[,]>
+        {
+            new int[,]{
+                { 1,1 },
+                { 0,1 },
+            },
+            new int[,]{
+                { 0,1 },
+                { 1,1 },
+            },
+            new int[,]{
+                { 1,0 },
+                { 1,1 },
+            },
+            new int[,]{
+                { 1,1 },
+                { 1,0 },
+            },
+             new int[,]{
+                { 1,1 },
+                { 1,1 },
+            },
+             new int[,]{
+                { 1 },
+            },
+            new int[,]{
+                { 1,1},
+            },
+            new int[,]{
+                { 1},
+                { 1},
+            },
+        };
+        list3 = new List<int[,]>
+        {
+             new int[,]{
+                { 1,1 ,1,1,1},
+            },
+            new int[,]{
+                { 1},
+                { 1},
+                { 1},
+                { 1},
+                { 1},
+            },
+            new int[,]{
+                { 1,1 ,1,1},
+            },
+            new int[,]{
+                { 1},
+                { 1},
+                { 1},
+                { 1},
+            },
+            new int[,]{
+                { 1,1,1 },
+            },
+            new int[,]{
+                { 1},
+                { 1},
+                { 1},
+            },
         };
     }
     public void GameReset()
@@ -197,14 +209,32 @@ public class GridGroupMgr : MonoBehaviour
         }
         AudioManager.Inst.PlayNewPrep();
     }
-
+    /// <summary>
+    /// 随机出现group
+    /// </summary>
+    /// <returns></returns>
+    int[,] RangeData()
+    {
+        int rangenum = UnityEngine.Random.Range(0, 20);
+        if (rangenum >= 0 && rangenum < 5)
+        {
+            return list1[UnityEngine.Random.Range(0, list1.Count - 1)];
+        }
+        else if (rangenum > 4 && rangenum < 10)
+        {
+            return list3[UnityEngine.Random.Range(0, list3.Count - 1)];
+        }
+        else
+        {
+            return list2[UnityEngine.Random.Range(0, list2.Count - 1)];
+        }
+    }
     void RefreshPrepGroup_i(int i)
     {
         PrepGroup[i].Reset();
         var data = PoolMgr.Allocate(IPoolsType.GridGroup_MinPrep) as GridGroup_MinPrep;
         PrepGroup[i].SetGridData(data);
-        data.SetData(datalist[UnityEngine.Random.Range(0, datalist.Count - 1)], PrepGroup[i].Root);
-        //data.SetData(datalist[0], PrepGroup[i].Root);
+        data.SetData(RangeData(), PrepGroup[i].Root);
         data.CreatGrids();
     }
     public bool IsCanPrepNext()
