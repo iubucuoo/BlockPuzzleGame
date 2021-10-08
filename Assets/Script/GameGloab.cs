@@ -10,9 +10,9 @@ public static class GameGloab
     public static int wh_2 = 45;// 30;
     public static Vector2 DragUp = new Vector2(0, _width * 4);//y高度 对应的倍数
     public static Vector2 OutScreenV2 = new Vector2(5000, 5000);
-   
-    
 
+
+    public static int ContinuousBoom = 0;//连续爆炸
     public static int SoundIsOnOff
     {
         get { return PlayerPrefs.GetInt("SoundIsOn", 0); }

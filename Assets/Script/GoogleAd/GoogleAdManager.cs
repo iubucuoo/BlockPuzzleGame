@@ -19,12 +19,10 @@ public class GoogleAdManager : MonoBehaviour
     //激励广告 ca-app-pub-3940256099942544/5224354917
     //插页式激励广告 ca-app-pub-3940256099942544/5354046379
     //原生广告 ca-app-pub-3940256099942544/2247696110
-    WaitForFixedUpdate WaitForFixedUpdate;
     //private RewardedAd rewardedAd;
     // Start is called before the first frame update
     void Start()
     {
-        WaitForFixedUpdate=new WaitForFixedUpdate();
         // Initialize the Google Mobile Ads SDK.
         //MobileAds.Initialize(initStatus =>
         //{

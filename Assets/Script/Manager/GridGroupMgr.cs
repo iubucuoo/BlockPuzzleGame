@@ -195,6 +195,7 @@ public class GridGroupMgr : MonoBehaviour
         {
             RefreshPrepGroup_i(i);
         }
+        AudioManager.Inst.PlayNewPrep();
     }
 
     void RefreshPrepGroup_i(int i)
@@ -203,6 +204,7 @@ public class GridGroupMgr : MonoBehaviour
         var data = PoolMgr.Allocate(IPoolsType.GridGroup_MinPrep) as GridGroup_MinPrep;
         PrepGroup[i].SetGridData(data);
         data.SetData(datalist[UnityEngine.Random.Range(0, datalist.Count - 1)], PrepGroup[i].Root);
+        //data.SetData(datalist[0], PrepGroup[i].Root);
         data.CreatGrids();
     }
     public bool IsCanPrepNext()
@@ -333,7 +335,7 @@ public class GridGroupMgr : MonoBehaviour
                 EffectPool.Inst.PlayBubbleExplode(1, v.Position);//播放销毁动画
                 //Debug.LogError("播放销毁动画");
             }
-            CaneraShaker.Inst.PlayShake();
+            //添加分数;
             int addscore =(int)Mathf.Ceil( swClearGridList.Count * .1f);
             int addnum = 0;
             for (int i = addscore; i > 0; i--)
@@ -341,9 +343,27 @@ public class GridGroupMgr : MonoBehaviour
                 addnum += addscore * 10;
             }
             UIManager.Inst.SetNowScore(addnum);
-
-            AudioManager.Inst.PlayBoom();
+            //UI抖动
+            if (addscore>1)
+            {
+                CaneraShaker.Inst.PlayShake();
+            }
+            //播放声音
+            int lv = GameGloab.ContinuousBoom ++;
+            AudioManager.Inst.PlayBoom(lv);
+            if (lv > 1 && lv > addscore)
+            {
+                AudioManager.Inst.PlayEffectLevel(lv);
+            }
+            else
+            {
+                AudioManager.Inst.PlayEffectLevel(addscore);
+            }
             swClearGridList.Clear();
+        }
+        else
+        {
+            GameGloab.ContinuousBoom = 0;
         }
 
         return canprep;

@@ -76,6 +76,14 @@ public class AudioManager : MonoBehaviour
         }
         Play("gameover");
     }
+    public void PlayNewPrep()
+    {
+        if (isPlaying_Sound == false)
+        {
+            return;
+        }
+        Play("new");
+    }
     public void PlayBoom()
     {
         if (isPlaying_Sound == false)
@@ -83,6 +91,64 @@ public class AudioManager : MonoBehaviour
             return;
         }
         Play("sfx_combo_2");
+    }
+    public void PlayBoom(int lv)
+    {
+        if (isPlaying_Sound == false)
+        {
+            return;
+        }
+        if (lv<2)
+        {
+            Play("sfx_combo_2");
+        }
+        else if (lv<3)
+        {
+            Play("sfx_combo_3");
+        }
+        else if (lv < 4)
+        {
+            Play("sfx_combo_4");
+        }
+        else if (lv < 5)
+        {
+            Play("sfx_combo_5");
+        }
+        else
+        {
+            Play("sfx_combo_6");
+        }
+    }
+    public void PlayEffectLevel(int level)
+    {
+        if (isPlaying_Sound == false)
+        {
+            return;
+        }
+        //一般 great,excellent
+        //强度50% awesome,amazing
+        //强度75% wonderful,fantastic,fabulous,marvelous
+        //强度100% terrific,incredible
+        if (level <= 1)
+        {
+
+        }
+        else if (level ==2)
+        {
+            Play("effectGood");
+        }
+        else if (level == 3)
+        {
+            Play("effectGreat");
+        }
+        else if (level == 4)
+        {
+            Play("effectPerfect");
+        }
+        else if (level >= 5)
+        {
+            Play("effectAmazing");
+        }
     }
     public void PlayGameOpen()
     {

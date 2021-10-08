@@ -74,6 +74,7 @@
     <Compile Include="Assets\ThirdTools\SimpleJSON\SimpleJSON.cs" />
     <Compile Include="Assets\Script\Data\GridGroup_MinPrep.cs" />
     <Compile Include="Assets\Script\UI\LanguageChange\LanguageManger.cs" />
+    <Compile Include="Assets\Script\Tools\CameraShaker\CaneraShaker.cs" />
     <Compile Include="Assets\Script\Data\GridGroup_Prep.cs" />
     <Compile Include="Assets\Script\UI\LanguageChange\LanguageData\LanguageData.cs" />
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModuleSprite.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Assets\Script\Frame\Math\M_math.cs" />
     <Compile Include="Assets\Script\UI\UI_Panel\UIPanelBase.cs" />
     <Compile Include="Assets\Script\Manager\UIManager.cs" />
+    <Compile Include="Assets\Script\Tools\FPS.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\AudioToolkit\AudioLog.cs" />
     <Compile Include="Assets\Script\Frame\Singleton\Singleton.cs" />
     <Compile Include="Assets\Script\GoogleAd\GoogleAdMobController.cs" />
@@ -112,9 +114,6 @@
     <Compile Include="Assets\Script\Manager\DragingGridMgr.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\Shared Auxiliary Code\PoolableObject.cs" />
     <Compile Include="Assets\Script\Data\GridGroup_Ground.cs" />
-    <Compile Include="Assets\Script\Test\ChinarAtlas.cs" />
-    <Compile Include="Assets\Script\Tools\FPS.cs" />
-    <Compile Include="Assets\text.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />

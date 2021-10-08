@@ -103,7 +103,7 @@ public class PrepAddGridGroup : MonoBehaviour
         if (!isdrag)
         {
             DebugMgr.Log("OnDrag " + transform.name);
-            DragingGridMgr.Inst.SetDrat(true);
+            DragingGridMgr.Inst.SetDrag(true);
             isdrag = true;
         }
            //调整旋转的状态  拖动的时候才开始

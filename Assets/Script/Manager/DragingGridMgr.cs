@@ -54,7 +54,7 @@ public class DragingGridMgr
         DragRoot.DOLocalMove(topos, .15f);
 
     }
-    public void SetDrat(bool v)
+    public void SetDrag(bool v)
     {
         if (v)
         {
