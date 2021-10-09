@@ -148,4 +148,13 @@ public static class M_math
         }
         return newv;
     }
+
+    public static string getMemory(object o) // 获取引用类型的内存地址方法    
+    {
+        System.Runtime.InteropServices.GCHandle h = System.Runtime.InteropServices.GCHandle.Alloc(o, System.Runtime.InteropServices.GCHandleType.WeakTrackResurrection);
+
+        System.IntPtr addr = System.Runtime.InteropServices.GCHandle.ToIntPtr(h);
+
+        return "0x" + addr.ToString("X");
+    }
 }

@@ -198,6 +198,7 @@ public class GridGroupMgr : MonoBehaviour
             {
                 PrepGroup[i] = obj.gameObject.AddComponent<PrepAddGridGroup>();
             }
+            PrepGroup[i].Index = i;
             PrepGroup[i].Root = obj.transform;
         }
     }
@@ -300,7 +301,14 @@ public class GridGroupMgr : MonoBehaviour
         }
         return true;
     }
-
+    public bool IsCantUsePrep(int i)
+    {
+        if (PrepGroup[i]!=null)
+        {
+            return !PrepGroup[i].IsUse;
+        }
+        return false;
+    }
     Dictionary<int, int> husecount = new Dictionary<int, int>();
     Dictionary<int, int> wusecount = new Dictionary<int, int>();
     bool GetCanClear(List<GridData> data)

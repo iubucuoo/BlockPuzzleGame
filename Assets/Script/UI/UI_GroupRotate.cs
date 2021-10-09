@@ -52,6 +52,20 @@ public class UI_GroupRotate : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
+            if (v)
+            {
+                RotateImgs[i].SetActive(GridGroupMgr.Inst.IsCantUsePrep(i));
+            }
+            else
+            {
+                RotateImgs[i].SetActive(v);
+            }
+        }
+    }
+    public void SWRotate(int i,bool v)
+    {
+        if (RotateImgs[i]!=null)
+        {
             RotateImgs[i].SetActive(v);
         }
     }

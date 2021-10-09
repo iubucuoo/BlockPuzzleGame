@@ -3,6 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 public class PrepAddGridGroup : MonoBehaviour
 {
+    public int Index;
     bool isdrag;//判断是否执行过拖动函数
     //bool canclick;//点击down，up的时候判断是否放成功，放成功表示不能出发click事件
     bool isdraging;//放手的时候判断是否抓起过,抓起过的不进入点击事件
@@ -60,6 +61,10 @@ public class PrepAddGridGroup : MonoBehaviour
     void UsePrepGridGroup()
     {
         IsUse = true;
+        if (UIMgr.Inst.IsRotateState)
+        {
+            UIMgr.Inst.SWRotate(Index, false);
+        }
         Recycle();
         //三个格子都用完了，刷新三个待放入的格子
         if (GridGroupMgr.Inst.IsCantUseAllPrep())
@@ -81,6 +86,10 @@ public class PrepAddGridGroup : MonoBehaviour
     {
         minPrepGroup = v;
         rotatePrep = v.DataArray;
+        if (UIMgr.Inst.IsRotateState)
+        {
+            UIMgr.Inst.SWRotate(Index, true);
+        }
     }
     void SetChildActive(bool sw)
     {

@@ -51,7 +51,10 @@ public class UIMgr : MonoBehaviour
     {
         UI_GroupRotate.SwitchRotateState(v);
     }
-
+    public void SWRotate(int i, bool v)
+    {
+        UI_GroupRotate.SWRotate(i, v);
+    }
     public bool GetLocalPoint_BgRoot(out Vector2 pos)
     {
         return RectTransformUtility.ScreenPointToLocalPointInRectangle(BGROOTRect, Input.mousePosition, Canvas.worldCamera, out pos);
