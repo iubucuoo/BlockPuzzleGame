@@ -233,9 +233,9 @@ public class GridGroupMgr : MonoBehaviour
     {
         PrepGroup[i].Reset();
         var data = PoolMgr.Allocate(IPoolsType.GridGroup_MinPrep) as GridGroup_MinPrep;
-        PrepGroup[i].SetGridData(data);
         data.SetData(RangeData(), PrepGroup[i].Root);
         data.CreatGrids();
+        PrepGroup[i].SetGridData(data);
     }
     public bool IsCanPrepNext()
     {
@@ -251,7 +251,7 @@ public class GridGroupMgr : MonoBehaviour
                 {
                     for (int j = 0; j < alldata.W_count; j++)
                     {
-                        if (CanAddPrep(prepgroup.minPrepGroup, alldata, i, j))//每一个都判断能不能放，设置不能放置的表现
+                        if (CanAddPrep(prepgroup.rotatePrep, alldata, i, j))//每一个都判断能不能放，设置不能放置的表现
                         {
                             canuse = true;
                             break;
@@ -449,7 +449,7 @@ public class GridGroupMgr : MonoBehaviour
         int w_index = Postox[w];
         RevertswClearGrid();
         RevertswGrid();//先清理再筛选
-        if (CanAddPrep(gdata, alldata, h_index, w_index, true))
+        if (CanAddPrep(gdata.DataArray, alldata, h_index, w_index, true))
         {
             foreach (var v in swPrepGridList)
             {
@@ -520,7 +520,46 @@ public class GridGroupMgr : MonoBehaviour
         }
         return true;
     }
-
+    private bool CanAddPrep(int[,] gdata, GridGroup_Ground alldata, int h_index, int w_index, bool isadd = false)
+    {
+        int hcount = gdata.GetLength(0);
+        int wcount = gdata.GetLength(1);
+        int all_maxh = alldata.H_count - 1;
+        int all_maxw = alldata.W_count - 1;
+        int h_ban = h_index - ((int)(hcount * 0.5f)) + (M_math.Even(hcount) ? 1 : 0);
+        int w_ban = w_index - ((int)(wcount * 0.5f))+ (M_math.Even(wcount) ? 1 : 0);
+        //int add_h = M_math.Even(hcount) ? 1 : 0;
+        //int add_w = M_math.Even(wcount) ? 1 : 0;
+        //当前选中的位置 根据拖动出来的展开获取需要处理的grid
+        int all_h;
+        int all_w;
+        for (int _h = 0; _h < hcount; _h++)
+        {
+            for (int _w = 0; _w < wcount; _w++)
+            {
+                //将gdata ij的位置 与alldata的_i_j对应起来
+                all_h = h_ban + _h;/* + add_h;*/
+                all_w = w_ban + _w;/* + add_w;*/
+                if (all_h < 0 || all_h > all_maxh || all_w < 0 || all_w > all_maxw)
+                {
+                    return false; //超出边界
+                }
+                if (gdata[_h, _w]>0)
+                {
+                    if (alldata.Grid[all_h, all_w].IsUse)
+                    {
+                        return false;//若gdata有数据 alldata也有数据 说明不能放
+                    }
+                    else if (isadd)
+                    {
+                        alldata.Grid[all_h, all_w]._TempStatus = gdata[_h, _w];
+                        swPrepGridList.Add(alldata.Grid[all_h, all_w]);
+                    }
+                }
+            }
+        }
+        return true;
+    }
     /// <summary>
     /// 根据坐标的值 装换成最靠近的规整坐标的值
     /// </summary>

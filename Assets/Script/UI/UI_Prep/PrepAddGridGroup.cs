@@ -16,6 +16,7 @@ public class PrepAddGridGroup : MonoBehaviour
         } }
     [SerializeField]
     public GridGroup_MinPrep minPrepGroup { get; private set; }
+    public int[,] rotatePrep;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +29,21 @@ public class PrepAddGridGroup : MonoBehaviour
     private void OnClickGroup(GameObject obj)
     {
         DebugMgr.Log("OnClick   " + transform.name);
-        //如果当前是 旋转的状态 
-        //点击后 执行 旋转minPrepGroup数据  之后再执行能不能放置
-        //IsGameOver();
-    }
 
+        //rotatePrep = M_math.Rotate_90(rotatePrep);
+        //如果当前是 旋转的状态 
+        //点击后 执行 旋转rotatePrep数据  之后再执行能不能放置
+        //IsGameOver();
+        //再放置成功之后判断是否旋转后跟没旋转前是否相同，不相同则减掉一个旋转用的金币
+    }
+    
+    /// <summary>
+    /// 还原未旋转的状态
+    /// </summary>
+    public void ReductionRotate()
+    {
+        rotatePrep = minPrepGroup.DataArray;
+    }
     void UsePrepGridGroup()
     {
         IsUse = true;
@@ -56,6 +67,7 @@ public class PrepAddGridGroup : MonoBehaviour
     public void SetGridData(GridGroup_MinPrep v)
     {
         minPrepGroup = v;
+        rotatePrep = v.DataArray;
     }
     void SetChildActive(bool sw)
     {

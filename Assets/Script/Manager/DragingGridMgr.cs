@@ -46,7 +46,7 @@ public class DragingGridMgr
     public void SetDragDown(PrepAddGridGroup v)
     {
         prepData = PoolMgr.Allocate(IPoolsType.GridGroup_Prep)as GridGroup_Prep;
-        prepData.SetData(v.minPrepGroup.DataArray, ChildParent);
+        prepData.SetData(v.rotatePrep, ChildParent);
         AddDragGroup(prepData);
         //生成组 跑一个动画  然后跟随手拖动位置
         DragRoot.position = v.Root.position;
