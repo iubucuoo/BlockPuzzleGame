@@ -201,6 +201,16 @@ public class GridGroupMgr : MonoBehaviour
             PrepGroup[i].Root = obj.transform;
         }
     }
+  
+    public void BackRotate()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (PrepGroup[i] != null)
+                PrepGroup[i].BackRotate();
+        }
+    }
+
     public void RefreshPrepGridGroup()
     {
         for (int i = 0; i < 3; i++)

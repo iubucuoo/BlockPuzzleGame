@@ -18,6 +18,7 @@ public class UIMgr : MonoBehaviour
     UI_TopPanel UI_TopPanel;
     UI_GameOverPanel UI_GameOverPanel;
     UI_SetPanel UI_SetPanel;
+    UI_GroupRotate UI_GroupRotate;
 
     public Dictionary<string, Sprite> Sprites;
     private void Awake()
@@ -33,15 +34,24 @@ public class UIMgr : MonoBehaviour
         BGROOT = UIRoot.Find("BGROOT");
         ADDROOT = UIRoot.Find("ADDROOT");
         DragRoot = UIRoot.Find("DragRoot");
-
         CanvasRect = CanvasObj.GetComponent<RectTransform>();
         BGROOTRect = BGROOT.GetComponent<RectTransform>();
 
+        UI_GroupRotate = UIRoot.Find("ROTATEROOT").GetComponent<UI_GroupRotate>();
         UI_TopPanel = UIRoot.Find("gamebg/PanelTop").GetComponent<UI_TopPanel>();
         UI_GameOverPanel = UIRoot.Find("gameoverPanel").GetComponent<UI_GameOverPanel>();
         UI_SetPanel = UIRoot.Find("SetPanel").GetComponent<UI_SetPanel>();
 
         DragingGridMgr.Inst.SetDrag(DragRoot);
+    }
+
+    public bool IsRotateState { get { return UI_GroupRotate.IsRotateState; }}
+
+    public void SwitchRotateState(bool v)
+    {
+        UI_GroupRotate.SwitchRotateState(v);
+        //还原待用的组
+        GridGroupMgr.Inst.BackRotate();
     }
 
     public bool GetLocalPoint_BgRoot(out Vector2 pos)

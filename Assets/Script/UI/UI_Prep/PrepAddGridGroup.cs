@@ -1,19 +1,27 @@
 ﻿using System;
 using UnityEngine;
-
+using DG.Tweening;
 public class PrepAddGridGroup : MonoBehaviour
 {
+    bool isdrag;//判断是否执行过拖动函数
+    //bool canclick;//点击down，up的时候判断是否放成功，放成功表示不能出发click事件
+    bool isdraging;//放手的时候判断是否抓起过,抓起过的不进入点击事件
     public Transform Root;
     public bool IsUse;
-    bool canuse=true;
-    public bool IsCanUse { get { return canuse; } set {
-            if (canuse!=value)
+    bool canuse = true;
+    public bool IsCanUse
+    {
+        get { return canuse; }
+        set
+        {
+            if (canuse != value)
             {
                 DebugMgr.Log("cant use   " + transform.name);
                 minPrepGroup.SetCanUseStatus(value);//设置要不要变灰的表现
             }
             canuse = value;
-        } }
+        }
+    }
     [SerializeField]
     public GridGroup_MinPrep minPrepGroup { get; private set; }
     public int[,] rotatePrep;
@@ -25,18 +33,30 @@ public class PrepAddGridGroup : MonoBehaviour
         EventTriggerListener.Get(gameObject).onDrag = OnDrag;
         EventTriggerListener.Get(gameObject).onClick = OnClickGroup;
     }
-
+    /// <summary>
+    /// 还原旋转
+    /// </summary>
+    public void BackRotate()
+    {
+        transform.localEulerAngles = Vector3.zero;
+        if (minPrepGroup != null)
+            rotatePrep = minPrepGroup.DataArray;
+    }
     private void OnClickGroup(GameObject obj)
     {
         DebugMgr.Log("OnClick   " + transform.name);
-
-        //rotatePrep = M_math.Rotate_90(rotatePrep);
-        //如果当前是 旋转的状态 
-        //点击后 执行 旋转rotatePrep数据  之后再执行能不能放置
-        //IsGameOver();
+        if (!isdraging && UIMgr.Inst.IsRotateState) //如果 没有被抓起来 并且当前是 旋转的状态 
+        {
+            transform.DOKill(true);//强制完成旋转
+            transform.DOLocalRotate(transform.localEulerAngles - Vector3.forward * 90, .2f);
+            //transform.localEulerAngles -= Vector3.forward * 90;
+            rotatePrep = M_math.Rotate_90(rotatePrep);//点击后 执行 旋转rotatePrep数据  之后再执行能不能放置
+            if (GridGroupMgr.Inst.IsCanPrepNext())
+            { }
+        }
         //再放置成功之后判断是否旋转后跟没旋转前是否相同，不相同则减掉一个旋转用的金币
     }
-    
+
     /// <summary>
     /// 还原未旋转的状态
     /// </summary>
@@ -80,8 +100,12 @@ public class PrepAddGridGroup : MonoBehaviour
     {
         //CaneraShaker.Inst.PlayShake();测试代码
         DebugMgr.Log("OnPointerUp   " + transform.name);
-        isdrag = false;
-        if (IsUse|| !IsCanUse)//旋转的状态也不执行这里
+        StopTime();
+        if (!isdraging)
+        {
+            return;
+        }
+        if (IsUse || !IsCanUse)//
         {
             return;
         }
@@ -90,8 +114,15 @@ public class PrepAddGridGroup : MonoBehaviour
         {
             AudioMgr.Inst.PlayPlace();
             UsePrepGridGroup();//设置当前待放入的group为使用过了
-
             //如果是旋转过的状态 处理旋转所需的金币值，当值达到0时，关闭旋转开关
+            if (UIMgr.Inst.IsRotateState && rotatePrep != minPrepGroup.DataArray)
+            {
+                GameGloab.GoldCount -= 1;
+                if (GameGloab.GoldCount <= 0)
+                {
+                    UIMgr.Inst.SwitchRotateState(false);
+                }
+            }
         }
         else
         {
@@ -99,19 +130,68 @@ public class PrepAddGridGroup : MonoBehaviour
             SetChildActive(true);//使用失败 跑一个回到原始位置的动画
         }
     }
+    bool opentime = false;
+    float timer = 0.2f;
+    private void Update()
+    {
+        if (opentime)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                UpDoSome();
+            }
+        }
+    }
+    void StopTime()
+    {
+        opentime = false;
+        timer = 0.2f;
+    }
+    void StartTime()
+    {
+        opentime = true;
+        timer = 0.2f;
+    }
+    void UpDoSome()
+    {
+        if (opentime)
+        {
+            DragDown();
+        }
+        StopTime();
+    }
     public void OnPointerDown(GameObject eventData)
     {
+        isdrag = false;
+        isdraging = false;
         DebugMgr.Log("OnPointerDown   " + transform.name);
         //return;
-        if (IsUse || !IsCanUse)//旋转的状态也不执行这里
+        if (IsUse)//
         {
             return;
         }
+        if (UIMgr.Inst.IsRotateState)
+        {
+            StartTime();  //长按识别 抓起的组
+        }
+        else
+        {
+            if (!IsCanUse)
+            {
+                return;
+            }
+            DragDown();
+        }
+    }
+    void DragDown()
+    {
         AudioMgr.Inst.PlayPick();
         DragingGridMgr.Inst.SetDragDown(this);
         SetChildActive(false);
+        isdraging = true;
     }
-    bool isdrag;
+    
     void OnDrag(GameObject eventData)
     {
         if (!isdrag)
@@ -120,8 +200,8 @@ public class PrepAddGridGroup : MonoBehaviour
             DragingGridMgr.Inst.SetDrag(true);
             isdrag = true;
         }
-           //调整旋转的状态  拖动的时候才开始
-           //Debug.Log("OnDrag " + transform.name);
+        //调整旋转的状态  拖动的时候才开始
+        //Debug.Log("OnDrag " + transform.name);
     }
     void Recycle()
     {
