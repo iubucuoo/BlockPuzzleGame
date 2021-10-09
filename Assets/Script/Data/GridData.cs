@@ -151,6 +151,7 @@ public class GridData : IPoolable
         if (GridObj)
         {
             GridObj.transform.SetParent(null);
+            GridObj.transform.localEulerAngles = Vector3.zero;
             DefImage.color = Color.white;
             GridObj.SetActive(false);
         }

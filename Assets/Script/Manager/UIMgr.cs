@@ -50,8 +50,6 @@ public class UIMgr : MonoBehaviour
     public void SwitchRotateState(bool v)
     {
         UI_GroupRotate.SwitchRotateState(v);
-        //还原待用的组
-        GridGroupMgr.Inst.BackRotate();
     }
 
     public bool GetLocalPoint_BgRoot(out Vector2 pos)

@@ -44,6 +44,33 @@ public static class M_math
         return (v & 1) == 1;
     }
 
+    public static bool IsSameArrays(int[,] v1, int[,] v2)
+    {
+        int v1_hc = v1.GetLength(0);
+        int v1_wc = v1.GetLength(1);
+
+        int v2_hc = v2.GetLength(0);
+        int v2_wc = v2.GetLength(1);
+        if ( v1_hc==v2_hc && v1_wc==v2_wc)
+        {
+            for (int i = 0; i < v1_hc; i++)
+            {
+                for (int j = 0; j < v1_wc; j++)
+                {
+                    if (v1[i,j]!=v2[i,j])
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        else
+        {
+            return false;
+        }
+        return true;
+    }
+
     /// <summary>
     /// 不规则的二维数组旋转
     /// </summary>
@@ -102,6 +129,7 @@ public static class M_math
         {
             return Rotate(matrix);
         }
+        int[,] newv = new int[wcount, hcount];
         int max = hcount / 2;
         for (int layer = 0; layer < max; ++layer)
         {
@@ -112,12 +140,12 @@ public static class M_math
             {
                 int offset = i - first;
                 int top = matrix[first, i];
-                matrix[first, i] = matrix[last - offset, first];
-                matrix[last - offset, first] = matrix[last, last - offset];
-                matrix[last, last - offset] = matrix[i, last];
-                matrix[i, last] = top;
+                newv[first, i] = matrix[last - offset, first];
+                newv[last - offset, first] = matrix[last, last - offset];
+                newv[last, last - offset] = matrix[i, last];
+                newv[i, last] = top;
             }
         }
-        return matrix;
+        return newv;
     }
 }

@@ -57,13 +57,6 @@ public class PrepAddGridGroup : MonoBehaviour
         //再放置成功之后判断是否旋转后跟没旋转前是否相同，不相同则减掉一个旋转用的金币
     }
 
-    /// <summary>
-    /// 还原未旋转的状态
-    /// </summary>
-    public void ReductionRotate()
-    {
-        rotatePrep = minPrepGroup.DataArray;
-    }
     void UsePrepGridGroup()
     {
         IsUse = true;
@@ -113,16 +106,17 @@ public class PrepAddGridGroup : MonoBehaviour
         if (GridGroupMgr.Inst.RefreshMainGrid())//如果当前可以放置 刷新主面板显示
         {
             AudioMgr.Inst.PlayPlace();
-            UsePrepGridGroup();//设置当前待放入的group为使用过了
             //如果是旋转过的状态 处理旋转所需的金币值，当值达到0时，关闭旋转开关
-            if (UIMgr.Inst.IsRotateState && rotatePrep != minPrepGroup.DataArray)
+            if (UIMgr.Inst.IsRotateState && !M_math.IsSameArrays(rotatePrep, minPrepGroup.DataArray))
             {
                 GameGloab.GoldCount -= 1;
+                Debug.LogError(GameGloab.GoldCount);
                 if (GameGloab.GoldCount <= 0)
                 {
                     UIMgr.Inst.SwitchRotateState(false);
                 }
             }
+            UsePrepGridGroup();//设置当前待放入的group为使用过了
         }
         else
         {
@@ -194,7 +188,7 @@ public class PrepAddGridGroup : MonoBehaviour
     
     void OnDrag(GameObject eventData)
     {
-        if (!isdrag)
+        if (!isdrag && isdraging)
         {
             DebugMgr.Log("OnDrag " + transform.name);
             DragingGridMgr.Inst.SetDrag(true);
@@ -213,6 +207,7 @@ public class PrepAddGridGroup : MonoBehaviour
     }
     public void Reset()
     {
+        BackRotate();
         Recycle();
         IsUse = false;
         canuse = true;

@@ -12,7 +12,7 @@ public class UI_GroupRotate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameGloab.GoldCount = 2;
+        //GameGloab.GoldCount = 200;
         RotateBnt.onValueChanged.AddListener(ChangeRotate);
         AddRotateImg();
     }
@@ -28,12 +28,12 @@ public class UI_GroupRotate : MonoBehaviour
             }
             else
             {
-                UIMgr.Inst.SwitchRotateState(true);
+                SwitchRotateState(true);
             }
         }
         else
         {
-            UIMgr.Inst.SwitchRotateState(false);
+            SwitchRotateState(false);
         }
     }
 
@@ -42,6 +42,8 @@ public class UI_GroupRotate : MonoBehaviour
     /// </summary>
     public void SwitchRotateState(bool v)
     {
+        //还原待用的组的旋转
+        GridGroupMgr.Inst.BackRotate();
         IsRotateState = v;
         SWRotates(v);
        
