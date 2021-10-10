@@ -12,6 +12,7 @@ public class UI_SetPanel : UIPanelBase
     public GameObject AllBg;
     public GameObject BtnResetGame;
     public GameObject BtnBackGame;
+    public GameObject BtnBackGame1;
     //public GameObject Confirm;
     //public Button confirmYes;
     //public Button confirmNo;
@@ -19,6 +20,7 @@ public class UI_SetPanel : UIPanelBase
     void Start()
     {
         BtnBackGame.GetComponent<Button>().onClick.AddListener(OnBtnAllBg);
+        BtnBackGame1.GetComponent<Button>().onClick.AddListener(OnBtnAllBg);
         AllBg.GetComponent<Button>().onClick.AddListener(OnBtnAllBg);
         BtnResetGame.GetComponent<Button>().onClick.AddListener(OnBtnResetGame);
         MusicToggle.onValueChanged.AddListener(ChangeMusicIsOn);

@@ -19,6 +19,7 @@ public class UIMgr : MonoBehaviour
     UI_GameOverPanel UI_GameOverPanel;
     UI_SetPanel UI_SetPanel;
     UI_GroupRotate UI_GroupRotate;
+    UI_AddRotatePanel UI_AddRotatePanel;
 
     public Dictionary<string, Sprite> Sprites;
     private void Awake()
@@ -41,12 +42,17 @@ public class UIMgr : MonoBehaviour
         UI_TopPanel = UIRoot.Find("gamebg/PanelTop").GetComponent<UI_TopPanel>();
         UI_GameOverPanel = UIRoot.Find("gameoverPanel").GetComponent<UI_GameOverPanel>();
         UI_SetPanel = UIRoot.Find("SetPanel").GetComponent<UI_SetPanel>();
+        UI_AddRotatePanel = UIRoot.Find("AddRotatePanel").GetComponent<UI_AddRotatePanel>();
 
         DragingGridMgr.Inst.SetDrag(DragRoot);
     }
 
     public bool IsRotateState { get { return UI_GroupRotate.IsRotateState; }}
 
+    public void SetGoldCount(int v)
+    {
+        UI_GroupRotate.SetGoldCount(v);
+    }
     public void SwitchRotateState(bool v)
     {
         UI_GroupRotate.SwitchRotateState(v);
@@ -87,6 +93,11 @@ public class UIMgr : MonoBehaviour
     public void OpenGameOverPanel()
     {
         UI_GameOverPanel.ShowGameOver();
+    }
+    public void OnBtnAddRotateSW()
+    {
+        AudioMgr.Inst.ButtonClick();
+        UI_AddRotatePanel.ShowBoxX();
     }
     public void OnBtnSetSw()
     {

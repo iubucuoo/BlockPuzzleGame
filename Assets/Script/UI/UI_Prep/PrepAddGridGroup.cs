@@ -48,12 +48,19 @@ public class PrepAddGridGroup : MonoBehaviour
         DebugMgr.Log("OnClick   " + transform.name);
         if (!isdraging && UIMgr.Inst.IsRotateState) //如果 没有被抓起来 并且当前是 旋转的状态 
         {
-            transform.DOKill(true);//强制完成旋转
-            transform.DOLocalRotate(transform.localEulerAngles - Vector3.forward * 90, .2f);
-            //transform.localEulerAngles -= Vector3.forward * 90;
-            rotatePrep = M_math.Rotate_90(rotatePrep);//点击后 执行 旋转rotatePrep数据  之后再执行能不能放置
-            if (GridGroupMgr.Inst.IsCanPrepNext())
-            { }
+            if (M_math.NeedToRotate(minPrepGroup.DataArray))
+            {
+                transform.DOKill(true);//强制完成旋转
+                transform.DOLocalRotate(transform.localEulerAngles - Vector3.forward * 90, .2f);
+                //transform.localEulerAngles -= Vector3.forward * 90;
+                rotatePrep = M_math.Rotate_90(rotatePrep);//点击后 执行 旋转rotatePrep数据  之后再执行能不能放置
+                if (GridGroupMgr.Inst.IsCanPrepNext())
+                { }
+            }
+            else
+            {
+                Debug.LogError("不需要旋转");
+            }
         }
         //再放置成功之后判断是否旋转后跟没旋转前是否相同，不相同则减掉一个旋转用的金币
     }
@@ -107,7 +114,7 @@ public class PrepAddGridGroup : MonoBehaviour
         {
             return;
         }
-        if (IsUse || !IsCanUse)//
+        if (IsUse)//
         {
             return;
         }
@@ -118,7 +125,8 @@ public class PrepAddGridGroup : MonoBehaviour
             //如果是旋转过的状态 处理旋转所需的金币值，当值达到0时，关闭旋转开关
             if (UIMgr.Inst.IsRotateState && !M_math.IsSameArrays(rotatePrep, minPrepGroup.DataArray))
             {
-                GameGloab.GoldCount -= 1;
+                //GameGloab.GoldCount -= 1;
+                UIMgr.Inst.SetGoldCount(-1);
                 Debug.LogError(GameGloab.GoldCount);
                 if (GameGloab.GoldCount <= 0)
                 {
@@ -174,16 +182,16 @@ public class PrepAddGridGroup : MonoBehaviour
         {
             return;
         }
+        if (!IsCanUse)
+        {
+            return;
+        }
         if (UIMgr.Inst.IsRotateState)
         {
             StartTime();  //长按识别 抓起的组
         }
         else
         {
-            if (!IsCanUse)
-            {
-                return;
-            }
             DragDown();
         }
     }

@@ -7,16 +7,23 @@ using UnityEngine.UI;
 public class UI_GroupRotate : MonoBehaviour
 {
     public Toggle RotateBnt;
+    public Text GoldNum;
     public bool IsRotateState { get; private set; }
     List<GameObject> RotateImgs = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        //GameGloab.GoldCount = 200;
+        GameGloab.GoldCount=0;
+        SetGoldCount(0);
         RotateBnt.onValueChanged.AddListener(ChangeRotate);
         AddRotateImg();
     }
 
+    public void SetGoldCount(int v=0)
+    {
+        GameGloab.GoldCount += v;
+        GoldNum.text = GameGloab.GoldCount.ToString();
+    }
     private void ChangeRotate(bool arg0)
     {
         if (arg0)
@@ -25,6 +32,7 @@ public class UI_GroupRotate : MonoBehaviour
             {
                 Debug.LogError("金币不足不能开启");
                 RotateBnt.isOn = false;
+                UIMgr.Inst.OnBtnAddRotateSW();
             }
             else
             {
@@ -54,11 +62,11 @@ public class UI_GroupRotate : MonoBehaviour
         {
             if (v)
             {
-                RotateImgs[i].SetActive(GridGroupMgr.Inst.IsCantUsePrep(i));
+                SWRotate(i, GridGroupMgr.Inst.IsCantUsePrep(i));
             }
             else
             {
-                RotateImgs[i].SetActive(v);
+                SWRotate(i, v);
             }
         }
     }
@@ -67,6 +75,10 @@ public class UI_GroupRotate : MonoBehaviour
         if (RotateImgs[i]!=null)
         {
             RotateImgs[i].SetActive(v);
+            if (v)
+            {
+                //开始旋转
+            }
         }
     }
     void AddRotateImg()

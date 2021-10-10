@@ -822,6 +822,7 @@ MonoBehaviour:
   AllBg: {fileID: 4834458088253018213}
   BtnResetGame: {fileID: 4834458086606822838}
   BtnBackGame: {fileID: 5362342917115408623}
+  BtnBackGame1: {fileID: 9062502918444385831}
 --- !u!1 &4834458087134229501
 GameObject:
   m_ObjectHideFlags: 0

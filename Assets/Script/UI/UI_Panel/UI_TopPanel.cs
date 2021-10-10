@@ -10,9 +10,11 @@ public class UI_TopPanel : MonoBehaviour
     public Text strnownum;
     public Button setbtn;
     public int nownum=0;
+    int nowgametop;
     // Start is called before the first frame update
     void Start()
     {
+        nowgametop = GameGloab.Topscore;//初始化top
         setbtn.onClick.AddListener(OnBtnSwSetPanel);
         ResetTop();
     }
@@ -57,15 +59,20 @@ public class UI_TopPanel : MonoBehaviour
     public void SetNowScore(int score)
     {
         nownum += score;
+        if (nownum>GameGloab.Topscore)
+        {
+            GameGloab.Topscore = nownum;
+            ResetTopScore();
+        }
     }
 
     public void WriteTopScore()
     {
-        GameGloab.Topscore = nownum;
+        nowgametop = nownum;
     }
     public bool IsTopScore()
     {
-        if (nownum > GameGloab.Topscore)
+        if (nownum > nowgametop)
         {
             return true;
         }
