@@ -16,6 +16,7 @@ public class UI_GroupRotate : MonoBehaviour
         GameGloab.GoldCount=0;
         SetGoldCount(0);
         RotateBnt.onValueChanged.AddListener(ChangeRotate);
+        RotateBnt.isOn = false;
         AddRotateImg();
     }
 
