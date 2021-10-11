@@ -42,5 +42,6 @@ public class UI_AddRotatePanel : UIPanelBase
     void AddRotateGold()
     {
         UIMgr.Inst.AddRotateGoldCount(2);
+        EffectPool.Inst.PlayFlowEffect(UIMgr.Inst.RotateBntPos());
     }
 }

@@ -49,6 +49,10 @@ public class UIMgr : MonoBehaviour
 
     public bool IsRotateState { get { return UI_GroupRotate.IsRotateState; }}
 
+    public Vector3 RotateBntPos()
+    {
+        return UI_GroupRotate.RotateBntPos();
+    }
     public void AddRotateGoldCount(int v)
     {
         UI_GroupRotate.AddRotateGoldCount(v);

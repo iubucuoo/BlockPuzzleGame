@@ -135,11 +135,11 @@ public class GoogleAdMgr : MonoBehaviour
 
     private void HandleOnAdClosed(object sender, EventArgs e)
     {
-        DebugMgr.LogError("广告关闭");
+        //DebugMgr.LogError("广告关闭");
         InterstitialDes();
         MobileAdsEventExecutor.ExecuteInUpdate(() =>
         {
-            DebugMgr.LogError("广告关闭下一个update调用");
+            //DebugMgr.LogError("广告关闭下一个update调用");
             CallAdClose();
             AudioMgr.Inst.UnpauseMusic();
             RequestInterstitial();
@@ -148,7 +148,7 @@ public class GoogleAdMgr : MonoBehaviour
   
     private void HandleOnAdOpened(object sender, EventArgs e)
     {
-        DebugMgr.LogError("显示广告");
+        //DebugMgr.LogError("显示广告");
     }
 
     private void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
@@ -158,7 +158,7 @@ public class GoogleAdMgr : MonoBehaviour
 
     private void HandleOnAdLoaded(object sender, EventArgs e)
     {
-        DebugMgr.LogError("成功加载广告请求。");
+        //DebugMgr.LogError("成功加载广告请求。");
     }
     void CallAdClose()
     {
@@ -174,7 +174,7 @@ public class GoogleAdMgr : MonoBehaviour
     {
         if (interstitial.IsLoaded())
         {
-            DebugMgr.LogError("展示广告");
+            //DebugMgr.LogError("展示广告");
             AudioMgr.Inst.PauseMusic();
             interstitial.Show();
             SwAdCallBack = cb;

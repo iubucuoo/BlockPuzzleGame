@@ -8,6 +8,7 @@ public class UI_GroupRotate : MonoBehaviour
 {
     public Toggle RotateBnt;
     public Text GoldNum;
+    public Button BtnAddGlog;
     public bool IsRotateState { get; private set; }
     List<GameObject> RotateImgs = new List<GameObject>();
     // Start is called before the first frame update
@@ -18,8 +19,18 @@ public class UI_GroupRotate : MonoBehaviour
         AddRotateGoldCount(0);
         ChangeRotate(false);
         RotateBnt.onValueChanged.AddListener(ChangeRotate);
+        BtnAddGlog.onClick.AddListener(OpenAddRotatePanel);
     }
 
+    private void OpenAddRotatePanel()
+    {
+        UIMgr.Inst.OnBtnAddRotateSW();
+    }
+
+    public Vector3 RotateBntPos()
+    {
+        return RotateBnt.transform.position;
+    }
     public void AddRotateGoldCount(int v=0)
     {
         GameGloab.GoldCount += v;
@@ -39,7 +50,7 @@ public class UI_GroupRotate : MonoBehaviour
                 //RotateBnt.SetIsOnWithoutNotify(false);
                 
                 RotateBnt.isOn = false;
-                UIMgr.Inst.OnBtnAddRotateSW();
+                OpenAddRotatePanel();
             }
             else
             {
