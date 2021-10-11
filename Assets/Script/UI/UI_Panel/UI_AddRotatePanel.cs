@@ -24,14 +24,8 @@ public class UI_AddRotatePanel : UIPanelBase
     private void OnBtnResetGame()
     {
         AudioMgr.Inst.ButtonClick();
-        gameObject.SetActive(false);//弹出广告直接隐藏
-        GoogleAdMgr.Inst.GameOver(YesCallBack);
-    }
-    void YesCallBack()
-    {
-        AudioMgr.Inst.PlayGameOpen();
-        UIMgr.Inst.ResetTop();
-        GridGroupMgr.Inst.GameReset();//重新启动游戏
+        HideFinish();// gameObject.SetActive(false);//弹出广告直接隐藏
+        GoogleAdMgr.Inst.SWAd(RefreshGame);
     }
     private void OnBtnAllBg()
     {
@@ -41,12 +35,12 @@ public class UI_AddRotatePanel : UIPanelBase
 
     private void OnBtnSwAd()
     {
-        Debug.LogError("展示广告");//显示广告
+        AudioMgr.Inst.ButtonClick();
+        HideFinish();
+        GoogleAdMgr.Inst.SWAd(AddRotateGold);
     }
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
+    void AddRotateGold()
+    {
+        UIMgr.Inst.AddRotateGoldCount(2);
+    }
 }

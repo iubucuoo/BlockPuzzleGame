@@ -50,6 +50,7 @@ public class GoogleAdMgr : MonoBehaviour
         MobileAdsEventExecutor.ExecuteInUpdate(() =>
         {
             RequestBannerAd();
+            RequestInterstitial();
         });
     }
     private BannerView bannerView;
@@ -139,8 +140,9 @@ public class GoogleAdMgr : MonoBehaviour
         MobileAdsEventExecutor.ExecuteInUpdate(() =>
         {
             DebugMgr.LogError("广告关闭下一个update调用");
-            CallGameOver();
+            CallAdClose();
             AudioMgr.Inst.UnpauseMusic();
+            RequestInterstitial();
         });
     }
   
@@ -158,24 +160,24 @@ public class GoogleAdMgr : MonoBehaviour
     {
         DebugMgr.LogError("成功加载广告请求。");
     }
-    void CallGameOver()
+    void CallAdClose()
     {
-        if (GameOverA != null)
+        if (SwAdCallBack != null)
         {
-            GameOverA();
-            GameOverA = null;
+            SwAdCallBack();
+            SwAdCallBack = null;
         }
     }
-    Action GameOverA;
+    Action SwAdCallBack;
     //展示广告
-    public void GameOver(Action cb)
+    public void SWAd(Action cb)
     {
         if (interstitial.IsLoaded())
         {
             DebugMgr.LogError("展示广告");
             AudioMgr.Inst.PauseMusic();
             interstitial.Show();
-            GameOverA = cb;
+            SwAdCallBack = cb;
         }
         else
         {

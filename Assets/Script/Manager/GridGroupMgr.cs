@@ -173,7 +173,7 @@ public class GridGroupMgr : MonoBehaviour
         gridGroup_Ground = PoolMgr.Allocate(IPoolsType.GridGroup_Ground) as GridGroup_Ground;
         gridGroup_Ground.CreatGrids();
         RefreshPrepGridGroup();
-        GoogleAdMgr.Inst.RequestInterstitial();
+      
     }
     public void GameStart()
     {

@@ -13,17 +13,21 @@ public class UI_GroupRotate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameGloab.GoldCount=0;
-        SetGoldCount(0);
-        RotateBnt.onValueChanged.AddListener(ChangeRotate);
-        RotateBnt.isOn = false;
         AddRotateImg();
+        GameGloab.GoldCount=0;
+        AddRotateGoldCount(0);
+        ChangeRotate(false);
+        RotateBnt.onValueChanged.AddListener(ChangeRotate);
     }
 
-    public void SetGoldCount(int v=0)
+    public void AddRotateGoldCount(int v=0)
     {
         GameGloab.GoldCount += v;
         GoldNum.text = GameGloab.GoldCount.ToString();
+    }
+    public void OffChangeRotate()
+    {
+        RotateBnt.isOn = false;
     }
     private void ChangeRotate(bool arg0)
     {
@@ -32,6 +36,8 @@ public class UI_GroupRotate : MonoBehaviour
             if (GameGloab.GoldCount<=0)
             {
                 Debug.LogError("金币不足不能开启");
+                //RotateBnt.SetIsOnWithoutNotify(false);
+                
                 RotateBnt.isOn = false;
                 UIMgr.Inst.OnBtnAddRotateSW();
             }
@@ -44,6 +50,7 @@ public class UI_GroupRotate : MonoBehaviour
         {
             SwitchRotateState(false);
         }
+        Debug.Log(RotateBnt.isOn);
     }
 
     /// <summary>

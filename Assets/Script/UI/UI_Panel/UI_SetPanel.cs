@@ -61,8 +61,8 @@ public class UI_SetPanel : UIPanelBase
     {
         AudioMgr.Inst.ButtonClick();
         //Confirm.SetActive(true);
-        gameObject.SetActive(false);//弹出广告直接隐藏
-        GoogleAdMgr.Inst.GameOver(YesCallBack);
+        HideFinish();// gameObject.SetActive(false);//弹出广告直接隐藏
+        GoogleAdMgr.Inst.SWAd(YesCallBack);
         //confirmNo.onClick.AddListener(OnBtnConfirmNo);
         //confirmYes.onClick.AddListener(OnBtnConfirmYes);
     }

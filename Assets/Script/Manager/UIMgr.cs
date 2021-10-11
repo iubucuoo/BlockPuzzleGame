@@ -9,11 +9,11 @@ public class UIMgr : MonoBehaviour
     public Transform UIRoot { get; private set; }
     public Transform ADDROOT { get; private set; }
     public Transform BGROOT { get; private set; }
+    public Transform CanvasRoot { get; private set; }
     public RectTransform CanvasRect { get; private set; }
     RectTransform BGROOTRect;
     Canvas Canvas;
     Transform DragRoot;
-    Transform CanvasObj;
 
     UI_TopPanel UI_TopPanel;
     UI_GameOverPanel UI_GameOverPanel;
@@ -28,14 +28,14 @@ public class UIMgr : MonoBehaviour
 #if UNITY_EDITOR
         DebugMgr.EnableLog = true;
 #endif
-        CanvasObj = GameObject.Find("Canvas").transform;
-        UIRoot = CanvasObj.Find("Root");
+        CanvasRoot = GameObject.Find("Canvas").transform;
+        UIRoot = CanvasRoot.Find("Root");
         Sprites = new Dictionary<string, Sprite>();
-        Canvas = CanvasObj.GetComponent<Canvas>();
+        Canvas = CanvasRoot.GetComponent<Canvas>();
         BGROOT = UIRoot.Find("BGROOT");
         ADDROOT = UIRoot.Find("ADDROOT");
         DragRoot = UIRoot.Find("DragRoot");
-        CanvasRect = CanvasObj.GetComponent<RectTransform>();
+        CanvasRect = CanvasRoot.GetComponent<RectTransform>();
         BGROOTRect = BGROOT.GetComponent<RectTransform>();
 
         UI_GroupRotate = UIRoot.Find("ROTATEROOT").GetComponent<UI_GroupRotate>();
@@ -49,13 +49,13 @@ public class UIMgr : MonoBehaviour
 
     public bool IsRotateState { get { return UI_GroupRotate.IsRotateState; }}
 
-    public void SetGoldCount(int v)
+    public void AddRotateGoldCount(int v)
     {
-        UI_GroupRotate.SetGoldCount(v);
+        UI_GroupRotate.AddRotateGoldCount(v);
     }
-    public void SwitchRotateState(bool v)
+    public void OffChangeRotate()
     {
-        UI_GroupRotate.SwitchRotateState(v);
+        UI_GroupRotate.OffChangeRotate();
     }
     public void SWRotate(int i, bool v)
     {

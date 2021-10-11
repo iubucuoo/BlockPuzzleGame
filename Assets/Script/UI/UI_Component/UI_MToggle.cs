@@ -12,12 +12,12 @@ public class UI_MToggle : MonoBehaviour
     void Start()
     {
         toggle = GetComponent<Toggle>();
-        toggle.onValueChanged.AddListener(OnValueChanged);
         OnValueChanged(toggle.isOn);
+        toggle.onValueChanged.AddListener(OnValueChanged);
     }
     void OnValueChanged(bool ison)
     {
-        IsOnObj.SetActive(ison);
-        IsOffObj.SetActive(!ison);
+        IsOnObj.SetActive(toggle.isOn);
+        IsOffObj.SetActive(!toggle.isOn);
     }
 }

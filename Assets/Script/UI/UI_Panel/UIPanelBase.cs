@@ -14,6 +14,13 @@ public class UIPanelBase : MonoBehaviour
     {
 
     }
+    public void RefreshGame()
+    {
+        UIMgr.Inst.ResetTop();
+        GridGroupMgr.Inst.GameReset();//重新启动游戏
+        AudioMgr.Inst.PlayGameOpen();
+    }
+   
     public virtual void ShowBoxY(TweenCallback Finish = null)
     {
         gameObject.SetActive(true);
@@ -44,7 +51,7 @@ public class UIPanelBase : MonoBehaviour
         }
     }
 
-    void HideFinish()
+    public void HideFinish()
     {
         gameObject.SetActive(false);
     }

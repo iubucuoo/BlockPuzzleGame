@@ -42,13 +42,7 @@ public class UI_GameOverPanel : UIPanelBase
     private void OnBtnRefresh()
     {
         AudioMgr.Inst.ButtonClick();
-        gameObject.SetActive(false);
-        GoogleAdMgr.Inst.GameOver(RefreshCallBack);
-    }
-    void RefreshCallBack()
-    {
-        AudioMgr.Inst.PlayGameOpen();
-        UIMgr.Inst.ResetTop();
-        GridGroupMgr.Inst.GameReset();//重新启动游戏
+        HideFinish();
+        GoogleAdMgr.Inst.SWAd(RefreshGame);
     }
 }

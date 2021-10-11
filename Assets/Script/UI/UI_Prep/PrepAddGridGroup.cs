@@ -126,11 +126,11 @@ public class PrepAddGridGroup : MonoBehaviour
             if (UIMgr.Inst.IsRotateState && !M_math.IsSameArrays(rotatePrep, minPrepGroup.DataArray))
             {
                 //GameGloab.GoldCount -= 1;
-                UIMgr.Inst.SetGoldCount(-1);
+                UIMgr.Inst.AddRotateGoldCount(-1);
                 Debug.LogError(GameGloab.GoldCount);
                 if (GameGloab.GoldCount <= 0)
                 {
-                    UIMgr.Inst.SwitchRotateState(false);
+                    UIMgr.Inst.OffChangeRotate();
                 }
             }
             UsePrepGridGroup();//设置当前待放入的group为使用过了
