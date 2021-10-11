@@ -41,7 +41,18 @@ public class UI_AddRotatePanel : UIPanelBase
     }
     void AddRotateGold()
     {
+        UIMgr.Inst.PlayTextTip(UIMgr.Inst.RotateGoldAddPos(), "+2");
         UIMgr.Inst.AddRotateGoldCount(2);
-        EffectPool.Inst.PlayFlowEffect(UIMgr.Inst.RotateBntPos());
+
+        //Vector3 end = UIMgr.Inst.RotateGoldAddPos();
+        //Vector3 start = end;
+        //start.x += 1080;
+        //start.y += 100;
+        //EffectPool.Inst.PlayFlowEffect(start,UIMgr.Inst.RotateGoldAddPos(),EffectCb);
+    }
+
+    private void EffectCb()
+    {
+        UIMgr.Inst.AddRotateGoldCount(2);
     }
 }

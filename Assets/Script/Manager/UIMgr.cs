@@ -21,6 +21,9 @@ public class UIMgr : MonoBehaviour
     UI_GroupRotate UI_GroupRotate;
     UI_AddRotatePanel UI_AddRotatePanel;
 
+    TextTipEffect TextTipEffect;
+
+
     public Dictionary<string, Sprite> Sprites;
     private void Awake()
     {
@@ -43,15 +46,20 @@ public class UIMgr : MonoBehaviour
         UI_GameOverPanel = UIRoot.Find("gameoverPanel").GetComponent<UI_GameOverPanel>();
         UI_SetPanel = UIRoot.Find("SetPanel").GetComponent<UI_SetPanel>();
         UI_AddRotatePanel = UIRoot.Find("AddRotatePanel").GetComponent<UI_AddRotatePanel>();
-
+        TextTipEffect = UIRoot.Find("TextTip").GetComponent<TextTipEffect>();
         DragingGridMgr.Inst.SetDrag(DragRoot);
+    }
+
+    public void PlayTextTip(Vector3 pos, string str)
+    {
+        TextTipEffect.PlayEffect(pos, str);
     }
 
     public bool IsRotateState { get { return UI_GroupRotate.IsRotateState; }}
 
-    public Vector3 RotateBntPos()
+    public Vector3 RotateGoldAddPos()
     {
-        return UI_GroupRotate.RotateBntPos();
+        return UI_GroupRotate.RotateGoldAddPos();
     }
     public void AddRotateGoldCount(int v)
     {

@@ -27,9 +27,9 @@ public class UI_GroupRotate : MonoBehaviour
         UIMgr.Inst.OnBtnAddRotateSW();
     }
 
-    public Vector3 RotateBntPos()
+    public Vector3 RotateGoldAddPos()
     {
-        return RotateBnt.transform.position;
+        return GoldNum.transform.position;
     }
     public void AddRotateGoldCount(int v=0)
     {

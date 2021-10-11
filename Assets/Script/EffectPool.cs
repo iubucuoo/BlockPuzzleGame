@@ -45,7 +45,7 @@ public class EffectPool : MonoBehaviour {
         pool.Despawn (particle.transform);
 	}
 
-	public void PlayBubbleExplode(int type, Vector3 pos)
+    public void PlayBubbleExplode(int type, Vector3 pos)
 	{
 		string effectName = "";
 	    if (type == 1) {
@@ -64,19 +64,29 @@ public class EffectPool : MonoBehaviour {
 		Play (effectName,pos);
 	}
 
-	public void PlayFlowEffect(Vector3 pos)
+	public void PlayFlowEffect(Vector3 pos, Vector3 endpos, System.Action cb=null)
 	{
-		StartCoroutine (IEPlayFlowEffect(pos));
+		StartCoroutine (IEPlayFlowEffect(pos, endpos,cb));
 	}
     WaitForSeconds Secounds = new WaitForSeconds(1f);
-    IEnumerator IEPlayFlowEffect(Vector3 pos)
+    Vector3[] path = new Vector3[3];
+    IEnumerator IEPlayFlowEffect(Vector3 pos,Vector3 endpos, System.Action cb = null)
 	{
 		Transform particleTran = pool.Spawn ("FlowEffect");
 		ParticleSystem particle = particleTran.GetComponent<ParticleSystem> ();
 		particleTran.position = pos;
 		particle.Play ();
-		particleTran.DOMove (new Vector3 (-200, 360, 0f), 0.7f);
-		yield return Secounds;
+        path[0] = pos;
+        path[1] = new Vector3( (endpos.x - pos.x)/2+ pos.x, 200,0);
+        path[2] = endpos;
+        particleTran.DOLocalPath(path, .8f, PathType.CatmullRom);
+
+        //particleTran.DOMove (endpos, 0.7f);
+        yield return Secounds;
 		pool.Despawn (particleTran);
+        if (cb!=null)
+        {
+            cb();
+        }
 	}
 }

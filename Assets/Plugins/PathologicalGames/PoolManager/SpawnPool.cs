@@ -525,7 +525,7 @@ namespace PathologicalGames
         /// </summary>
         public Transform Spawn(Transform prefab)
         {
-            return this.Spawn(prefab, Vector3.zero, Quaternion.identity);
+            return this.Spawn(prefab, Vector3.one*5000, Quaternion.identity);
         }
 
 
