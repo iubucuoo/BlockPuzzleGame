@@ -7,8 +7,8 @@ public class GridGroup_Prep : GridGroup
     public IPoolsType PoolsType = IPoolsType.GridGroup_Prep;
     public GridGroup_Prep()
     {
-        G_width = GameGloab._width;
-        G_height = GameGloab._height;
+        G_width = UIMgr.Inst._width;
+        G_height = UIMgr.Inst._height;
         ResName = "Prefab/blockdrag";//拖动出来的格子
     }
 

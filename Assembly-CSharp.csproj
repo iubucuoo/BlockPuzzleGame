@@ -53,6 +53,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModuleUtils.cs" />
+    <Compile Include="Assets\Script\UI\TextTipEffect.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\AudioToolkit\AudioController.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\Shared Auxiliary Code\RegisteredComponent.cs" />
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModulePhysics.cs" />
@@ -115,7 +116,6 @@
     <Compile Include="Assets\Script\Manager\DragingGridMgr.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\Shared Auxiliary Code\PoolableObject.cs" />
     <Compile Include="Assets\Script\Data\GridGroup_Ground.cs" />
-    <Compile Include="Assets\Script\UI\TextTipEffect.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />

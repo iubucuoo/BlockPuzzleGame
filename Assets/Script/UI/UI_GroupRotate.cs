@@ -104,7 +104,7 @@ public class UI_GroupRotate : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            Vector2 pos = new Vector2((i - 1) * (6 * GameGloab.wh_2), 0);
+            Vector2 pos = new Vector2((i - 1) * (6 * UIMgr.Inst.wh_2), 0);
             var obj = ObjectMgr.InstantiateGameObj(ObjectMgr.LoadResource("Prefab/addrotateimg") as GameObject);
             obj.transform.SetParent(transform);
             obj.transform.localPosition = pos;

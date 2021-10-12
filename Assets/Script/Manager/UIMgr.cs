@@ -23,10 +23,16 @@ public class UIMgr : MonoBehaviour
 
     TextTipEffect TextTipEffect;
 
+    public int ContinuousBoom = 0;//连续爆炸
+    public readonly int _height = 90;// 60;
+    public readonly int _width = 90;// 60;
+    public readonly int wh_2 = 45;// 30;
+    public Vector2 DragUp { get; private set; }//y高度 对应的倍数
 
     public Dictionary<string, Sprite> Sprites;
     private void Awake()
     {
+        DragUp = new Vector2(0, _width * 4);//y高度 对应的倍数
         Inst = this;
 #if UNITY_EDITOR
         DebugMgr.EnableLog = true;

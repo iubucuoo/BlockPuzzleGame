@@ -38,7 +38,7 @@ public class DragingGridMgr
     {
         if (UIMgr.Inst.GetLocalPoint_Canv(out Vector2 pos))
         {
-            return pos + GameGloab.DragUp;//拖动位置用来显示
+            return pos + UIMgr.Inst.DragUp;//拖动位置用来显示
         }
         return GameGloab.OutScreenV2;
     }

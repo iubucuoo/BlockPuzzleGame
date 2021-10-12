@@ -15,6 +15,7 @@ public class TextTipEffect : MonoBehaviour
     System.Action CallBack;
     public void PlayEffect(Vector3 pos, string str , System.Action cb=null)
     {
+        swtext.gameObject.SetActive(true);
         transform.position = pos+Vector3.up*30;
         swtext.text = str;
         swtext.transform.localPosition = Vector3.zero;
@@ -26,6 +27,7 @@ public class TextTipEffect : MonoBehaviour
     {
         transform.localPosition = GameGloab.OutScreenV2;
         swtext.text = "";
+        swtext.gameObject.SetActive(false);
         if (CallBack!=null)
         {
             CallBack();
