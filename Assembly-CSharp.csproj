@@ -116,6 +116,16 @@
     <Compile Include="Assets\Script\Manager\DragingGridMgr.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\Shared Auxiliary Code\PoolableObject.cs" />
     <Compile Include="Assets\Script\Data\GridGroup_Ground.cs" />
+    <Compile Include="Assets\Script\Frame\Message\Core\Message.cs" />
+    <Compile Include="Assets\Script\Frame\Message\Core\MessageCenter.cs" />
+    <Compile Include="Assets\Script\Frame\Message\Core\IEventListen.cs" />
+    <Compile Include="Assets\Script\Frame\Message\Core\MessageBase.cs" />
+    <Compile Include="Assets\Script\Frame\Message\Core\EventNode.cs" />
+    <Compile Include="Assets\Script\Frame\Message\Core\ManagerBase.cs" />
+    <Compile Include="Assets\Script\Frame\Message\Core\MoveMessage.cs" />
+    <Compile Include="Assets\Script\Frame\Message\Core\MonoBase.cs" />
+    <Compile Include="Assets\Script\Frame\Message\Tools\ManagerID.cs" />
+    <Compile Include="Assets\Script\Frame\Message\Tools\ToolsParms.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />
