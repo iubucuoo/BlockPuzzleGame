@@ -52,16 +52,16 @@
     <UnityVersion>2020.1.0f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\GoogleMobileAds\Editor\BuildPreProcessor.cs" />
-    <Compile Include="Assets\GoogleMobileAds\Editor\ManifestProcessor.cs" />
-    <Compile Include="Assets\GoogleMobileAds\Editor\PListProcessor.cs" />
-    <Compile Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsSettingsEditor.cs" />
-    <Compile Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsSettings.cs" />
+    <Compile Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\Editor\BuildPreProcessor.cs" />
+    <Compile Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\Editor\ManifestProcessor.cs" />
+    <Compile Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\Editor\PListProcessor.cs" />
+    <Compile Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\Editor\GoogleMobileAdsSettingsEditor.cs" />
+    <Compile Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\Editor\GoogleMobileAdsSettings.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsSKAdNetworkItems.xml" />
-     <None Include="Assets\GoogleMobileAds\Editor\GoogleMobileAds.Editor.asmdef" />
-     <None Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsDependencies.xml" />
+     <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\Editor\GoogleMobileAdsSKAdNetworkItems.xml" />
+     <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\Editor\GoogleMobileAds.Editor.asmdef" />
+     <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\Editor\GoogleMobileAdsDependencies.xml" />
     <Reference Include="UnityEngine">
       <HintPath>D:\UnityOffice\2020.1.0f1\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -266,41 +266,41 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\15.0\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="TexturePackerImporter">
-      <HintPath>Assets\codeandweb.com\Editor\TexturePackerImporter.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.IOSResolver_v1.2.166">
-      <HintPath>Assets\ExternalDependencyManager\Editor\Google.IOSResolver_v1.2.166.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.JarResolver_v1.2.166">
-      <HintPath>Assets\ExternalDependencyManager\Editor\Google.JarResolver_v1.2.166.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.PackageManagerResolver_v1.2.166">
-      <HintPath>Assets\ExternalDependencyManager\Editor\Google.PackageManagerResolver_v1.2.166.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.VersionHandler">
-      <HintPath>Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.VersionHandlerImpl_v1.2.166">
-      <HintPath>Assets\ExternalDependencyManager\Editor\Google.VersionHandlerImpl_v1.2.166.dll</HintPath>
-    </Reference>
-    <Reference Include="GoogleMobileAds.Common">
-      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="GoogleMobileAds.Core">
-      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="GoogleMobileAds">
-      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.dll</HintPath>
-    </Reference>
-    <Reference Include="GoogleMobileAds.Unity">
-      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
-    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\ThirdTools\DOTween\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenEditor">
       <HintPath>Assets\ThirdTools\DOTween\DOTween\Editor\DOTweenEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.IOSResolver_v1.2.166">
+      <HintPath>Assets\ThirdTools\GoogleAds\ExternalDependencyManager\Editor\Google.IOSResolver_v1.2.166.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.JarResolver_v1.2.166">
+      <HintPath>Assets\ThirdTools\GoogleAds\ExternalDependencyManager\Editor\Google.JarResolver_v1.2.166.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandlerImpl_v1.2.166">
+      <HintPath>Assets\ThirdTools\GoogleAds\ExternalDependencyManager\Editor\Google.VersionHandlerImpl_v1.2.166.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>Assets\ThirdTools\GoogleAds\ExternalDependencyManager\Editor\Google.VersionHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.PackageManagerResolver_v1.2.166">
+      <HintPath>Assets\ThirdTools\GoogleAds\ExternalDependencyManager\Editor\Google.PackageManagerResolver_v1.2.166.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Core">
+      <HintPath>Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Common">
+      <HintPath>Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds">
+      <HintPath>Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Unity">
+      <HintPath>Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="TexturePackerImporter">
+      <HintPath>Assets\ThirdTools\TexturePacker\Editor\TexturePackerImporter.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll</HintPath>

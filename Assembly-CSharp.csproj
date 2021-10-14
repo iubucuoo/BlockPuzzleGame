@@ -71,7 +71,7 @@
     <Compile Include="Assets\Script\Frame\Pool\ObjPool.cs" />
     <Compile Include="Assets\Script\GameGloab.cs" />
     <Compile Include="Assets\Script\UI\UI_Component\UI_MToggle.cs" />
-    <Compile Include="Assets\Script\Tools\Manager\DebugMgr.cs" />
+    <Compile Include="Assets\Script\Frame\Mgr\DebugMgr.cs" />
     <Compile Include="Assets\Script\Data\GridData.cs" />
     <Compile Include="Assets\Script\UI\UI_Panel\UI_GameOverPanel.cs" />
     <Compile Include="Assets\Script\MainC.cs" />
@@ -95,10 +95,10 @@
     <Compile Include="Assets\Script\Frame\Pool\IPool.cs" />
     <Compile Include="Assets\Script\Test\UIDepth.cs" />
     <Compile Include="Assets\Script\Tools\Manager\GridGroupMgr.cs" />
-    <Compile Include="Assets\Script\Tools\Manager\ObjectMgr.cs" />
+    <Compile Include="Assets\Script\Frame\Mgr\ObjectMgr.cs" />
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
     <Compile Include="Assets\Script\Data\GridDataPrep.cs" />
-    <Compile Include="Assets\Script\Tools\Manager\ResourceMgr.cs" />
+    <Compile Include="Assets\Script\Frame\Mgr\ResourceMgr.cs" />
     <Compile Include="Assets\ThirdTools\AudioToolkit\Shared Auxiliary Code\UnitySingleton.cs" />
     <Compile Include="Assets\Script\Data\GridDataDef.cs" />
     <Compile Include="Assets\Script\Frame\Message\Core\MonoBase.cs" />
@@ -140,16 +140,16 @@
     <Compile Include="Assets\Script\UI\UIPanelSwitch.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.dll" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.1.1_manifest.txt" />
+     <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Common.dll" />
+     <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.dll" />
+     <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
+     <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds_version-6.1.1_manifest.txt" />
      <None Include="Assets\Art\OtherArt\word2\atlas\number_days.fnt" />
-     <None Include="Assets\codeandweb.com\Readme.txt" />
+     <None Include="Assets\ThirdTools\TexturePacker\Readme.txt" />
      <None Include="Assets\ThirdTools\Toon Particles - Magic Collection\ToonMagic - Readme.txt" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Core.dll" />
+     <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Core.dll" />
      <None Include="Assets\Art\OtherArt\word2\atlas\score_best.fnt" />
-     <None Include="Assets\GoogleMobileAds\link.xml" />
+     <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\link.xml" />
      <None Include="Assets\Art\OtherArt\word2\atlas\number_score.fnt" />
      <None Include="Assets\ThirdTools\DOTween\DOTween\readme.txt" />
      <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.dll" />
@@ -157,9 +157,9 @@
      <None Include="Assets\Art\OtherArt\word2\atlas\number_percentage.fnt" />
      <None Include="Assets\Art\OtherArt\word2\atlas\number_years.fnt" />
      <None Include="Assets\Art\OtherArt\word2\atlas\number_days_2.fnt" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
+     <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
      <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.XML" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Android.dll" />
+     <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Android.dll" />
     <Reference Include="UnityEngine">
       <HintPath>D:\UnityOffice\2020.1.0f1\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -340,20 +340,20 @@
     <Reference Include="UnityEditor">
       <HintPath>D:\UnityOffice\2020.1.0f1\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="GoogleMobileAds.Common">
-      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="GoogleMobileAds.Core">
-      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="GoogleMobileAds">
-      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.dll</HintPath>
-    </Reference>
-    <Reference Include="GoogleMobileAds.Unity">
-      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
-    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\ThirdTools\DOTween\DOTween\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Core">
+      <HintPath>Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Common">
+      <HintPath>Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds">
+      <HintPath>Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Unity">
+      <HintPath>Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:\UnityOffice\2020.1.0f1\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>

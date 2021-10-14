@@ -109,7 +109,7 @@ class ManagerBase : IEventListen
                 EventNode curNode = tmpNode.next;
                 if (curNode == null)
                 {
-                    UnityEngine.Debug.LogWarning(string.Format("当前{0}的事件树下:{1}的节点中没有此监听", ID.ToString(), Id));
+                    DebugMgr.LogWarning(string.Format("当前{0}的事件树下:{1}的节点中没有此监听", ID.ToString(), Id));
                 }
                 else
                 {
@@ -120,7 +120,7 @@ class ManagerBase : IEventListen
         }
         else
         {
-            UnityEngine.Debug.LogWarning(string.Format("当前{0}的事件树下没有此ID:{1}的节点", ID.ToString(), Id));
+            DebugMgr.LogWarning(string.Format("当前{0}的事件树下没有此ID:{1}的节点", ID.ToString(), Id));
         }
     }
     /// <summary>

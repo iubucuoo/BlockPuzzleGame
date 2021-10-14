@@ -47,7 +47,7 @@ public class UI_GroupRotate : UIEventListenBase
         {
             if (GameGloab.GoldCount<=0)
             {
-                Debug.LogError("金币不足不能开启");
+                DebugMgr.LogError("金币不足不能开启");
                 //RotateBnt.SetIsOnWithoutNotify(false);
                 
                 RotateBnt.isOn = false;
@@ -62,7 +62,7 @@ public class UI_GroupRotate : UIEventListenBase
         {
             SwitchRotateState(false);
         }
-        Debug.Log(RotateBnt.isOn);
+        DebugMgr.Log(RotateBnt.isOn);
     }
 
     /// <summary>

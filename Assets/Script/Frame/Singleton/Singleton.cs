@@ -1,38 +1,33 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-namespace IUBCOFrame
-{
-    public class Singleton<T> where T : new()
-    {
-        protected Singleton()
-        {
-        }
 
-        public static T instance
+public class Singleton<T> where T : new()
+{
+    protected Singleton()
+    {
+    }
+
+    public static T instance
+    {
+        get
         {
-            get
+            if (s_Instance == null)
             {
-                if (s_Instance == null)
+                object obj = s_Lock;
+                lock (obj)
                 {
-                    object obj = s_Lock;
-                    lock (obj)
+                    if (s_Instance == null)
                     {
-                        if (s_Instance == null)
-                        {
-                            s_Instance = Activator.CreateInstance<T>();
-                        }
+                        s_Instance = Activator.CreateInstance<T>();
                     }
                 }
-                return s_Instance;
             }
+            return s_Instance;
         }
-
-
-        private static T s_Instance = default;
-
-
-        private static object s_Lock = new object();
     }
+
+
+    private static T s_Instance = default;
+
+
+    private static object s_Lock = new object();
 }

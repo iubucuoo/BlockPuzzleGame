@@ -34,7 +34,7 @@ public class CaneraShaker : MonoBehaviour
     }
     public void PlayShake()
     {
-        Debug.LogError("shake");
+        DebugMgr.LogError("shake");
         StartCoroutine(Shake(.15f, 20));
     }
 }

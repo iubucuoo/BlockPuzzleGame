@@ -106,7 +106,7 @@ public class UI_TopPanel : UIEventListenBase
                 WriteTopScore();
                 break;
             case (ushort)UITopPanelListenID.Up:
-                Debug.LogError("UITopPanelListenID.Up");
+                DebugMgr.LogError("UITopPanelListenID.Up");
                 break;
             default:
                 break;

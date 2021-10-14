@@ -39,7 +39,10 @@ public class PrepAddGridGroup : MonoBehaviour
     /// </summary>
     public void BackRotate()
     {
-        transform.localEulerAngles = Vector3.zero;
+        if (transform.localEulerAngles.z!=0)
+        {
+            transform.localEulerAngles = Vector3.zero;
+        }
         if (minPrepGroup != null)
             rotatePrep = minPrepGroup.DataArray;
     }
@@ -59,7 +62,7 @@ public class PrepAddGridGroup : MonoBehaviour
             }
             else
             {
-                Debug.LogError("不需要旋转");
+                DebugMgr.LogError("不需要旋转");
             }
         }
         //再放置成功之后判断是否旋转后跟没旋转前是否相同，不相同则减掉一个旋转用的金币

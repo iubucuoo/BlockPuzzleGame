@@ -16,24 +16,10 @@ public class MonoBase : MonoBehaviour, IEventListen
     {
 
     }
-    protected bool is_load = false;
-    //protected void Loading(CallBackVoid callback, string strs)
-    //{
-    //    PackageMgr.inst.LoadObject(strs, FileRoot.firstinfo, () =>
-    //    {               
-    //        if (callback != null)
-    //        {
-    //            callback();
-    //        }
-    //    });
-    //}
 
     void Awake()
     {
-        //if (autoInit)
-        {
-            InitEventListen();
-        }
+        InitEventListen();
     }
     /// <summary>
     /// 处理

@@ -69,14 +69,14 @@ public class MessageCenter
             //case ManagerID.LUnitManager:
             //case ManagerID.LUIManager: LuaProcess(msg); PoolsMgr.Release(msg); break;
 
-            //case ManagerID.AssetManager: AssetManager.instance.SendMsg(msg); break;
-            //case ManagerID.GameManager: GameManager.instance.SendMsg(msg); break;
+            case ManagerID.AssetManager: AssetManager.instance.SendMsg(msg); break;
+            case ManagerID.GameManager: GameManager.instance.SendMsg(msg); break;
             //case ManagerID.NetManager: NetManager.instance.SendMsg(msg); break;
             //case ManagerID.LocalNetManager: LocalNetManager.instance.SendMsg(msg); break;
-            //case ManagerID.UnitManager: Modules.Unit.UnitManager.instance.SendMsg(msg); break;
+            case ManagerID.UnitManager: UnitManager.instance.SendMsg(msg); break;
             case ManagerID.UIManager: UIManager.instance.SendMsg(msg); break;
             case ManagerID.AudioManager: break;
-            default: UnityEngine.Debug.LogError(string.Format("{0},此消息没有在相应的ManagerID中", tmpId)); break;
+            default: DebugMgr.LogError(string.Format("{0},此消息没有在相应的ManagerID中", tmpId)); break;
         }
     }
 }
