@@ -59,27 +59,25 @@ public class MessageCenter
 
     void AnasysisMessage(MessageBase msg)
     {
+        ManagerID tmpId = msg.GetManagerID();
+        switch (tmpId)
+        {
+            //case ManagerID.LAssetManager:
+            //case ManagerID.LAudioManager:
+            //case ManagerID.LGameManager:
+            //case ManagerID.LNetManager:
+            //case ManagerID.LUnitManager:
+            //case ManagerID.LUIManager: LuaProcess(msg); PoolsMgr.Release(msg); break;
 
-        //Debuger.Log("-------------------------------------------消息中心发来："+ MsgIDToString(msg.messageId));
-        //ManagerID tmpId = msg.GetManagerID();
-        //switch (tmpId)
-        //{
-        //    case ManagerID.LAssetManager:
-        //    case ManagerID.LAudioManager:
-        //    case ManagerID.LGameManager:
-        //    case ManagerID.LNetManager:
-        //    case ManagerID.LUnitManager:
-        //    case ManagerID.LUIManager: LuaProcess(msg); PoolsMgr.Release(msg); break;
-
-        //    case ManagerID.AssetManager:AssetManager.instance.SendMsg(msg); break;                
-        //    case ManagerID.GameManager:GameManager.instance.SendMsg(msg); break;
-        //    case ManagerID.NetManager: NetManager.instance.SendMsg(msg); break;
-        //    case ManagerID.LocalNetManager: LocalNetManager.instance.SendMsg(msg); break;
-        //    case ManagerID.UnitManager: Modules.Unit.UnitManager.instance.SendMsg(msg); break;
-        //    case ManagerID.UIManager: UIManager.instance.SendMsg(msg); break;
-        //    case ManagerID.AudioManager: break;
-        //    default:Debuger.LogError(string.Format("{0},此消息没有在相应的ManagerID中", tmpId)); break;
-        //}
+            //case ManagerID.AssetManager: AssetManager.instance.SendMsg(msg); break;
+            //case ManagerID.GameManager: GameManager.instance.SendMsg(msg); break;
+            //case ManagerID.NetManager: NetManager.instance.SendMsg(msg); break;
+            //case ManagerID.LocalNetManager: LocalNetManager.instance.SendMsg(msg); break;
+            //case ManagerID.UnitManager: Modules.Unit.UnitManager.instance.SendMsg(msg); break;
+            case ManagerID.UIManager: UIManager.instance.SendMsg(msg); break;
+            case ManagerID.AudioManager: break;
+            default: UnityEngine.Debug.LogError(string.Format("{0},此消息没有在相应的ManagerID中", tmpId)); break;
+        }
     }
 }
 

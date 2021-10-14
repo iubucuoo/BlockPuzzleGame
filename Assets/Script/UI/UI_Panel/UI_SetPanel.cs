@@ -54,7 +54,7 @@ public class UI_SetPanel : UIPanelBase
     {
         //Debug.Log("点击重开游戏----广告播放返回");
         AudioMgr.Inst.PlayGameOpen();
-        UIMgr.Inst.ResetTop();
+        FreeSendEvent.GSendMsg((ushort)UITopPanelListenID.ResetTop); //UIMgr.Inst.ResetTop();
         GridGroupMgr.Inst.GameReset();//重新启动游戏
     }
     private void OnBtnResetGame()

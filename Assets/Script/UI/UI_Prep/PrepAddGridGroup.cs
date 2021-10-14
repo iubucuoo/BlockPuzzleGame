@@ -70,7 +70,7 @@ public class PrepAddGridGroup : MonoBehaviour
         IsUse = true;
         if (UIMgr.Inst.IsRotateState)
         {
-            UIMgr.Inst.SWRotate(Index, false);
+            FreeSendEvent.GSendMsg((ushort)UIGroupRotateListenID.HideOne, Index);//UIMgr.Inst.SWRotate(Index, false);
         }
         Recycle();
         //三个格子都用完了，刷新三个待放入的格子
@@ -86,7 +86,7 @@ public class PrepAddGridGroup : MonoBehaviour
         if (!GridGroupMgr.Inst.IsCanPrepNext())
         {
             DebugMgr.LogError("游戏结束");
-            UIMgr.Inst.OpenGameOverPanel();
+            FreeSendEvent.GSendMsg((ushort)UIMainListenID.SwPanel_GameOver);
         }
     }
     public void SetGridData(GridGroup_MinPrep v)
@@ -95,7 +95,7 @@ public class PrepAddGridGroup : MonoBehaviour
         rotatePrep = v.DataArray;
         if (UIMgr.Inst.IsRotateState)
         {
-            UIMgr.Inst.SWRotate(Index, true);
+            FreeSendEvent.GSendMsg((ushort)UIGroupRotateListenID.SwOne, Index);//UIMgr.Inst.SWRotate(Index, true);
         }
     }
     void SetChildActive(bool sw)
@@ -126,12 +126,7 @@ public class PrepAddGridGroup : MonoBehaviour
             if (UIMgr.Inst.IsRotateState && !M_math.IsSameArrays(rotatePrep, minPrepGroup.DataArray))
             {
                 //GameGloab.GoldCount -= 1;
-                UIMgr.Inst.AddRotateGoldCount(-1);
-                Debug.LogError(GameGloab.GoldCount);
-                if (GameGloab.GoldCount <= 0)
-                {
-                    UIMgr.Inst.OffChangeRotate();
-                }
+                FreeSendEvent.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, -1);// UIMgr.Inst.AddRotateGoldCount(-1);
             }
             UsePrepGridGroup();//设置当前待放入的group为使用过了
         }

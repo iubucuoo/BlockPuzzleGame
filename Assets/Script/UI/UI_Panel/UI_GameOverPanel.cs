@@ -1,8 +1,4 @@
-﻿using DG.Tweening;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_GameOverPanel : UIPanelBase
@@ -19,12 +15,12 @@ public class UI_GameOverPanel : UIPanelBase
 
     void ShowFinish()
     {
-        bool isnewrecord = UIMgr.Inst.IsTopScore();
+        bool isnewrecord = UIMgr.Inst.IsTopScore;
         gameover.SetActive(!isnewrecord);
         newrecord.SetActive(isnewrecord);
         if (isnewrecord)
         {
-            UIMgr.Inst.WriteTopScore();
+            FreeSendEvent.GSendMsg((ushort)UITopPanelListenID.WriteTopScore);//UIMgr.Inst.WriteTopScore();
             AudioMgr.Inst.PlayNewRecord();//播放 新记录音乐UI
             newrecordtxt.text = GameGloab.Topscore.ToString();
         }

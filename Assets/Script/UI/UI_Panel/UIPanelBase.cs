@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
-public class UIPanelBase : MonoBehaviour
+public class UIPanelBase : UIEventListenBase
 {
     float _y = 2020;
     float _x = 1480;
@@ -16,7 +16,7 @@ public class UIPanelBase : MonoBehaviour
     }
     public void RefreshGame()
     {
-        UIMgr.Inst.ResetTop();
+        FreeSendEvent.GSendMsg((ushort)UITopPanelListenID.ResetTop);//UIMgr.Inst.ResetTop();
         GridGroupMgr.Inst.GameReset();//重新启动游戏
         AudioMgr.Inst.PlayGameOpen();
     }

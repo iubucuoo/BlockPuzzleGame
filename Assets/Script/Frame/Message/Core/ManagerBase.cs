@@ -42,8 +42,7 @@ class ManagerBase : IEventListen
         if (msg.GetManagerID() == ID)
         {
             ProcessEvent(msg);
-
-            //PoolsMgr.Release(msg);回收消息
+            PoolMgr.Recycle(msg);//回收消息
         }
         else
         {

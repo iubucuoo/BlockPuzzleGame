@@ -13,6 +13,13 @@ public class MainC : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
+        gameObject.AddComponent<FreeSendEvent>();
+        gameObject.AddComponent<GridGroupMgr>();
+        gameObject.AddComponent<GoogleAdMgr>();
+        gameObject.AddComponent<CaneraShaker>();
+        gameObject.AddComponent<UIMgr>();
+        gameObject.AddComponent<FPS>();
+        gameObject.AddComponent<UIPanelSwitch>();
     }
     public List<Sprite> sprites = new List<Sprite>();
     // Start is called before the first frame update
@@ -22,11 +29,7 @@ public class MainC : MonoBehaviour
         //LoadLanguageData();
         //
 
-        gameObject.AddComponent<GridGroupMgr>();
-        gameObject.AddComponent<GoogleAdMgr>();
-        gameObject.AddComponent<CaneraShaker>();
-        gameObject.AddComponent<UIMgr>();
-        gameObject.AddComponent<FPS>();
+        
 
         foreach (var v in sprites)
         {

@@ -4,19 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_GroupRotate : MonoBehaviour
+public class UI_GroupRotate : UIEventListenBase
 {
     public Toggle RotateBnt;
     public Text GoldNum;
     public Button BtnAddGlog;
-    public bool IsRotateState { get; private set; }
     List<GameObject> RotateImgs = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
+        UIMgr.Inst.RotateGoldAddPos = GoldNum.transform.position;
         AddRotateImg();
-        GameGloab.GoldCount=0;
-        AddRotateGoldCount(0);
+        //GameGloab.GoldCount=0;
+        AddRotateGoldCount(GameGloab.GoldCount);
         ChangeRotate(false);
         RotateBnt.onValueChanged.AddListener(ChangeRotate);
         BtnAddGlog.onClick.AddListener(OpenAddRotatePanel);
@@ -24,17 +24,18 @@ public class UI_GroupRotate : MonoBehaviour
 
     private void OpenAddRotatePanel()
     {
-        UIMgr.Inst.OnBtnAddRotateSW();
+        AudioMgr.Inst.ButtonClick();
+        FreeSendEvent.GSendMsg((ushort)UIMainListenID.SwPanel_AddRotate);
     }
 
-    public Vector3 RotateGoldAddPos()
-    {
-        return GoldNum.transform.position;
-    }
     public void AddRotateGoldCount(int v=0)
     {
         GameGloab.GoldCount += v;
         GoldNum.text = GameGloab.GoldCount.ToString();
+        if (GameGloab.GoldCount <= 0)
+        {
+            OffChangeRotate();// UIMgr.Inst.OffChangeRotate();
+        }
     }
     public void OffChangeRotate()
     {
@@ -71,7 +72,7 @@ public class UI_GroupRotate : MonoBehaviour
     {
         //还原待用的组的旋转
         GridGroupMgr.Inst.BackRotate();
-        IsRotateState = v;
+        UIMgr.Inst.IsRotateState = v;
         SWRotates(v);
        
     }
@@ -113,5 +114,40 @@ public class UI_GroupRotate : MonoBehaviour
         }
         SWRotates(false);
     }
-    
+    public override void InitEventListen()
+    {
+        messageIds = new ushort[]
+       {
+            (ushort)UIGroupRotateListenID.Up,
+            (ushort)UIGroupRotateListenID.OffRotate,
+            (ushort)UIGroupRotateListenID.SwOne,
+            (ushort)UIGroupRotateListenID.HideOne,
+            (ushort)UIGroupRotateListenID.AddRotateGold,
+       };
+        RegistEventListen(this, messageIds);
+    }
+    public override void ProcessEvent(MessageBase tmpMsg)
+    {
+        switch (tmpMsg.messageId)
+        {
+            case (ushort)UIGroupRotateListenID.OffRotate:
+                OffChangeRotate();//关闭
+                break;
+            case (ushort)UIGroupRotateListenID.OnRotate:
+                //开启
+                break;
+            case (ushort)UIGroupRotateListenID.HideOne:
+                SWRotate(((Message)tmpMsg).num, false);
+                break;
+            case (ushort)UIGroupRotateListenID.SwOne:
+                SWRotate(((Message)tmpMsg).num, true);
+                break;
+            case (ushort)UIGroupRotateListenID.AddRotateGold:
+                AddRotateGoldCount(((Message)tmpMsg).num);
+                break;
+            default:
+                break;
+        }
+        base.ProcessEvent(tmpMsg);
+    }
 }

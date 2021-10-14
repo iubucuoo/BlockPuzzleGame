@@ -1,12 +1,14 @@
 ﻿/// <(ushort)summary>
 /// 消息类型的基类
 /// <(ushort)/summary>
-public class MessageBase //: IPools
+public class MessageBase:IPoolable
 {
     /// <(ushort)summary>
     /// 消息ID
     /// <(ushort)/summary>
     public ushort messageId;
+
+   
     internal MessageBase()
     {
         messageId = 0;
@@ -55,16 +57,10 @@ public class MessageBase //: IPools
             return ManagerID.LocalNetManager;
         }
     }
-   
+    public virtual IPoolsType GroupType => IPoolsType.MessageBase;
 
-    //internal override Pools_Type GetPoolType()
-    //{
-    //    return Pools_Type.MessageBase;
-    //}
-
-    
-
-    internal virtual void Reset()
+    public bool IsRecycled { get ; set ; }
+    public virtual void OnRecycled()
     {
         messageId = 0;
     }

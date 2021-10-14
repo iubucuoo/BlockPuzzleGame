@@ -41,8 +41,10 @@ public class UI_AddRotatePanel : UIPanelBase
     }
     void AddRotateGold()
     {
-        UIMgr.Inst.PlayTextTip(UIMgr.Inst.RotateGoldAddPos(), "+2");
-        UIMgr.Inst.AddRotateGoldCount(2);
+        float[] _pos = new float[] { UIMgr.Inst.RotateGoldAddPos.x, UIMgr.Inst.RotateGoldAddPos.y };
+        FreeSendEvent.GSendMsg((ushort)UISwTextEffectListenID.SwEffect, _pos, "+2");
+        //UIMgr.Inst.PlayTextTip(UIMgr.Inst.RotateGoldAddPos, "+2");
+        FreeSendEvent.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);//UIMgr.Inst.AddRotateGoldCount(2);
 
         //Vector3 end = UIMgr.Inst.RotateGoldAddPos();
         //Vector3 start = end;
@@ -53,6 +55,25 @@ public class UI_AddRotatePanel : UIPanelBase
 
     private void EffectCb()
     {
-        UIMgr.Inst.AddRotateGoldCount(2);
+        FreeSendEvent.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);//UIMgr.Inst.AddRotateGoldCount(2);
     }
+    //public override void InitEventListen()
+    //{
+    //    messageIds = new ushort[]{
+    //        (ushort)UIAddRotateListenID.SwPanel,
+    //    };
+    //    RegistEventListen(this, messageIds);
+    //}
+    //public override void ProcessEvent(MessageBase tmpMsg)
+    //{
+    //    switch (tmpMsg.messageId)
+    //    {
+    //        case (ushort)UIAddRotateListenID.SwPanel:
+    //            ShowBoxX();
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //    base.ProcessEvent(tmpMsg);
+    //}
 }
