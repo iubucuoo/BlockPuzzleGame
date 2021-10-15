@@ -20,7 +20,7 @@ public class UI_GameOverPanel : UIPanelBase
         newrecord.SetActive(isnewrecord);
         if (isnewrecord)
         {
-            FreeSendEvent.GSendMsg((ushort)UITopPanelListenID.WriteTopScore);//UIMgr.Inst.WriteTopScore();
+            SendEventMgr.GSendMsg((ushort)UITopPanelListenID.WriteTopScore);//UIMgr.Inst.WriteTopScore();
             AudioMgr.Inst.PlayNewRecord();//播放 新记录音乐UI
             newrecordtxt.text = GameGloab.Topscore.ToString();
         }

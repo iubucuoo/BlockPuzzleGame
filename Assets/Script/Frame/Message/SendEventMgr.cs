@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-public class FreeSendEvent : UIEventListenBase
+public class SendEventMgr : UIEventListenBase
 {
-    public static FreeSendEvent Instance
+    public static SendEventMgr Instance
     {
         get
         {
@@ -13,7 +13,7 @@ public class FreeSendEvent : UIEventListenBase
     {
         _instance = this;
     }
-    static FreeSendEvent _instance;
+    static SendEventMgr _instance;
 
     public static void GSendMsg(MessageBase msg)
     {

@@ -517,7 +517,7 @@ public class GridGroupMgr : MonoBehaviour
         }
         if (swaddscore>0)
         {
-            FreeSendEvent.GSendMsg((ushort)UITopPanelListenID.SetNowScore, swaddscore);
+            SendEventMgr.GSendMsg((ushort)UITopPanelListenID.SetNowScore, swaddscore);
         }
         return canprep;
     }

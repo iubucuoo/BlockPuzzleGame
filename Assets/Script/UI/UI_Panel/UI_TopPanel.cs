@@ -39,7 +39,7 @@ public class UI_TopPanel : UIEventListenBase
     private void OnBtnSwSetPanel()
     {
         AudioMgr.Inst.ButtonClick();
-        FreeSendEvent.GSendMsg((ushort)UIMainListenID.SwPanel_Set);
+        SendEventMgr.GSendMsg((ushort)UIMainListenID.SwPanel_Set);
     }
 
     public void ResetTop()

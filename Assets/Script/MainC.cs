@@ -13,7 +13,7 @@ public class MainC : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        gameObject.AddComponent<FreeSendEvent>();
+        gameObject.AddComponent<SendEventMgr>();
         gameObject.AddComponent<GridGroupMgr>();
         gameObject.AddComponent<GoogleAdMgr>();
         gameObject.AddComponent<CaneraShaker>();

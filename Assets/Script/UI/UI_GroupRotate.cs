@@ -25,7 +25,7 @@ public class UI_GroupRotate : UIEventListenBase
     private void OpenAddRotatePanel()
     {
         AudioMgr.Inst.ButtonClick();
-        FreeSendEvent.GSendMsg((ushort)UIMainListenID.SwPanel_AddRotate);
+        SendEventMgr.GSendMsg((ushort)UIMainListenID.SwPanel_AddRotate);
     }
 
     public void AddRotateGoldCount(int v=0)

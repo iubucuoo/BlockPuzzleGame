@@ -42,9 +42,9 @@ public class UI_AddRotatePanel : UIPanelBase
     void AddRotateGold()
     {
         float[] _pos = new float[] { UIMgr.Inst.RotateGoldAddPos.x, UIMgr.Inst.RotateGoldAddPos.y };
-        FreeSendEvent.GSendMsg((ushort)UISwTextEffectListenID.SwEffect, _pos, "+2");
+        SendEventMgr.GSendMsg((ushort)UISwTextEffectListenID.SwEffect, _pos, "+2");
         //UIMgr.Inst.PlayTextTip(UIMgr.Inst.RotateGoldAddPos, "+2");
-        FreeSendEvent.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);//UIMgr.Inst.AddRotateGoldCount(2);
+        SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);//UIMgr.Inst.AddRotateGoldCount(2);
 
         //Vector3 end = UIMgr.Inst.RotateGoldAddPos();
         //Vector3 start = end;
@@ -55,7 +55,7 @@ public class UI_AddRotatePanel : UIPanelBase
 
     private void EffectCb()
     {
-        FreeSendEvent.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);//UIMgr.Inst.AddRotateGoldCount(2);
+        SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);//UIMgr.Inst.AddRotateGoldCount(2);
     }
     //public override void InitEventListen()
     //{
