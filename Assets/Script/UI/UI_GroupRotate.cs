@@ -118,7 +118,6 @@ public class UI_GroupRotate : UIEventListenBase
     {
         messageIds = new ushort[]
        {
-            (ushort)UIGroupRotateListenID.Up,
             (ushort)UIGroupRotateListenID.OffRotate,
             (ushort)UIGroupRotateListenID.SwOne,
             (ushort)UIGroupRotateListenID.HideOne,
@@ -132,9 +131,6 @@ public class UI_GroupRotate : UIEventListenBase
         {
             case (ushort)UIGroupRotateListenID.OffRotate:
                 OffChangeRotate();//关闭
-                break;
-            case (ushort)UIGroupRotateListenID.OnRotate:
-                //开启
                 break;
             case (ushort)UIGroupRotateListenID.HideOne:
                 SWRotate(((Message)tmpMsg).num, false);

@@ -105,9 +105,6 @@ public class UI_TopPanel : UIEventListenBase
             case (ushort)UITopPanelListenID.WriteTopScore:
                 WriteTopScore();
                 break;
-            case (ushort)UITopPanelListenID.Up:
-                DebugMgr.LogError("UITopPanelListenID.Up");
-                break;
             default:
                 break;
         }
@@ -118,7 +115,7 @@ public class UI_TopPanel : UIEventListenBase
     {
         messageIds = new ushort[]
         {
-            (ushort)UITopPanelListenID.Up,
+            (ushort)UITopPanelListenID.SetNowScore,
             (ushort)UITopPanelListenID.WriteTopScore,
             (ushort)UITopPanelListenID.ResetTop,
         };
