@@ -66,13 +66,4 @@ public class SendEventMgr : UIEventListenBase
         MessageBase msg = ((MessageBase)PoolMgr.Allocate(IPoolsType.Message)).SetValue(msgId);
         Instance.SendMsg(msg);
     }
-
-    public override void InitEventListen()
-    {
-
-    }
-    public override void ProcessEvent(MessageBase tmpMsg)
-    {
-        base.ProcessEvent(tmpMsg);
-    }
 }
