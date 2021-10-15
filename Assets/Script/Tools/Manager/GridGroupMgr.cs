@@ -40,6 +40,7 @@ public class GridGroupMgr : MonoBehaviour
     List<int[,]> list1;
     List<int[,]> list2;
     List<int[,]> list3;
+    int[,] MainGroup;
     PrepAddGridGroup[] PrepGroup = new PrepAddGridGroup[3];
     public static GridGroupMgr Inst;
     private void Awake()
@@ -48,6 +49,18 @@ public class GridGroupMgr : MonoBehaviour
     }
     void SetStartData()
     {
+        MainGroup = new int[,]{
+            { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0 }
+        };
         Postox  = new Dictionary<int, int>()
         {
             [UIMgr.Inst.wh_2 * -9] = 0,
@@ -256,6 +269,7 @@ public class GridGroupMgr : MonoBehaviour
             gridGroup_Ground = null;
         }
         gridGroup_Ground = PoolMgr.Allocate(IPoolsType.GridGroup_Ground) as GridGroup_Ground;
+        gridGroup_Ground.SetData(MainGroup, UIMgr.Inst.BGROOT);
         gridGroup_Ground.CreatGrids();
         RefreshPrepGridGroup();
       

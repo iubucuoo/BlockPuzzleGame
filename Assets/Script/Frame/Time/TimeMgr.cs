@@ -1,8 +1,5 @@
-
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-//using LuaInterface;
 using System;
 
 public enum Intervel_Time:byte
@@ -15,12 +12,6 @@ public enum Intervel_Time:byte
 
 public class TimeMgr : MonoBehaviour
 {
-    #region Static
-    //public static void _AddIntervelEvent(LuaFunction callback, LuaTable tab, int _interTime, int _loop = -1)
-    //{
-    //    Instance.AddIntervelEvent( callback,  tab,  _interTime,  _loop);
-    //}
-    #endregion
     List<TimeEventBase> mgr;
     const int _Interval = 16;
     internal float _CurTime;
@@ -90,7 +81,7 @@ public class TimeMgr : MonoBehaviour
         }
         mgr.Add(_e);
     }
-#if UNITY_EDITOR&&GKTest 
+#if UNITY_EDITOR
     bool test = false;
     DateTime dateTimeStart;
     private void OnGUI()
@@ -204,8 +195,6 @@ public class TimeMgr : MonoBehaviour
         _MsTime = (int)_CurTime;
         _MsTimestamp = ((_CurTime - _PreTime) + _STimestamp);//时间戳              
         _Timestamp = (int)(_MsTimestamp * 0.001);
-        //LuaBehMgr.CallSyncTime(_MsTimestamp, _Timestamp);
-
         int Max = mgr.Count;
         for (int i = 0; i < Max; i++)
         {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GridGroup_Prep : GridGroup
 {
-    public IPoolsType PoolsType = IPoolsType.GridGroup_Prep;
     public GridGroup_Prep()
     {
         G_width = UIMgr.Inst._width;
