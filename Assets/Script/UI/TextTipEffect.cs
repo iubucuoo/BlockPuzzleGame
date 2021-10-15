@@ -12,7 +12,7 @@ public class TextTipEffect : UIEventListenBase
     //}
     System.Action CallBack;
     Vector3 swpos;
-    public void PlayEffect(float[] pos, string str, System.Action cb = null)
+    void PlayEffect(float[] pos, string str, System.Action cb = null)
     {
         swpos.x = pos[0];
         swpos.y = pos[1];
@@ -23,7 +23,7 @@ public class TextTipEffect : UIEventListenBase
         swtext.transform.DOLocalMoveY(100, .8f).OnComplete(MoveEnd);
         CallBack = cb;
     }
-    public void PlayEffect(Vector3 pos, string str, System.Action cb = null)
+    void PlayEffect(Vector3 pos, string str, System.Action cb = null)
     {
         swtext.gameObject.SetActive(true);
         transform.position = pos + Vector3.up * 30;

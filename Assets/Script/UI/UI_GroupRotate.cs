@@ -28,7 +28,7 @@ public class UI_GroupRotate : UIEventListenBase
         SendEventMgr.GSendMsg((ushort)UIMainListenID.SwPanel_AddRotate);
     }
 
-    public void AddRotateGoldCount(int v=0)
+    void AddRotateGoldCount(int v=0)
     {
         GameGloab.GoldCount += v;
         GoldNum.text = GameGloab.GoldCount.ToString();
@@ -37,7 +37,7 @@ public class UI_GroupRotate : UIEventListenBase
             OffChangeRotate();// UIMgr.Inst.OffChangeRotate();
         }
     }
-    public void OffChangeRotate()
+    void OffChangeRotate()
     {
         RotateBnt.isOn = false;
     }
@@ -68,7 +68,7 @@ public class UI_GroupRotate : UIEventListenBase
     /// <summary>
     /// 是否可旋转的状态开关
     /// </summary>
-    public void SwitchRotateState(bool v)
+    void SwitchRotateState(bool v)
     {
         //还原待用的组的旋转
         GridGroupMgr.Inst.BackRotate();
@@ -90,7 +90,7 @@ public class UI_GroupRotate : UIEventListenBase
             }
         }
     }
-    public void SWRotate(int i,bool v)
+    void SWRotate(int i,bool v)
     {
         if (RotateImgs[i]!=null)
         {

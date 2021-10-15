@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class UI_AddRotatePanel : UIPanelBase
 {
-
     public Button BtnAd;
     public Button AllBg;
     public Button BtnResetGame;
@@ -24,7 +23,7 @@ public class UI_AddRotatePanel : UIPanelBase
     private void OnBtnResetGame()
     {
         AudioMgr.Inst.ButtonClick();
-        HideFinish();// gameObject.SetActive(false);//弹出广告直接隐藏
+        HideFinish();//弹出广告直接隐藏
         GoogleAdMgr.Inst.SWAd(RefreshGame);
     }
     private void OnBtnAllBg()
@@ -43,37 +42,11 @@ public class UI_AddRotatePanel : UIPanelBase
     {
         float[] _pos = new float[] { UIMgr.Inst.RotateGoldAddPos.x, UIMgr.Inst.RotateGoldAddPos.y };
         SendEventMgr.GSendMsg((ushort)UISwTextEffectListenID.SwEffect, _pos, "+2");
-        //UIMgr.Inst.PlayTextTip(UIMgr.Inst.RotateGoldAddPos, "+2");
-        SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);//UIMgr.Inst.AddRotateGoldCount(2);
-
-        //Vector3 end = UIMgr.Inst.RotateGoldAddPos();
-        //Vector3 start = end;
-        //start.x += 1080;
-        //start.y += 100;
-        //EffectPool.Inst.PlayFlowEffect(start,UIMgr.Inst.RotateGoldAddPos(),EffectCb);
+        SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);
     }
 
     private void EffectCb()
     {
-        SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);//UIMgr.Inst.AddRotateGoldCount(2);
+        SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);
     }
-    //public override void InitEventListen()
-    //{
-    //    messageIds = new ushort[]{
-    //        (ushort)UIAddRotateListenID.SwPanel,
-    //    };
-    //    RegistEventListen(this, messageIds);
-    //}
-    //public override void ProcessEvent(MessageBase tmpMsg)
-    //{
-    //    switch (tmpMsg.messageId)
-    //    {
-    //        case (ushort)UIAddRotateListenID.SwPanel:
-    //            ShowBoxX();
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //    base.ProcessEvent(tmpMsg);
-    //}
 }

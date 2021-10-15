@@ -42,7 +42,7 @@ public class UI_TopPanel : UIEventListenBase
         SendEventMgr.GSendMsg((ushort)UIMainListenID.SwPanel_Set);
     }
 
-    public void ResetTop()
+    void ResetTop()
     {
         ResetTopScore();
         ResetNowScore();
@@ -51,13 +51,13 @@ public class UI_TopPanel : UIEventListenBase
     {
         strtopnum.text = GameGloab.Topscore.ToString();
     }
-    public void ResetNowScore()
+    void ResetNowScore()
     {
         SetNowNum(0);
         swnum = 0;
         strnownum.text = "0";
     }
-    public void SetNowScore(int score)
+    void SetNowScore(int score)
     {
         SetNowNum(nownum + score);
         if (nownum > GameGloab.Topscore)
@@ -68,7 +68,7 @@ public class UI_TopPanel : UIEventListenBase
         UIMgr.Inst.IsTopScore = IsTopScore();
     }
 
-    public void WriteTopScore()
+    void WriteTopScore()
     {
         SetNowGameTop(nownum);
     }
@@ -82,7 +82,7 @@ public class UI_TopPanel : UIEventListenBase
         nowgametop = v;
         UIMgr.Inst.IsTopScore = IsTopScore();
     }
-    public bool IsTopScore()
+    bool IsTopScore()
     {
         if (nownum > nowgametop)
         {

@@ -5,7 +5,6 @@ public class PrepAddGridGroup : MonoBehaviour
 {
     public int Index;
     bool isdrag;//判断是否执行过拖动函数
-    //bool canclick;//点击down，up的时候判断是否放成功，放成功表示不能出发click事件
     bool isdraging;//放手的时候判断是否抓起过,抓起过的不进入点击事件
     public Transform Root;
     public bool IsUse;
@@ -55,7 +54,6 @@ public class PrepAddGridGroup : MonoBehaviour
             {
                 transform.DOKill(true);//强制完成旋转
                 transform.DOLocalRotate(transform.localEulerAngles - Vector3.forward * 90, .2f);
-                //transform.localEulerAngles -= Vector3.forward * 90;
                 rotatePrep = M_math.Rotate_90(rotatePrep);//点击后 执行 旋转rotatePrep数据  之后再执行能不能放置
                 if (GridGroupMgr.Inst.IsCanPrepNext())
                 { }
@@ -73,7 +71,7 @@ public class PrepAddGridGroup : MonoBehaviour
         IsUse = true;
         if (UIMgr.Inst.IsRotateState)
         {
-            SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.HideOne, Index);//UIMgr.Inst.SWRotate(Index, false);
+            SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.HideOne, Index);
         }
         Recycle();
         //三个格子都用完了，刷新三个待放入的格子
@@ -98,7 +96,7 @@ public class PrepAddGridGroup : MonoBehaviour
         rotatePrep = v.DataArray;
         if (UIMgr.Inst.IsRotateState)
         {
-            SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.SwOne, Index);//UIMgr.Inst.SWRotate(Index, true);
+            SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.SwOne, Index);
         }
     }
     void SetChildActive(bool sw)
@@ -128,8 +126,7 @@ public class PrepAddGridGroup : MonoBehaviour
             //如果是旋转过的状态 处理旋转所需的金币值，当值达到0时，关闭旋转开关
             if (UIMgr.Inst.IsRotateState && !M_math.IsSameArrays(rotatePrep, minPrepGroup.DataArray))
             {
-                //GameGloab.GoldCount -= 1;
-                SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, -1);// UIMgr.Inst.AddRotateGoldCount(-1);
+                SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, -1);
             }
             UsePrepGridGroup();//设置当前待放入的group为使用过了
         }

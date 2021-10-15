@@ -16,7 +16,7 @@ public class UIPanelBase : UIEventListenBase
     }
     public void RefreshGame()
     {
-        SendEventMgr.GSendMsg((ushort)UITopPanelListenID.ResetTop);//UIMgr.Inst.ResetTop();
+        SendEventMgr.GSendMsg((ushort)UITopPanelListenID.ResetTop);
         GridGroupMgr.Inst.GameReset();//重新启动游戏
         AudioMgr.Inst.PlayGameOpen();
     }
