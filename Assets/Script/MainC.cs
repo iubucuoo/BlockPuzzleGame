@@ -16,10 +16,8 @@ public class MainC : MonoBehaviour
         gameObject.AddComponent<SendEventMgr>();
         gameObject.AddComponent<GridGroupMgr>();
         gameObject.AddComponent<GoogleAdMgr>();
-        gameObject.AddComponent<CaneraShaker>();
         gameObject.AddComponent<UIMgr>();
         gameObject.AddComponent<FPS>();
-        gameObject.AddComponent<UIPanelSwitch>();
     }
     public List<Sprite> sprites = new List<Sprite>();
     // Start is called before the first frame update

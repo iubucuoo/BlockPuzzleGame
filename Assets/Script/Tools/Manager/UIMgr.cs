@@ -40,6 +40,9 @@ public class UIMgr : MonoBehaviour
         CanvasRect = CanvasRoot.GetComponent<RectTransform>();
         BGROOTRect = BGROOT.GetComponent<RectTransform>();
         DragingGridMgr.Inst.SetDrag(DragRoot);
+
+        UIRoot.gameObject.AddComponent<UIPanelSwitch>();
+        UIRoot.gameObject.AddComponent<CaneraShaker>();
     }
 
    

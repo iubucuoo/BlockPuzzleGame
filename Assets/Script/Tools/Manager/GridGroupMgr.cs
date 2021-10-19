@@ -45,6 +45,7 @@ public class GridGroupMgr : MonoBehaviour
     public static GridGroupMgr Inst;
     private void Awake()
     {
+        SetStartData();
         Inst = this;
     }
     void SetStartData()
@@ -259,7 +260,7 @@ public class GridGroupMgr : MonoBehaviour
     }
     private void Start()
     {
-        SetStartData();
+        
     }
     public void GameReset()
     {
@@ -492,11 +493,10 @@ public class GridGroupMgr : MonoBehaviour
                 addnum += addscore * 10;
             }
             swaddscore += addnum;
-//            FreeSendEvent.GSendMsg((ushort)UITopPanelListenID.SetNowScore, addnum);//UIMgr.Inst.SetNowScore(addnum);
             //UI抖动
             if (addscore>1)
             {
-                CaneraShaker.Inst.PlayShake();
+                SendEventMgr.GSendMsg((ushort)CaneraShakeListenID.Shake);
             }
             //播放声音
             int lv = UIMgr.Inst.ContinuousBoom ++;

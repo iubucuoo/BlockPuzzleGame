@@ -41,3 +41,9 @@ public enum UISwTextEffectListenID : ushort
     SwEffect,
     Max,
 }
+public enum CaneraShakeListenID : ushort
+{
+    Min = UISwTextEffectListenID.Max+1,
+    Shake,
+    Max,
+}

@@ -2,21 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CaneraShaker : MonoBehaviour
+public class CaneraShaker : UIEventListenBase
 {
-    public static CaneraShaker Inst;
-    private void Awake()
-    {
-        Inst = this;
-    }
-    Transform UIRoot;
     Vector3 originalV3;
     Vector3 changeV3;
     // Start is called before the first frame update
     void Start()
     {
-        UIRoot = UIMgr.Inst.UIRoot;
-        originalV3 = UIRoot.position;
+        originalV3 = transform.position;
     }
 
     IEnumerator Shake(float duration, float magnitude)
@@ -26,15 +19,35 @@ public class CaneraShaker : MonoBehaviour
         {
             changeV3.x = Random.Range(-1f, 1f) * magnitude;
             changeV3.y = Random.Range(-1f, 1f) * magnitude;
-            UIRoot.position = changeV3;
+            transform.position = changeV3;
             elapsed += Time.deltaTime;
             yield return 0;
         }
-        UIRoot.position = originalV3;
+        transform.position = originalV3;
     }
     public void PlayShake()
     {
         DebugMgr.LogError("shake");
         StartCoroutine(Shake(.15f, 20));
+    }
+    public override void InitEventListen()
+    {
+        messageIds = new ushort[]{
+            (ushort)CaneraShakeListenID.Shake,
+        };
+        RegistEventListen(this, messageIds);
+        base.InitEventListen();
+    }
+    public override void ProcessEvent(MessageBase tmpMsg)
+    {
+        switch (tmpMsg.messageId)
+        {
+            case (ushort)CaneraShakeListenID.Shake:
+                PlayShake();
+                break;
+            default:
+                break;
+        }
+        base.ProcessEvent(tmpMsg);
     }
 }
