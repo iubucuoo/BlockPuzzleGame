@@ -9,11 +9,11 @@ using System.Diagnostics;
 public class CommandBuild : Editor
 {
     public static string outAtlaspath = string.Format("Assets/Art/Useart/TexturePacker/OutAtlas/");
-    public static string path = string.Format("{0}/Art/Useart/TexturePacker/", Application.dataPath);
+    public static string TexturePackerpath = string.Format("{0}/Art/Useart/TexturePacker/", Application.dataPath);
 
-    public static string path_Images = path + "Images";
-    public static string path_outAltasData = path + "AltasData/";
-    public static string path_outAltas = path + "OutAtlas/";
+    public static string path_Images = TexturePackerpath + "Images";
+    public static string path_outAltasData = TexturePackerpath + "AltasData/";
+    public static string path_outAltas = TexturePackerpath + "OutAtlas/";
 
     [MenuItem("Tools/SpritesPacker/CommandBuild")]
     public static void BuildTexturePacker()
@@ -27,6 +27,7 @@ public class CommandBuild : Editor
         {
             //UnityEngine.Debug.Log (imagePath [i]);
             StringBuilder sb = new StringBuilder("");
+            string _path = imagePath[i];
             string[] fileName = Directory.GetFiles(imagePath[i]);
             for (int j = 0; j < fileName.Length; j++)
             {
@@ -44,11 +45,11 @@ public class CommandBuild : Editor
             //string outputName = string.Format ("{0}/Art/TexturePacker/{1}/{2}", Application.dataPath,name,name);
             string sheetName = path_outAltasData+ name;
             //执行命令行
-            processCommand("H:\\Program Files\\TexturePacker\\bin\\TexturePacker.exe", string.Format(commandText, sheetName, sheetName, sb.ToString()));
+            processCommand("H:\\Program Files\\TexturePacker\\bin\\TexturePacker.exe", string.Format(commandText, sheetName, sheetName, sb.ToString()),_path);
         }
         AssetDatabase.Refresh();
     }
-    private static void processCommand(string command, string argument)
+    private static void processCommand(string command, string argument,string _path)
     {
         ProcessStartInfo start = new ProcessStartInfo(command);
         start.Arguments = argument;
@@ -71,8 +72,14 @@ public class CommandBuild : Editor
         Process p = Process.Start(start);
         if(!start.UseShellExecute)
         {
-            UnityEngine.Debug.Log(p.StandardOutput.ReadToEnd());
-            UnityEngine.Debug.Log(p.StandardError.ReadToEnd());
+            //UnityEngine.Debug.Log(p.StandardOutput.ReadToEnd());
+            //UnityEngine.Debug.Log(p.StandardError.ReadToEnd());
+            
+            var str = p.StandardError.ReadToEnd();
+            if (!string.IsNullOrEmpty(str))
+            {
+                UnityEngine.Debug.LogError(_path + "--->" + str);
+            }
         }
 
         p.WaitForExit();
