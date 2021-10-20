@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FPS : MonoBehaviour
+public class FPS : MonoSingleton<FPS>
 {
     /// <summary>
     /// 上一次更新帧率的时间

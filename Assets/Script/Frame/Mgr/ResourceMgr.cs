@@ -2,20 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceMgr
-{
-    static ResourceMgr _instance;
-    public static ResourceMgr Inst
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new ResourceMgr();
-            }
-            return _instance;
-        }
-    }
+public class ResourceMgr:Singleton<ResourceMgr>
+{ 
     Dictionary<string, object> m_res = new Dictionary<string, object>();
     public T LoadRes<T>(string respath)where T : Object
     {

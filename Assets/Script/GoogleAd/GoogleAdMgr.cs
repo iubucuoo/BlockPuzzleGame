@@ -5,13 +5,8 @@ using GoogleMobileAds.Api;
 using System;
 using GoogleMobileAds.Common;
 
-public class GoogleAdMgr : MonoBehaviour
+public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
 {
-    public static GoogleAdMgr Inst;
-    private void Awake()
-    {
-        Inst = this;
-    }
     //    广告格式 示例广告单元 ID
     //开屏广告    ca-app-pub-3940256099942544/3419835294
     //横幅广告 ca-app-pub-3940256099942544/6300978111

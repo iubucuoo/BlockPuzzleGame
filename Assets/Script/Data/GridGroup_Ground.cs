@@ -6,8 +6,8 @@ public class GridGroup_Ground : GridGroup,IPoolable
 {
     public GridGroup_Ground()
     {
-        G_width = UIMgr.Inst._width;
-        G_height = UIMgr.Inst._height;
+        G_width = UIMgr._width;
+        G_height = UIMgr._height;
         ResName = "Prefab/blockdef";//默认的背景格子
     }
 

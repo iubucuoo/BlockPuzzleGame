@@ -16,7 +16,7 @@ public class UI_GroupRotate : UIEventListenBase
         UIMgr.Inst.RotateGoldAddPos = GoldNum.transform.position;
         AddRotateImg();
         //GameGloab.GoldCount=0;
-        AddRotateGoldCount(GameGloab.GoldCount);
+        AddRotateGoldCount(0);
         ChangeRotate(false);
         RotateBnt.onValueChanged.AddListener(ChangeRotate);
         BtnAddGlog.onClick.AddListener(OpenAddRotatePanel);
@@ -105,7 +105,7 @@ public class UI_GroupRotate : UIEventListenBase
     {
         for (int i = 0; i < 3; i++)
         {
-            Vector2 pos = new Vector2((i - 1) * (6 * UIMgr.Inst.wh_2), 0);
+            Vector2 pos = new Vector2((i - 1) * (6 * UIMgr.wh_2), 0);
             var obj = ObjectMgr.InstantiateGameObj(ObjectMgr.LoadResource("Prefab/addrotateimg") as GameObject);
             obj.transform.SetParent(transform);
             obj.transform.localPosition = pos;

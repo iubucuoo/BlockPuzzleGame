@@ -1,19 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AudioMgr : MonoBehaviour
+public class AudioMgr : MonoSingleton<AudioMgr>
 {
-
-    public static AudioMgr Inst = null;
-
     public bool isPlaying_Sound = true;
     public bool isPlaying_Music = true;
-
-    void Awake()
-    {
-        Inst = this;
-    }
-
+    
 
     public void PlayMusic(string music)
     {

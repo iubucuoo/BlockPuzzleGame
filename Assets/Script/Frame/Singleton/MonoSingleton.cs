@@ -2,7 +2,7 @@
 
 public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
-    public static T instance
+    public static T Inst
     {
         get
         {

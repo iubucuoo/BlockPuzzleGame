@@ -4,24 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PoolMgr
+public class PoolMgr:Singleton<PoolMgr>
 {
-    [SerializeField]
     public Dictionary<int, Pool> dic;
-    private static PoolMgr _inst;
-    public static PoolMgr Inst
+    public PoolMgr()
     {
-        get {
-            if (_inst ==null)
-            {
-                _inst = new PoolMgr();
-                _inst.dic = new Dictionary<int, Pool>();
-            }
-            return _inst;
-        }
+        dic = new Dictionary<int, Pool>();
     }
 
- 
     IPoolable AllocateV(IPoolsType _type)
     {
         if (!dic.TryGetValue((int)_type,out Pool pool))

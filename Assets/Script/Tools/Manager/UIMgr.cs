@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class UIMgr : MonoBehaviour
 {
+    public static int _height = 90;// 60;
+    public static int _width = 90;// 60;
+    public static int wh_2 = 45;// 30;
+    public static Vector2 DragUp = new Vector2(0, _width * 4);//y高度 对应的倍数
     public static UIMgr Inst;
     public Transform UIRoot { get; private set; }
     public Transform ADDROOT { get; private set; }
@@ -16,16 +20,11 @@ public class UIMgr : MonoBehaviour
     public bool IsTopScore { get; set; }
     public bool IsRotateState { get; set; }
     public Vector3 RotateGoldAddPos { get; set; }
-    public Vector2 DragUp { get; private set; }//y高度 对应的倍数
 
     public int ContinuousBoom = 0;//连续爆炸
-    public readonly int _height = 90;// 60;
-    public readonly int _width = 90;// 60;
-    public readonly int wh_2 = 45;// 30;
     public Dictionary<string, Sprite> Sprites;
     private void Awake()
     {
-        DragUp = new Vector2(0, _width * 4);//y高度 对应的倍数
         Inst = this;
 #if UNITY_EDITOR
         DebugMgr.EnableLog = true;

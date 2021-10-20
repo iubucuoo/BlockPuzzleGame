@@ -13,11 +13,10 @@ public class MainC : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        gameObject.AddComponent<SendEventMgr>();
         gameObject.AddComponent<GridGroupMgr>();
-        gameObject.AddComponent<GoogleAdMgr>();
         gameObject.AddComponent<UIMgr>();
-        gameObject.AddComponent<FPS>();
+        GoogleAdMgr.CheckInstance();
+        FPS.CheckInstance();
     }
     public List<Sprite> sprites = new List<Sprite>();
     // Start is called before the first frame update
@@ -145,7 +144,7 @@ public class MainC : MonoBehaviour
     {
         if (UIMgr.Inst.GetLocalPoint_Canv(out Vector2 pos))
         {
-            DragPos = pos + UIMgr.Inst.DragUp;//拖动位置用来显示
+            DragPos = pos + UIMgr.DragUp;//拖动位置用来显示
             SetDragRootPos();
         }
     }
@@ -156,7 +155,7 @@ public class MainC : MonoBehaviour
             if (UIMgr.Inst.GetLocalPoint_BgRoot(out Vector2 pos1))
             {
                 //Debug.Log("鼠标相对于bgroot的ui位置" + pos1 + (oldmousepos - Input.mousePosition).sqrMagnitude);
-                GridGroupMgr.Inst.CheckAvailable(pos1 + UIMgr.Inst.DragUp);//位置检测 用来判断能否放置
+                GridGroupMgr.Inst.CheckAvailable(pos1 + UIMgr.DragUp);//位置检测 用来判断能否放置
             }
             oldmousepos = Input.mousePosition;
         }
