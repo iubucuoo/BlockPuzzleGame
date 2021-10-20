@@ -1688,6 +1688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d28fb4be58f9146b577096bdd6f8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  messageIds: 
   RotateBnt: {fileID: 1961377843}
   GoldNum: {fileID: 1162774219}
   BtnAddGlog: {fileID: 2136237970}
