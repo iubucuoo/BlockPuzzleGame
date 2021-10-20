@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:44be1b80c3ca640302a33233faff55e2:21f649f52d21ff76094b9a77488a1c0f:7c6635b498c544ef3de0d798cb6370a2$ -->
+<TextureAtlas imagePath="Sprite1.png" width="2048" height="2048">
+    <SubTexture name="bg_home_game" x="0" y="0" width="1080" height="1920"/>
+    <SubTexture name="dongri_kaisjiem" x="1080" y="0" width="810" height="1280"/>
+</TextureAtlas>

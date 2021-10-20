@@ -140,12 +140,13 @@
     <Compile Include="Assets\Script\Data\GridGroup_Ground.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\Art\Useart\TexturePacker\AltasData\Sprite.xml" />
      <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Common.dll" />
      <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.dll" />
      <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
      <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds_version-6.1.1_manifest.txt" />
      <None Include="Assets\Art\OtherArt\word2\atlas\number_days.fnt" />
-     <None Include="Assets\ThirdTools\TexturePacker\Readme.txt" />
+     <None Include="Assets\codeandweb.com\Readme.txt" />
      <None Include="Assets\ThirdTools\Toon Particles - Magic Collection\ToonMagic - Readme.txt" />
      <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Core.dll" />
      <None Include="Assets\Art\OtherArt\word2\atlas\score_best.fnt" />
@@ -157,6 +158,7 @@
      <None Include="Assets\Art\OtherArt\word2\atlas\number_percentage.fnt" />
      <None Include="Assets\Art\OtherArt\word2\atlas\number_years.fnt" />
      <None Include="Assets\Art\OtherArt\word2\atlas\number_days_2.fnt" />
+     <None Include="Assets\Art\Useart\TexturePacker\AltasData\Sprite1.xml" />
      <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
      <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.XML" />
      <None Include="Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Android.dll" />

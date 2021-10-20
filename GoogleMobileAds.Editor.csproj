@@ -300,7 +300,7 @@
       <HintPath>Assets\ThirdTools\GoogleAds\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
     </Reference>
     <Reference Include="TexturePackerImporter">
-      <HintPath>Assets\ThirdTools\TexturePacker\Editor\TexturePackerImporter.dll</HintPath>
+      <HintPath>Assets\codeandweb.com\Editor\TexturePackerImporter.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll</HintPath>
