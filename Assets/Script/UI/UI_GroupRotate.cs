@@ -10,6 +10,7 @@ public class UI_GroupRotate : UIEventListenBase
     public Text GoldNum;
     public Button BtnAddGlog;
     List<GameObject> RotateImgs = new List<GameObject>();
+    TimeEvent TE;
     // Start is called before the first frame update
     void Start()
     {
@@ -94,11 +95,11 @@ public class UI_GroupRotate : UIEventListenBase
     {
         if (RotateImgs[i]!=null)
         {
-            RotateImgs[i].SetActive(v);
             if (v)
             {
-                //开始旋转
+                RotateImgs[i].transform.eulerAngles=rotatenum; //开始旋转
             }
+            RotateImgs[i].SetActive(v);
         }
     }
     void AddRotateImg()
@@ -113,7 +114,26 @@ public class UI_GroupRotate : UIEventListenBase
             RotateImgs.Add( obj);
         }
         SWRotates(false);
+        TE = TimeMgr.Instance.AddIntervelEvent(TimeCheck, 60, 0, -1);
     }
+    Vector3 rotatenum;
+    private void TimeCheck(int arg1, float arg2)
+    {
+        rotatenum.z--;
+        if (rotatenum.z<=-180)
+        {
+            rotatenum.z = 0;
+        }
+        for (int i = 0; i < RotateImgs.Count; i++)
+        {
+            var obj = RotateImgs[i];
+            if (obj && obj.activeInHierarchy)
+            {
+                obj.transform.eulerAngles =rotatenum;
+            }
+        }
+    }
+
     public override void InitEventListen()
     {
         messageIds = new ushort[]

@@ -131,15 +131,4 @@ public class MySpritesPacker : Editor
 
 }
 
-internal class TextureIpter
-{
-    public string spriteName = "";
-    public Vector4 border = new Vector4();
-    public TextureIpter() { }
-    public TextureIpter(string spriteName, Vector4 border)
-    {
-        this.spriteName = spriteName;
-        this.border = border;
-    }
-}
 #endif
