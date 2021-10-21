@@ -119,6 +119,10 @@ public class UI_GroupRotate : UIEventListenBase
     Vector3 rotatenum;
     private void TimeCheck(int arg1, float arg2)
     {
+        if (!RotateBnt.isOn)
+        {
+            return;
+        }
         rotatenum.z--;
         if (rotatenum.z<=-180)
         {
