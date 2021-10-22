@@ -13,6 +13,7 @@ public class MainC : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
+        gameObject.AddComponent<MEC.Timing>();
         gameObject.AddComponent<TimeMgr>();
         gameObject.AddComponent<GridGroupMgr>();
         gameObject.AddComponent<UIMgr>();
