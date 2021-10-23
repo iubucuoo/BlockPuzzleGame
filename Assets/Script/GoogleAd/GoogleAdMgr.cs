@@ -57,7 +57,7 @@ public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
         //        string adUnitId = "unused";
 #if UNITY_ANDROID
         //string adUnitId = "ca-app-pub-3940256099942544/6300978111";
-        string adUnitId = "ca-app-pub-1634842308647830/9893645892";
+        string adUnitId = "ca-app-pub-1634842308647830/7755028130";
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-3940256099942544/2934735716";
 #else
