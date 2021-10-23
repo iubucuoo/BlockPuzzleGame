@@ -164,8 +164,13 @@ public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
         }
     }
     Action SwAdCallBack;
-    //展示广告
-    public void SWAd(Action cb)
+
+    /// <summary>
+    /// //展示广告
+    /// </summary>
+    /// <param name="cb">广告返回</param>
+    /// <param name="error">广告未加载返回</param>
+    public void SWAd(Action cb,Action error=null)
     {
         if (interstitial.IsLoaded())
         {
@@ -177,7 +182,14 @@ public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
         else
         {
             DebugMgr.LogError("广告没有加载完成");
-            cb.Invoke();
+            if (error!=null)
+            {
+                error.Invoke();
+            }
+            else
+            {
+                cb.Invoke();
+            }
         }
     }
     //清理插页式广告

@@ -36,7 +36,11 @@ public class UI_AddRotatePanel : UIPanelBase
     {
         AudioMgr.Inst.ButtonClick();
         HideFinish();
-        GoogleAdMgr.Inst.SWAd(AddRotateGold);
+        GoogleAdMgr.Inst.SWAd(AddRotateGold,NoOkAd);
+    }
+    void NoOkAd()
+    {
+        SendEventMgr.GSendMsg((ushort)UISwTextEffectListenID.SwEffect, new float[] { 0, 0 }, "广告还没准备好");   //广告还未加载完成
     }
     void AddRotateGold()
     {
