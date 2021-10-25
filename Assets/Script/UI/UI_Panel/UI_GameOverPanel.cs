@@ -35,6 +35,12 @@ public class UI_GameOverPanel : UIPanelBase
         //再弹出游戏结束面板
         ShowBoxY(ShowFinish);       
     }
+    public override void HideFinish()
+    {
+        gameover.SetActive(false);
+        newrecord.SetActive(false);
+        base.HideFinish();
+    }
     private void OnBtnRefresh()
     {
         AudioMgr.Inst.ButtonClick();

@@ -1,12 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CaneraShaker : UIEventListenBase
 {
     Vector3 originalV3;
     Vector3 changeV3;
-    // Start is called before the first frame update
     void Start()
     {
         originalV3 = transform.position;

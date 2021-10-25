@@ -258,10 +258,7 @@ public class GridGroupMgr : MonoBehaviour
             },
         };
     }
-    private void Start()
-    {
-        
-    }
+
     public void GameReset()
     {
         if (gridGroup_Ground!=null)

@@ -51,7 +51,7 @@ public class UIPanelBase : UIEventListenBase
         }
     }
 
-    public void HideFinish()
+    public virtual void HideFinish()
     {
         gameObject.SetActive(false);
     }

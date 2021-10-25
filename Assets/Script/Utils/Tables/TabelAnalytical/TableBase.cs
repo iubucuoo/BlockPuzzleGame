@@ -1,9 +1,4 @@
-﻿//============================================
-//作 者:GK
-//时 间:2016-08-01 14:35:35
-//备 注:表结构基础类
-//============================================
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System;
 
 public abstract class TableBase
