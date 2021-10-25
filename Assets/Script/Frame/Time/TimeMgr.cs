@@ -20,7 +20,6 @@ public class TimeMgr : MonoBehaviour
     public int _Timestamp { get; private set; }
     public double _MsTimestamp;
     internal int _MsTime;
-    internal int Game_StartTime;
     float up;
     int _SumIndex;
     internal static TimeMgr Instance;
@@ -28,7 +27,6 @@ public class TimeMgr : MonoBehaviour
     {
         Instance = this;
         mgr = new List<TimeEventBase>();
-        Application.targetFrameRate = 60;
         _CurTime = Time.realtimeSinceStartup * 1000;
         AddEvent(new TimeEvent(null, Intervel_Time.Float, 16));
         AddEvent(new TimeEvent(null, Intervel_Time.Index, 32));
@@ -59,10 +57,6 @@ public class TimeMgr : MonoBehaviour
                 tmp = tmp.next;
             }
         }
-    }
-    internal void GameStart()
-    {
-        Game_StartTime = _Timestamp;
     }
     void AddEvent(TimeEventBase _e)
     {

@@ -35,7 +35,7 @@ public class UI_GroupRotate : UIEventListenBase
         GoldNum.text = GameGloab.GoldCount.ToString();
         if (GameGloab.GoldCount <= 0)
         {
-            OffChangeRotate();// UIMgr.Inst.OffChangeRotate();
+            OffChangeRotate();
         }
     }
     void OffChangeRotate()
