@@ -3,92 +3,70 @@ using ProtoBuf;
 using ProtoBuf.Meta;
 using ProtoBuf.Serializers;
 using System.IO;
-using System;
 using CustomDataStruct;
-public interface IMgr
-{
-    void InitMgr();
-    void ResetMgr();
-}
-public class ProtobufTools:IMgr
-{
-    static ProtobufTools inst;
+
+public class ProtobufTools:Singleton<ProtobufTools>
+{ 
     public ProtobufTools()
-    {
-        inst = this;
+    { 
         InitMgr();
+    }
+    public void InitMgr()
+    {
+        Init();
+        AddProtoPool();
     }
     public void Init()
     {
         CustomSetting.AddCustomSerializer(typeof(Item), new ItemDecorator());
     }
     void AddProtoPool()
-    {        
+    {
         //ProtoFactory.AddProtoPool(typeof(BuffData), new BuffDataPool());
         //ProtoFactory.AddProtoPool(typeof(EffectModel), new EffectModelPool());
     }
+    public object Deserialize(System.Type type, byte[] message)
+    {
+        using (var stream = new MemoryStream(message))
+        {
+            return RuntimeTypeModel.Default.Deserialize(stream, null, type);
+        }
+    }
 
+
+
+
+
+    public static T Deserialize<T>(byte[] message)
+    {
+        using (var stream = new MemoryStream(message))
+        {
+            return Serializer.Deserialize<T>(stream);
+        }
+    }
     public static void SerializeToFile<T>(string path,T msg)
     {
-        if (inst==null)
-        {
-            new ProtobufTools();
-        }
         using (Stream stream =File.Create(path))
         {
             Serializer.Serialize(stream, msg);
             stream.Close();
-            stream.Dispose();
         }
     }
-
+    public static void SerializeToFile(string path, object msg)
+    {
+        using (Stream stream = File.Create(path))
+        {
+            Serializer.Serialize(stream, msg);
+            stream.Close();
+        }
+    }
     public static byte[] Serialize(object msg)
     {
-        byte[] result;
         using(var stream=new MemoryStream())
         {
             Serializer.Serialize(stream, msg);
-            result = stream.ToArray();
-        }
-        return result;
-    }
-
-    public static T Deserialize<T>(byte[] message)
-    {
-        if (inst == null)
-        {
-            new ProtobufTools();
-        }
-        T result;
-        using(var stream=new MemoryStream(message))
-        {
-            result = Serializer.Deserialize<T>(stream);
-        }
-        return result;
-    }
-    public static object Deserialize(System.Type type, byte[] message)
-    {
-        object result;
-        using (var stream = new MemoryStream(message))
-        {
-            result = RuntimeTypeModel.Default.Deserialize(stream, null, type);
-        }
-        return result;
-    }
-
-    ProtoBuf.Meta.RuntimeTypeModel model;
-    public void InitMgr()
-    {
-        model = ProtoBuf.Meta.RuntimeTypeModel.Default;
-        Init();
-        AddProtoPool();
-        model.netDataPoolDelegate = ProtoFactory.Get;
-        model.bufferPoolDelegate = StreamBufferPool.GetBuffer;
-    }
-
-    public void ResetMgr()
-    {
-        throw new NotImplementedException();
+            return stream.ToArray();
+        } 
     }
 }
 

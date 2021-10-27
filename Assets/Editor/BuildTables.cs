@@ -20,7 +20,6 @@ public class BuildTables : Editor
     }
     static void BuildTable(Language_ tmpLan, string root)
     {
-        StringBuilder sb = new StringBuilder();
         Type baseType = typeof(TableBaseManager);
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
         {
@@ -29,13 +28,13 @@ public class BuildTables : Editor
             {
                 if (baseType.IsAssignableFrom(type) && baseType != type)
                 {
-                    ByteTable(type, sb, tmpLan, root);
+                    ByteTable(type,  tmpLan, root);
                 }
             }
         }
         AssetDatabase.Refresh();
     }
-    static void ByteTable(Type type, StringBuilder sb, Language_ lan, string _root)
+    static void ByteTable(Type type,  Language_ lan, string _root)
     {
         string root = GetRoot(_root);
         TableBaseManager tableInstance = Activator.CreateInstance(type) as TableBaseManager;
@@ -51,13 +50,7 @@ public class BuildTables : Editor
             Directory.CreateDirectory(root);
         }
         string path = string.Format("{0}/{1}.bytes", root, tableInstance.GetTableName());
-        sb.Append(sb.Length > 0 ? " " + tableInstance.GetTableName() : tableInstance.GetTableName());
-
-        using (FileStream stream = new FileStream(path, FileMode.Create))
-        {
-            Serializer.Serialize(stream, tableData);
-            stream.Close();
-        }
+        ProtobufTools.SerializeToFile(path, tableData);
     }
 
 }

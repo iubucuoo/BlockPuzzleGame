@@ -12,7 +12,6 @@ public class TestUrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        new ProtobufTools();
         DownloadTools.Loading("https://www.iubucuoo.com/index.xml", (www) =>
         //DownloadTools.Loading("https://gitee.com/wangshijun12/GameInfo/raw/master/test.txt", (www) =>
         {
@@ -29,7 +28,6 @@ public class TestUrl : MonoBehaviour
         TableMgr.inst.Load(ab, () =>
         {
             var xxx = ItemManager.GetSingleData(101);
-            Debug.LogError(xxx == null);
             Debug.LogError(xxx.name);
         });
     }
