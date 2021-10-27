@@ -1,7 +1,7 @@
 ﻿/// <summary>
 /// 事件节点单位
 /// </summary>
-internal class EventNode : Node
+internal class EventNode : EvNode
 {
     /// <summary>
     /// 事件节点上的监听物
@@ -21,8 +21,8 @@ internal class EventNode : Node
         next = null;
     }
 }
-abstract class Node
+abstract class EvNode
 {
     public object listen;
-    public Node next;
+    public EvNode next;
 }

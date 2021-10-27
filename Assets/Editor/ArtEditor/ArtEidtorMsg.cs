@@ -27,8 +27,11 @@ public class ArtEidtorMsg : Editor
     [MenuItem("Tools/PullAB[根据当前标记的资源导出Ab]")]
     public static void PullAB()
     {
+        if (!Directory.Exists(outPath))
+        {
+            Directory.CreateDirectory(outPath);
+        }
         var isIOS = EditorUserBuildSettings.activeBuildTarget == BuildTarget.iOS;
-
         long start_time = System.DateTime.Now.Ticks;
         AssetDatabase.RemoveUnusedAssetBundleNames();
         BuildPipeline.BuildAssetBundles(outPath, //JenkinsTools.GetBuildMap(),

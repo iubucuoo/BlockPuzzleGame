@@ -108,10 +108,10 @@ public class ItemDecorator : ICustomProtoSerializer
         {
             case 1: return data.id;
             case 2: return data.name;
-            case 8: return data.type;
-            case 15: return data.quality;
-            case 17: return data.drop_icon;
-            case 18: return data.drop_light;
+            case 3: return data.type;
+            case 4: return data.quality;
+            case 5: return data.drop_icon;
+            //case 18: return data.drop_light;
         }
         return null;
     }
@@ -127,10 +127,10 @@ public class ItemDecorator : ICustomProtoSerializer
         {
             case 1: data.id = ValueObject.Value<long>(value); break;
             case 2: data.name = value as string; break;
-            case 8: data.type = ValueObject.Value<short>(value); break;
-            case 15: data.quality = ValueObject.Value<short>(value); break;
-            case 17: data.drop_icon = value as string; break;
-            case 18: data.drop_light = ValueObject.Value<int>(value); break;
+            case 3: data.type = ValueObject.Value<short>(value); break;
+            case 4: data.quality = ValueObject.Value<short>(value); break;
+            case 5: data.drop_icon = value as string; break;
+            //case 18: data.drop_light = ValueObject.Value<int>(value); break;
         }
     }
 }

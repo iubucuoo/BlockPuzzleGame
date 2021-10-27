@@ -21,14 +21,40 @@ public class MainC : MonoBehaviour
         FPS.CheckInstance();
     }
     public List<Sprite> sprites = new List<Sprite>();
-    // Start is called before the first frame update
+    
+
+    bool errorOver = true;
+    void ForegroundErrorOver(string title)
+    {
+        //需要在主线程中处理数据
+        if (!errorOver)
+            return;
+        TimeMgr.Instance.AddIntervelEvent((int i, float f) =>
+        {
+            if (errorOver)
+            {
+                errorOver = !errorOver;
+                string sw = title == null ? "网络不给力哦！ 点击重试。" : title;
+                //弹出框 提示网络不行重新链接
+                //TipWnd.inst.SwTipCom(title == null ? "网络不给力哦！ 点击重试。" : title, "提示", callback: () =>
+                //{
+                //    SaveFile();
+                //    StaticTools.ReStartGame();
+                //    errorOver = true;
+                //}, btn_name: "重试", isMaskBtn: false);
+            }
+        }, 16, 0, 1);
+    }
+    DownloadThread thread;
     void Start()
     {
+        thread = new DownloadThread();
+        thread.ForegroundErrorOver = ForegroundErrorOver;
         //先载入数据文件
         //LoadLanguageData();
         //
 
-        
+
 
         foreach (var v in sprites)
         {

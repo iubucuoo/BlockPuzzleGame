@@ -12,6 +12,7 @@ public class TabelLoadData
         object[] objs;
         if (Application.isPlaying)
         {
+            Debug.LogError("读取protobuf的表");
             //读取protobuf的表
             TextAsset txt = TableMgr.inst.GetTable(tableName) as TextAsset;
             objs =(object[])ProtobufTools.Deserialize(TableStruct[0],txt.bytes);

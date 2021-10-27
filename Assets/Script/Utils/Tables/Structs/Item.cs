@@ -6,21 +6,20 @@ public class Item : TableBase
 	public long id;
 	[ProtoBuf.ProtoMember(2)]
 	public string name;
-	[ProtoBuf.ProtoMember(8)]
+	[ProtoBuf.ProtoMember(3)]
 	public short type;
-	[ProtoBuf.ProtoMember(15)]
+	[ProtoBuf.ProtoMember(4)]
 	public short quality;	
-	[ProtoBuf.ProtoMember(17)]
+	[ProtoBuf.ProtoMember(5)]
 	public string drop_icon;
-	[ProtoBuf.ProtoMember(18)]
-    public int drop_light;
+	//[ProtoBuf.ProtoMember(6)]
+ //   public int drop_light;
 
-    int lightBuffSw = 0;
-    
     public override int Key()
     {
         return 0;
     }
+
     public override long KeyLong()
     {
 		return id;

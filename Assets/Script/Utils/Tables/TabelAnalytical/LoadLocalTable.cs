@@ -193,7 +193,7 @@ public class LoadLocalTable
     {
 #if UNITY_EDITOR
             string lan = Language_.Chinese.ToString();
-        string tableRoot = Application.dataPath + "/Scripts/Utils/Tables/Data/" + lan + "/"+ tableName+".txt";
+        string tableRoot = Application.dataPath + "/Script/Utils/Tables/Data/" + lan + "/"+ tableName+".txt";
             //Debuger.Log("读取"+tableRoot);
             return UnityEditor.AssetDatabase.LoadMainAssetAtPath(PathCutOff(tableRoot, Format.Change_Z_Cut)) as TextAsset;
         #else

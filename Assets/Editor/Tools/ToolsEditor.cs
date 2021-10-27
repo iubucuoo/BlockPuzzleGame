@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,7 +8,9 @@ public class ToolsEditor : Editor
     public static void ClearCache()
     {
         PlayerPrefs.DeleteAll();
+        Directory.Delete(Application.persistentDataPath, true);
         Debug.Log("Clear Success");
     }
+ 
 
 }
