@@ -48,8 +48,8 @@ public class MainC : MonoBehaviour
     DownloadThread thread;
     void Start()
     {
-        thread = new DownloadThread();
-        thread.ForegroundErrorOver = ForegroundErrorOver;
+        //thread = new DownloadThread();
+        //thread.ForegroundErrorOver = ForegroundErrorOver;
         //先载入数据文件
         //LoadLanguageData();
         //
