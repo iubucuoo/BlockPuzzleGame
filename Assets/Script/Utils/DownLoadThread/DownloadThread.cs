@@ -334,7 +334,7 @@ public class DownloadThread
             {
                 if (!isStop)//是不是自动关闭下载线程
                 {
-                    if (GetNetState() == 0)//当前网络如何,0表示没有网络
+                    if (StaticTools._NetStatus == 0)//当前网络如何,0表示没有网络
                     {
                         if (_Stage==GameStage.Foreground)//如果是在前端下载中断,后台没有网络不做处理
                         {

@@ -269,6 +269,10 @@
     <Compile Include="Assets\ThirdTools\protobuf-net\ProtoEnumAttribute.cs" />
     <Compile Include="Assets\ThirdTools\CustomDataStruct\BetterIPEndPoint.cs" />
     <Compile Include="Assets\Script\Utils\ProtoTools\ProtobufTools.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Assets\Script\StaticTools.cs" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.1.2_manifest.txt" />
@@ -276,6 +280,10 @@
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.dll" />
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
+<<<<<<< Updated upstream
+=======
+     <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.1.1_manifest.txt" />
+>>>>>>> Stashed changes
      <None Include="Assets\Art\OtherArt\word2\atlas\number_days.fnt" />
      <None Include="Assets\codeandweb.com\Readme.txt" />
      <None Include="Assets\ThirdTools\Toon Particles - Magic Collection\ToonMagic - Readme.txt" />
@@ -483,6 +491,7 @@
     <Reference Include="UnityEditor">
       <HintPath>D:\Unity3D\InstallSpace\2020.1.0\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
     </Reference>
+<<<<<<< Updated upstream
     <Reference Include="DOTween">
       <HintPath>Assets\ThirdTools\DOTween\DOTween\DOTween.dll</HintPath>
     </Reference>
@@ -491,12 +500,25 @@
     </Reference>
     <Reference Include="GoogleMobileAds.Common">
       <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
+=======
+    <Reference Include="GoogleMobileAds.Common">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Core">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Core.dll</HintPath>
+>>>>>>> Stashed changes
     </Reference>
     <Reference Include="GoogleMobileAds">
       <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.dll</HintPath>
     </Reference>
     <Reference Include="GoogleMobileAds.Unity">
       <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
+<<<<<<< Updated upstream
+=======
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\ThirdTools\DOTween\DOTween\DOTween.dll</HintPath>
+>>>>>>> Stashed changes
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:\Unity3D\InstallSpace\2020.1.0\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>

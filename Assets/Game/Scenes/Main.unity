@@ -2248,6 +2248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: gamebg
       objectReference: {fileID: 0}
+    - target: {fileID: 7138308721983176175, guid: 21bdd049f2b0ebb4cb81a85683b448a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21bdd049f2b0ebb4cb81a85683b448a6, type: 3}
 --- !u!1001 &8146783951349120765

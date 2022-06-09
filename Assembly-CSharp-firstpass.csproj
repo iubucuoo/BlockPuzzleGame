@@ -248,6 +248,7 @@
     <Reference Include="UnityEditor">
       <HintPath>D:\Unity3D\InstallSpace\2020.1.0\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
     </Reference>
+<<<<<<< Updated upstream
     <Reference Include="DOTween">
       <HintPath>Assets\ThirdTools\DOTween\DOTween\DOTween.dll</HintPath>
     </Reference>
@@ -256,12 +257,25 @@
     </Reference>
     <Reference Include="GoogleMobileAds.Common">
       <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
+=======
+    <Reference Include="GoogleMobileAds.Common">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Core">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Core.dll</HintPath>
+>>>>>>> Stashed changes
     </Reference>
     <Reference Include="GoogleMobileAds">
       <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.dll</HintPath>
     </Reference>
     <Reference Include="GoogleMobileAds.Unity">
       <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
+<<<<<<< Updated upstream
+=======
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\ThirdTools\DOTween\DOTween\DOTween.dll</HintPath>
+>>>>>>> Stashed changes
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:\Unity3D\InstallSpace\2020.1.0\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>

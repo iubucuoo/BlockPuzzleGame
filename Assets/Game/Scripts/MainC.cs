@@ -48,8 +48,14 @@ public class MainC : MonoBehaviour
     DownloadThread thread;
     void Start()
     {
+<<<<<<< Updated upstream
         //thread = new DownloadThread();
         //thread.ForegroundErrorOver = ForegroundErrorOver;
+=======
+        MEC.Timing.RunCoroutine(NetStatus());
+        thread = new DownloadThread();
+        thread.ForegroundErrorOver = ForegroundErrorOver;
+>>>>>>> Stashed changes
         //先载入数据文件
         //LoadLanguageData();
         //
@@ -63,7 +69,17 @@ public class MainC : MonoBehaviour
         homebg.SetActive(true);
         btn_start.onClick.AddListener(OnBtnStart);
     }
-
+    IEnumerator<float> NetStatus()
+    {
+        while (true)
+        {
+            StaticTools._NetStatus = StaticTools.GetNetState();
+            //通知 lua侧 网络状态
+            //var objs = new object[] { GlobalData._NetStatus };
+            //FreeSendEvent.GSendMsg((ushort)LMainUIListenID.NetStatus, null, objs);
+            yield return MEC.Timing.WaitForSeconds(1);
+        }
+    }
     void LoadLanguageData()
     {
         var ab = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/language.ly");

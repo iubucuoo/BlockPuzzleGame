@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 35968372
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: language.ly
+      Dependencies: {}
+    Info_1:
+      Name: chinese.ly
+      Dependencies: {}
