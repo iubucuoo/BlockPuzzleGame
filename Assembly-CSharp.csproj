@@ -78,6 +78,7 @@
     <Compile Include="Assets\ThirdTools\DOTween\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\ThirdTools\protobuf-net\IExtension.cs" />
     <Compile Include="Assets\ThirdTools\protobuf-net\Custom\CustomSetting.cs" />
+    <Compile Include="Assets\Script\StaticTools.cs" />
     <Compile Include="Assets\Game\Scripts\Data\GridGroup.cs" />
     <Compile Include="Assets\Script\Utils\Tables\TabelAnalytical\TabelLoadData.cs" />
     <Compile Include="Assets\Script\Frame\Message\Modules\Game\GameManager.cs" />
@@ -269,7 +270,6 @@
     <Compile Include="Assets\ThirdTools\protobuf-net\ProtoEnumAttribute.cs" />
     <Compile Include="Assets\ThirdTools\CustomDataStruct\BetterIPEndPoint.cs" />
     <Compile Include="Assets\Script\Utils\ProtoTools\ProtobufTools.cs" />
-    <Compile Include="Assets\Script\StaticTools.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.1.2_manifest.txt" />
