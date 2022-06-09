@@ -48,14 +48,11 @@ public class MainC : MonoBehaviour
     DownloadThread thread;
     void Start()
     {
-<<<<<<< Updated upstream
-        //thread = new DownloadThread();
-        //thread.ForegroundErrorOver = ForegroundErrorOver;
-=======
+
         MEC.Timing.RunCoroutine(NetStatus());
         thread = new DownloadThread();
         thread.ForegroundErrorOver = ForegroundErrorOver;
->>>>>>> Stashed changes
+
         //先载入数据文件
         //LoadLanguageData();
         //
