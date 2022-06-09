@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{F4836962-AE94-798E-AA91-1EB00B117D31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -272,29 +273,29 @@
     <Compile Include="Assets\Script\Utils\ProtoTools\ProtobufTools.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.1.2_manifest.txt" />
-     <None Include="Assets\Art\Useart\TexturePacker\AltasData\Sprite.xml" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.dll" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\number_days.fnt" />
-     <None Include="Assets\codeandweb.com\Readme.txt" />
-     <None Include="Assets\ThirdTools\Toon Particles - Magic Collection\ToonMagic - Readme.txt" />
-     <None Include="Assets\Script\Utils\Tables\Data\Chinese\item.txt" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Core.dll" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\score_best.fnt" />
-     <None Include="Assets\GoogleMobileAds\link.xml" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\number_score.fnt" />
-     <None Include="Assets\ThirdTools\DOTween\DOTween\readme.txt" />
-     <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.dll" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\number_bestscore.fnt" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\number_percentage.fnt" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\number_years.fnt" />
-     <None Include="Assets\Art\OtherArt\word2\atlas\number_days_2.fnt" />
-     <None Include="Assets\Art\Useart\TexturePacker\AltasData\Sprite1.xml" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
-     <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.XML" />
-     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Android.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds_version-6.1.2_manifest.txt" />
+    <None Include="Assets\Art\Useart\TexturePacker\AltasData\Sprite.xml" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Common.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.dll" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\number_days.fnt" />
+    <None Include="Assets\codeandweb.com\Readme.txt" />
+    <None Include="Assets\ThirdTools\Toon Particles - Magic Collection\ToonMagic - Readme.txt" />
+    <None Include="Assets\Script\Utils\Tables\Data\Chinese\item.txt" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Core.dll" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\score_best.fnt" />
+    <None Include="Assets\GoogleMobileAds\link.xml" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\number_score.fnt" />
+    <None Include="Assets\ThirdTools\DOTween\DOTween\readme.txt" />
+    <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.dll" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\number_bestscore.fnt" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\number_percentage.fnt" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\number_years.fnt" />
+    <None Include="Assets\Art\OtherArt\word2\atlas\number_days_2.fnt" />
+    <None Include="Assets\Art\Useart\TexturePacker\AltasData\Sprite1.xml" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
+    <None Include="Assets\ThirdTools\DOTween\DOTween\DOTween.XML" />
+    <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Android.dll" />
     <Reference Include="UnityEngine">
       <HintPath>D:\UnityOffice\2020.1.0f1\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -865,16 +866,6 @@
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{96710D01-9D5E-41CE-88A2-5A0EF1A52E17}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
-    <ProjectReference Include="GoogleMobileAds.Editor.csproj">
-      <Project>{0F8EA594-F787-DEFC-A03E-B4696AEE0494}</Project>
-      <Name>GoogleMobileAds.Editor</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
