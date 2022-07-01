@@ -129,7 +129,7 @@ public class ResData
 
     public sbyte IsLog = -1;
     
-    public int key;//资源获取之后，将名字改成key，查询
+    public ushort key;//资源获取之后，将名字改成key，查询
     public Dictionary<string , Object> objs;//ab 中的objs
     public Dictionary<string, Object[]> objs_a;//ab 中的objs_a
     public UnityEngine.Object obj;
@@ -325,47 +325,47 @@ public class ResData
     public bool isCacel()
     {
         var tmp = objNode;
-        //if (tmp != null)
-        //{
-        //    IArt obj = (IArt)tmp.Value;
+        if (tmp != null)
+        {
+            IArt obj = (IArt)tmp.Value;
 
-        //    if (obj.IsWaitArt(key))
-        //    {
-        //        return false;
-        //    }
+            if (obj.IsWaitArt(key))
+            {
+                return false;
+            }
 
-        //    while (tmp.next != null)
-        //    {
-        //        tmp = tmp.next;
-        //        obj = (IArt)tmp.Value;
-        //        if (obj.IsWaitArt(key))
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    return true;
-        //}
+            while (tmp.next != null)
+            {
+                tmp = tmp.next;
+                obj = (IArt)tmp.Value;
+                if (obj.IsWaitArt(key))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         return true;
     }
     public void FeedBack()
     {
-        //if (objNode != null)
-        //{
-        //    IArt obj = (IArt)objNode.Value;
-        //    Node tmp = objNode;
-        //    FeedBackSingle(obj);
-        //    while (objNode.next != null)
-        //    {
-        //        objNode = objNode.next;
-        //        tmp.next = null;
-        //        tmp = objNode;
-        //        obj = (IArt)objNode.Value;
-        //        FeedBackSingle(obj);
-        //    }
-        //    tmp = null;
-        //    objNode = null;         
-        //}
-        //status = ResStatus.None;
+        if (objNode != null)
+        {
+            IArt obj = (IArt)objNode.Value;
+            Node tmp = objNode;
+            FeedBackSingle(obj);
+            while (objNode.next != null)
+            {
+                objNode = objNode.next;
+                tmp.next = null;
+                tmp = objNode;
+                obj = (IArt)objNode.Value;
+                FeedBackSingle(obj);
+            }
+            tmp = null;
+            objNode = null;
+        }
+        status = ResStatus.None;
     }      
     public void ClearNode()
     {
@@ -385,12 +385,12 @@ public class ResData
         }
         status = ResStatus.None;
     }
-    //public void FeedBackSingle(IArt obj)
-    //{
-    //    if (obj.IsWaitArt(key))
-    //    {
-    //        obj.UseArt(this);
-    //    }
-    //}
-    
+    public void FeedBackSingle(IArt obj)
+    {
+        if (obj.IsWaitArt(key))
+        {
+            obj.UseArt(this);
+        }
+    }
+
 }

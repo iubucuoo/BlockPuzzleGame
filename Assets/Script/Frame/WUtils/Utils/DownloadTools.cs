@@ -42,10 +42,10 @@ namespace WUtils.Utils
         {
             get
             {
-                if ((Object)_instance == (Object)null)
+                if (_instance == null)
                 {
                     GameObject gameObject = GameObject.Find("MainScripts");
-                    if ((Object)gameObject == (Object)null)
+                    if (gameObject == null)
                     {
                         gameObject = new GameObject("MainScripts");
                     }

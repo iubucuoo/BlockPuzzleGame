@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class StaticTools
 {
+    public static bool AllowDownLoad;
     public static byte _NetStatus;
     public static byte GetNetState()
     {

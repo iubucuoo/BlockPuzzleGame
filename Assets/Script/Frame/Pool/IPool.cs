@@ -13,7 +13,7 @@ public enum IPoolsType
     GridDataDef,
     GridDataPrep,
 
-
+    Class16,
     Message,
     MessageBase,
 }

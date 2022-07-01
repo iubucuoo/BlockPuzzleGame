@@ -1,25 +1,59 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using WUtils;
+using WUtils.Utils;
+public class channles
+{
+    public int version;
+    public string resUpdateIp;
+    public string pkgName;
+    public string notice_url;
+    public int baseNum;
+    public int smallGame;
+    public int NG;
+}
 public class MainC : MonoBehaviour
 {
-    public Button btn_start;
-
-    public GameObject homebg;
-
-    public GameObject panelbg;
+    public channles channle_info;
     private void Awake()
     {
-        Application.targetFrameRate = 60;
-        gameObject.AddComponent<MEC.Timing>();
-        gameObject.AddComponent<TimeMgr>();
-        gameObject.AddComponent<GridGroupMgr>();
-        gameObject.AddComponent<UIMgr>();
-        GoogleAdMgr.CheckInstance();
-        FPS.CheckInstance();
+        ReadStreamingInit();
     }
+
+    private void ReadStreamingInit()
+    {
+        string path1 = string.Concat(PathTools.GetWWWAssetBundlePath(true, true), "/GameConfig.json");
+        DownloadTools.Loading(path1, (s1) =>
+        {
+            channle_info = LitJson.JsonMapper.ToObject<channles>(s1.text);
+            Application.targetFrameRate = 60;
+            gameObject.AddComponent<MEC.Timing>();
+            gameObject.AddComponent<TimeMgr>();
+
+            MEC.Timing.RunCoroutine(NetStatus());
+            GoogleAdMgr.CheckInstance();
+            FPS.CheckInstance();
+
+            gameObject.AddComponent<GridGroupMgr>();
+            gameObject.AddComponent<UIMgr>();
+            
+            thread = new DownloadThread();
+            thread.ForegroundErrorOver = ForegroundErrorOver;
+
+            //先载入数据文件
+            //LoadLanguageData();
+            //
+            
+            foreach (var v in sprites)
+            {
+                UIMgr.Inst.Sprites[v.name] = v;
+            }
+        });  
+    }
+
     public List<Sprite> sprites = new List<Sprite>();
     
 
@@ -46,26 +80,7 @@ public class MainC : MonoBehaviour
         }, 16, 0, 1);
     }
     DownloadThread thread;
-    void Start()
-    {
-
-        MEC.Timing.RunCoroutine(NetStatus());
-        thread = new DownloadThread();
-        thread.ForegroundErrorOver = ForegroundErrorOver;
-
-        //先载入数据文件
-        //LoadLanguageData();
-        //
-
-
-
-        foreach (var v in sprites)
-        {
-            UIMgr.Inst.Sprites[v.name] = v;
-        }
-        homebg.SetActive(true);
-        btn_start.onClick.AddListener(OnBtnStart);
-    }
+ 
     IEnumerator<float> NetStatus()
     {
         while (true)
@@ -109,17 +124,6 @@ public class MainC : MonoBehaviour
         }
     }
   
-
-    void OnBtnStart()
-    {
-        AudioMgr.Inst.ButtonClick();
-        DebugMgr.Log("开始游戏");
-        panelbg.SetActive(true);
-        homebg.SetActive(false);
-        btn_start.gameObject.SetActive(false);
-        AudioMgr.Inst.PlayBGMusic();
-        GridGroupMgr.Inst.GameStart();
-    }
 
     Vector3 oldmousepos;
     // Update is called once per frame
