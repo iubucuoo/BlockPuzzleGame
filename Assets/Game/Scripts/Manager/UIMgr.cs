@@ -27,7 +27,6 @@ public class UIMgr : MonoBehaviour
 
     Transform homebg;
     Transform panelbg;
-    Button btn_start;
     private void Awake()
     {
         Inst = this;
@@ -45,8 +44,7 @@ public class UIMgr : MonoBehaviour
         ADDROOT = UIRoot.Find("ADDROOT");
         DragRoot = UIRoot.Find("DragRoot");
         homebg = UIRoot.Find("homebg");
-        btn_start = homebg.transform.Find("Button").GetComponent<Button>();
-        btn_start.onClick.AddListener(OnBtnStart);
+        homebg.transform.Find("Button").GetComponent<Button>().onClick.AddListener(OnBtnStart);
         panelbg =  UIRoot.Find("gamebg");
         SetActiveHomeBg(true);
         CanvasRect = CanvasRoot.GetComponent<RectTransform>();
