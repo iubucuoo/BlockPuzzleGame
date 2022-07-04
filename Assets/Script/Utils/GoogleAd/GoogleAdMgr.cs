@@ -91,7 +91,7 @@ public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
     {
         //if (interstitial != null)
         //{
-        //    Debug.LogError("已经开始加载插页式广告");
+        //    Debuger.LogError("已经开始加载插页式广告");
         //    return;
         //}
         InterstitialDes();
@@ -130,11 +130,11 @@ public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
 
     private void HandleOnAdClosed(object sender, EventArgs e)
     {
-        //DebugMgr.LogError("广告关闭");
+        //Debuger.LogError("广告关闭");
         InterstitialDes();
         MobileAdsEventExecutor.ExecuteInUpdate(() =>
         {
-            //DebugMgr.LogError("广告关闭下一个update调用");
+            //Debuger.LogError("广告关闭下一个update调用");
             CallAdClose();
             AudioMgr.Inst.UnpauseMusic();
             RequestInterstitial();
@@ -143,7 +143,7 @@ public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
   
     private void HandleOnAdOpened(object sender, EventArgs e)
     {
-        //DebugMgr.LogError("显示广告");
+        //Debuger.LogError("显示广告");
     }
 
     private void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
@@ -153,7 +153,7 @@ public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
 
     private void HandleOnAdLoaded(object sender, EventArgs e)
     {
-        //DebugMgr.LogError("成功加载广告请求。");
+        //Debuger.LogError("成功加载广告请求。");
     }
     void CallAdClose()
     {
@@ -174,7 +174,7 @@ public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
     {
         if (interstitial.IsLoaded())
         {
-            //DebugMgr.LogError("展示广告");
+            //Debuger.LogError("展示广告");
             AudioMgr.Inst.PauseMusic();
             interstitial.Show();
             SwAdCallBack = cb;
@@ -198,7 +198,7 @@ public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
     {
         if (interstitial != null)
         {
-            //Debug.LogError("Destroy 插页式广告");
+            //Debuger.LogError("Destroy 插页式广告");
             interstitial.Destroy();
             interstitial = null;
         }

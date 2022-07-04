@@ -18,8 +18,11 @@ public class channles
 public class MainC : MonoBehaviour
 {
     public channles channle_info;
+    private float rootSavedX;
+    private float rootSavedY;
     private void Awake()
     {
+        DebugMgr.Log(rootSavedX  + "    " + rootSavedY);
         ReadStreamingInit();
     }
 
@@ -34,7 +37,7 @@ public class MainC : MonoBehaviour
             gameObject.AddComponent<TimeMgr>();
 
             MEC.Timing.RunCoroutine(NetStatus());
-            GoogleAdMgr.CheckInstance();
+            GoogleAdMgr.CheckInstance();//初始化的interstitial在下个update中执行
             FPS.CheckInstance();
 
             gameObject.AddComponent<GridGroupMgr>();

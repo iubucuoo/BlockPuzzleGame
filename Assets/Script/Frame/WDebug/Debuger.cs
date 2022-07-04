@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-public class Debuger
+public class DebugMgr
 {
     public static bool EnableLog = true;
 
@@ -22,14 +22,14 @@ public class Debuger
     {
         if (_debugControl == null)
         {
-            _debugControl = new DebugControl(Debuger.udpSocket);
+            _debugControl = new DebugControl(DebugMgr.udpSocket);
         }
         return _debugControl;
     }
 
     public static void AddSocketLogCallBack(Action<string> _event)
     {
-        Debuger.udpSocket = _event;
+        DebugMgr.udpSocket = _event;
     }
 
     public static void Log(object message)
@@ -62,9 +62,9 @@ public class Debuger
         LogError(message, null, null);
     }
 
-    static Debuger()
+    static DebugMgr()
     {
-        Debuger.udpSocket = delegate (string message)
+        DebugMgr.udpSocket = delegate (string message)
         {
             Debug.Log($"UDP方法没有代理出去:{message}");
         };

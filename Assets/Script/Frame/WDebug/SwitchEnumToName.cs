@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GKDebuger
+namespace WDebug
 {
     internal class SwitchEnumToName
     {

@@ -1,5 +1,4 @@
-﻿using GKDebuger;
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace WDebug
@@ -26,7 +25,7 @@ namespace WDebug
 
         public void Log(object message, object _filter = null, UnityEngine.Object context = null)
         {
-            if (Debuger.EnableLog && GetFilter(_filter))
+            if (DebugMgr.EnableLog && GetFilter(_filter))
             {
                 GetBase().Log($"[{SwitchFilerName(_filter)}]{message}", context);
             }
@@ -34,7 +33,7 @@ namespace WDebug
 
         public void LogError(object message, object _filter = null, UnityEngine.Object context = null)
         {
-            if (Debuger.EnableLog && GetFilter(_filter))
+            if (DebugMgr.EnableLog && GetFilter(_filter))
             {
                 GetBase().LogError($"[{SwitchFilerName(_filter)}]{message}", context);
             }
@@ -42,7 +41,7 @@ namespace WDebug
 
         public void LogWarning(object message, object _filter = null, UnityEngine.Object context = null)
         {
-            if (Debuger.EnableLog && GetFilter(_filter))
+            if (DebugMgr.EnableLog && GetFilter(_filter))
             {
                 GetBase().LogWarning($"[{SwitchFilerName(_filter)}]{message}", context);
             }
@@ -50,7 +49,7 @@ namespace WDebug
 
         private static bool GetFilter(object _filter)
         {
-            if (_filter != null && (int)_filter != Debuger.filter && Debuger.filter != 0)
+            if (_filter != null && (int)_filter != DebugMgr.filter && DebugMgr.filter != 0)
             {
                 return false;
             }

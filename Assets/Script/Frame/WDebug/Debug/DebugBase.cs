@@ -59,7 +59,7 @@ namespace WDebug
 
         private static bool CanLogSocket()
         {
-            if (!Debuger.IsUdpLog)
+            if (!DebugMgr.IsUdpLog)
             {
                 return false;
             }
