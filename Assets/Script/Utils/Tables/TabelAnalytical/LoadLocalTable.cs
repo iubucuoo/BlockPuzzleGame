@@ -59,7 +59,7 @@ public class LoadLocalTable
             }
             catch
             {
-                Debuger.LogError(string.Format("表数据错误: 表名={0} 字段名={1} 当前类型={2} 获取值={3}", 
+                DebugMgr.LogError(string.Format("表数据错误: 表名={0} 字段名={1} 当前类型={2} 获取值={3}", 
                     TableStruct.ToString(),
                     (pair.Value as FieldInfo).Name,
                      (pair.Value as FieldInfo).FieldType.Name,
@@ -162,7 +162,7 @@ public class LoadLocalTable
     {
         if (string.IsNullOrEmpty(tableName))
         {
-            Debuger.LogError("表名有问题");
+            DebugMgr.LogError("表名有问题");
             return true;
         }
         return false;
@@ -176,7 +176,7 @@ public class LoadLocalTable
     {
         if (lenght < 3)
         {
-            Debuger.LogError("表格文件行数错误，【1】属性名称【2】变量名称【3-...】值：" + name);
+            DebugMgr.LogError("表格文件行数错误，【1】属性名称【2】变量名称【3-...】值：" + name);
             return true;
         }
         return false;
