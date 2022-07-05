@@ -4,10 +4,10 @@
 /// </summary>
 public class MonoBase : MonoBehaviour, IEventListen
 {
-
     /// <summary>
     /// 监听的消息
     /// </summary>
+    [HideInInspector]
     public ushort[] messageIds;
     /// <summary>
     /// 初始化

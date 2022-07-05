@@ -24,9 +24,9 @@ public class GridData : IPoolable
     void SetSprites()
     {
         if (TrueStatus == 0)
-        { DefImage.sprite = UIMgr.Inst.Sprites["Dark_BG_BS"]; }
+        { DefImage.sprite = MainC.Inst.Sprites["Dark_BG_BS"]; }
         else if (TrueStatus == 1)
-        { DefImage.sprite = UIMgr.Inst.Sprites["Block_Wood"]; }
+        { DefImage.sprite = MainC.Inst.Sprites["Block_Wood"]; }
         //else if (TrueStatus == 2)
         //{ DefImage.sprite = UIManager.Inst.Sprites["swgrid"]; }
         //else if (TrueStatus == 3)
@@ -115,9 +115,9 @@ public class GridData : IPoolable
         resName = res;
         if (GridObj == null)
         {
-            GridObj = ObjectMgr.InstantiateGameObj(ResourceMgr.Inst.LoadRes<GameObject>(res));
+            GridObj = ObjectMgr.InsResource(res);
             DefImage = GridObj.transform.Find("def").GetComponent<Image>();
-            float scale = UIMgr.Inst.CanvasRect.localScale.x;
+            float scale = 1;// UIMgr.Inst.CanvasRect.localScale.x;
             if (GroupType == IPoolsType.GridDataDef)
             {
                 DesImage = GridObj.transform.Find("des").GetComponent<Image>();
@@ -150,7 +150,7 @@ public class GridData : IPoolable
         IsUse = false;
         if (GridObj)
         {
-            GridObj.transform.SetParent(UIMgr.Inst.CanvasRoot);
+            GridObj.transform.SetParent(MainC.Inst.UIRoot);
             GridObj.transform.localEulerAngles = Vector3.zero;
             DefImage.color = Color.white;
             GridObj.SetActive(false);

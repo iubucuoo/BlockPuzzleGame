@@ -17,12 +17,36 @@ public class channles
 }
 public class MainC : MonoBehaviour
 {
+    public static int _height = 90;// 60;
+    public static int _width = 90;// 60;
+    public static int wh_2 = 45;// 30;
+    public static Vector2 DragUp = new Vector2(0, _width * 4);//y高度 对应的倍数
+
+    public Transform UIRoot;
+
+    public bool IsTopScore { get; set; }
+    public bool IsRotateState { get; set; }
+    public Vector3 RotateGoldAddPos { get; set; }
+
+    public int ContinuousBoom = 0;//连续爆炸
+    public Dictionary<string, Sprite> Sprites;
+
+
     public channles channle_info;
     private float rootSavedX;
     private float rootSavedY;
+    public static MainC Inst;
     private void Awake()
     {
-        DebugMgr.Log(rootSavedX  + "    " + rootSavedY);
+        Inst = this;
+#if UNITY_EDITOR
+        DebugMgr.EnableLog = true;
+#endif
+        Sprites = new Dictionary<string, Sprite>();
+
+        AudioMgr.Inst.isPlaying_Music = GameGloab.MusicOnOff == 0;
+        AudioMgr.Inst.isPlaying_Sound = GameGloab.SoundIsOnOff == 0;
+
         ReadStreamingInit();
     }
 
@@ -39,21 +63,16 @@ public class MainC : MonoBehaviour
             MEC.Timing.RunCoroutine(NetStatus());
             GoogleAdMgr.CheckInstance();//初始化的interstitial在下个update中执行
             FPS.CheckInstance();
-
-            gameObject.AddComponent<GridGroupMgr>();
-            gameObject.AddComponent<UIMgr>();
-            
-            thread = new DownloadThread();
-            thread.ForegroundErrorOver = ForegroundErrorOver;
-
+            foreach (var v in sprites)
+            {
+                Sprites[v.name] = v;
+            }
+            AllUIPanelManager.Inst.Show(IPoolsType.UI_StartPanel);
             //先载入数据文件
             //LoadLanguageData();
             //
-            
-            foreach (var v in sprites)
-            {
-                UIMgr.Inst.Sprites[v.name] = v;
-            }
+            thread = new DownloadThread();
+            thread.ForegroundErrorOver = ForegroundErrorOver;
         });  
     }
 
@@ -124,105 +143,6 @@ public class MainC : MonoBehaviour
                     LanguageManger.Inst.languagedic.Add(v.LanguageList, ky);
                 }
             }
-        }
-    }
-  
-
-    Vector3 oldmousepos;
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    if (RectTransformUtility.ScreenPointToLocalPointInRectangle(bgrectTransform, Input.mousePosition, canvas.worldCamera, out Vector2 pos1))
-        //    {
-        //        int posx = GridGroupMgr.OutGridPos(pos1.x);
-        //        int posy = GridGroupMgr.OutGridPos(pos1.y);
-        //        if (GridGroupMgr.Inst.Postox.ContainsKey(posx) && GridGroupMgr.Inst.Postoy.ContainsKey(posy))
-        //        {
-        //            Debug.Log("鼠标相对于bgroot的ui位置" + pos1 + "     " +  posy + "   " + posx + "     " + GridGroupMgr.Inst.Postoy[posy] + "   " + GridGroupMgr.Inst.Postox[posx]);
-        //        }
-        //    }
-        //}
-#if UNITY_EDITOR
-        if (Input.GetMouseButton(0))
-        {
-            if (DragingGridMgr.Inst.IsDrag)
-            {
-                if (Time.frameCount % 10 == 0)//隔10针检测一次
-                {
-                    PosCheck();
-                }
-                PosSet();
-            }
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            OldDragPos = Vector2.zero;
-            DragPos = GameGloab.OutScreenV2;
-            SetDragRootPos();
-            //Debug.LogError("GetMouseButtonUp------    " + DragingGridMgr.Inst.IsDrag);
-        }
-#else
-
-        //手机端 检测touch
-        if (Input.touchCount > 0)
-        {
-            if ( Input.GetTouch(0).phase == TouchPhase.Moved ||  Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                if (DragingGridMgr.Inst.IsDrag)
-                {
-                    if (Time.frameCount % 5 == 0)
-                    { PosCheck(); }
-                    PosSet();
-                }
-            }
-            else if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                OldDragPos = Vector2.zero;//放置同一个位置点击的时候不处理位置改动
-                DragPos = GameGloab.OutScreenV2;//防止残留的位置是上次的位置导致显示闪一下
-                SetDragRootPos();
-            }
-        }
-#endif
-    }
-
-    //设置拖动位置 不限帧
-    void PosSet()
-    {
-        if (UIMgr.Inst.GetLocalPoint_Canv(out Vector2 pos))
-        {
-            DragPos = pos + UIMgr.DragUp;//拖动位置用来显示
-            SetDragRootPos();
-        }
-    }
-    void PosCheck()
-    {
-        if ((oldmousepos - Input.mousePosition).sqrMagnitude > 90)
-        {
-            if (UIMgr.Inst.GetLocalPoint_BgRoot(out Vector2 pos1))
-            {
-                //Debug.Log("鼠标相对于bgroot的ui位置" + pos1 + (oldmousepos - Input.mousePosition).sqrMagnitude);
-                GridGroupMgr.Inst.CheckAvailable(pos1 + UIMgr.DragUp);//位置检测 用来判断能否放置
-            }
-            oldmousepos = Input.mousePosition;
-        }
-    }
-    void SetDragRootPos()
-    {
-        DragingGridMgr.Inst.DragRoot.localPosition = DragPos;
-    }
-    Vector2 DragPos;
-    Vector2 OldDragPos;
-    void FixedUpdate2()
-    {
-        if (DragingGridMgr.Inst.IsDrag)
-        {
-            //if (DragPos != OldDragPos)
-            //{
-            DragingGridMgr.Inst.DragRoot.localPosition = DragPos;
-            //OldDragPos = DragPos;
-            //}
         }
     }
 }

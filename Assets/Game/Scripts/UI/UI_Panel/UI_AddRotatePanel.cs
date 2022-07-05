@@ -44,7 +44,7 @@ public class UI_AddRotatePanel : UIPanelBase
     }
     void AddRotateGold()
     {
-        float[] _pos = new float[] { UIMgr.Inst.RotateGoldAddPos.x, UIMgr.Inst.RotateGoldAddPos.y };
+        float[] _pos = new float[] { MainC.Inst.RotateGoldAddPos.x, MainC.Inst.RotateGoldAddPos.y };
         SendEventMgr.GSendMsg((ushort)UISwTextEffectListenID.SwEffect, _pos, "+2");
         SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);
     }

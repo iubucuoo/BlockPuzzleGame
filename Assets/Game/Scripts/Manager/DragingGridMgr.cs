@@ -25,9 +25,11 @@ public class DragingGridMgr
     public GridGroup_Prep prepData { get; private set; }
 
     Transform ChildParent;
-    public void SetDrag(Transform dr)
+    UI_GamePanelJob gamepaneljob;
+    public void SetInit(Transform dr, UI_GamePanelJob ui)
     {
         DragRoot = dr;
+        gamepaneljob = ui;
         ChildParent = DragRoot.GetChild(0);
     }
     public void AddDragGroup(GridGroup_Prep v)
@@ -36,9 +38,9 @@ public class DragingGridMgr
     }
    Vector2 GetToPos()
     {
-        if (UIMgr.Inst.GetLocalPoint_Canv(out Vector2 pos))
+        if (gamepaneljob.GetLocalPoint_Canv(out Vector2 pos))
         {
-            return pos + UIMgr.DragUp;//拖动位置用来显示
+            return pos + MainC.DragUp;//拖动位置用来显示
         }
         return GameGloab.OutScreenV2;
     }

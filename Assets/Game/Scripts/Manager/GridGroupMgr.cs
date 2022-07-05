@@ -42,6 +42,8 @@ public class GridGroupMgr : MonoBehaviour
     List<int[,]> list3;
     int[,] MainGroup;
     PrepAddGridGroup[] PrepGroup = new PrepAddGridGroup[3];
+    public Transform ADDROOT;
+    public Transform BGROOT;
     public static GridGroupMgr Inst;
     private void Awake()
     {
@@ -64,29 +66,29 @@ public class GridGroupMgr : MonoBehaviour
         };
         Postox  = new Dictionary<int, int>()
         {
-            [UIMgr.wh_2 * -9] = 0,
-            [UIMgr.wh_2 * -7] = 1,
-            [UIMgr.wh_2 * -5] = 2,
-            [UIMgr.wh_2 * -3] = 3,
-            [UIMgr.wh_2 * -1] = 4,
-            [UIMgr.wh_2 * 1] = 5,
-            [UIMgr.wh_2 * 3] = 6,
-            [UIMgr.wh_2 * 5] = 7,
-            [UIMgr.wh_2 * 7] = 8,
-            [UIMgr.wh_2 * 9] = 9,
+            [MainC.wh_2 * -9] = 0,
+            [MainC.wh_2 * -7] = 1,
+            [MainC.wh_2 * -5] = 2,
+            [MainC.wh_2 * -3] = 3,
+            [MainC.wh_2 * -1] = 4,
+            [MainC.wh_2 * 1] = 5,
+            [MainC.wh_2 * 3] = 6,
+            [MainC.wh_2 * 5] = 7,
+            [MainC.wh_2 * 7] = 8,
+            [MainC.wh_2 * 9] = 9,
         };
         Postoy = new Dictionary<int, int>()
         {
-            [UIMgr.wh_2 * -9] = 9,
-            [UIMgr.wh_2 * -7] = 8,
-            [UIMgr.wh_2 * -5] = 7,
-            [UIMgr.wh_2 * -3] = 6,
-            [UIMgr.wh_2 * -1] = 5,
-            [UIMgr.wh_2 * 1] = 4,
-            [UIMgr.wh_2 * 3] = 3,
-            [UIMgr.wh_2 * 5] = 2,
-            [UIMgr.wh_2 * 7] = 1,
-            [UIMgr.wh_2 * 9] = 0,
+            [MainC.wh_2 * -9] = 9,
+            [MainC.wh_2 * -7] = 8,
+            [MainC.wh_2 * -5] = 7,
+            [MainC.wh_2 * -3] = 6,
+            [MainC.wh_2 * -1] = 5,
+            [MainC.wh_2 * 1] = 4,
+            [MainC.wh_2 * 3] = 3,
+            [MainC.wh_2 * 5] = 2,
+            [MainC.wh_2 * 7] = 1,
+            [MainC.wh_2 * 9] = 0,
         };
         list1 = new List<int[,]>
         {
@@ -267,7 +269,7 @@ public class GridGroupMgr : MonoBehaviour
             gridGroup_Ground = null;
         }
         gridGroup_Ground = PoolMgr.Allocate(IPoolsType.GridGroup_Ground) as GridGroup_Ground;
-        gridGroup_Ground.SetData(MainGroup, UIMgr.Inst.BGROOT);
+        gridGroup_Ground.SetData(MainGroup, BGROOT);
         gridGroup_Ground.CreatGrids();
         RefreshPrepGridGroup();
       
@@ -282,9 +284,9 @@ public class GridGroupMgr : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            Vector2 pos = new Vector2((i - 1) * (6* UIMgr.wh_2), 0);
-            var obj = ObjectMgr.InstantiateGameObj(ObjectMgr.LoadResource("Prefab/addgridbg") as GameObject);
-            obj.transform.SetParent(UIMgr.Inst.ADDROOT);
+            Vector2 pos = new Vector2((i - 1) * (6* MainC.wh_2), 0);
+            var obj = ObjectMgr.InsResource("Prefab/addgridbg");
+            obj.transform.SetParent(ADDROOT);
             obj.transform.localPosition = pos;
             obj.transform.localScale = Vector2.one;
 #if UNITY_EDITOR
@@ -496,7 +498,7 @@ public class GridGroupMgr : MonoBehaviour
                 SendEventMgr.GSendMsg((ushort)CaneraShakeListenID.Shake);
             }
             //播放声音
-            int lv = UIMgr.Inst.ContinuousBoom ++;
+            int lv = MainC.Inst.ContinuousBoom ++;
             AudioMgr.Inst.PlayBoom(lv);
             if (lv > 1 && lv > addscore)
             {
@@ -510,7 +512,7 @@ public class GridGroupMgr : MonoBehaviour
         }
         else
         {
-            UIMgr.Inst.ContinuousBoom = 0;
+            MainC.Inst.ContinuousBoom = 0;
         }
         if (swaddscore>0)
         {
@@ -546,9 +548,9 @@ public class GridGroupMgr : MonoBehaviour
         var gdata = DragingGridMgr.Inst.prepData;
         var alldata = gridGroup_Ground;
         if (M_math.Even(gdata.H_count))
-            pos.y += UIMgr.wh_2;
+            pos.y += MainC.wh_2;
         if (M_math.Even(gdata.W_count))
-            pos.x -= UIMgr.wh_2;
+            pos.x -= MainC.wh_2;
 
         //根据 pos 计算出 i j 对应的grid
         int w = OutGridPos(pos.x);
@@ -692,14 +694,14 @@ public class GridGroupMgr : MonoBehaviour
         //30倍数   -9    -7    -5   -3   -1    1   3     5     7     9
         //        0       1     2    3    4    5    6    7    8      9   
         // 坐标数除30 得到奇数向下取整  偶数向上取整
-        float num = index / UIMgr.wh_2;//30倍数
+        float num = index / MainC.wh_2;//30倍数
         int p_n = num > 0 ? 1 : -1;//正负值
         float num_abs = M_math.Abs(num);
         int endind = 0;
         if (M_math.Even((int)num_abs))
-            endind = (int)(UIMgr.wh_2 * p_n * Math.Ceiling(num_abs));//向上取整
+            endind = (int)(MainC.wh_2 * p_n * Math.Ceiling(num_abs));//向上取整
         else
-            endind = (int)(UIMgr.wh_2 * p_n * (float)Math.Floor(num_abs));//向下取整
+            endind = (int)(MainC.wh_2 * p_n * (float)Math.Floor(num_abs));//向下取整
         return endind;
         //if (M_math.Abs(endind - index) < (GameGloab.wh_2 - 2))//一个格子半径30  28聊胜于无
         //    return endind;

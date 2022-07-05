@@ -6,8 +6,8 @@ public class GridGroup_Prep : GridGroup
 {
     public GridGroup_Prep()
     {
-        G_width = UIMgr._width;
-        G_height = UIMgr._height;
+        G_width = MainC._width;
+        G_height = MainC._height;
         ResName = "Prefab/blockdrag";//拖动出来的格子
     }
 

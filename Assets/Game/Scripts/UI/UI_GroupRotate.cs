@@ -14,7 +14,7 @@ public class UI_GroupRotate : UIEventListenBase
     // Start is called before the first frame update
     void Start()
     {
-        UIMgr.Inst.RotateGoldAddPos = GoldNum.transform.position;
+        MainC.Inst.RotateGoldAddPos = GoldNum.transform.position;
         AddRotateImg();
         //GameGloab.GoldCount=0;
         AddRotateGoldCount(0);
@@ -73,7 +73,7 @@ public class UI_GroupRotate : UIEventListenBase
     {
         //还原待用的组的旋转
         GridGroupMgr.Inst.BackRotate();
-        UIMgr.Inst.IsRotateState = v;
+        MainC.Inst.IsRotateState = v;
         SWRotates(v);
        
     }
@@ -106,8 +106,8 @@ public class UI_GroupRotate : UIEventListenBase
     {
         for (int i = 0; i < 3; i++)
         {
-            Vector2 pos = new Vector2((i - 1) * (6 * UIMgr.wh_2), 0);
-            var obj = ObjectMgr.InstantiateGameObj(ObjectMgr.LoadResource("Prefab/addrotateimg") as GameObject);
+            Vector2 pos = new Vector2((i - 1) * (6 * MainC.wh_2), 0);
+            var obj = ObjectMgr.InsResource("Prefab/addrotateimg");
             obj.transform.SetParent(transform);
             obj.transform.localPosition = pos;
             obj.transform.localScale = Vector2.one;

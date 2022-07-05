@@ -13,7 +13,13 @@ public enum IPoolsType
     GridDataDef,
     GridDataPrep,
 
-    Class16,
+    UI_StartPanel,
+    UI_AddRotatePanel,
+    UI_GameOverPanel,
+    UI_GamePanel,
+    UI_SetPanel,
+
+
     Message,
     MessageBase,
 }

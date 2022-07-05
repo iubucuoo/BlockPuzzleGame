@@ -47,3 +47,32 @@ public enum CaneraShakeListenID : ushort
     Shake,
     Max,
 }
+
+public enum SetPanelListenID : ushort
+{
+    Min = CaneraShakeListenID.Max + 1,
+    Open,
+    Hide,
+    Close,
+    Max,
+}
+public enum StartPanelListenID : ushort
+{
+    Min = SetPanelListenID.Max + 1,
+    Open,
+    Hide,
+    Close,
+    Max,
+}
+public enum GamePanelListenID : ushort
+{
+    Min = StartPanelListenID.Max + 1,
+    Open,
+    Hide,
+    Close,
+    Test1,
+    Test2,
+    Test3,
+    Test4,
+    Max,
+}

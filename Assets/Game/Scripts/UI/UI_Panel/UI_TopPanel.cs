@@ -65,7 +65,7 @@ public class UI_TopPanel : UIEventListenBase
             GameGloab.Topscore = nownum;
             ResetTopScore();
         }
-        UIMgr.Inst.IsTopScore = IsTopScore();
+        MainC.Inst.IsTopScore = IsTopScore();
     }
 
     void WriteTopScore()
@@ -75,12 +75,12 @@ public class UI_TopPanel : UIEventListenBase
     void SetNowNum(int v)
     {
         nownum = v;
-        UIMgr.Inst.IsTopScore = IsTopScore();
+        MainC.Inst.IsTopScore = IsTopScore();
     }
     void SetNowGameTop(int v)
     {
         nowgametop = v;
-        UIMgr.Inst.IsTopScore = IsTopScore();
+        MainC.Inst.IsTopScore = IsTopScore();
     }
     bool IsTopScore()
     {

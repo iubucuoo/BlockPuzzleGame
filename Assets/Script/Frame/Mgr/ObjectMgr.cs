@@ -34,13 +34,13 @@ public class ObjectMgr
         return newobj;
     }
 
-    public static Object LoadResource(string path)
+    public static T LoadResource<T>(string path) where T : Object
     {
         //#if _CHECK_OPTIMIZE
         //		System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
         //		stopwatch.Start();
         //#endif
-        var obj = ResourceMgr.Inst.LoadRes<GameObject>(path);
+        var obj = ResourceMgr.Inst.LoadRes<T>(path);
         //var obj = Resources.Load(path);
 //#if _CHECK_OPTIMIZE
 //		stopwatch.Stop();
@@ -49,7 +49,10 @@ public class ObjectMgr
 //#endif
         return obj;
     }
-
+    public static GameObject InsResource(string path)
+    {
+       return InstantiateGameObj(LoadResource<GameObject>(path));
+    }
 //    public static Object LoadMainAssetAtPath(string path)
 //    {
 //#if UNITY_EDITOR

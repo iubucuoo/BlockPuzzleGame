@@ -10,9 +10,9 @@ public class UIPanelSwitch: UIEventListenBase
     // Start is called before the first frame update
     void Start()
     {
-        UI_GameOverPanel =UIMgr.Inst.UIRoot.Find("gameoverPanel").GetComponent<UI_GameOverPanel>();
-        UI_SetPanel = UIMgr.Inst.UIRoot.Find("SetPanel").GetComponent<UI_SetPanel>();
-        UI_AddRotatePanel = UIMgr.Inst.UIRoot.Find("AddRotatePanel").GetComponent<UI_AddRotatePanel>();
+        //UI_GameOverPanel =UIMgr.Inst.UIRoot.Find("gameoverPanel").GetComponent<UI_GameOverPanel>();
+        //UI_SetPanel = UIMgr.Inst.UIRoot.Find("SetPanel").GetComponent<UI_SetPanel>();
+        //UI_AddRotatePanel = UIMgr.Inst.UIRoot.Find("AddRotatePanel").GetComponent<UI_AddRotatePanel>();
     }
 
     public override void InitEventListen()

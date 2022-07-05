@@ -15,7 +15,7 @@ public class UI_GameOverPanel : UIPanelBase
 
     void ShowFinish()
     {
-        bool isnewrecord = UIMgr.Inst.IsTopScore;
+        bool isnewrecord = MainC.Inst.IsTopScore;
         gameover.SetActive(!isnewrecord);
         newrecord.SetActive(isnewrecord);
         if (isnewrecord)
