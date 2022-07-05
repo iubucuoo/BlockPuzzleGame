@@ -1,50 +1,50 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class UI_GameOverPanel : UIPanelBase
+public class UI_GameOverPanel : UIBase, IPoolable
 {
-    public GameObject gameover;
-    public GameObject newrecord;
-    public Text newrecordtxt;
-    public Button btnRefresh;
+    public override string WndName => IPoolsType.UI_GameOverPanel.ToString();
+
+    public override UIHideType hideType => UIHideType.WaitDestroy;
+
+    public override UIHideFunc hideFunc => UIHideFunc.MoveOutOfScreen;
+
+    public override int layer { get => (int)UILayer.Panel; set => layer = value; }
+
+    public override bool isFull => false;
+
+    public IPoolsType GroupType => IPoolsType.UI_GameOverPanel;
+
+    public bool IsRecycled { get ; set; }
+
+    public void OnRecycled()
+    {
+       
+    }
+    UI_GameOverPanelJob paneljob;
+    public override void OnCreate()
+    {
+        paneljob = AddMissingCom<UI_GameOverPanelJob>();
+
+    }
+    public override void OnShow()
+    {
+        paneljob.ShowGameOver();
+    }
+    public override void UnRegistEvents()
+    {
+        paneljob.UnRegistEvents();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        btnRefresh.onClick.AddListener(OnBtnRefresh);
+        
     }
 
-    void ShowFinish()
+    // Update is called once per frame
+    void Update()
     {
-        bool isnewrecord = MainC.Inst.IsTopScore;
-        gameover.SetActive(!isnewrecord);
-        newrecord.SetActive(isnewrecord);
-        if (isnewrecord)
-        {
-            SendEventMgr.GSendMsg((ushort)UITopPanelListenID.WriteTopScore);
-            AudioMgr.Inst.PlayNewRecord();//播放 新记录音乐UI
-            newrecordtxt.text = GameGloab.Topscore.ToString();
-        }
-        else
-        {
-            AudioMgr.Inst.PlayGameOver();
-        }
-    }
-    public void ShowGameOver()
-    {
-        //先来一个屏幕变暗动作 跳出没有可放的位置
-        //再弹出游戏结束面板
-        ShowBoxY(ShowFinish);       
-    }
-    public override void HideFinish()
-    {
-        gameover.SetActive(false);
-        newrecord.SetActive(false);
-        base.HideFinish();
-    }
-    private void OnBtnRefresh()
-    {
-        AudioMgr.Inst.ButtonClick();
-        HideFinish();
-        GoogleAdMgr.Inst.SWAd(RefreshGame);
+        
     }
 }

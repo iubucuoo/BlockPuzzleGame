@@ -37,7 +37,7 @@ public class UIPanelSwitch: UIEventListenBase
                 UI_AddRotatePanel.ShowBoxX();
                 break;
             case (ushort)UIMainListenID.SwPanel_GameOver:
-                UI_GameOverPanel.ShowGameOver();
+                //UI_GameOverPanel.ShowGameOver();
                 break;
             default:
                 break;

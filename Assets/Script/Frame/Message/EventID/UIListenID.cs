@@ -67,8 +67,16 @@ public enum StartPanelListenID : ushort
 public enum GamePanelListenID : ushort
 {
     Min = StartPanelListenID.Max + 1,
-    Open,
-    Hide,
+    Close,
+    Test1,
+    Test2,
+    Test3,
+    Test4,
+    Max,
+}
+public enum GameOverPanelListenID : ushort
+{
+    Min = GamePanelListenID.Max + 1,
     Close,
     Test1,
     Test2,
