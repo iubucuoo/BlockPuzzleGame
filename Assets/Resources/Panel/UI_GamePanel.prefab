@@ -610,7 +610,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2836595395649687545}
-  - component: {fileID: 2836595395649687544}
   m_Layer: 5
   m_Name: PanelTop
   m_TagString: Untagged
@@ -640,23 +639,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -144}
   m_SizeDelta: {x: 1080, y: 288}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2836595395649687544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2836595395649687542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75f20e236f0e994bb78f161b4eb36a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messageIds: 
-  strtopnum: {fileID: 2836595396115447360}
-  strnownum: {fileID: 2836595396003511798}
-  setbtn: {fileID: 2836595396297170651}
-  nownum: 0
 --- !u!1 &2836595395953003233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,7 +1724,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2836595396636626501}
-  - component: {fileID: 2836595396636626500}
   m_Layer: 5
   m_Name: ROTATEROOT
   m_TagString: Untagged
@@ -1769,22 +1750,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.5, y: -560.5}
   m_SizeDelta: {x: 823, y: 263}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2836595396636626500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2836595396636626498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90d28fb4be58f9146b577096bdd6f8d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messageIds: 
-  RotateBnt: {fileID: 2836595396048170306}
-  GoldNum: {fileID: 2836595396322749370}
-  BtnAddGlog: {fileID: 2836595395953003235}
 --- !u!1 &2836595396640631963
 GameObject:
   m_ObjectHideFlags: 0

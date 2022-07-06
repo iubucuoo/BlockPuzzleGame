@@ -15,7 +15,7 @@ public class UI_GameOverPanel : UIBase, IPoolable
     public override bool isFull => false;
 
     public IPoolsType GroupType => IPoolsType.UI_GameOverPanel;
-
+    public override int orderInLayer { get => 10; set => orderInLayer = value; }
     public bool IsRecycled { get ; set; }
 
     public void OnRecycled()
@@ -34,7 +34,6 @@ public class UI_GameOverPanel : UIBase, IPoolable
     }
     public override void UnRegistEvents()
     {
-        paneljob.UnRegistEvents();
     }
     // Start is called before the first frame update
     void Start()

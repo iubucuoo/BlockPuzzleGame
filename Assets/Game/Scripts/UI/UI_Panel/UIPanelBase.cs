@@ -10,10 +10,7 @@ public class UIPanelBase : UIEventListenBase
     float _x = 1480;
     float swtime = .3f;
     float hidetime = .2f;
-    public virtual void InitBox()
-    {
 
-    }
     public void RefreshGame()
     {
         SendEventMgr.GSendMsg((ushort)UITopPanelListenID.ResetTop);
@@ -50,10 +47,9 @@ public class UIPanelBase : UIEventListenBase
             transform.DOLocalMoveX(0, swtime).SetEase(Ease.OutBack);
         }
     }
-
     public virtual void HideFinish()
     {
-        gameObject.SetActive(false);
+       
     }
     public virtual void HideBox()
     {

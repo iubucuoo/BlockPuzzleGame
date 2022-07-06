@@ -1,26 +1,32 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_TopPanel : UIEventListenBase
+public class UI_GamePanel_Top 
 {
-    public Text strtopnum;
-    public Text strnownum;
-    public Button setbtn;
+    Text strtopnum;
+    Text strnownum;
+    Button setbtn;
     public int nownum = 0;
     int nowgametop;
-    // Start is called before the first frame update
-    void Start()
+    Transform Wnd;
+
+    int swnum = 0;
+    public UI_GamePanel_Top(Transform wnd)
     {
+        Wnd = wnd;
+        strtopnum = wnd.Find("top/Text").GetComponent<Text>();
+        strnownum = wnd.Find("now/Text").GetComponent<Text>();
+        setbtn = wnd.Find("SetBtn").GetComponent<Button>();
+
         SetNowGameTop(GameGloab.Topscore);//初始化top
         setbtn.onClick.AddListener(OnBtnSwSetPanel);
         ResetTop();
     }
     float speet = .05f;
     float timer = .05f;
-    private void Update()
+    public void Update()
     {
         timer -= Time.deltaTime;
         if (timer < 0 && swnum < nownum)
@@ -29,20 +35,17 @@ public class UI_TopPanel : UIEventListenBase
             timer = speet;
         }
     }
-    int swnum = 0;
     void SWScore()
     {
         swnum++;
         strnownum.text = swnum.ToString();
     }
-
     private void OnBtnSwSetPanel()
     {
         AudioMgr.Inst.ButtonClick();
-        SendEventMgr.GSendMsg((ushort)UIMainListenID.SwPanel_Set);
+        AllUIPanelManager.Inst.Show(IPoolsType.UI_SetPanel);
     }
-
-    void ResetTop()
+    public void ResetTop()
     {
         ResetTopScore();
         ResetNowScore();
@@ -57,7 +60,7 @@ public class UI_TopPanel : UIEventListenBase
         swnum = 0;
         strnownum.text = "0";
     }
-    void SetNowScore(int score)
+    public void SetNowScore(int score)
     {
         SetNowNum(nownum + score);
         if (nownum > GameGloab.Topscore)
@@ -67,8 +70,7 @@ public class UI_TopPanel : UIEventListenBase
         }
         MainC.Inst.IsTopScore = IsTopScore();
     }
-
-    void WriteTopScore()
+    public void WriteTopScore()
     {
         SetNowGameTop(nownum);
     }
@@ -89,36 +91,5 @@ public class UI_TopPanel : UIEventListenBase
             return true;
         }
         return false;
-    }
-
-    public override void ProcessEvent(MessageBase tmpMsg)
-    {
-        switch (tmpMsg.messageId)
-        {
-            case (ushort)UITopPanelListenID.SetNowScore:
-                Message msg = (Message)tmpMsg;
-                SetNowScore(msg.num);
-                break;
-            case (ushort)UITopPanelListenID.ResetTop:
-                ResetTop();
-                break;
-            case (ushort)UITopPanelListenID.WriteTopScore:
-                WriteTopScore();
-                break;
-            default:
-                break;
-        }
-        base.ProcessEvent(tmpMsg);
-    }
-
-    public override void InitEventListen()
-    {
-        messageIds = new ushort[]
-        {
-            (ushort)UITopPanelListenID.SetNowScore,
-            (ushort)UITopPanelListenID.WriteTopScore,
-            (ushort)UITopPanelListenID.ResetTop,
-        };
-        RegistEventListen(this, messageIds);
     }
 }

@@ -1,35 +1,41 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_GroupRotate : UIEventListenBase
+public class UI_GamePanel_GroupRotate
 {
     public Toggle RotateBnt;
     public Text GoldNum;
     public Button BtnAddGlog;
     List<GameObject> RotateImgs = new List<GameObject>();
     TimeEvent TE;
-    // Start is called before the first frame update
-    void Start()
+    UI_GamePanelJob paneljob;
+    public UI_GamePanel_GroupRotate(Transform wnd, UI_GamePanelJob job)
     {
+        paneljob = job;
+        var BtnAddRotate = wnd.Find("BtnAddRotate");
+        BtnAddGlog = BtnAddRotate.GetComponent<Button>();
+        GoldNum = BtnAddRotate.Find("Text").GetComponent<Text>();
+        RotateBnt = wnd.Find("rotateBtn").GetComponent<Toggle>();
+
+
         MainC.Inst.RotateGoldAddPos = GoldNum.transform.position;
         AddRotateImg();
         //GameGloab.GoldCount=0;
-        AddRotateGoldCount(0);
+        AddRotateGoldCount();
         ChangeRotate(false);
         RotateBnt.onValueChanged.AddListener(ChangeRotate);
         BtnAddGlog.onClick.AddListener(OpenAddRotatePanel);
     }
-
+ 
     private void OpenAddRotatePanel()
     {
         AudioMgr.Inst.ButtonClick();
-        SendEventMgr.GSendMsg((ushort)UIMainListenID.SwPanel_AddRotate);
+        AllUIPanelManager.Inst.Show(IPoolsType.UI_AddRotatePanel);
     }
 
-    void AddRotateGoldCount(int v=0)
+    public void AddRotateGoldCount(int v = 0)
     {
         GameGloab.GoldCount += v;
         GoldNum.text = GameGloab.GoldCount.ToString();
@@ -38,7 +44,7 @@ public class UI_GroupRotate : UIEventListenBase
             OffChangeRotate();
         }
     }
-    void OffChangeRotate()
+    public void OffChangeRotate()
     {
         RotateBnt.isOn = false;
     }
@@ -46,11 +52,11 @@ public class UI_GroupRotate : UIEventListenBase
     {
         if (arg0)
         {
-            if (GameGloab.GoldCount<=0)
+            if (GameGloab.GoldCount <= 0)
             {
                 DebugMgr.LogError("金币不足不能开启");
                 //RotateBnt.SetIsOnWithoutNotify(false);
-                
+
                 RotateBnt.isOn = false;
                 OpenAddRotatePanel();
             }
@@ -75,7 +81,7 @@ public class UI_GroupRotate : UIEventListenBase
         GridGroupMgr.Inst.BackRotate();
         MainC.Inst.IsRotateState = v;
         SWRotates(v);
-       
+
     }
     void SWRotates(bool v)
     {
@@ -91,13 +97,13 @@ public class UI_GroupRotate : UIEventListenBase
             }
         }
     }
-    void SWRotate(int i,bool v)
+    public void SWRotate(int i, bool v)
     {
-        if (RotateImgs[i]!=null)
+        if (RotateImgs[i] != null)
         {
             if (v)
             {
-                RotateImgs[i].transform.eulerAngles=rotatenum; //开始旋转
+                RotateImgs[i].transform.eulerAngles = rotatenum; //开始旋转
             }
             RotateImgs[i].SetActive(v);
         }
@@ -108,10 +114,10 @@ public class UI_GroupRotate : UIEventListenBase
         {
             Vector2 pos = new Vector2((i - 1) * (6 * MainC.wh_2), 0);
             var obj = ObjectMgr.InsResource("Prefab/addrotateimg");
-            obj.transform.SetParent(transform);
+            obj.transform.SetParent(paneljob.ROTATEROOT);
             obj.transform.localPosition = pos;
             obj.transform.localScale = Vector2.one;
-            RotateImgs.Add( obj);
+            RotateImgs.Add(obj);
         }
         SWRotates(false);
         TE = TimeMgr.Instance.AddIntervelEvent(TimeCheck, 60, 0, -1);
@@ -124,7 +130,7 @@ public class UI_GroupRotate : UIEventListenBase
             return;
         }
         rotatenum.z--;
-        if (rotatenum.z<=-180)
+        if (rotatenum.z <= -180)
         {
             rotatenum.z = 0;
         }
@@ -133,41 +139,14 @@ public class UI_GroupRotate : UIEventListenBase
             var obj = RotateImgs[i];
             if (obj && obj.activeInHierarchy)
             {
-                obj.transform.eulerAngles =rotatenum;
+                obj.transform.eulerAngles = rotatenum;
             }
         }
     }
 
-    public override void InitEventListen()
+    // Update is called once per frame
+    void Update()
     {
-        messageIds = new ushort[]
-       {
-            (ushort)UIGroupRotateListenID.OffRotate,
-            (ushort)UIGroupRotateListenID.SwOne,
-            (ushort)UIGroupRotateListenID.HideOne,
-            (ushort)UIGroupRotateListenID.AddRotateGold,
-       };
-        RegistEventListen(this, messageIds);
-    }
-    public override void ProcessEvent(MessageBase tmpMsg)
-    {
-        switch (tmpMsg.messageId)
-        {
-            case (ushort)UIGroupRotateListenID.OffRotate:
-                OffChangeRotate();//关闭
-                break;
-            case (ushort)UIGroupRotateListenID.HideOne:
-                SWRotate(((Message)tmpMsg).num, false);
-                break;
-            case (ushort)UIGroupRotateListenID.SwOne:
-                SWRotate(((Message)tmpMsg).num, true);
-                break;
-            case (ushort)UIGroupRotateListenID.AddRotateGold:
-                AddRotateGoldCount(((Message)tmpMsg).num);
-                break;
-            default:
-                break;
-        }
-        base.ProcessEvent(tmpMsg);
+        
     }
 }

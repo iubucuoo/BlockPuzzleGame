@@ -18,6 +18,7 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
         if (name2UI.ContainsKey(_name))
         {
             ui = name2UI[_name];
+            //DebugMgr.LogError(_name + "     " + ui.visible);
             if (ui.visible)
                 return ui;
         }
@@ -26,6 +27,7 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
             ui = GetUIClass(pooltype);
             name2UI[_name] = ui;
         }
+        //DebugMgr.LogError(_name + "  show   ");
         ui.Show();
         ShowFullPanel(ui, pooltype);
         return ui;

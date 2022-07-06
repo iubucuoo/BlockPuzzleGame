@@ -11,22 +11,22 @@ public abstract class UIBase
     public abstract UIHideFunc hideFunc { get;}
     public abstract int layer { get; set; }
     public abstract bool isFull { get; }
-    int orderInLayer = 0;
+    public virtual int orderInLayer { get; set; }
     public bool visible = false;
     bool loaded = false;
     //bool bBaseUI = true;
     public GameObject WndRoot { get; private set; }
 
     Transform parent;
-    private float rootSavedX;
-    private float rootSavedY;
+    private float rootSavedX = -100;
+    private float rootSavedY = -100;
     void SetUIVisible(bool _visible)
     {
         if (hideFunc == UIHideFunc.MoveOutOfScreen)
         {
             if (visible)
             {
-                if (rootSavedX!=0 && rootSavedY!=0)
+                if (rootSavedX!= -100 && rootSavedY!= -100)
                 {
                     WndRoot.GetComponent<RectTransform>().anchoredPosition = new Vector2(rootSavedX, rootSavedY);
                 }
@@ -60,6 +60,7 @@ public abstract class UIBase
             }
             if (loaded)
             {
+                //DebugMgr.LogError(WndName + "  SetUIVisible   ");
                 SetUIVisible(true);
                 DoShow();
             }

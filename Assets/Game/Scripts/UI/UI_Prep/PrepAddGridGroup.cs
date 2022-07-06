@@ -87,7 +87,7 @@ public class PrepAddGridGroup : MonoBehaviour
         if (!GridGroupMgr.Inst.IsCanPrepNext())
         {
             DebugMgr.LogError("游戏结束");
-            SendEventMgr.GSendMsg((ushort)UIMainListenID.SwPanel_GameOver);
+            AllUIPanelManager.Inst.Show(IPoolsType.UI_GameOverPanel);
         }
     }
     public void SetGridData(GridGroup_MinPrep v)
