@@ -139,6 +139,7 @@ public class UI_GamePanelJob : UIEventListenBase
             (ushort)UITopPanelListenID.WriteTopScore,
             (ushort)UITopPanelListenID.SetNowScore,
 
+            (ushort)UIMainListenID.AdAndRefreshGame,
             (ushort)UIGroupRotateListenID.OffRotate,
             (ushort)UIGroupRotateListenID.SwOne,
             (ushort)UIGroupRotateListenID.HideOne,
@@ -170,6 +171,9 @@ public class UI_GamePanelJob : UIEventListenBase
             case (ushort)GamePanelListenID.Test4:
                 DebugMgr.LogError("----Test4----");
                 break;
+            case (ushort)UIMainListenID.AdAndRefreshGame:
+                GoogleAdMgr.Inst.SWAd(RefreshGame);
+                break;
             case (ushort)UITopPanelListenID.ResetTop:
                 toppanel.ResetTop();
                 break;
@@ -195,6 +199,12 @@ public class UI_GamePanelJob : UIEventListenBase
             default:
                 break;
         }
+    }
+    void RefreshGame()
+    {
+        toppanel.ResetTop();
+        GridGroupMgr.Inst.GameReset();//重新启动游戏
+        AudioMgr.Inst.PlayGameOpen();
     }
     public void UnRegistEvents()
     {

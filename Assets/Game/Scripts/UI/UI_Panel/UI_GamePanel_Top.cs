@@ -86,10 +86,6 @@ public class UI_GamePanel_Top
     }
     bool IsTopScore()
     {
-        if (nownum > nowgametop)
-        {
-            return true;
-        }
-        return false;
+        return nownum > nowgametop;
     }
 }

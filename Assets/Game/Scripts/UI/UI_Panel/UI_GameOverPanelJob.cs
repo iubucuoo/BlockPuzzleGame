@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_GameOverPanelJob : UIPanelBase
+public class UI_GameOverPanelJob : UIEventListenBase
 {
     GameObject gameover;
     GameObject newrecord;
@@ -39,17 +39,13 @@ public class UI_GameOverPanelJob : UIPanelBase
         //再弹出游戏结束面板
         //ShowBoxY(ShowFinish);       
     }
-    public override void HideFinish()
-    {
-        gameover.SetActive(false);
-        newrecord.SetActive(false);
-        AllUIPanelManager.Inst.Hide(IPoolsType.UI_GameOverPanel);
-    }
     private void OnBtnRefresh()
     {
         AudioMgr.Inst.ButtonClick();
-        HideFinish();
-        GoogleAdMgr.Inst.SWAd(RefreshGame);
+        gameover.SetActive(false);
+        newrecord.SetActive(false);
+        AllUIPanelManager.Inst.Hide(IPoolsType.UI_GameOverPanel);
+        SendEventMgr.GSendMsg((ushort)UIMainListenID.AdAndRefreshGame);
     }
        
 }

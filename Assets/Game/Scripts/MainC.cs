@@ -28,13 +28,11 @@ public class MainC : MonoBehaviour
     public bool IsRotateState { get; set; }
     public Vector3 RotateGoldAddPos { get; set; }
 
-    public int ContinuousBoom = 0;//连续爆炸
     public Dictionary<string, Sprite> Sprites;
 
 
-    public channles channle_info;
-    private float rootSavedX;
-    private float rootSavedY;
+    channles channle_info;
+
     public static MainC Inst;
     private void Awake()
     {

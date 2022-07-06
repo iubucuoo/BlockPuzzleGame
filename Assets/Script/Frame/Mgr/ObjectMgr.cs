@@ -21,33 +21,12 @@ public class ObjectMgr
 
     public static GameObject InstantiateGameObj(GameObject obj)
     {
-//#if _CHECK_OPTIMIZE
-//		System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-//		stopwatch.Start();
-//#endif
-        var newobj = GameObject.Instantiate(obj);
-//#if _CHECK_OPTIMIZE
-//		stopwatch.Stop();
-//		if (stopwatch.ElapsedMilliseconds > 5)
-//			if(DebugMgr.CanLog()) DebugMgr.Log(string.Format("InstantiateGameObj {0} costtime = {1}", obj.name, stopwatch.ElapsedMilliseconds));
-//#endif
-        return newobj;
+        return Object.Instantiate(obj);
     }
 
     public static T LoadResource<T>(string path) where T : Object
     {
-        //#if _CHECK_OPTIMIZE
-        //		System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-        //		stopwatch.Start();
-        //#endif
-        var obj = ResourceMgr.Inst.LoadRes<T>(path);
-        //var obj = Resources.Load(path);
-//#if _CHECK_OPTIMIZE
-//		stopwatch.Stop();
-//		if (stopwatch.ElapsedMilliseconds > 5)
-//			if(DebugMgr.CanLog()) DebugMgr.Log(string.Format("LoadResource {0} costtime = {1}", obj.name, stopwatch.ElapsedMilliseconds));
-//#endif
-        return obj;
+        return ResourceMgr.Inst.LoadRes<T>(path);
     }
     public static GameObject InsResource(string path)
     {

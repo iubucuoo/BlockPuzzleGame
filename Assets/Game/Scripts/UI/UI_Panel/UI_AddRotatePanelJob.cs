@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_AddRotatePanelJob : UIPanelBase
+public class UI_AddRotatePanelJob : UIEventListenBase
 {
     public Button BtnAd;
     public Button AllBg;
@@ -24,28 +24,26 @@ public class UI_AddRotatePanelJob : UIPanelBase
         AllBg.onClick.AddListener(OnBtnAllBg);
         BtnResetGame.onClick.AddListener(OnBtnResetGame);
     }
-    public override void HideFinish()
-    {
-        DebugMgr.LogError("UI_AddRotatePanel----HideFinish");
-        AllUIPanelManager.Inst.Hide(IPoolsType.UI_AddRotatePanel);
-    }
+
     private void OnBtnResetGame()
     {
-        AudioMgr.Inst.ButtonClick();
-        HideFinish();//弹出广告直接隐藏
-        GoogleAdMgr.Inst.SWAd(RefreshGame);
+        OnBtnHide();//弹出广告直接隐藏
+        SendEventMgr.GSendMsg((ushort)UIMainListenID.AdAndRefreshGame);
     }
     private void OnBtnAllBg()
     {
-        AudioMgr.Inst.ButtonClick();
-        HideFinish();
+        OnBtnHide();
     }
 
     private void OnBtnSwAd()
     {
-        AudioMgr.Inst.ButtonClick();
-        HideFinish();
+        OnBtnHide();
         GoogleAdMgr.Inst.SWAd(AddRotateGold,NoOkAd);
+    }
+    void OnBtnHide()
+    {
+        AudioMgr.Inst.ButtonClick();
+        AllUIPanelManager.Inst.Hide(IPoolsType.UI_AddRotatePanel);
     }
     void NoOkAd()
     {

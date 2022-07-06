@@ -79,8 +79,7 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
     public UIBase Hide(IPoolsType pooltype)
     {
         string _name = pooltype.ToString();
-        UIBase ui;
-        if (name2UI.TryGetValue(_name,out ui))
+        if (name2UI.TryGetValue(_name, out UIBase ui))
         {
             ui.Hide();
             HideFullPanel(ui);

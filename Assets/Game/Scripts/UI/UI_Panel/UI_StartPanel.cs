@@ -22,8 +22,6 @@ public class UI_StartPanel : UIBase,IPoolable
     {
         startbtn.onClick.RemoveListener(OnBtnStart);
         PoolMgr.Recycle(this);
-
-
         DebugMgr.Log("RemoveListener");
     }
     public override void OnCreate()

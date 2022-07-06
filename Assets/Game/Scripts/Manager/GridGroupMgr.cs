@@ -44,6 +44,7 @@ public class GridGroupMgr : MonoBehaviour
     PrepAddGridGroup[] PrepGroup = new PrepAddGridGroup[3];
     public Transform ADDROOT;
     public Transform BGROOT;
+    int ContinuousBoom = 0;//连续爆炸
     public static GridGroupMgr Inst;
     private void Awake()
     {
@@ -498,7 +499,7 @@ public class GridGroupMgr : MonoBehaviour
                 SendEventMgr.GSendMsg((ushort)CaneraShakeListenID.Shake);
             }
             //播放声音
-            int lv = MainC.Inst.ContinuousBoom ++;
+            int lv = ContinuousBoom ++;
             AudioMgr.Inst.PlayBoom(lv);
             if (lv > 1 && lv > addscore)
             {
@@ -512,7 +513,7 @@ public class GridGroupMgr : MonoBehaviour
         }
         else
         {
-            MainC.Inst.ContinuousBoom = 0;
+            ContinuousBoom = 0;
         }
         if (swaddscore>0)
         {

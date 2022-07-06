@@ -2,9 +2,7 @@
 public enum UIMainListenID : ushort
 {
     Min = ManagerID.UIManager + 1,
-    SwPanel_Set,
-    SwPanel_GameOver,
-    SwPanel_AddRotate,
+    AdAndRefreshGame,
     Max,
 }
 
