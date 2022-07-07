@@ -49,7 +49,7 @@ namespace WUtils.Utils
                     {
                         gameObject = new GameObject("MainScripts");
                     }
-                    _instance = gameObject.GetOrCreatComponent<DownloadTools>();
+                    _instance = gameObject.AddMissingComponent<DownloadTools>();
                     _instance.queue = new Queue<DownloadData>();
                 }
                 return _instance;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WUtils;
 
 public class UI_AddRotatePanel : UIBase, IPoolable
 {
@@ -25,7 +26,7 @@ public class UI_AddRotatePanel : UIBase, IPoolable
     UI_AddRotatePanelJob paneljob;
     public override void OnCreate()
     {
-        paneljob = AddMissingCom<UI_AddRotatePanelJob>();
+        paneljob =WndRoot.AddMissingComponent<UI_AddRotatePanelJob>();
 
     }
     public override void OnShow()

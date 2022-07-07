@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WUtils;
 
 public class UI_GameOverPanel : UIBase, IPoolable
 {
@@ -25,7 +26,7 @@ public class UI_GameOverPanel : UIBase, IPoolable
     UI_GameOverPanelJob paneljob;
     public override void OnCreate()
     {
-        paneljob = AddMissingCom<UI_GameOverPanelJob>();
+        paneljob = WndRoot.AddMissingComponent<UI_GameOverPanelJob>();
 
     }
     public override void OnShow()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using WUtils;
 
 public abstract class UIBase
 {
@@ -140,9 +141,9 @@ public abstract class UIBase
             return;
         WndRoot = go;
         CheckParent();
-        canvas = AddMissingCom<Canvas>();
+        canvas = WndRoot.AddMissingComponent<Canvas>();
         canvas.overrideSorting = true;
-        AddMissingCom<GraphicRaycaster>();
+        WndRoot.AddMissingComponent<GraphicRaycaster>();
         RefreshLayer();
         SetUIVisible(visible);
         loaded = true;
@@ -190,14 +191,5 @@ public abstract class UIBase
             orderInLayer = _orderInLayer;
             RefreshLayer();
         }
-    }
-    public T AddMissingCom<T>() where T : Component
-    {
-        T _canvas = WndRoot.GetComponent<T>();
-        if (_canvas == null)
-        {
-            _canvas = WndRoot.AddComponent<T>();
-        }
-        return _canvas;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WUtils;
 
 public class UI_SetPanel : UIBase,IPoolable
 {
@@ -25,7 +26,7 @@ public class UI_SetPanel : UIBase,IPoolable
     UI_SetPanelJob paneljob;
     public override void OnCreate()
     {
-        paneljob = AddMissingCom<UI_SetPanelJob>();
+        paneljob = WndRoot.AddMissingComponent<UI_SetPanelJob>();
 
     }
     public override void OnShow()
