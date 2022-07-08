@@ -162,7 +162,7 @@ public abstract class UIBase: IPoolable
     }
     void Destroy()
     {
-        SetVisible(false);
+        Hide();
         UnRegistEvents();
         OnDestroy_m();
         Object.Destroy(WndRoot);
