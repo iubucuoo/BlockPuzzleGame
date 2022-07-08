@@ -174,7 +174,7 @@ public abstract class UIBase: IPoolable
     {
         if (parent == null)
         {
-            parent = MainC.Inst.UIRoot;
+            parent = UIStatic.UIRoot_Canvas;
         }
         WndRoot.transform.SetParent(parent, false);
     }

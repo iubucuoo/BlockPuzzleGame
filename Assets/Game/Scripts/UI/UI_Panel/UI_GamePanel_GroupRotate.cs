@@ -69,7 +69,7 @@ public class UI_GamePanel_GroupRotate
         {
             SwitchRotateState(false);
         }
-        DebugMgr.Log(RotateBnt.isOn);
+        //DebugMgr.Log(RotateBnt.isOn);
     }
 
     /// <summary>

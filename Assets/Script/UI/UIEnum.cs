@@ -24,5 +24,13 @@ public enum UIHideFunc
 
 public static class UIStatic
 {
+    static UnityEngine.Transform _uiroot;
+    public static UnityEngine.Transform UIRoot_Canvas { get {
+            if (_uiroot==null)
+            {
+                _uiroot = UnityEngine.GameObject.Find("Canvas").transform;
+            }
+            return _uiroot;
+        } }
     public static int WAIT_DESTROY_TIME = 10000;    // 10秒内没使用就销毁
 }

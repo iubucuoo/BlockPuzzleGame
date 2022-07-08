@@ -150,7 +150,7 @@ public class GridData : IPoolable
         IsUse = false;
         if (GridObj)
         {
-            GridObj.transform.SetParent(MainC.Inst.UIRoot);
+            GridObj.transform.SetParent(UIStatic.UIRoot_Canvas);
             GridObj.transform.localEulerAngles = Vector3.zero;
             DefImage.color = Color.white;
             GridObj.SetActive(false);
