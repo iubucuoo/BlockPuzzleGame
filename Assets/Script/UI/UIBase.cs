@@ -4,14 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using WUtils;
 
-public abstract class UIBase
+public abstract class UIBase: IPoolable
 {
     Canvas canvas;
+    public abstract IPoolsType GroupType { get; }
+    public bool IsRecycled { get; set; }
+    public virtual void OnRecycled()
+    {
+         
+    }
     public abstract string WndName{ get; }
-    public abstract UIHideType hideType { get;}
-    public abstract UIHideFunc hideFunc { get;}
-    public abstract int layer { get; set; }
-    public abstract bool isFull { get; }
+    public virtual UIHideType hideType { get { return UIHideType.WaitDestroy; } }
+    public virtual UIHideFunc hideFunc { get { return UIHideFunc.MoveOutOfScreen; } }
+    public virtual int layer { get => (int)UILayer.Panel; set => layer = value; }
+    public virtual bool isFull => false;
     public virtual int orderInLayer { get; set; }
     public bool visible = false;
     bool loaded = false;

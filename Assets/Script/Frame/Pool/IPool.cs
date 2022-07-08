@@ -12,7 +12,7 @@ public enum IPoolsType
     GridDataMin,
     GridDataDef,
     GridDataPrep,
-
+    UIBase,
     UI_StartPanel,
     UI_AddRotatePanel,
     UI_GameOverPanel,

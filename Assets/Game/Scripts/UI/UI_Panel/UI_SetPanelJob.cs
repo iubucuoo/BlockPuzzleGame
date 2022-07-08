@@ -33,8 +33,9 @@ public class UI_SetPanelJob : UIEventListenBase
     }
     private void OnBtnResetGame()
     {
-        OnBtnHide();//弹出广告直接隐藏
         SendEventMgr.GSendMsg((ushort)UIMainListenID.AdAndRefreshGame);
+        //DebugMgr.LogError("OnBtnResetGame");
+        OnBtnHide();//弹出广告直接隐藏
     }
 
     private void OnBtnAllBg()

@@ -16,19 +16,18 @@ public class UI_GamePanelJob : UIEventListenBase
     UI_GamePanel_Top toppanel;
     UI_GamePanel_GroupRotate rotatepanel;
     public Transform ROTATEROOT;
-    private void Awake()
+   
+    private void Start()
     {
         Canvas = GetComponent<Canvas>();
-        CanvasRect=GetComponent<RectTransform>();
+        CanvasRect = GetComponent<RectTransform>();
         BGROOTRect = transform.Find("BGROOT").GetComponent<RectTransform>();
         gameObject.AddComponent<GridGroupMgr>();
         GridGroupMgr.Inst.ADDROOT = transform.Find("ADDROOT");
         GridGroupMgr.Inst.BGROOT = transform.Find("BGROOT");
         ROTATEROOT = transform.Find("ROTATEROOT");
-        DragingGridMgr.Inst.SetInit(transform.Find("DragRoot"),this);
-    }
-    private void Start()
-    {
+        DragingGridMgr.Inst.SetInit(transform.Find("DragRoot"), this);
+
         toppanel = new UI_GamePanel_Top(transform.Find("gamebg/PanelTop"));
         rotatepanel = new UI_GamePanel_GroupRotate(transform.Find("gamebg"),this);
         AudioMgr.Inst.ButtonClick();
@@ -129,18 +128,14 @@ public class UI_GamePanelJob : UIEventListenBase
 
     public override void InitEventListen()
     {
+        //DebugMgr.LogError("----InitEventListen----"  );
         messageIds = new ushort[]
        {
-            (ushort)GamePanelListenID.Test1,
-            (ushort)GamePanelListenID.Test2,
-            (ushort)GamePanelListenID.Test3,
-            (ushort)GamePanelListenID.Test4,
-            (ushort)UITopPanelListenID.ResetTop,
+
             (ushort)UITopPanelListenID.WriteTopScore,
             (ushort)UITopPanelListenID.SetNowScore,
 
             (ushort)UIMainListenID.AdAndRefreshGame,
-            (ushort)UIGroupRotateListenID.OffRotate,
             (ushort)UIGroupRotateListenID.SwOne,
             (ushort)UIGroupRotateListenID.HideOne,
             (ushort)UIGroupRotateListenID.AddRotateGold,
@@ -152,6 +147,7 @@ public class UI_GamePanelJob : UIEventListenBase
 
     public override void ProcessEvent(MessageBase tmpMsg)
     {
+        //DebugMgr.LogError("----messageId----" + tmpMsg.messageId);
         if (gamepanel==null || toppanel == null ||!gamepanel.visible)
         {
             DebugMgr.LogError("startpanel or  toppanel 未显示");
@@ -159,23 +155,9 @@ public class UI_GamePanelJob : UIEventListenBase
         }
         switch (tmpMsg.messageId)
         {
-            case (ushort)GamePanelListenID.Test1:
-                DebugMgr.LogError("----Test1----");
-                break;
-            case (ushort)GamePanelListenID.Test2:
-                DebugMgr.LogError("----Test2----");
-                break;
-            case (ushort)GamePanelListenID.Test3:
-                DebugMgr.LogError("----Test3----");
-                break;
-            case (ushort)GamePanelListenID.Test4:
-                DebugMgr.LogError("----Test4----");
-                break;
             case (ushort)UIMainListenID.AdAndRefreshGame:
+                //DebugMgr.LogError("UIMainListenID.AdAndRefreshGame");
                 GoogleAdMgr.Inst.SWAd(RefreshGame);
-                break;
-            case (ushort)UITopPanelListenID.ResetTop:
-                toppanel.ResetTop();
                 break;
             case (ushort)UITopPanelListenID.WriteTopScore:
                 toppanel.WriteTopScore();
@@ -183,9 +165,6 @@ public class UI_GamePanelJob : UIEventListenBase
             case (ushort)UITopPanelListenID.SetNowScore:
                 Message msg = (Message)tmpMsg;
                 toppanel.SetNowScore(msg.num);
-                break;
-            case (ushort)UIGroupRotateListenID.OffRotate:
-               rotatepanel.OffChangeRotate();//关闭
                 break;
             case (ushort)UIGroupRotateListenID.HideOne:
                 rotatepanel.SWRotate(((Message)tmpMsg).num, false);

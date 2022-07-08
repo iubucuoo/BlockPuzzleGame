@@ -174,7 +174,7 @@ public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
     {
         if (interstitial.IsLoaded())
         {
-            //Debuger.LogError("展示广告");
+            //DebugMgr.LogError("展示广告");
             AudioMgr.Inst.PauseMusic();
             interstitial.Show();
             SwAdCallBack = cb;

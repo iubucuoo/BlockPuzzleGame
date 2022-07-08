@@ -91,6 +91,7 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
         if (name2UI.ContainsKey(ui.WndName))
         {
             name2UI.Remove(ui.WndName);
+            PoolMgr.Recycle(ui);
         }
     }
 }

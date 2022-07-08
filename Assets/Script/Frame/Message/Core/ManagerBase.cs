@@ -20,7 +20,7 @@ class ManagerBase : IEventListen
         EventNode tmp;
         if (!eventTree.TryGetValue(tmpMsg.messageId, out tmp))
         {
-            //Debuger.LogError(string.Format("在{0}中没有对{1}这个消息进行监听", tmpMsg.GetManagerID(), MessageCenter.instance.MsgIDToString(tmpMsg.messageId)));
+            DebugMgr.LogError(string.Format("在{0}中没有对 这个消息进行监听", tmpMsg.GetManagerID()));//, MessageCenter.instance.MsgIDToString(tmpMsg.messageId)
             return;
         }
         else

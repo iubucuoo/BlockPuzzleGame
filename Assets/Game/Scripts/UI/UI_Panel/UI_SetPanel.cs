@@ -3,23 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using WUtils;
 
-public class UI_SetPanel : UIBase,IPoolable
+public class UI_SetPanel : UIBase
 {
     public override string WndName => IPoolsType.UI_SetPanel.ToString();
-
-    public override UIHideType hideType => UIHideType.WaitDestroy;
-
-    public override UIHideFunc hideFunc => UIHideFunc.MoveOutOfScreen;
-
-    public override int layer { get => (int)UILayer.Panel; set => layer = value; }
-
-    public override bool isFull => false;
-
-    public IPoolsType GroupType => IPoolsType.UI_SetPanel;
+    
+    public override IPoolsType GroupType => IPoolsType.UI_SetPanel;
     public override int orderInLayer { get => 10; set => orderInLayer = value; }
-    public bool IsRecycled { get; set; }
 
-    public void OnRecycled()
+
+    public override void OnRecycled()
     {
 
     }

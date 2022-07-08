@@ -4,20 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_StartPanel : UIBase,IPoolable
-{
-    public override UIHideType hideType => UIHideType.WaitDestroy;
-    public override UIHideFunc hideFunc => UIHideFunc.MoveOutOfScreen;
-    public override int layer { get => (int)UILayer.Panel; set => layer = value; }
-    public override string WndName => IPoolsType.UI_StartPanel.ToString();//"UI_StartPanel";
+{ 
+    public override string WndName => IPoolsType.UI_StartPanel.ToString();
     public override bool isFull => true;
-    public IPoolsType GroupType =>  IPoolsType.UI_StartPanel;
-
-    public bool IsRecycled { get ; set; }
-    public void OnRecycled()
-    {
-
-    }
-  
+    public override IPoolsType GroupType =>  IPoolsType.UI_StartPanel;
+ 
     public override void OnDestroy_m()
     {
         startbtn.onClick.RemoveListener(OnBtnStart);
