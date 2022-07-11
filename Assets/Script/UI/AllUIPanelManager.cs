@@ -11,7 +11,7 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
 {
     Dictionary<string, UIBase> name2UI = new Dictionary<string, UIBase>();
     Stack<FullPanel> fullPanelList = new Stack<FullPanel>();
-    public UIBase Show(IPoolsType pooltype)
+    public UIBase Show(IPoolsType pooltype,bool move = false)
     {
         string _name = pooltype.ToString();
         UIBase ui;
@@ -28,7 +28,7 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
             name2UI[_name] = ui;
         }
         //DebugMgr.LogError(_name + "  show   ");
-        ui.Show();
+        ui.Show(move);
         ShowFullPanel(ui, pooltype);
         return ui;
     }
@@ -76,12 +76,12 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
             Show(fullpanel.pooltype);
         }
     }
-    public UIBase Hide(IPoolsType pooltype)
+    public UIBase Hide(IPoolsType pooltype,bool move = false)
     {
         string _name = pooltype.ToString();
         if (name2UI.TryGetValue(_name, out UIBase ui))
         {
-            ui.Hide();
+            ui.Hide(move);
             HideFullPanel(ui);
         }
         return ui;

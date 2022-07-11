@@ -43,7 +43,7 @@ public class UI_GamePanel_Top
     private void OnBtnSwSetPanel()
     {
         AudioMgr.Inst.ButtonClick();
-        AllUIPanelManager.Inst.Show(IPoolsType.UI_SetPanel);
+        AllUIPanelManager.Inst.Show(IPoolsType.UI_SetPanel,true);
     }
     public void ResetTop()
     {

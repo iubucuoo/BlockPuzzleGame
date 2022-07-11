@@ -45,7 +45,7 @@ public class UI_SetPanelJob : UIEventListenBase
     void OnBtnHide()
     {
         AudioMgr.Inst.ButtonClick();
-        AllUIPanelManager.Inst.Hide(IPoolsType.UI_SetPanel);
+        AllUIPanelManager.Inst.Hide(IPoolsType.UI_SetPanel,true);
     }
     void ChangeSoundIsOn(bool ison)
     {

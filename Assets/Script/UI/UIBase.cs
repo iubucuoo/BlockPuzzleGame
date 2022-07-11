@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,6 +24,14 @@ public abstract class UIBase: IPoolable
     bool loaded = false;
     //bool bBaseUI = true;
     public GameObject WndRoot { get; private set; }
+    RectTransform _wndrect;
+    RectTransform Wndrect { get {
+            if (_wndrect == null)
+            {
+                _wndrect = WndRoot.GetComponent<RectTransform>();
+            }
+            return _wndrect;
+        } }
 
     Transform parent;
     private float rootSavedX = -100;
@@ -35,15 +44,17 @@ public abstract class UIBase: IPoolable
             {
                 if (rootSavedX!= -100 && rootSavedY!= -100)
                 {
-                    WndRoot.GetComponent<RectTransform>().anchoredPosition = new Vector2(rootSavedX, rootSavedY);
+                    Wndrect.anchoredPosition = new Vector2(rootSavedX, rootSavedY);
                 }
             }
             else
             {
-                var root_rect = WndRoot.GetComponent<RectTransform>();
-                rootSavedX = root_rect.anchoredPosition.x;
-                rootSavedY = root_rect.anchoredPosition.y;
-                root_rect.anchoredPosition = new Vector2(100000000, 100000000);
+                if (rootSavedX == -100 && rootSavedY == -100)
+                {
+                    rootSavedX = Wndrect.anchoredPosition.x + (ismove ? _x : 0);
+                    rootSavedY = Wndrect.anchoredPosition.y;
+                }
+                Wndrect.anchoredPosition = new Vector2(100000000, 100000000);
             }
         }
         else
@@ -51,11 +62,38 @@ public abstract class UIBase: IPoolable
             WndRoot.SetActive(_visible);
         }
     }
-   
-    void SetVisible(bool _visible)
+
+    readonly float _y = 2020;
+    readonly float _x = 1480;
+    readonly float swtime = .3f;
+    readonly float hidetime = .2f;
+    public void ShowBoxX(TweenCallback Finish = null)
+    {
+        Vector2 pos = Wndrect.anchoredPosition;
+        Vector2 firstpos = Wndrect.anchoredPosition;
+        firstpos.x += _x;
+        WndRoot.transform.localPosition = firstpos;
+        if (Finish != null)
+        {
+            WndRoot.transform.DOLocalMoveX(pos.x, swtime).SetEase(Ease.OutBack).OnComplete(Finish);
+        }
+        else
+        {
+            WndRoot.transform.DOLocalMoveX(pos.x, swtime).SetEase(Ease.OutBack);
+        }
+    }
+    public void HideBox(TweenCallback HideFinish= null)
+    {
+        var endx = Wndrect.anchoredPosition.x - _x;
+        DebugMgr.LogError("HideBox");
+        WndRoot.transform.DOLocalMoveX( endx, hidetime).SetEase(Ease.InBack).OnComplete(HideFinish);
+    }
+    bool ismove = false;
+    void SetVisible(bool _visible, bool Move = false)
     {
         if (visible == _visible)
             return;
+        ismove = Move;
         visible = _visible;
         DebugMgr.Log(_visible ? "show" : "hide" + WndName);
         if (_visible)
@@ -103,23 +141,32 @@ public abstract class UIBase: IPoolable
     {
 
     }
-    public void Hide()
+    public void Hide(bool Move = false)
     {
-        SetVisible(false);
+        SetVisible(false, Move);
     }
-    public void Show()
+    public void Show(bool Move = false)
     {
-        SetVisible(true);
+        SetVisible(true, Move);
     }
     void DoShow()
     {
         CheckParent();
         OnShow();
+        if (ismove)
+            ShowBoxX();
     }
 
     void DoHide()
     { 
         OnHide();
+        if (ismove)
+            HideBox(HideType);
+        else
+            HideType();
+    }
+    void HideType()
+    {
         if (hideType == UIHideType.Destroy)
             Destroy();
         else if (hideType == UIHideType.WaitDestroy)
@@ -127,13 +174,13 @@ public abstract class UIBase: IPoolable
             SetUIVisible(false);
             _Time = TimeMgr.Instance.AddIntervelEvent((z, x) => {
                 WaitDestroy();
-                }, UIStatic.WAIT_DESTROY_TIME, 0, 1);
+            }, UIStatic.WAIT_DESTROY_TIME, 0, 1);
         }
         else
         {
             SetUIVisible(false);
         }
-        
+
     }
     TimeEvent _Time;
     void WaitDestroy()
