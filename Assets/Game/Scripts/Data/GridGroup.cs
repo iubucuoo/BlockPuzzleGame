@@ -74,4 +74,5 @@ public class GridGroup : IPoolable
             }
         }
     }
+    public void Dispose() { }
 }

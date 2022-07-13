@@ -64,4 +64,5 @@ public class MessageBase:IPoolable
     {
         messageId = 0;
     }
+    public virtual void Dispose() { }
 }

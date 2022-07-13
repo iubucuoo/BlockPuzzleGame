@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridGroup_Ground : GridGroup,IPoolable
+public class GridGroup_Ground : GridGroup
 {
     public GridGroup_Ground()
     {

@@ -11,6 +11,7 @@ public class ToolsEditor : Editor
         Directory.Delete(Application.persistentDataPath, true);
         Debug.Log("Clear Success");
     }
- 
 
+    [MenuItem("Tools/对象池状态")]
+    static void Name1() { PoolsStatus.Init(); }
 }

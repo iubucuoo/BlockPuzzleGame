@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using WUtils;
 
-public class UI_GamePanel : UIBase, IPoolable
+public class UI_GamePanel : UIBase
 {
     public override IPoolsType GroupType => IPoolsType.UI_GamePanel;
 

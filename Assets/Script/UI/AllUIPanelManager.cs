@@ -9,6 +9,8 @@ public struct FullPanel
 }
 public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
 {
+    //Dictionary<int, CreateInstance> Factorys = new Dictionary<int, CreateInstance>();
+    //Dictionary<int, UIBase> UIInstanceCache = new Dictionary<int, UIBase>();
     Dictionary<string, UIBase> name2UI = new Dictionary<string, UIBase>();
     Stack<FullPanel> fullPanelList = new Stack<FullPanel>();
     public UIBase Show(IPoolsType pooltype,bool move = false)
@@ -27,15 +29,33 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
             ui = GetUIClass(pooltype);
             name2UI[_name] = ui;
         }
-        //DebugMgr.LogError(_name + "  show   ");
+        DebugMgr.LogError(_name + "  show   ");
         ui.Show(move);
         ShowFullPanel(ui, pooltype);
         return ui;
     }
+ 
     UIBase GetUIClass(IPoolsType pooltype)
     {
+        //if (UIInstanceCache.TryGetValue((int) pooltype,out UIBase uIBase))
+        //{
+        //    DebugMgr.LogError(pooltype.ToString());
+        //    return uIBase;
+        //}
+        //if (Factorys.TryGetValue((int)pooltype, out CreateInstance mFactory))
+        //{
+        //    uIBase = mFactory.Create() as UIBase;
+        //    UIInstanceCache.Add((int)pooltype, uIBase);
+        //    return uIBase;
+        //}
+        //mFactory = new CreateInstance(pooltype);
+        //Factorys.Add((int)pooltype, mFactory);
+        //uIBase = mFactory.Create() as UIBase;
+        //UIInstanceCache.Add((int)pooltype, uIBase);
+        //return uIBase;
         return PoolMgr.Allocate(pooltype) as UIBase;
     }
+
     private void ShowFullPanel(UIBase ui, IPoolsType pooltype)
     {
         if (!ui.isFull)

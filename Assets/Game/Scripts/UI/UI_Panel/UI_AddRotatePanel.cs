@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using WUtils;
 
-public class UI_AddRotatePanel : UIBase, IPoolable
+public class UI_AddRotatePanel : UIBase
 {
     public override string WndName => IPoolsType.UI_AddRotatePanel.ToString();
  

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridGroup_MinPrep : GridGroup,IPoolable
+public class GridGroup_MinPrep : GridGroup
 {
     public GridGroup_MinPrep()
     {

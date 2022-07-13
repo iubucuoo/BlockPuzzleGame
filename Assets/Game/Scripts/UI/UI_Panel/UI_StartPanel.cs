@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_StartPanel : UIBase,IPoolable
+public class UI_StartPanel : UIBase
 { 
     public override string WndName => IPoolsType.UI_StartPanel.ToString();
     public override bool isFull => true;

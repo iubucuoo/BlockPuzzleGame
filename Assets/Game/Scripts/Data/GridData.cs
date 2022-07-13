@@ -158,4 +158,8 @@ public class GridData : IPoolable
         TrueStatus = 0;
         resName = "";
     }
+    public virtual void Dispose()
+    {
+        OnRecycled();
+    }
 }

@@ -27,6 +27,7 @@ public interface IPoolable
 {
     IPoolsType GroupType { get; }
     void OnRecycled();//重置
+    void Dispose();//删除
     bool IsRecycled { get; set; }
 
 }
@@ -37,5 +38,5 @@ public interface IPool
 }
 public interface IObjectFactory<T>
 {
-    T Create(IPoolsType _type);
+    T Create();
 }
