@@ -85,7 +85,6 @@ public abstract class UIBase: IPoolable
     public void HideBox(TweenCallback HideFinish= null)
     {
         var endx = Wndrect.anchoredPosition.x - _x;
-        DebugMgr.LogError("HideBox");
         WndRoot.transform.DOLocalMoveX( endx, hidetime).SetEase(Ease.InBack).OnComplete(HideFinish);
     }
     bool ismove = false;
