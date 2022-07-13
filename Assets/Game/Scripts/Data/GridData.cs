@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GridData : IPoolable
 {
-    public virtual IPoolsType GroupType { get { return IPoolsType.GridData; } }
+    public virtual IPoolsType PoolType { get { return IPoolsType.GridData; } }
     public bool IsRecycled { get; set; }
     public bool IsUse { get; private set; }//判断是否存放了格子
     public Transform Parent;
@@ -39,7 +39,7 @@ public class GridData : IPoolable
     public void SWRevert()
     {
         TrueStatus = _TempStatus;
-        if (GroupType == IPoolsType.GridDataDef)
+        if (PoolType == IPoolsType.GridDataDef)
         {
             DesImage.gameObject.SetActive(false);
             PrepImage.gameObject.SetActive(false);
@@ -70,7 +70,7 @@ public class GridData : IPoolable
     /// </summary>
     public void swClear()
     {
-        if (GroupType == IPoolsType.GridDataDef)
+        if (PoolType == IPoolsType.GridDataDef)
         {
             DesImage.gameObject.SetActive(true);
             //PrepImage.gameObject.SetActive(false);
@@ -81,7 +81,7 @@ public class GridData : IPoolable
     /// </summary>
     public void swClearRevert()
     {
-        if (GroupType == IPoolsType.GridDataDef)
+        if (PoolType == IPoolsType.GridDataDef)
             DesImage.gameObject.SetActive(false);
     }
 
@@ -90,7 +90,7 @@ public class GridData : IPoolable
     /// </summary>
     public void swPrep()
     {
-        if (GroupType == IPoolsType.GridDataDef)
+        if (PoolType == IPoolsType.GridDataDef)
             PrepImage.gameObject.SetActive(true);
     }
     /// <summary>
@@ -98,7 +98,7 @@ public class GridData : IPoolable
     /// </summary>
     public void swPrepRevert()
     {
-        if (GroupType == IPoolsType.GridDataDef)
+        if (PoolType == IPoolsType.GridDataDef)
             PrepImage.gameObject.SetActive(false);
         _TempStatus = TrueStatus;
     }
@@ -118,7 +118,7 @@ public class GridData : IPoolable
             GridObj = ObjectMgr.InsResource(res);
             DefImage = GridObj.transform.Find("def").GetComponent<Image>();
             float scale = 1;// UIMgr.Inst.CanvasRect.localScale.x;
-            if (GroupType == IPoolsType.GridDataDef)
+            if (PoolType == IPoolsType.GridDataDef)
             {
                 DesImage = GridObj.transform.Find("des").GetComponent<Image>();
                 PrepImage = GridObj.transform.Find("prep").GetComponent<Image>();
@@ -126,7 +126,7 @@ public class GridData : IPoolable
                 DesImage.rectTransform.localScale *= scale;
                 PrepImage.rectTransform.localScale *= scale;
             }
-            if (GroupType == IPoolsType.GridDataPrep)
+            if (PoolType == IPoolsType.GridDataPrep)
             {
                 DefImage.rectTransform.localScale *= 0.8f* scale;
             }

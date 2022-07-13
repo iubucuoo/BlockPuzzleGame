@@ -7,7 +7,7 @@ public class UI_AddRotatePanel : UIBase
 {
     public override string WndName => IPoolsType.UI_AddRotatePanel.ToString();
  
-    public override IPoolsType GroupType => IPoolsType.UI_AddRotatePanel;
+    public override IPoolsType PoolType => IPoolsType.UI_AddRotatePanel;
     public override int orderInLayer { get => 10; set => orderInLayer = value; }
  
     UI_AddRotatePanelJob paneljob;

@@ -29,7 +29,7 @@ public class PoolMgr:Singleton<PoolMgr>
     }
     void RecycleV(IPoolable pool)
     {
-        int typeint = (int)pool.GroupType;
+        int typeint = (int)pool.PoolType;
         if (dic.TryGetValue(typeint,out Pool v))
         {
             v.Recycle(pool);

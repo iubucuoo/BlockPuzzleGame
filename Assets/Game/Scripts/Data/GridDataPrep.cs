@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridDataPrep : GridData
 {
-    public override IPoolsType GroupType => IPoolsType.GridDataPrep;
+    public override IPoolsType PoolType => IPoolsType.GridDataPrep;
 
     public override void OnRecycled()
     {

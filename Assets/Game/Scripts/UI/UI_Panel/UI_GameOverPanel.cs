@@ -6,7 +6,7 @@ using WUtils;
 public class UI_GameOverPanel : UIBase
 {
     public override string WndName => IPoolsType.UI_GameOverPanel.ToString();
-    public override IPoolsType GroupType => IPoolsType.UI_GameOverPanel;
+    public override IPoolsType PoolType => IPoolsType.UI_GameOverPanel;
     public override int orderInLayer { get => 10; set => orderInLayer = value; }
   
     UI_GameOverPanelJob paneljob;

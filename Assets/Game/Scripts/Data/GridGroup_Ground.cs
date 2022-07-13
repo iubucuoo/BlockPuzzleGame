@@ -11,6 +11,6 @@ public class GridGroup_Ground : GridGroup
         ResName = "Prefab/blockdef";//默认的背景格子
     }
 
-    public override IPoolsType GroupType { get { return IPoolsType.GridGroup_Ground; } }
+    public override IPoolsType PoolType { get { return IPoolsType.GridGroup_Ground; } }
     public override IPoolsType GridType =>  IPoolsType.GridDataDef;
 }

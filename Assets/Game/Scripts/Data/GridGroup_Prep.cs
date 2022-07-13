@@ -11,6 +11,6 @@ public class GridGroup_Prep : GridGroup
         ResName = "Prefab/blockdrag";//拖动出来的格子
     }
 
-    public override IPoolsType GroupType { get { return IPoolsType.GridGroup_Prep; } }
+    public override IPoolsType PoolType { get { return IPoolsType.GridGroup_Prep; } }
     public override IPoolsType GridType =>  IPoolsType.GridDataPrep;
 }

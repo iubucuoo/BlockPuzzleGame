@@ -11,6 +11,6 @@ public class GridGroup_MinPrep : GridGroup
         ResName = "Prefab/blockmin";//min的格子
     }
 
-    public override IPoolsType GroupType { get { return IPoolsType.GridGroup_MinPrep; } }
+    public override IPoolsType PoolType { get { return IPoolsType.GridGroup_MinPrep; } }
     public override IPoolsType GridType =>  IPoolsType.GridDataMin;
 }

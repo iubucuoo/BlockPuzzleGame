@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GridDataDef : GridData
 {
-    public override IPoolsType GroupType => IPoolsType.GridDataDef;
+    public override IPoolsType PoolType => IPoolsType.GridDataDef;
 
    
 

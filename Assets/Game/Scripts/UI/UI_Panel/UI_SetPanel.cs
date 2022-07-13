@@ -7,7 +7,7 @@ public class UI_SetPanel : UIBase
 {
     public override string WndName => IPoolsType.UI_SetPanel.ToString();
     
-    public override IPoolsType GroupType => IPoolsType.UI_SetPanel;
+    public override IPoolsType PoolType => IPoolsType.UI_SetPanel;
     public override int orderInLayer { get => 10; set => orderInLayer = value; }
 
 

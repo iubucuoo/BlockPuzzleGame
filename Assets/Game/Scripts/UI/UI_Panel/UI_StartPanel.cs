@@ -7,7 +7,7 @@ public class UI_StartPanel : UIBase
 { 
     public override string WndName => IPoolsType.UI_StartPanel.ToString();
     public override bool isFull => true;
-    public override IPoolsType GroupType =>  IPoolsType.UI_StartPanel;
+    public override IPoolsType PoolType =>  IPoolsType.UI_StartPanel;
  
     public override void OnDestroy_m()
     {

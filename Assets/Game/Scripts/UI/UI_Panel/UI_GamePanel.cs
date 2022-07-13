@@ -5,7 +5,7 @@ using WUtils;
 
 public class UI_GamePanel : UIBase
 {
-    public override IPoolsType GroupType => IPoolsType.UI_GamePanel;
+    public override IPoolsType PoolType => IPoolsType.UI_GamePanel;
 
     public override string WndName => IPoolsType.UI_GamePanel.ToString();
 

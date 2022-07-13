@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GridDataMin : GridData
 {
-    public override IPoolsType GroupType => IPoolsType.GridDataMin;
+    public override IPoolsType PoolType => IPoolsType.GridDataMin;
 
     public override void OnRecycled()
     {

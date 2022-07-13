@@ -8,7 +8,7 @@ using WUtils;
 public abstract class UIBase: IPoolable
 {
     Canvas canvas;
-    public abstract IPoolsType GroupType { get; }
+    public abstract IPoolsType PoolType { get; }
     public bool IsRecycled { get; set; }
     public virtual void Dispose() { }
     public virtual void OnRecycled()

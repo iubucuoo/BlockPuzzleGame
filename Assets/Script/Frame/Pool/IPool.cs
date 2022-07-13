@@ -25,7 +25,7 @@ public enum IPoolsType
 }
 public interface IPoolable
 {
-    IPoolsType GroupType { get; }
+    IPoolsType PoolType { get; }
     void OnRecycled();//重置
     void Dispose();//删除
     bool IsRecycled { get; set; }

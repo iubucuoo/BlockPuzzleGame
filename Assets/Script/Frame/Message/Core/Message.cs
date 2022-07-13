@@ -67,7 +67,7 @@ public class Message : MessageBase
     {
 
     }
-    public override IPoolsType GroupType { get { return IPoolsType.Message; } }
+    public override IPoolsType PoolType { get { return IPoolsType.Message; } }
 
     public override void OnRecycled()
     {

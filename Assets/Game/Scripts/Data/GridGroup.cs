@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GridGroup : IPoolable
 {
-    public virtual IPoolsType GroupType { get { return IPoolsType.GridGroup; } }
+    public virtual IPoolsType PoolType { get { return IPoolsType.GridGroup; } }
     public virtual IPoolsType GridType { get { return IPoolsType.GridData; } }
     public bool IsRecycled { get; set; }
     protected int G_width;
@@ -33,7 +33,7 @@ public class GridGroup : IPoolable
         {
             for (int j = 0; j < W_count; j++)
             {
-                if (DataArray[i, j] >0 || GroupType == IPoolsType.GridGroup_Ground)
+                if (DataArray[i, j] >0 || PoolType == IPoolsType.GridGroup_Ground)
                 {
                     if (Grid[i, j] == null)
                     {

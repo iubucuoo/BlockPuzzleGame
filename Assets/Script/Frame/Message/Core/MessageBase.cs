@@ -57,7 +57,7 @@ public class MessageBase:IPoolable
             return ManagerID.LocalNetManager;
         }
     }
-    public virtual IPoolsType GroupType => IPoolsType.MessageBase;
+    public virtual IPoolsType PoolType => IPoolsType.MessageBase;
 
     public bool IsRecycled { get ; set ; }
     public virtual void OnRecycled()
