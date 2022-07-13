@@ -29,7 +29,7 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
             ui = GetUIClass(pooltype);
             name2UI[_name] = ui;
         }
-        DebugMgr.LogError(_name + "  show   ");
+        //DebugMgr.LogError(_name + "  show   ");
         ui.Show(move);
         ShowFullPanel(ui, pooltype);
         return ui;
