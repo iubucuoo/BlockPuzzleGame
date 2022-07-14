@@ -49,9 +49,10 @@ public class MainC : MonoBehaviour
     private void ReadStreamingInit()
     {
         string path1 = string.Concat(PathTools.GetWWWAssetBundlePath(true, true), "/GameConfig.json");
-        DownloadTools.Loading(path1, (s1) =>
+        DownloadTools.LoadUrl(path1,5, (s1) =>
         {
             channle_info = LitJson.JsonMapper.ToObject<channles>(s1.text);
+            DebugMgr.LogError(channle_info.pkgName);
             Application.targetFrameRate = 60;
             gameObject.AddComponent<MEC.Timing>();
             gameObject.AddComponent<TimeMgr>();
@@ -68,7 +69,7 @@ public class MainC : MonoBehaviour
             //LoadLanguageData();
             //
             thread = new DownloadThread();
-            thread.ForegroundErrorOver = ForegroundErrorOver;
+            //thread.ForegroundErrorOver = ForegroundErrorOver;
         });  
     }
 

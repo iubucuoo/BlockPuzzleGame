@@ -3,6 +3,7 @@
 /// </summary>
 public interface IEventListen
 {
+    ushort[] messageIds { get; set; }
     /// <summary>
     /// 接受消息
     /// </summary>

@@ -15,7 +15,7 @@ public class MessageCenter
 
     MessageCenter()
     {
-        SendMsgToLua = _base => { };
+        SendMsgToLua = _base => { }; //(msg) => { LuaBehavMgr.CallLuaMsgFunc(msg); };
     }
 
     /// <summary>
@@ -59,7 +59,7 @@ public class MessageCenter
 
     void AnasysisMessage(MessageBase msg)
     {
-        ManagerID tmpId = msg.GetManagerID();
+        ManagerID tmpId = msg.GetMsgType();
         switch (tmpId)
         {
             //case ManagerID.LAssetManager:

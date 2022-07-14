@@ -12,6 +12,18 @@ public class MusicUnit : IArt
     Queue<sbyte> m_delayVolume;
     public SoundType m_type { get; private set; }
     public sbyte volum { get; private set; }
+    public int _MapID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+    public int _ModelID => throw new NotImplementedException();
+
+    public ResSort _Sort => throw new NotImplementedException();
+
+    public NewResAb GetNewResAb => throw new NotImplementedException();
+
+    public bool _CanCacheObj => throw new NotImplementedException();
+
+    public bool _CanCacheAb => throw new NotImplementedException();
+
     public MusicUnit(string _artName, SoundType _Type)
     {
         m_artName = _artName;
@@ -98,10 +110,10 @@ public class MusicUnit : IArt
         return FileRoot.sound;
     }
 
-    public bool UseArt(ResData obj)
+    public bool UseArt(object obj)
     {
         UnityEngine.Object o = null;
-        if (obj.objs.TryGetValue(ArtName(), out o))
+        if (((ResData)obj).objs.TryGetValue(ArtName(), out o))
         {
             m_clip = o as AudioClip;            
         }
@@ -136,5 +148,30 @@ public class MusicUnit : IArt
     public void SetTip(int time)
     {
         m_curTime = time;
+    }
+
+    public void UseArt(object[] objs)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerator<float> Loading(AssetBundle ab)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Destroy()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool ComportRes(string abName, string artName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool IsWaitArt(int key = 0)
+    {
+        throw new NotImplementedException();
     }
 }

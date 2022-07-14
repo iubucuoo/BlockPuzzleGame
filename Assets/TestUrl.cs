@@ -12,7 +12,7 @@ public class TestUrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DownloadTools.Loading("https://www.iubucuoo.com/index.xml", (www) =>
+        DownloadTools.LoadUrl("https://www.iubucuoo.com/index.xml",5, (www) =>
         //DownloadTools.Loading("https://gitee.com/wangshijun12/GameInfo/raw/master/test.txt", (www) =>
         {
             Debug.Log(www.text);

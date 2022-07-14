@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 class ManagerBase : IEventListen
 {
-
+    public ushort[] messageIds { get; set; }
     Dictionary<ushort, EventNode> eventTree = new Dictionary<ushort, EventNode>();
     protected ManagerID ID;
 
@@ -20,7 +20,7 @@ class ManagerBase : IEventListen
         EventNode tmp;
         if (!eventTree.TryGetValue(tmpMsg.messageId, out tmp))
         {
-            DebugMgr.LogError(string.Format("在{0}中没有对 这个消息进行监听", tmpMsg.GetManagerID()));//, MessageCenter.instance.MsgIDToString(tmpMsg.messageId)
+            DebugMgr.LogError(string.Format("在{0}中没有对 这个消息进行监听", tmpMsg.GetMsgType()));//, MessageCenter.instance.MsgIDToString(tmpMsg.messageId)
             return;
         }
         else
@@ -31,6 +31,7 @@ class ManagerBase : IEventListen
                 tmp = tmp.next;
             } while (tmp != null);
         }
+        PoolMgr.Recycle(tmpMsg);
     }
 
     /// <summary>
@@ -39,10 +40,9 @@ class ManagerBase : IEventListen
     /// <param name="msg">消息</param>
     public void SendMsg(MessageBase msg)
     {
-        if (msg.GetManagerID() == ID)
+        if (msg.GetMsgType() == ID)
         {
             ProcessEvent(msg);
-            PoolMgr.Recycle(msg);//回收消息
         }
         else
         {
@@ -147,5 +147,9 @@ class ManagerBase : IEventListen
 
     public void InitEventListen()
     {
+    }
+    public void Clear()
+    {
+        eventTree.Clear();
     }
 }

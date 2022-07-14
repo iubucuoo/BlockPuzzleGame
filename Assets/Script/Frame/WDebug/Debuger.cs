@@ -56,7 +56,18 @@ public class DebugMgr
     {
         GetControl().LogError(message, _filter, context);
     }
-
+    public static bool CanLog()
+    {
+        return EnableLog;
+    }
+    public static bool CanLogWarning()
+    {
+        return EnableLog;
+    }
+    public static bool CanLogError()
+    {
+        return EnableLog ;
+    }
     public static void LogError(object message)
     {
         LogError(message, null, null);

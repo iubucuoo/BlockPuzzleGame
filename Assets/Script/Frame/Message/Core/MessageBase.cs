@@ -7,26 +7,30 @@ public class MessageBase:IPoolable
     /// 消息ID
     /// <(ushort)/summary>
     public ushort messageId;
+    public ushort msgId;
+    
 
-   
     internal MessageBase()
     {
         messageId = 0;
+        msgId = 0;
     }
     internal MessageBase(ushort _messageId)
     {
         messageId = _messageId;
+        msgId = _messageId;
     }
     public MessageBase SetValue(ushort _messageId)
     {
         messageId = _messageId;
+        msgId = _messageId;
         return this;
     }
     /// <(ushort)summary>
     /// 获得ManagerID
     /// <(ushort)/summary>
     /// <(ushort)returns><(ushort)/returns>
-    internal ManagerID GetManagerID()
+    internal ManagerID GetMsgType()
     {
         if (messageId < (ushort)ManagerID.LNetManager)
             return ManagerID.NetManager;
@@ -63,6 +67,15 @@ public class MessageBase:IPoolable
     public virtual void OnRecycled()
     {
         messageId = 0;
+        msgId = 0;
     }
     public virtual void Dispose() { }
+    public static void CreateToSend(ushort _msgId)
+    {
+        MsgSend.GSendMsg(Create().SetValue(_msgId));
+    }
+    static MessageBase Create()
+    {
+        return PoolMgr.Allocate(IPoolsType.MessageBase) as MessageBase;
+    }
 }

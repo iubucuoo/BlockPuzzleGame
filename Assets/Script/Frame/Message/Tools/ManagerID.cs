@@ -3,10 +3,13 @@
 /// </summary>
 public enum ManagerID
 {
+   
+    
     /// <summary>
     /// 网络消息ID
     /// </summary>
     NetManager = 0,
+    NetManagerID = 0,//1w
     /// <summary>
     /// Lua网络消息ID
     /// </summary>
@@ -16,15 +19,17 @@ public enum ManagerID
     /// Lua单位消息ID
     /// </summary>
     LUnitManager = ToolsParms.MessageSpan * 20,
-
+    
     /// <summary>
     /// Lua资源消息ID
     /// </summary>
     LAssetManager = ToolsParms.MessageSpan * 21,
+
     /// <summary>
     /// Lua声音消息ID
     /// </summary>
     LAudioManager = ToolsParms.MessageSpan * 22,
+
     /// <summary>
     /// Lua游戏流程逻辑消息ID
     /// </summary>
@@ -58,6 +63,7 @@ public enum ManagerID
     /// 本地请求网络消息ID
     /// </summary>
     LocalNetManager = ToolsParms.MessageSpan * 30,
+
 }
 /// <summary>
 /// 消息发送状态

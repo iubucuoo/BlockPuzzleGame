@@ -6,6 +6,7 @@
 //============================================
 using UnityEngine;
 using UnityEditor;
+using WUtils;
 
 public class ArtABPostprocessor : AssetPostprocessor
 {
@@ -111,9 +112,9 @@ public class ArtABPostprocessor : AssetPostprocessor
             {
                 importer.assetBundleName = abName;                
             }
-            if (importer.assetBundleVariant != "ly")
+            if (importer.assetBundleVariant != PathTools.SUFFIX)
             {
-                importer.assetBundleVariant = "ly";
+                importer.assetBundleVariant = PathTools.SUFFIX;
             }
         }
         else

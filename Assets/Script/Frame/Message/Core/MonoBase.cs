@@ -8,7 +8,8 @@ public class MonoBase : MonoBehaviour, IEventListen
     /// 监听的消息
     /// </summary>
     [HideInInspector]
-    public ushort[] messageIds;
+    public  ushort[] messageIds { get; set; }
+
     /// <summary>
     /// 初始化
     /// </summary>

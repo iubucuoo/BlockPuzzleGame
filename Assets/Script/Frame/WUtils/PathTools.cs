@@ -4,6 +4,41 @@ namespace WUtils
 {
     public static class PathTools
     {
+        public const char SIGN = '|';
+        public const string MD5BODY = "{0}|{1}|{2}|{3}|{4}|{5}";
+        public const string ALL_VERSION = "Version|{0}\nCVersion|{1}";
+        public static string DOT_LY = ".bundle";//点后缀
+        public static string SUFFIX = "bundle";
+        public static string DllABPath = "dll/main";
+        public static string Dot_Logic = ".logic";
+
+        public static string Log = Application.dataPath + "/../Log.txt";
+
+
+        public static string PLATFORM = GetPlatformFolderName(Application.platform);
+
+        public static string GetNetUrlPath { get { return "" + PLATFORM + "/"; } }
+        public static string GetNativeResDir = Application.dataPath + "/Art/";
+        public static string NET_VERSION { get { return GetNetUrlPath + "Version.bytes"; } }
+
+        public static string CACHE_RES_ROOT = GetAppFilePath() + "/" + PLATFORM + "/";
+        public static string CACHE_VERSION = CACHE_RES_ROOT + "Version.bytes";
+        public static string STREAM_RES_PATH = Application.streamingAssetsPath + "/" + PLATFORM + "/";
+
+        public static string STREAM_VERSION = STREAM_RES_PATH + "Version.bytes";
+        public static string WWW_CACHE_RES_ROOT =
+#if !UNITY_EDITOR
+		"file://" + CACHE_RES_ROOT;
+#else
+        CACHE_RES_ROOT;
+#endif
+        public static string WWW_CACHE_VERSION =
+#if !UNITY_EDITOR
+		"file://" + CACHE_VERSION;
+#else
+        CACHE_VERSION;
+#endif
+
         public static string GetPlatformFolderName(RuntimePlatform platform)
         {
             switch (platform)
@@ -66,6 +101,33 @@ namespace WUtils
                 text = ((Application.platform != RuntimePlatform.WindowsPlayer) ? ("file://" + text) : ("file:///" + text));
             }
             return text;
+        }
+        public static string GetParentName(string path, int count = 0)
+        {
+            int i = 0;
+            var parent = path;
+            var len = parent.Length;
+            while (i < count)
+            {
+                len = parent.LastIndexOf('/', --len);
+                i++;
+            }
+            var stalen = parent.LastIndexOf('/', len - 1) + 1;
+            parent = parent.Substring(stalen, len - stalen);
+            return parent;
+        }
+        public static string GetParentPath(string path, int count)
+        {
+            int i = 0;
+            var parent = path;
+            var len = parent.Length;
+            while (i < count)
+            {
+                len = parent.LastIndexOf('/', --len);
+                i++;
+            }
+            parent = parent.Substring(0, len);
+            return parent;
         }
     }
 }

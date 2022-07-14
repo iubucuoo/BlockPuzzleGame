@@ -4,8 +4,12 @@ using UnityEngine;
 
 public static class StaticTools
 {
+    public static ResLoadModel _ResLoadModel;
+    public static bool _LuaLoadError;
+    public static bool IsSwitchScene;
     public static bool AllowDownLoad;
     public static byte _NetStatus;
+    public static int CurrentMapID { get; set; }
     public static byte GetNetState()
     {
         //当用户使用移动网络时
