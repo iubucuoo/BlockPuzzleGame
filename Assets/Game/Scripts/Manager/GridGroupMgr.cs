@@ -496,7 +496,7 @@ public class GridGroupMgr : MonoBehaviour
             //UI抖动
             if (addscore>1)
             {
-                SendEventMgr.GSendMsg((ushort)CaneraShakeListenID.Shake);
+                MsgSend.ToSend((ushort)CaneraShakeListenID.Shake);
             }
             //播放声音
             int lv = ContinuousBoom ++;
@@ -517,7 +517,7 @@ public class GridGroupMgr : MonoBehaviour
         }
         if (swaddscore>0)
         {
-            SendEventMgr.GSendMsg((ushort)UITopPanelListenID.SetNowScore, swaddscore);
+            MsgSend.ToSend((ushort)UITopPanelListenID.SetNowScore, swaddscore);
         }
         return canprep;
     }

@@ -70,12 +70,4 @@ public class MessageBase:IPoolable
         msgId = 0;
     }
     public virtual void Dispose() { }
-    public static void CreateToSend(ushort _msgId)
-    {
-        MsgSend.GSendMsg(Create().SetValue(_msgId));
-    }
-    static MessageBase Create()
-    {
-        return PoolMgr.Allocate(IPoolsType.MessageBase) as MessageBase;
-    }
 }

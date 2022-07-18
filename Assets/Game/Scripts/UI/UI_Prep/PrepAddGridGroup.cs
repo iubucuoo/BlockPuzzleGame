@@ -71,7 +71,7 @@ public class PrepAddGridGroup : MonoBehaviour
         IsUse = true;
         if (MainC.Inst.IsRotateState)
         {
-            SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.HideOne, Index);
+            MsgSend.ToSend((ushort)UIGroupRotateListenID.HideOne, Index);
         }
         Recycle();
         //三个格子都用完了，刷新三个待放入的格子
@@ -96,7 +96,7 @@ public class PrepAddGridGroup : MonoBehaviour
         rotatePrep = v.DataArray;
         if (MainC.Inst.IsRotateState)
         {
-            SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.SwOne, Index);
+            MsgSend.ToSend((ushort)UIGroupRotateListenID.SwOne, Index);
         }
     }
     void SetChildActive(bool sw)
@@ -126,7 +126,7 @@ public class PrepAddGridGroup : MonoBehaviour
             //如果是旋转过的状态 处理旋转所需的金币值，当值达到0时，关闭旋转开关
             if (MainC.Inst.IsRotateState && !M_math.IsSameArrays(rotatePrep, minPrepGroup.DataArray))
             {
-                SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, -1);
+                MsgSend.ToSend((ushort)UIGroupRotateListenID.AddRotateGold, -1);
             }
             UsePrepGridGroup();//设置当前待放入的group为使用过了
         }

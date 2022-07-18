@@ -362,7 +362,7 @@ class ResCenter : AssetBase, IMgr
 	}
 	void EndDownLoad(MessageBase tmpMsg)
 	{
-		StaticTools._LuaLoadError = (tmpMsg is MsgInt) && (tmpMsg as MsgInt)._IntValue == 1;
+		StaticTools._LuaLoadError = (tmpMsg is MsgInt) && (tmpMsg as MsgInt)._Int_V == 1;
 		if (_IsdotLogic)
 		{
 #if UNITY_EDITOR

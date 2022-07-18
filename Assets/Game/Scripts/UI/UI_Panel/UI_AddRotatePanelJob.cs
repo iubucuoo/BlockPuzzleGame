@@ -28,7 +28,7 @@ public class UI_AddRotatePanelJob : UIEventListenBase
     private void OnBtnResetGame()
     {
         OnBtnHide();//弹出广告直接隐藏
-        SendEventMgr.GSendMsg((ushort)UIMainListenID.AdAndRefreshGame);
+        MsgSend.ToSend((ushort)UIMainListenID.AdAndRefreshGame);
     }
     private void OnBtnAllBg()
     {
@@ -47,17 +47,17 @@ public class UI_AddRotatePanelJob : UIEventListenBase
     }
     void NoOkAd()
     {
-        SendEventMgr.GSendMsg((ushort)UISwTextEffectListenID.SwEffect, new float[] { 0, 0 }, "广告还没准备好");   //广告还未加载完成
+        MsgSend.ToSend((ushort)UISwTextEffectListenID.SwEffect, new float[] { 0, 0 }, "广告还没准备好");   //广告还未加载完成
     }
     void AddRotateGold()
     {
         float[] _pos = new float[] { MainC.Inst.RotateGoldAddPos.x, MainC.Inst.RotateGoldAddPos.y };
-        SendEventMgr.GSendMsg((ushort)UISwTextEffectListenID.SwEffect, _pos, "+2");
-        SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);
+        MsgSend.ToSend((ushort)UISwTextEffectListenID.SwEffect, _pos, "+2");
+        MsgSend.ToSend((ushort)UIGroupRotateListenID.AddRotateGold, 2);
     }
 
     private void EffectCb()
     {
-        SendEventMgr.GSendMsg((ushort)UIGroupRotateListenID.AddRotateGold, 2);
+        MsgSend.ToSend((ushort)UIGroupRotateListenID.AddRotateGold, 2);
     }
 }

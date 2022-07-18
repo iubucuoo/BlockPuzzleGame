@@ -4,6 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum IPoolsType
 {
+    
+    
+
+
+    UnitPlayer = 1,
+    UnitMonster,
+    UnitTrap = 5,
+    UnitTransfer,
+    UnitDrop,
+    UnitNPC,
+    UnitShadow,
+    UnitZoology,
+    UnitSaiyan,
+
+
     GridGroup,
     GridGroup_Ground,
     GridGroup_MinPrep,
@@ -22,19 +37,6 @@ public enum IPoolsType
 
     Message,
     MessageBase,
-    
-
-
-    UnitPlayer = 1,
-    UnitMonster,
-    UnitTrap = 5,
-    UnitTransfer,
-    UnitDrop,
-    UnitNPC,
-    UnitShadow,
-    UnitZoology,
-    UnitSaiyan,
-
 
     CameraHandle = 2000,
     CatHandle,
@@ -83,7 +85,6 @@ public enum IPoolsType
 
     NetMsg = 10000,
 
-    MsgBase,
     MsgArray,
     MsgInt,
     MsgFloat2,

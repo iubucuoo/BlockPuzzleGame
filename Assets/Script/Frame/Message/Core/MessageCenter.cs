@@ -74,7 +74,8 @@ public class MessageCenter
             //case ManagerID.NetManager: NetManager.instance.SendMsg(msg); break;
             //case ManagerID.LocalNetManager: LocalNetManager.instance.SendMsg(msg); break;
             case ManagerID.UnitManager: UnitManager.instance.SendMsg(msg); break;
-            case ManagerID.UIManager: UIManager.instance.SendMsg(msg); break;
+            case ManagerID.UIManager:
+                UIManager.instance.SendMsg(msg); break;
             case ManagerID.AudioManager: break;
             default: DebugMgr.LogError(string.Format("{0},此消息没有在相应的ManagerID中", tmpId)); break;
         }

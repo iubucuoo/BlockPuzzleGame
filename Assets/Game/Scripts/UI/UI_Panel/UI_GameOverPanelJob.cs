@@ -23,7 +23,7 @@ public class UI_GameOverPanelJob : UIEventListenBase
         newrecord.SetActive(isnewrecord);
         if (isnewrecord)
         {
-            SendEventMgr.GSendMsg((ushort)UITopPanelListenID.WriteTopScore);
+            MsgSend.ToSend((ushort)UITopPanelListenID.WriteTopScore);
             AudioMgr.Inst.PlayNewRecord();//播放 新记录音乐UI
             newrecordtxt.text = GameGloab.Topscore.ToString();
         }
@@ -45,7 +45,7 @@ public class UI_GameOverPanelJob : UIEventListenBase
         gameover.SetActive(false);
         newrecord.SetActive(false);
         AllUIPanelManager.Inst.Hide(IPoolsType.UI_GameOverPanel);
-        SendEventMgr.GSendMsg((ushort)UIMainListenID.AdAndRefreshGame);
+        MsgSend.ToSend((ushort)UIMainListenID.AdAndRefreshGame);
     }
        
 }

@@ -1,13 +1,13 @@
 //int
 public class MsgInt : MessageBase
 {
-	public int _IntValue;
+	public int _Int_V;
 	public override IPoolsType PoolType => IPoolsType.MsgInt;
 
 	MsgInt SetValue(ushort _msgId, int v)
 	{
 		msgId = _msgId;
-		_IntValue = v;
+		_Int_V = v;
 		return this;
 	}
 	static MsgInt Create()

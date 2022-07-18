@@ -163,17 +163,16 @@ public class UI_GamePanelJob : UIEventListenBase
                 toppanel.WriteTopScore();
                 break;
             case (ushort)UITopPanelListenID.SetNowScore:
-                Message msg = (Message)tmpMsg;
-                toppanel.SetNowScore(msg.num);
+                toppanel.SetNowScore(((MsgInt)tmpMsg)._Int_V);
                 break;
             case (ushort)UIGroupRotateListenID.HideOne:
-                rotatepanel.SWRotate(((Message)tmpMsg).num, false);
+                rotatepanel.SWRotate(((MsgInt)tmpMsg)._Int_V, false);
                 break;
             case (ushort)UIGroupRotateListenID.SwOne:
-                rotatepanel.SWRotate(((Message)tmpMsg).num, true);
+                rotatepanel.SWRotate(((MsgInt)tmpMsg)._Int_V, true);
                 break;
             case (ushort)UIGroupRotateListenID.AddRotateGold:
-                rotatepanel.AddRotateGoldCount(((Message)tmpMsg).num);
+                rotatepanel.AddRotateGoldCount(((MsgInt)tmpMsg)._Int_V);
                 break;
             default:
                 break;

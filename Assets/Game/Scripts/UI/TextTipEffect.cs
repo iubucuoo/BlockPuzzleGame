@@ -62,7 +62,7 @@ public class TextTipEffect : UIEventListenBase
         {
             case (ushort)UISwTextEffectListenID.SwEffect:
                 Message msg = (Message)tmpMsg;
-                PlayEffect(msg.uipos, msg.str);
+                PlayEffect(msg._UIPos, msg._Str);
                 break;
             default:
                 break;
