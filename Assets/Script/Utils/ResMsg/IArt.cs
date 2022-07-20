@@ -5,23 +5,16 @@ using MEC;
 
 public interface IArt
 {
-
-    bool UseArt(object obj);
-
-    string ArtName();
-    string[] AbName();
-    string AbSingleName();
-    int AbSingleID();
-    FileRoot RootName();
-     
-
     int _MapID { get; set; }
     int _ModelID { get; }
     ResSort _Sort { get; }
     NewResAb GetNewResAb { get; }
+    bool UseArt(object obj);
 
     void UseArt(object[] objs);
-    
+    string ArtName();
+    string AbSingleName();
+    int AbSingleID();
     IEnumerator<float> Loading(AssetBundle ab);
     void Destroy();
     bool ComportRes(string abName, string artName);
@@ -103,16 +96,6 @@ public class ArtBase : IArt
     }
 
     bool IArt.UseArt(object obj)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public string[] AbName()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public FileRoot RootName()
     {
         throw new System.NotImplementedException();
     }

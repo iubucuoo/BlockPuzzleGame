@@ -120,15 +120,12 @@ public class NewResLoop
 								abdata._StartLoadTime = Time.realtimeSinceStartup;
 								if (abdata.GetLoadPath(out string path, loadData._MapID))
 								{
-									//AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(path);
-									//yield return Timing.WaitUntilDone(request);
-									//_Ab = request.assetBundle;
-									//DebugMgr.LogError("AssetBundle.LoadFromFile {0} {1}", path, Time.time);
+                                    DebugMgr.LogError(string.Format("AssetBundle.LoadFromFile {0} {1}", path, Time.time));
 									_Ab = AssetBundle.LoadFromFile(path);
 								}
 								else
 								{
-									if(DebugMgr.CanLogError()) DebugMgr.LogError("异常了=" + abdata._AbPath);
+									DebugMgr.LogError("异常了=" + abdata._AbPath);
 								}
 								//DebugMgr.LogError("finish load {0} {1}", abdata._AbPath, Time.time);
 #if _CHECK_OPTIMIZE

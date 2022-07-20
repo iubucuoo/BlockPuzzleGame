@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-public class MusicUnit : IArt
+public class MusicUnit : ArtBase
 {    
     public AudioClip m_clip { get; private set; }
     string m_artName;
@@ -12,17 +12,7 @@ public class MusicUnit : IArt
     Queue<sbyte> m_delayVolume;
     public SoundType m_type { get; private set; }
     public sbyte volum { get; private set; }
-    public int _MapID { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-    public int _ModelID => throw new NotImplementedException();
-
-    public ResSort _Sort => throw new NotImplementedException();
-
-    public NewResAb GetNewResAb => throw new NotImplementedException();
-
-    public bool _CanCacheObj => throw new NotImplementedException();
-
-    public bool _CanCacheAb => throw new NotImplementedException();
 
     public MusicUnit(string _artName, SoundType _Type)
     {
@@ -37,22 +27,12 @@ public class MusicUnit : IArt
         m_delayVolume = new Queue<sbyte>();
     }
 
-    public string[] AbName()
-    {
-        throw new NotImplementedException();
-    }
-
-    public int AbSingleID()
-    {
-        throw new NotImplementedException();
-    }
-
-    public string AbSingleName()
+    public override string AbSingleName()
     {
         return "sound";
     }
 
-    public string ArtName()
+    public override string ArtName()
     {
         return m_artName;
     }
@@ -61,63 +41,62 @@ public class MusicUnit : IArt
     {
         return true;
     }
-
-    public IEnumerator<float> Loading(AssetBundle ab, ResData _data)
+    public override IEnumerator<float> Loading(AssetBundle ab)
     {
-        if (_data.objs == null)
-        {
-            _data.objs = new Dictionary<string, UnityEngine.Object>();
-        }
-        _data.DelayClearObjs(120);
-        var tmp = _data.objNode;
-        if (tmp != null)
-        {
-            do
-            {
-                MusicUnit value = tmp.Value as MusicUnit;
-                if (value != null && value.IsWaitArt(_data.key))
-                {
-                    var _artName = value.ArtName();
-                    if (_artName != null && !_data.objs.ContainsKey(_artName))
-                    {
-                        var tmpresult = ab.LoadAssetAsync(_artName);
-                        yield return MEC.Timing.WaitUntilDone(tmpresult);
-                        if (tmpresult.asset != null)
-                        {
-                            AudioClip clip = tmpresult.asset as AudioClip;
-                            if (clip.loadState == AudioDataLoadState.Unloaded)
-                            {
-                                clip.LoadAudioData();
-                            }
-                            while (clip.loadState == AudioDataLoadState.Loading)
-                            {
-                                yield return 0;
-                            }
-                            _data.objs.Add(_artName, clip);
-                        }
-                    }
-                }
-                tmp = tmp.next;
-            } while (tmp != null);
-        }
-        _data.FeedBack();
-        ab.Unload(false);
-        _data.DelayClearObjs(120);
+        yield return 0;
     }
+    //public IEnumerator<float> Loading(AssetBundle ab, ResData _data)
+    //{
+    //    if (_data.objs == null)
+    //    {
+    //        _data.objs = new Dictionary<string, UnityEngine.Object>();
+    //    }
+    //    _data.DelayClearObjs(120);
+    //    var tmp = _data.objNode;
+    //    if (tmp != null)
+    //    {
+    //        do
+    //        {
+    //            MusicUnit value = tmp.Value as MusicUnit;
+    //            if (value != null && value.IsWaitArt(_data.key))
+    //            {
+    //                var _artName = value.ArtName();
+    //                if (_artName != null && !_data.objs.ContainsKey(_artName))
+    //                {
+    //                    var tmpresult = ab.LoadAssetAsync(_artName);
+    //                    yield return MEC.Timing.WaitUntilDone(tmpresult);
+    //                    if (tmpresult.asset != null)
+    //                    {
+    //                        AudioClip clip = tmpresult.asset as AudioClip;
+    //                        if (clip.loadState == AudioDataLoadState.Unloaded)
+    //                        {
+    //                            clip.LoadAudioData();
+    //                        }
+    //                        while (clip.loadState == AudioDataLoadState.Loading)
+    //                        {
+    //                            yield return 0;
+    //                        }
+    //                        _data.objs.Add(_artName, clip);
+    //                    }
+    //                }
+    //            }
+    //            tmp = tmp.next;
+    //        } while (tmp != null);
+    //    }
+    //    _data.FeedBack();
+    //    ab.Unload(false);
+    //    _data.DelayClearObjs(120);
+    //}
 
-    public FileRoot RootName()
-    {
-        return FileRoot.sound;
-    }
 
-    public bool UseArt(object obj)
+    public override void UseArt(object obj)
     {
-        UnityEngine.Object o = null;
-        if (((ResData)obj).objs.TryGetValue(ArtName(), out o))
-        {
-            m_clip = o as AudioClip;            
-        }
-        return true;
+        ////UnityEngine.Object o = null;
+        ////if (((ResData)obj).objs.TryGetValue(ArtName(), out o))
+        ////{
+        ////    m_clip = o as AudioClip;            
+        ////}
+        
     }
 
     internal void Play(int v,sbyte volume=10)
@@ -150,27 +129,18 @@ public class MusicUnit : IArt
         m_curTime = time;
     }
 
-    public void UseArt(object[] objs)
+
+    public override void Destroy()
     {
         throw new NotImplementedException();
     }
 
-    public IEnumerator<float> Loading(AssetBundle ab)
+    public override bool ComportRes(string abName, string artName)
     {
         throw new NotImplementedException();
     }
 
-    public void Destroy()
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool ComportRes(string abName, string artName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool IsWaitArt(int key = 0)
+    public override bool IsWaitArt(int key = 0)
     {
         throw new NotImplementedException();
     }

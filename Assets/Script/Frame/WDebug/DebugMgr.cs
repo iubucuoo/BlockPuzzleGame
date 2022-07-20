@@ -8,10 +8,6 @@ public class DebugMgr
 
     public static int filter;
 
-    public static string DebugIP = "192.168.1.107";
-
-    public static ushort DebugPort = 7788;
-
     public static bool IsUdpLog;
 
     private static DebugControl _debugControl;
@@ -52,25 +48,13 @@ public class DebugMgr
         GetControl().LogWarning(message, _filter, context);
     }
 
-    public static void LogError(object message, object _filter, UnityEngine.Object context = null)
-    {
-        GetControl().LogError(message, _filter, context);
-    }
-    public static bool CanLog()
-    {
-        return EnableLog;
-    }
-    public static bool CanLogWarning()
-    {
-        return EnableLog;
-    }
-    public static bool CanLogError()
-    {
-        return EnableLog ;
-    }
     public static void LogError(object message)
     {
         LogError(message, null, null);
+    }
+    public static void LogError(object message, object _filter, UnityEngine.Object context = null)
+    {
+        GetControl().LogError(message, _filter, context);
     }
 
     static DebugMgr()

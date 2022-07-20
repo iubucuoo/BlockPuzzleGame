@@ -250,7 +250,7 @@ public class DiffBuilder
 		UpdateOther(false);
 		BuildAB(false);
 		CommitResRoot(false);
-		if(DebugMgr.CanLogError()) DebugMgr.LogError("Real.BuildAB  Over");
+		DebugMgr.LogError("Real.BuildAB  Over");
 	}
 
 	/// <summary>
@@ -303,7 +303,7 @@ public class DiffBuilder
 		if (_StopBuilderForError)
 		{
 			//只要保证Newlog.txt是对的其他就不会出错
-			if(DebugMgr.CanLogError()) DebugMgr.LogError("停止资源更新 报错了，重置数据");
+			DebugMgr.LogError("停止资源更新 报错了，重置数据");
 			return;
 		}
 
@@ -589,7 +589,7 @@ public class DiffBuilder
 				PushData(data._Path, -1);
 
 				//,出现被删除的资源不属于标记,那么这个资源如果属于被依赖的资源，被标记的资源一定会修改 不然肯定出错。 这个地方需要测试一下#GLZ
-				if(DebugMgr.CanLogWarning()) DebugMgr.LogWarning("可能需要被依赖=" + data._Path);
+				DebugMgr.LogWarning("可能需要被依赖=" + data._Path);
 			}
 		}
 	}
@@ -617,6 +617,6 @@ public class DiffBuilder
 			AssetImporter.GetAtPath(item).SetAssetBundleNameAndVariant("", "");
 		}
 		AssetDatabase.RemoveUnusedAssetBundleNames();
-		if(DebugMgr.CanLog()) DebugMgr.Log("[ClearABName3 ]花费时间=" + (Time.realtimeSinceStartup - _Time));
+		DebugMgr.Log("[ClearABName3 ]花费时间=" + (Time.realtimeSinceStartup - _Time));
 	}
 }
