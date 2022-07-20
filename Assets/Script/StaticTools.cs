@@ -9,6 +9,7 @@ public static class StaticTools
     public static bool IsSwitchScene;
     public static bool AllowDownLoad;
     public static byte _NetStatus;
+    public static bool IsIde;
     public static int CurrentMapID { get; set; }
     public static byte GetNetState()
     {

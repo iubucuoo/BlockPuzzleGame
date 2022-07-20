@@ -39,7 +39,7 @@ public class NewEditorLoad
 
 	public NewResMgr BuilderResData(bool ignore=false)
 	{
-		_NewResMgr = new NewResMgr(true);
+		_NewResMgr = new NewResMgr();
 #if UNITY_EDITOR
 		//builder AB的时候 这个会报错
 		AssetDatabase.Refresh();//刷新一下，确保全部资源都再
@@ -55,23 +55,23 @@ public class NewEditorLoad
 				_NewResMgr.PushUnit(v);
 			}
 		}
-		_NewResMgr.PushUnit(AppendDllUnit());
+		//_NewResMgr.PushUnit(AppendDllUnit());
 #endif
 		return _NewResMgr;
 	}
 	//模拟 数据 用于 dll
-	NewResUnit AppendDllUnit()
-	{
-		var unit = new NewResUnit()
-		{
-			_ModelName = "dll",
-			_ModelID = 13,
-			_AbName = "main",
-			_ObjName = "main",
-			_Path = "no Assets path",
-		};
-		return unit;
-	}
+	//NewResUnit AppendDllUnit()
+	//{
+	//	var unit = new NewResUnit()
+	//	{
+	//		_ModelName = "dll",
+	//		_ModelID = 13,
+	//		_AbName = "main",
+	//		_ObjName = "main",
+	//		_Path = "no Assets path",
+	//	};
+	//	return unit;
+	//}
 	void Init()
 	{
 		_DefaultModelName = new Dictionary<string, int>()
@@ -128,7 +128,7 @@ public class NewEditorLoad
 		var index = _Type == 0 ? path.LastIndexOf(_AbUnitName[0]) - 1 : path.LastIndexOf("/");//如果是prefab（type==0是prefab）需要跳一层
 		if (index < 0)
 		{
-			if(DebugMgr.CanLogError()) DebugMgr.LogError("CreateSigleUnit Data=error,Path=" + path + ",_Type=" + _Type + ",_Prefix=" + _Prefix);
+			DebugMgr.LogError("CreateSigleUnit Data=error,Path=" + path + ",_Type=" + _Type + ",_Prefix=" + _Prefix);
 		}
 		var obj = path.Substring(index + 1).Replace(_Prefix, "").Replace(_AbUnitName[0], "");
 		var abName = path.Substring(0, index);

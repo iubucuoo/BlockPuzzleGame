@@ -7,7 +7,7 @@ public class Message : MessageBase
     public int _Int_V, _Int_V2;
 
     public float[] _UIPos;
-    public string _Str;
+    public string _Str { get; private set; }
     /// <summary>
     /// 消息回调
     /// </summary>
@@ -60,7 +60,9 @@ public class Message : MessageBase
     {
         _Callback = null;
         _Objs = null;
+        _Str = null;
         _Int_V = 0;
+        _Int_V2 = 0;
         base.OnRecycled();
     }
 }

@@ -28,8 +28,8 @@ public class MusicUnit : IArt
     {
         m_artName = _artName;
         m_type = _Type;
-        InitDelayParams();        
-        //NewArtMgr.inst.LoadAB(this);        
+        InitDelayParams();
+        MsgSend.GetRes(this);
     }
     void InitDelayParams()
     {

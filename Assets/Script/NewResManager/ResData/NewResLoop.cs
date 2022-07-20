@@ -38,21 +38,21 @@ public class NewResLoop
 	{
 		try
 		{
-			//if (_art.ArtName().ToLower().Contains("loginwnd"))
-			//{
-			//	//DebugMgr.LogError("BeginLoadData {0} {1} ", _art.ArtName(), _art.AbSingleName());
-			//}
-			var abdata = _art.GetNewResAb;
+            if (_art.ArtName().ToLower().Contains("loginwnd"))
+            {
+                DebugMgr.LogError(string.Format("BeginLoadData {0} {1} ", _art.ArtName(), _art.AbSingleName()));
+            }
+            var abdata = _art.GetNewResAb;
 			if (abdata.GetLoadPath(out string path, _art._MapID))
 				_Echelon[(int)_art._Sort].Enqueue(_art);
 			else
 			{
-				if(DebugMgr.CanLogError()) DebugMgr.LogError("{0} 需要下载资源 弹界面---建议加传送主城功能", abdata._AbPath);
+				DebugMgr.LogError(abdata._AbPath+" 需要下载资源 弹界面---建议加传送主城功能");
 			}
 		}
 		catch (System.Exception ex)
 		{
-			//if(DebugMgr.CanLogError()) DebugMgr.LogError("怎么又缺资源了 {0},{1} {2}", _art.AbSingleName(), _art.ArtName(), ex.ToString());
+			 DebugMgr.LogError(string.Format( "怎么又缺资源了 {0},{1} {2}", _art.AbSingleName(), _art.ArtName(), ex.ToString()));
 		}
 	}
 	void SetDenpend(Stack<IArt> _Data, NewResAb res)

@@ -113,7 +113,7 @@ public class NewResData
 	}
 	internal void GetObj(IArt art)
 	{
-		//if(DebugMgr.CanLogError()) DebugMgr.LogError(art.ArtName());
+		DebugMgr.LogError(art.ArtName());
 		for (int i = 0; i < _Count; i++)
 		{
 			var temp = this[i];
@@ -128,7 +128,7 @@ public class NewResData
 				return;
 			}
 		}
-		if(DebugMgr.CanLogError()) DebugMgr.LogError(art.AbSingleName() + "=>" + art.ArtName());
+		DebugMgr.LogError(art.AbSingleName() + "=>" + art.ArtName());
 	}
 	internal bool GetAb(int modelID, int downloadId, ref int _SortID, out NewResAb res)
 	{

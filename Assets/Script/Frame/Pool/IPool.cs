@@ -4,10 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum IPoolsType
 {
-    
-    
-
-
     UnitPlayer = 1,
     UnitMonster,
     UnitTrap = 5,

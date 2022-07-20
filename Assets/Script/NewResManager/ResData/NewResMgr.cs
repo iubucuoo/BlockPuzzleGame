@@ -6,7 +6,7 @@ public class NewResMgr
 {
 	public int _Version { get { return _Data._Version; } }
 	public NewResData _Data;
-	public NewResMgr(bool isEditor)
+	public NewResMgr()
 	{
 		_Data = new NewResData();
 	}

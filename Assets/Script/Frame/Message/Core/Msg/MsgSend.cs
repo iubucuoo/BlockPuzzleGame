@@ -56,7 +56,7 @@ public class MsgSend
     public static void ToSend(ushort msgId, Action<object[]> back, params object[] objs)
     {
         Message msg = (Message)PoolMgr.Allocate(IPoolsType.Message);
-        msg.SetValue(msgId, back, objs);
+        msg.SetValue(msgId, back, objs); 
         GSendMsg(msg);
     }
     //public static void GSendBundleAllRes(string abName, Action<UnityEngine.Object[]> cb = null, Action cb2 = null)//请求一个ab内所有资源 会自动卸载
@@ -76,27 +76,15 @@ public class MsgSend
     {
         //RequestResMsg.CreateToSend((ushort)RES_ID.GET_OBJ, new CommonArt().SetValue((int)_ModelID, abName, ArtName, cb, cb2));
     }
-    //public static void GetRes(IArt art)
-    //{
-    //    if (AppParam._GameMode == GameModel.SuperModel && art is EffectModel)
-    //    {
-    //        var name = (art as EffectModel).ArtName();
-    //        var g = JoystickTestDevice.FindEffect(name);
-    //        if (g != null)
-    //        {
-    //            g.SetActive(true);
-    //            art.UseArt(g);
-    //            return;
-    //        }
-    //    }
-
-    //	if (ModelSys.CsUtils.IsIDE())
-    //	{
-    //		new NewEditorLoad().BuilderResData().GetObj(art);
-    //	}
-    //	else
-    //	{
-    //		RequestResMsg.CreateToSend((ushort)RES_ID.GET_OBJ, art);
-    //	}
-    //}
+    public static void GetRes(IArt art)
+    {
+        if (StaticTools.IsIde)
+        {
+            new NewEditorLoad().BuilderResData().GetObj(art);
+        }
+        else
+        {
+            RequestResMsg.CreateToSend((ushort)RES_ID.GET_OBJ, art);
+        }
+    }
 }
