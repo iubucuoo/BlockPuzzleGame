@@ -134,8 +134,8 @@ public class NewEditorLoad
 		var abName = path.Substring(0, index);
 		var modelName = GetModelName(abName, out int _ModelID);
 		abName = GetAbName(abName, modelName);
-
-		var unit = new NewResUnit()
+        Debug.LogError(path + "   " + obj + "   " + abName + "   " + modelName + "     " + _ModelID);
+        var unit = new NewResUnit()
 		{
 			_ModelName = _ModelID > (int)RES_MODEL_INDEX.other ? modelName : ((RES_MODEL_INDEX)_ModelID).ToString(),
 			_ModelID = _ModelID,

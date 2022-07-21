@@ -3,64 +3,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TableMgr
+public class TableMgr : ArtBase
 {
-    public static TableMgr inst
+    static TableMgr _inst;
+    public static TableMgr Inst { get { return _inst = (_inst ?? new TableMgr()); } }
+    public override int _ModelID => (int)RES_MODEL_INDEX.tables;
+    public override ResSort _Sort => ResSort.Config;
+
+    public Action _Cb;
+
+    Dictionary<string, byte[]> _dic = new Dictionary<string, byte[]>();
+
+    public override string AbSingleName()
     {
-        get
+        return "chinese";
+    }
+
+    public override IEnumerator<float> Loading(AssetBundle ab)
+    {
+        var objs = ab.LoadAllAssets();
+        UseArt(objs);
+        yield return 0;
+    }
+
+    public byte[] GetTable(string tableName)
+    {
+        if (_dic.TryGetValue(tableName, out byte[] value))
         {
-            if (_inst == null)
-            {
-                _inst = new TableMgr();
-            }
-            return _inst;
+            _dic.Remove(tableName);
+            return value;
         }
-    }
-    public static TableMgr _inst;
-
-    TableArt data;
-
-    public void Load(AssetBundle ab,Action cb)
-    {
-        data = new TableArt("chinese", cb);
-        MEC.Timing.RunCoroutine(data.Loading(ab));//这里加载资源，加载完成后回调
+        return null;
     }
 
-    internal TextAsset GetTable(string tableName)
+    public override void UseArt(object[] objs)
     {
-        var txt = data.dic[tableName] as TextAsset;
-        data.dic.Remove(tableName);
-        return txt;
-    }
-}
-class TableArt
-{
-    public Dictionary<string, UnityEngine.Object> dic;
-    protected Action cb;
-    public TableArt(string _AbName, Action _cb) 
-    {
-        cb = _cb;
-    }
- 
-    public  IEnumerator<float> Loading(AssetBundle ab)
-    {
-        var result = ab.LoadAllAssetsAsync();
-        yield return MEC.Timing.WaitUntilDone(result);
-        UnityEngine.Object[] objs = result.allAssets;
-        if (dic == null)
-        {
-            dic = new Dictionary<string, UnityEngine.Object>(objs.Length);
-        }
+        _dic.Clear();
         for (int i = 0; i < objs.Length; i++)
         {
-            var tmp = objs[i];
-            var key_str = tmp.name;
-            if (!dic.ContainsKey(key_str))
-            {
-                dic.Add(key_str, tmp);
-            }
+            var txt = (objs[i] as TextAsset);
+            var key = txt.name;
+            var value = txt.bytes;
+            _dic.Add(key, value);
         }
-        ab.Unload(false);
-        cb();
+        _Cb();
+    }
+
+    public override void FailArt()
+    {
+
     }
 }

@@ -68,8 +68,8 @@ public class MainC : MonoBehaviour
             //先载入数据文件
             //LoadLanguageData();
             //
-            thread = new DownloadThread();
-            //thread.ForegroundErrorOver = ForegroundErrorOver;
+            var xxx = new ResCenter();
+            xxx.InitMgr();
         });  
     }
 
@@ -98,8 +98,6 @@ public class MainC : MonoBehaviour
             }
         }, 16, 0, 1);
     }
-    DownloadThread thread;
- 
     IEnumerator<float> NetStatus()
     {
         while (true)

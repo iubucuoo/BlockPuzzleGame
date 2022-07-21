@@ -186,7 +186,7 @@ public class NewResAb
 			}
 		}
 
-		//Debug.LogError("未找到" + _AbName + "," + art.ArtName());
+		Debug.LogError("未找到" + _AbName + "," + art.ArtName());
 		if(art is ArtBase)
 		{
 			(art as ArtBase).FailArt();

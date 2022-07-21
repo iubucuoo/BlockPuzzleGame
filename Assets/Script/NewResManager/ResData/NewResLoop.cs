@@ -111,12 +111,12 @@ public class NewResLoop
 							while (abdata._LoadStatus == LoadStatus.Loading)//同ab再被加载中
 							{
 								yield return 0;//另一条协程再加载中......
-								//DebugMgr.LogError("wait load {0} {1}", abdata._AbPath, Time.time);
-							}
-							if (abdata._LoadStatus != LoadStatus.Loading && abdata._LoadStatus != LoadStatus.Done)//还没开始下载
+                                               DebugMgr.LogError(string.Format("wait load {0} {1}", abdata._AbPath, Time.time));
+                            }
+                            if (abdata._LoadStatus != LoadStatus.Loading && abdata._LoadStatus != LoadStatus.Done)//还没开始下载
 							{
-								//DebugMgr.LogError("start load {0} {1}", abdata._AbPath, Time.time);
-								abdata._LoadStatus = LoadStatus.Loading;
+                                DebugMgr.LogError(string.Format("start load {0} {1}", abdata._AbPath, Time.time));
+                                abdata._LoadStatus = LoadStatus.Loading;
 								abdata._StartLoadTime = Time.realtimeSinceStartup;
 								if (abdata.GetLoadPath(out string path, loadData._MapID))
 								{
@@ -127,13 +127,13 @@ public class NewResLoop
 								{
 									DebugMgr.LogError("异常了=" + abdata._AbPath);
 								}
-								//DebugMgr.LogError("finish load {0} {1}", abdata._AbPath, Time.time);
+                                DebugMgr.LogError(string.Format("finish load {0} {1}", abdata._AbPath, Time.time));
 #if _CHECK_OPTIMIZE
 		if (Time.realtimeSinceStartup - abdata._StartLoadTime > 0.01)
 			if(DebugMgr.CanLogError()) DebugMgr.LogError(string.Format("AssetBundle.LoadFromFileAsync {0} costtime = {1}", path, (int)((Time.realtimeSinceStartup - abdata._StartLoadTime)*1000)));
 #endif
-							}
-							else//已经被done了
+                            }
+                            else//已经被done了
 							{
 								_Ab = abdata._AssetBundle;
 							}
@@ -144,13 +144,13 @@ public class NewResLoop
 						{
 							continue;
 						}
-						//DebugMgr.LogError("wait art {0} {1}", abdata._AbPath, Time.time);
+						DebugMgr.LogError(string.Format( "wait art {0} {1}", abdata._AbPath, Time.time));
 						//近一步加载Obj
 						if (loadData.IsWaitArt(abdata._ID))
 						{
 							yield return Timing.WaitUntilDone(Timing.RunCoroutine(loadData.Loading(_Ab)));
 						}
-						//DebugMgr.LogError("finish art {0} {1}", abdata._AbPath, Time.time);
+						DebugMgr.LogError(string.Format( "finish art {0} {1}", abdata._AbPath, Time.time));
 						SetAssetBundle(loadData, abdata, _Ab);
 					}
 				}

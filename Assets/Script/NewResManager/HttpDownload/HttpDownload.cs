@@ -113,7 +113,7 @@ public class DownloadThread
 				{
 					isStop = true;
 				}
-				//if(DebugMgr.CanLogWarning()) DebugMgr.LogWarning("下载线程BUG:" + ee);
+				DebugMgr.LogWarning("下载线程BUG:" + ee);
 			}
 
 			Thread.Sleep(20);
@@ -216,11 +216,11 @@ public class DownloadThread
 				if (temp_num > 0)
 				{
 					File.Delete(localUrl);
-					//if(DebugMgr.CanLogWarning()) DebugMgr.LogWarning(localUrl + "||||" + resdata._NetUrl + " 异常,重新下载这个文件:::" + _FileCurLen + "/" + _FileTotalLen);
+					DebugMgr.LogWarning(localUrl + "||||" + resdata._NetUrl + " 异常,重新下载这个文件:::" + _FileCurLen + "/" + _FileTotalLen);
 				}
 				else
 				{
-					//if(DebugMgr.CanLogWarning()) DebugMgr.LogWarning("meiyou xia zai wang:" + resdata._NetUrl);
+					DebugMgr.LogWarning("meiyou xia zai wang:" + resdata._NetUrl);
 				}
 				DownQueue(resdata);
 				return;
@@ -234,17 +234,17 @@ public class DownloadThread
 		{
 			if (serverEx.Status == WebExceptionStatus.Timeout)
 			{
-				//if(DebugMgr.CanLogError()) DebugMgr.LogError("GetResponse Timeout！" + serverEx.Message + "  " + resdata._NetUrl);
+				DebugMgr.LogError("GetResponse Timeout！" + serverEx.Message + "  " + resdata._NetUrl);
 			}
 			else
 			{
-				//if(DebugMgr.CanLogError()) DebugMgr.LogError("GetResponse Exception: " + serverEx.Message + "  " + resdata._NetUrl);
+				DebugMgr.LogError("GetResponse Exception: " + serverEx.Message + "  " + resdata._NetUrl);
 			}
 			Error(resdata);
 		}
 		catch (IOException ioEx)
 		{
-			//if(DebugMgr.CanLogError()) DebugMgr.LogError("IO Exception: " + ioEx.Message + "  " + resdata._NetUrl);
+			DebugMgr.LogError("IO Exception: " + ioEx.Message + "  " + resdata._NetUrl);
 			Error(resdata);
 		}
 		finally
@@ -274,7 +274,7 @@ public class DownloadThread
 		else
 		{
 			ResetHttp();
-			//if(DebugMgr.CanLogWarning()) DebugMgr.LogWarning("Error重置下载");
+			DebugMgr.LogWarning("Error重置下载");
 			DownQueue(resdata);
 			//Call(resdata);//异常之后重新下载
 		}

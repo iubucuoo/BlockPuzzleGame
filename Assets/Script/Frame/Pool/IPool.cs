@@ -163,13 +163,6 @@ public enum IPoolsType
     ForceMoveData,
     NET_SKILL_MOVE,
 }
-public interface IPools
-{
-    IPoolsType PoolType { get; }
-    void Reset();
-    void Dispose();
-    bool IsReseted { get; set; }//true 表示已经回收处理
-}
 public interface IPoolable
 {
     IPoolsType PoolType { get; }

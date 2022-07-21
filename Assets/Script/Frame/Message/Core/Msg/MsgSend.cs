@@ -59,22 +59,21 @@ public class MsgSend
         msg.SetValue(msgId, back, objs); 
         GSendMsg(msg);
     }
-    //public static void GSendBundleAllRes(string abName, Action<UnityEngine.Object[]> cb = null, Action cb2 = null)//请求一个ab内所有资源 会自动卸载
-    //{
-    //	//HunkResMsg.CreateToSend(msgid, abName, cb);
-    //	RequestResMsg.CreateToSend((ushort)RES_ID.GET_OBJ, new CommonArt().SetValue(0, abName, null, cb, cb2));
-    //}
+    public static void GSendBundleAllRes(string abName, Action<UnityEngine.Object[]> cb = null, Action cb2 = null)//请求一个ab内所有资源 会自动卸载
+    {
+        RequestResMsg.CreateToSend((ushort)RES_ID.GET_OBJ, new CommonArt().SetValue(0, abName, null, cb, cb2));
+    }
     public static void GetRes(string abName, string ArtName, Action<UnityEngine.Object> cb, Action cb2 = null)
     {
-        //RequestResMsg.CreateToSend((ushort)RES_ID.GET_OBJ, new CommonArt().SetValue(0, abName, ArtName, cb, cb2));
+        RequestResMsg.CreateToSend((ushort)RES_ID.GET_OBJ, new CommonArt().SetValue(0, abName, ArtName, cb, cb2));
     }
     public static void GetRes(RES_MODEL_INDEX _ModelID, string ArtName, Action<UnityEngine.Object> cb, Action cb2 = null)
     {
-        //RequestResMsg.CreateToSend((ushort)RES_ID.GET_OBJ, new CommonArt().SetValue((int)_ModelID, null, ArtName, cb, cb2));
+        RequestResMsg.CreateToSend((ushort)RES_ID.GET_OBJ, new CommonArt().SetValue((int)_ModelID, null, ArtName, cb, cb2));
     }
     public static void GetRes(RES_MODEL_INDEX _ModelID, string abName, string ArtName, Action<UnityEngine.Object> cb, Action cb2 = null)
     {
-        //RequestResMsg.CreateToSend((ushort)RES_ID.GET_OBJ, new CommonArt().SetValue((int)_ModelID, abName, ArtName, cb, cb2));
+        RequestResMsg.CreateToSend((ushort)RES_ID.GET_OBJ, new CommonArt().SetValue((int)_ModelID, abName, ArtName, cb, cb2));
     }
     public static void GetRes(IArt art)
     {

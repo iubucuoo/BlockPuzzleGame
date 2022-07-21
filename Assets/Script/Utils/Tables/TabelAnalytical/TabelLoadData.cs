@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using ProtoBuf;
+using System;
+using System.IO;
+using UnityEngine;
 
 public class TabelLoadData
 {
@@ -7,14 +10,14 @@ public class TabelLoadData
     /// </summary>
     /// <param name="TableStruct"></param>
     /// <param name="data"></param>
-    public static object[] ProcessTable(System.Type[] TableStruct,string tableName)
+    public static object[] ProcessTable(Type[] TableStruct,string tableName)
     {
         if (Application.isPlaying)
         {
             Debug.LogError("读取protobuf的表");
             //读取protobuf的表
-            TextAsset txt = TableMgr.inst.GetTable(tableName) as TextAsset;
-            return (object[])ProtobufTools.Inst.Deserialize(TableStruct[0],txt.bytes);
+            var bytes = TableMgr.Inst.GetTable(tableName);
+            return (object[])ProtobufTools.Deserialize(TableStruct[0],bytes);
         }
         else
         {

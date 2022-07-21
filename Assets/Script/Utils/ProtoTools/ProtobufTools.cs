@@ -25,17 +25,13 @@ public class ProtobufTools:Singleton<ProtobufTools>
         //ProtoFactory.AddProtoPool(typeof(BuffData), new BuffDataPool());
         //ProtoFactory.AddProtoPool(typeof(EffectModel), new EffectModelPool());
     }
-    public object Deserialize(System.Type type, byte[] message)
+    public static object Deserialize(System.Type type, byte[] message)
     {
         using (var stream = new MemoryStream(message))
         {
             return RuntimeTypeModel.Default.Deserialize(stream, null, type);
         }
     }
-
-
-
-
 
     public static T Deserialize<T>(byte[] message)
     {
