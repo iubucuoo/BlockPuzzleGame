@@ -51,15 +51,15 @@ public class ExternalTools
 
 	public static Dictionary<string, int> GetLogDic()
 	{
-		//string dir = _VersionLogPath + "/NewResLog.txt";
-		//if (File.Exists(dir))
-		//{
-		//	SVNUpdate.Ctrl(SVNTYPE.CLEAN_UP, dir);
-		//	//提交一波资源
-		//	SVNUpdate.Ctrl(SVNTYPE.UPDATE, dir);
-		//	return LitJson.JsonMapper.ToObject<Dictionary<string, int>>(File.ReadAllText(dir));
-		//}
-		return new Dictionary<string, int>();
+        string dir = _VersionLogPath + "/NewResLog.txt";
+        if (File.Exists(dir))
+        {
+            //SVNUpdate.Ctrl(SVNTYPE.CLEAN_UP, dir);
+            ////提交一波资源
+            //SVNUpdate.Ctrl(SVNTYPE.UPDATE, dir);
+            return LitJson.JsonMapper.ToObject<Dictionary<string, int>>(File.ReadAllText(dir));
+        }
+        return new Dictionary<string, int>();
 	}
 
 	internal static void SVN_UPDATE_RESROOT()

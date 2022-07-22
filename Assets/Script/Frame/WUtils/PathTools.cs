@@ -14,6 +14,7 @@ namespace WUtils
 
         public static string Log = Application.dataPath + "/../Log.txt";
 
+        public static string PROJECT_TABLES = Application.dataPath + "/Art/Tables";
 
         public static string PLATFORM = GetPlatformFolderName(Application.platform);
 

@@ -6,35 +6,17 @@ using UnityEngine;
 
 public class ArtEidtorMsg : Editor
 {
-    static string SetPath()
-    {
-#if UNITY_ANDROID
-        return Application.dataPath + "/../LyRes" + "/Android_Res";
-#elif UNITY_IPHONE
-        return Application.dataPath + "/../LyRes" + "/IOS_Res";
-#else
-        return Application.dataPath + "/../LyRes" + "/PC_Res";
-#endif
-
-    }
-    static string outPath
-    {
-        get
-        {
-            return SetPath();
-        }
-    }
     [MenuItem("Tools/PullAB[根据当前标记的资源导出Ab]")]
     public static void PullAB()
     {
-        if (!Directory.Exists(outPath))
+        if (!Directory.Exists(EditorPathTools.SVN_RES_ROOT))
         {
-            Directory.CreateDirectory(outPath);
+            Directory.CreateDirectory(EditorPathTools.SVN_RES_ROOT);
         }
         var isIOS = EditorUserBuildSettings.activeBuildTarget == BuildTarget.iOS;
         long start_time = System.DateTime.Now.Ticks;
         AssetDatabase.RemoveUnusedAssetBundleNames();
-        BuildPipeline.BuildAssetBundles(outPath, //JenkinsTools.GetBuildMap(),
+        BuildPipeline.BuildAssetBundles(EditorPathTools.SVN_RES_ROOT, //JenkinsTools.GetBuildMap(),
                  BuildAssetBundleOptions.ChunkBasedCompression
                  | BuildAssetBundleOptions.DeterministicAssetBundle
                  , isIOS ? EditorUserBuildSettings.activeBuildTarget : BuildTarget.Android);
@@ -51,7 +33,7 @@ public class ArtEidtorMsg : Editor
     }
     public static void CopyToSetramAssets()
     {
-        DirectoryInfo root_dir = new DirectoryInfo(outPath);
+        DirectoryInfo root_dir = new DirectoryInfo(EditorPathTools.SVN_RES_ROOT);
 
         var fileinfos = root_dir.GetFileSystemInfos();
         for (int i = 0; i < fileinfos.Length; i++)
@@ -60,7 +42,7 @@ public class ArtEidtorMsg : Editor
             Debug.Log(file);
             if (!IsFilter(file))
             {
-                string OutPath = Path.GetFullPath(outPath);
+                string OutPath = Path.GetFullPath(EditorPathTools.SVN_RES_ROOT);
                 string url = file.FullName.Replace(OutPath, "").Substring(1);
                 url = LoadLocalTable.PathCutOff(url, Format.Change_Z_NotCut);
                 var streamingAssetsPath = Application.streamingAssetsPath + "/" + url;

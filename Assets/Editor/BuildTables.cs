@@ -6,19 +6,18 @@ using System.IO;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
+using WUtils;
 
 public class BuildTables : Editor
 {
-    static string GetRoot(string root = "")
-    {
-        return root == "" ? string.Format("{0}/Art/Tables/", Application.dataPath) : root;
-    }
     [MenuItem("Tools/导出二进制表")]
     public static void BuildChinese()
     {
-        BuildTable(Language_.Chinese, "");
+        TableProcessing.TableClear();
+        AssetDatabase.Refresh();
+        BuildTable(Language_.Chinese);
     }
-    static void BuildTable(Language_ tmpLan, string root)
+    static void BuildTable(Language_ tmpLan)
     {
         Type baseType = typeof(TableBaseManager);
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
@@ -28,15 +27,14 @@ public class BuildTables : Editor
             {
                 if (baseType.IsAssignableFrom(type) && baseType != type)
                 {
-                    ByteTable(type,  tmpLan, root);
+                    ByteTable(type,  tmpLan);
                 }
             }
         }
         AssetDatabase.Refresh();
     }
-    static void ByteTable(Type type,  Language_ lan, string _root)
+    static void ByteTable(Type type,  Language_ lan)
     {
-        string root = GetRoot(_root);
         TableBaseManager tableInstance = Activator.CreateInstance(type) as TableBaseManager;
         if (tableInstance.Open == false )
         {
@@ -44,7 +42,7 @@ public class BuildTables : Editor
         }
         var tableInfo = type.GetMethod("GetData");
         object tableData = tableInfo.Invoke(tableInstance, null);
-        root = root + lan.ToString();
+        string root = PathTools.PROJECT_TABLES + lan.ToString();
         if (!Directory.Exists(root))
         {
             Directory.CreateDirectory(root);

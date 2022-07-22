@@ -264,13 +264,13 @@ public class DiffBuilder
 		//	SVNUpdate.Ctrl(SVNTYPE.REVERT, EditorPathTools.PROJECT_ROOT, EditorPathTools.PROJECT_LUA, EditorPathTools.SVN_RES_ROOT);//clear up
 		//	SVNUpdate.Ctrl(SVNTYPE.UPDATE, EditorPathTools.PROJECT_ROOT, EditorPathTools.PROJECT_LUA, EditorPathTools.SVN_RES_ROOT);//clear up
 		//}
-		//AssetDatabase.Refresh();
-		//ClearABName();
-		//AndroidBuilder.BuilderDLL();
-		//BuildTable.BuildChinese();//更新表
+		AssetDatabase.Refresh();
+		ClearABName();
+        //AndroidBuilder.BuilderDLL();
+        BuildTables.BuildChinese();//更新表
 		//ExportScene.ExportPrefabs();//更新场景
 		//ShaderCollectionMgr.Collection();//收集shader keyword		
-		//ToLuaMenu.BuildNotJitBundles();//更新lua
+		//BuilderLua();//更新lua
 
 		//if (!isJenkins)
 		//{
@@ -278,19 +278,19 @@ public class DiffBuilder
 		//}
 	}
 
-	//[MenuItem("Builder/CollectionShader")]
-	//public static void CollectionShader()
-	//{
-	//	ShaderCollectionMgr.Collection();//收集shader keyword
-	//}
+    //[MenuItem("Builder/CollectionShader")]
+    //public static void CollectionShader()
+    //{
+    //	ShaderCollectionMgr.Collection();//收集shader keyword
+    //}
 
 
-	//[MenuItem("Builder/只标记Lua数据")]
-	//static void BuilderLua()
-	//{
-	//	ToLuaMenu.BuildNotJitBundles();//更新lua
-	//}
-	static void Bind()
+    //[MenuItem("Builder/只标记Lua数据")]
+    static void BuilderLua()
+    {
+        //ToLuaMenu.BuildNotJitBundles();//更新lua
+    }
+    static void Bind()
 	{
 		_StopBuilderForError = false;
 		Application.logMessageReceived -= HandleMessage;
@@ -310,9 +310,9 @@ public class DiffBuilder
 		BuilderAB();
 
 		#region//这里添加非压缩资源的打资源
-		//ClearABName();//清理标记
-		//SetSign(false);//添加不压缩标记
-		//BuilderAB(BuildAssetBundleOptions.UncompressedAssetBundle);
+		ClearABName();//清理标记
+		SetSign(false);//添加不压缩标记
+		BuilderAB(BuildAssetBundleOptions.UncompressedAssetBundle);
 		#endregion
 		ExternalTools.SaveAndCommitLog(_NowFileSvn);
 		//SVNUpdate.Ctrl(SVNTYPE.COMMIT, EditorPathTools.SVN_RES_ROOT);//打完ab提交一次  后续有svn与本地的比较
@@ -359,25 +359,28 @@ public class DiffBuilder
 	static void BuilderAB(BuildAssetBundleOptions options = BuildAssetBundleOptions.ChunkBasedCompression | BuildAssetBundleOptions.ForceRebuildAssetBundle)
 	{
 		float _Time = Time.realtimeSinceStartup;
-		var path = "";// EditorPathTools.SVN_RES_ROOT;
+		var path = EditorPathTools.SVN_RES_ROOT;
         if (!Directory.Exists(path))
 		{
 			Directory.CreateDirectory(path);
 		}
-		BuildPipeline.BuildAssetBundles(path, options, EditorUserBuildSettings.activeBuildTarget);
+        var isIOS = EditorUserBuildSettings.activeBuildTarget == BuildTarget.iOS;
+        BuildPipeline.BuildAssetBundles(path,
+            options,
+            isIOS ? EditorUserBuildSettings.activeBuildTarget : BuildTarget.Android);
 	}
 
 	static void SetSign(bool compressed = true)
 	{
 		foreach (var item in _ChangedDependFile)
 		{
-			//bool isuncompre = item.Key.Contains("Uncompressed");
-			//if ((compressed && isuncompre) || (!compressed && !isuncompre))
-			//{
-			//	continue;
-			//}
-			//最后添加标记的时候 在Environment下不标记
-			if (!item.Key.Contains(NewEditorLoad._Environment))
+            bool isuncompre = item.Key.Contains("Uncompressed");
+            if ((compressed && isuncompre) || (!compressed && !isuncompre))
+            {
+                continue;
+            }
+            //最后添加标记的时候 在Environment下不标记
+            if (!item.Key.Contains(NewEditorLoad._Environment))
 			{
 				var abPath = NewResBuilder.GetAbKeyBuilder(item.Key);
 				if (!string.IsNullOrEmpty(abPath))
