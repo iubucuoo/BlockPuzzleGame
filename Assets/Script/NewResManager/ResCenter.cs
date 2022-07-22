@@ -94,7 +94,6 @@ class ResCenter : AssetBase, IMgr
 		if (StaticTools._ResLoadModel == ResLoadModel.DEFAULT)
 		{
 			_ResMgr = new NewEditorLoad().BuilderResData();
-			//LoadLuaAB();
 			Load();
 		}
 		else
@@ -174,7 +173,7 @@ class ResCenter : AssetBase, IMgr
 
 				if (ab == null)
 				{
-					// DebugMgr.LogError("加载Lua路径为空== " + newResAb._AbPath);
+					DebugMgr.LogError("加载Lua路径为空== " + newResAb._AbPath);
 				}
 				else
 				{
@@ -188,7 +187,7 @@ class ResCenter : AssetBase, IMgr
 					Load();
 				}
 			}, ()=> {
-                //if (DebugMgr.CanLogError()) DebugMgr.LogError("加载Lua ab文件失败 path = {0}, name = {1}", newResAb._AbPath, newResAb._AbName); 
+                DebugMgr.LogError(string.Format("加载Lua ab文件失败 path = {0}, name = {1}", newResAb._AbPath, newResAb._AbName)); 
             }
             );
 		}

@@ -14,7 +14,7 @@ public class TestUrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DebugMgr.LogError(WUtils.PathTools.GetParentPath("你/号/啊/2.kko", 1));
+        
         DownloadTools.LoadUrl("https://www.iubucuoo.com/index.xml",5, (www) =>
         //DownloadTools.Loading("https://gitee.com/wangshijun12/GameInfo/raw/master/test.txt", (www) =>
         {

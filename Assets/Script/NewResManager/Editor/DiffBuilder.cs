@@ -377,7 +377,7 @@ public class DiffBuilder
 			//	continue;
 			//}
 			//最后添加标记的时候 在Environment下不标记
-			if (!item.Key.Contains("/Environment/"))
+			if (!item.Key.Contains(NewEditorLoad._Environment))
 			{
 				var abPath = NewResBuilder.GetAbKeyBuilder(item.Key);
 				if (!string.IsNullOrEmpty(abPath))

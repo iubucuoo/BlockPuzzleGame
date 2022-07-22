@@ -1,11 +1,11 @@
 version: 2
 importPivots: 1
 tpsheetFileNames:
-- Assets/Art/SpriteAtlas/uisprite.tpsheet
-- Assets/Art/SpriteAtlas/uispritebg.tpsheet
+- Assets/Art/TexturePacker/ignore/SpriteAtlas/uisprite.tpsheet
+- Assets/Art/TexturePacker/ignore/SpriteAtlas/uispritebg.tpsheet
 textureFileNames:
-- Assets/Art/SpriteAtlas/uisprite.png
-- Assets/Art/SpriteAtlas/uispritebg.png
+- Assets/Art/TexturePacker/ignore/SpriteAtlas/uisprite.png
+- Assets/Art/TexturePacker/ignore/SpriteAtlas/uispritebg.png
 normalmapFileNames:
 - 
 - 
