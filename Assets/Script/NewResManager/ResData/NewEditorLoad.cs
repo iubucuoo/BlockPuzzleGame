@@ -25,7 +25,7 @@ public enum RES_MODEL_INDEX
 public class NewEditorLoad
 {
 	public static string[] _RootPathName = new string[] { "Art", "temp/Lua" };
-	public static string[] _ObjPrefix = new string[] { ".prefab", ".anim", ".png", ".controller", ".bytes", ".json", ".txt", ".cginc", ".shader", ".overrideController" };
+	public static string[] _ObjPrefix = new string[] { ".prefab", ".anim", ".png", ".controller", ".bytes", ".json", ".txt", ".cginc", ".shader", ".overrideController",".wav", ".mp3",".xml", ".tpsheet" };
 	public static string _Environment = "/Environment/";
 	public static string _Ignore = "/ignore/";
 	//定义默认默认ab
@@ -98,7 +98,7 @@ public class NewEditorLoad
 	{
 		if (respath.Contains(_Ignore) || respath.Contains(_Environment))
 		{
-            //Debug.Log(respath);不包含ignore与Environment
+            //Debug.Log("return null   "+respath);//不包含ignore与Environment
             return null;
 		}
         //Art下 或者 temp/Lua下  
@@ -114,7 +114,11 @@ public class NewEditorLoad
 				}
 			}
 		}
-		return null;
+        //if (respath.Contains("Assets/Art"))
+        //{
+        //    Debug.Log("return null   " + respath);
+        //}
+        return null;
 	}
 	#region BuilderAB	
 	static NewResUnit CreateSigleUnit(string path, string _Prefix)
@@ -128,7 +132,7 @@ public class NewEditorLoad
 		var abPath = path.Substring(0, index);
 		var modelName = GetModelName(abPath, out int _ModelID);
 		var abName = GetAbName(abPath);
-        Debug.LogError(path + "  _abPath:  " + abPath + "  _abname:  " + abName + "  _objname:  " + objName + " _modelname  " + modelName + "   _modelid  " + _ModelID);
+        //Debug.LogError(path + "  _abPath:  " + abPath + "  _abname:  " + abName + "  _objname:  " + objName + " _modelname  " + modelName + "   _modelid  " + _ModelID);
         var unit = new NewResUnit()
 		{
 			_ModelName = _ModelID > (int)RES_MODEL_INDEX.other ? modelName : ((RES_MODEL_INDEX)_ModelID).ToString(),

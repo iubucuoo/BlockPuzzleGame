@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class ArtEidtorMsg : Editor
 {
+    [MenuItem("Tools/77777")]
+    public static void PPPPP()
+    {
+        Debug.Log(EditorPathTools.SVN_ASSETBUNDLE_MANIFEST);
+    }
     [MenuItem("Tools/PullAB[根据当前标记的资源导出Ab]")]
     public static void PullAB()
     {
@@ -25,11 +30,7 @@ public class ArtEidtorMsg : Editor
     }
     static bool IsFilter(FileInfo file)
     {
-        if (file.Extension == ".ly")
-        {
-            return false;
-        }
-        return true;
+        return file.Extension == WUtils.PathTools.DOT_LY;
     }
     public static void CopyToSetramAssets()
     {
@@ -40,7 +41,7 @@ public class ArtEidtorMsg : Editor
         {
             var file = fileinfos[i] as FileInfo;
             Debug.Log(file);
-            if (!IsFilter(file))
+            if (IsFilter(file))
             {
                 string OutPath = Path.GetFullPath(EditorPathTools.SVN_RES_ROOT);
                 string url = file.FullName.Replace(OutPath, "").Substring(1);
@@ -61,6 +62,4 @@ public class ArtEidtorMsg : Editor
         }
        
     }
-   
-
 }

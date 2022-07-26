@@ -17,7 +17,7 @@ public class NewResUnit
 	[ProtoBuf.ProtoMember(5)]
 	public string _ModelName;
 	[ProtoBuf.ProtoMember(6)]
-	public string _Path;    //#GLZ运行中无用 打资源时用
+	public string _Path;    //#运行中无用 打资源时用
 
 	public Object _Obj;
 	public int _LoadTime;

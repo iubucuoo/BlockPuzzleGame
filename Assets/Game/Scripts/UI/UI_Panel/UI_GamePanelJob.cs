@@ -85,7 +85,7 @@ public class UI_GamePanelJob : UIEventListenBase
             }
             else if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                OldDragPos = Vector2.zero;//放置同一个位置点击的时候不处理位置改动
+                //OldDragPos = Vector2.zero;//放置同一个位置点击的时候不处理位置改动
                 DragPos = GameGloab.OutScreenV2;//防止残留的位置是上次的位置导致显示闪一下
                 SetDragRootPos();
             }

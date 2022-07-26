@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using UnityEngine;
 namespace WUtils
 {
@@ -129,6 +130,33 @@ namespace WUtils
             }
             parent = parent.Substring(0, len);
             return parent;
+        }
+        public static string GetSubPath(string path, int count)
+        {
+            int i = 0;
+            var sub = path;
+            var len = 0;
+            while (i < count)
+            {
+                len = sub.IndexOf('/', ++len);
+                i++;
+            }
+            sub = sub.Substring(len + 1);
+            return sub;
+        }
+        ///获得配置版本
+        public static string GetLineVersion(string path, int lineNum)
+        {
+            FileStream fs = new FileStream(path, FileMode.Open);
+            StreamReader sr = new StreamReader(fs);
+            string str = null;
+            for (int i = 0; i < lineNum; i++)
+            {
+                str = sr.ReadLine();
+            }
+            sr.Close();
+            fs.Close();
+            return str;
         }
     }
 }

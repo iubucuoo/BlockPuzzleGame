@@ -367,7 +367,7 @@ class ResCenter : AssetBase, IMgr
 #if UNITY_EDITOR
 			//SceneMgr.LoadScene("Loading");
 #else
-						SdkMgr.Instance.RestartGame();//重启app
+						//SdkMgr.Instance.RestartGame();//重启app
 #endif
 		}
 		else

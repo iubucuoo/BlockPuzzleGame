@@ -191,7 +191,7 @@ public class CiteMgr
     /// <param name="data"></param>
     static void SaveCiteLog(Cites data)
     {
-        string dir = "";//EditorPathTools.VERSION_LOG_PATH;
+        string dir = EditorPathTools.VERSION_LOG_PATH;
         if (!Directory.Exists(dir))
         {
             Directory.CreateDirectory(dir);
@@ -243,7 +243,34 @@ public class DiffBuilder
 		BuildLog();//生成log		
 				   //9.清除标记
 	}
-	[MenuItem("Builder/Real.BuildAB")]
+
+    static void Sign()
+    {
+        //0.清空标记
+        AssetDatabase.Refresh();
+        ClearCacheData();
+        ClearABName();
+        FindAllSignFile();//添加所有可标记的
+        FindSameAb();
+        SetSign();//设置ab标记
+        BuildLog();//生成log		
+                   //9.清除标记
+    }
+    //全部设置标记
+    private static void FindAllSignFile()
+    {
+        var _ResPaths = AssetDatabase.GetAllAssetPaths();
+        foreach (var item in _ResPaths)
+        {
+            var data = NewResBuilder.CreateSimulateUnit(item);
+            if (data != null)
+            {
+                PushData(data._Path, -1);//需要查询是否被依赖 查找同AB	
+            }
+        }
+    }
+
+    [MenuItem("Builder/Real.BuildAB")]
 	public static void BuildABEditor()
 	{
 		Bind();
@@ -270,7 +297,7 @@ public class DiffBuilder
         BuildTables.BuildChinese();//更新表
 		//ExportScene.ExportPrefabs();//更新场景
 		//ShaderCollectionMgr.Collection();//收集shader keyword		
-		//BuilderLua();//更新lua
+		BuilderLua();//更新lua
 
 		//if (!isJenkins)
 		//{
@@ -298,9 +325,10 @@ public class DiffBuilder
 	}
 	static void BuildAB(bool isJenkins)
 	{
-		SignDiffFile();
-		//BuilderLua();
-		if (_StopBuilderForError)
+        //SignDiffFile();
+        //BuilderLua();
+        Sign();
+        if (_StopBuilderForError)
 		{
 			//只要保证Newlog.txt是对的其他就不会出错
 			DebugMgr.LogError("停止资源更新 报错了，重置数据");
@@ -310,18 +338,18 @@ public class DiffBuilder
 		BuilderAB();
 
 		#region//这里添加非压缩资源的打资源
-		ClearABName();//清理标记
-		SetSign(false);//添加不压缩标记
-		BuilderAB(BuildAssetBundleOptions.UncompressedAssetBundle);
+		//ClearABName();//清理标记
+		//SetSign(false);//添加不压缩标记
+		//BuilderAB(BuildAssetBundleOptions.UncompressedAssetBundle);
 		#endregion
-		ExternalTools.SaveAndCommitLog(_NowFileSvn);
+		//ExternalTools.SaveAndCommitLog(_NowFileSvn);
 		//SVNUpdate.Ctrl(SVNTYPE.COMMIT, EditorPathTools.SVN_RES_ROOT);//打完ab提交一次  后续有svn与本地的比较
 	}
 
 	static void CommitResRoot(bool isJenkins)
 	{
-		ClearABName();
-		//CreateMD5.BuilderMD5Record(true);
+		//ClearABName();
+		CreateMD5.BuilderMD5Record(true);
 		if (!isJenkins)
 		{
 			//SVNUpdate.Ctrl(SVNTYPE.COMMIT, EditorPathTools.SVN_RES_ROOT);//把version 提交
@@ -597,8 +625,8 @@ public class DiffBuilder
 		}
 	}
 
-
-	static void ClearABName()
+    [MenuItem("Tools/ClearABName")]
+    static void ClearABName()
 	{
 		float _Time = Time.realtimeSinceStartup;
 		HashSet<string> hash = new HashSet<string>();

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ExternalTools
 {
-	static string _VersionLogPath = "";// EditorPathTools.VERSION_LOG_PATH;
-    static string _AssetRoot = "";//EditorPathTools.PROJECT_ROOT;
+	static string _VersionLogPath = EditorPathTools.VERSION_LOG_PATH;
+    static string _AssetRoot = EditorPathTools.PROJECT_ROOT;
     static string BIN = _AssetRoot + "ITools/VersionMgr/VersionMgr/VersionMgr/bin/Debug";
 
 	public static Dictionary<string, int> GetCurSvnLog()
