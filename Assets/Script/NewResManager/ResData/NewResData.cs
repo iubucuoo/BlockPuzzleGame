@@ -96,12 +96,12 @@ public class NewResData
 		File.WriteAllText(Application.dataPath + "/reslog.txt", ToDebug());
 		SaveToFile(v);
 	}
-	internal void SaveToFile(string v)
-	{
-		ProtobufTools.SerializeToFile(v, this);
-	}
+    internal void SaveToFile(string v)
+    {
+        ProtobufTools.SerializeToFile(v, this);
+    }
 
-	public string ToDebug()
+    public string ToDebug()
 	{
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < _Count; i++)

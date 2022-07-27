@@ -5,10 +5,27 @@ using UnityEngine;
 
 public class NewResBuilder : Editor
 {
-	static NewResMgr _NewResMgr;
+    //[MenuItem("Builder/Version.bytes转Json")]
+    //public static void VersionToJson()
+    //{
+    //	var version = new NewResMgr(File.Exists(IPathTools.CACHE_VERSION) ? File.ReadAllBytes(IPathTools.CACHE_VERSION) : null);
+    //	File.WriteAllText(Application.dataPath + "/version.json", LitJson.JsonMapper.ToJson(version._Data));
+    //	Debug.Log("over"+ File.Exists(IPathTools.CACHE_VERSION));
+    //}
+    [MenuItem("Tools/Builder/Real.Build")]
+    public static void BuildABEditor()
+    {
+        DiffBuilder.RealBuildABEditor();
+    }
+    [MenuItem("Tools/Builder/按差异拷贝数据到StreamAsset")]
+    public static void CopyInPkg()
+    {
+        BuildApkTools.CopyToProject();
+    }
+    static NewResMgr _NewResMgr;
 	//1.先生成当前的资源
 	//2.资源比对【工程内的资源与上个版本进行比对，版本有差异，相应的资源需要处理】
-	[MenuItem("Builder/生成BuilderAB.txt 用于查看")]
+	[MenuItem("Tools/Builder/生成BuilderAB.txt 用于查看")]
 	public static void BuilderAB()
 	{
 		_NewResMgr = null;
@@ -55,16 +72,5 @@ public class NewResBuilder : Editor
 		}
 		return _NewResMgr;
 	}
-	//[MenuItem("Builder/Version.bytes转Json")]
-	//public static void VersionToJson()
-	//{
-	//	var version = new NewResMgr(File.Exists(IPathTools.CACHE_VERSION) ? File.ReadAllBytes(IPathTools.CACHE_VERSION) : null);
-	//	File.WriteAllText(Application.dataPath + "/version.json", LitJson.JsonMapper.ToJson(version._Data));
-	//	Debug.Log("over"+ File.Exists(IPathTools.CACHE_VERSION));
-	//}
-	//[MenuItem("Builder/按差异拷贝数据到StreamAsset")]
-	//public static void CopyInPkg()
-	//{
-	//	BuildApkTools.CopyToProject();
-	//}
+    
 }

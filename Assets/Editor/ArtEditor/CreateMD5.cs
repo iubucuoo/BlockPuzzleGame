@@ -22,7 +22,7 @@ public class CreateMD5 : Editor
 		var _VersionPath = EditorPathTools.SVN_VERSION;// path + "/Version.bytes";
 		var _OldResMgr = new NewResMgr(File.Exists(_VersionPath) ? File.ReadAllBytes(_VersionPath) : null);//需要从旧的版本配置中获得依赖关系配置
 
-        var list = FindFileSize.GetDic();// ExternalTools.GetFilesSize(new List<string>() { path });//读取svn上的EditorPathTools.SVN_RES_ROOT下的文件list
+        var list = FindFileSize.GetDic();
 
 		var _NewResMgr = new NewEditorLoad().BuilderResData();//本地的资源---这里忽略 Environment 下的资源
 		foreach (var item in list)

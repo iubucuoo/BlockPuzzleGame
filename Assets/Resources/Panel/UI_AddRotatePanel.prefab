@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7423933608087564890, guid: 99dd0ce4826051b4399d5077a18bccf7, type: 3}
+  m_Sprite: {fileID: 7423933608087564890, guid: bfe48b7b571e95049938ae56f9cd8ba0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5300877936742877120, guid: 99dd0ce4826051b4399d5077a18bccf7, type: 3}
+  m_Sprite: {fileID: 5300877936742877120, guid: bfe48b7b571e95049938ae56f9cd8ba0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e4487d82f81d0fc4c92112875712dbff, type: 3}
+  m_Sprite: {fileID: 1054626745311440867, guid: bfe48b7b571e95049938ae56f9cd8ba0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5300877936742877120, guid: 99dd0ce4826051b4399d5077a18bccf7, type: 3}
+  m_Sprite: {fileID: 5300877936742877120, guid: bfe48b7b571e95049938ae56f9cd8ba0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3819042601232629061, guid: 99dd0ce4826051b4399d5077a18bccf7, type: 3}
+  m_Sprite: {fileID: -3819042601232629061, guid: bfe48b7b571e95049938ae56f9cd8ba0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -728,7 +728,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2599114322993051572, guid: 99dd0ce4826051b4399d5077a18bccf7, type: 3}
+  m_Sprite: {fileID: 2599114322993051572, guid: bfe48b7b571e95049938ae56f9cd8ba0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -805,7 +805,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5300877936742877120, guid: 99dd0ce4826051b4399d5077a18bccf7, type: 3}
+  m_Sprite: {fileID: 5300877936742877120, guid: bfe48b7b571e95049938ae56f9cd8ba0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 8436418181874668166}
   - component: {fileID: 8436418181874668167}
   m_Layer: 5
-  m_Name: AddRotatePanel
+  m_Name: UI_AddRotatePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -912,7 +912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cbc5c199334d164286eb4ff2c4b994c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageIds: 
   BtnAd: {fileID: 4319077776208496399}
   AllBg: {fileID: 896032741329988765}
   BtnResetGame: {fileID: 8436418180501198480}

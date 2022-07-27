@@ -78,8 +78,11 @@ public class BuildApkTools : Editor
 	}
 
 	public static void CopyToProject()//将首包资源拷贝回包内
-	{
-		Directory.Delete(PathTools.STREAM_RES_PATH, true);
+    {
+        if (Directory.Exists(PathTools.STREAM_RES_PATH))
+        {
+            Directory.Delete(PathTools.STREAM_RES_PATH, true);
+        }
 		var _CacheResMgr = new NewResMgr(File.ReadAllBytes(EditorPathTools.SVN_VERSION));
 		for (int i = 0; i < _CacheResMgr._Data._Count; i++)
 		{
@@ -109,4 +112,33 @@ public class BuildApkTools : Editor
 		File.Copy(EditorPathTools.SVN_VERSION, PathTools.STREAM_VERSION, true);
 		AssetDatabase.Refresh();
 	}
+    public static void AllCopyToSetramAssets()
+    {
+        DirectoryInfo root_dir = new DirectoryInfo(EditorPathTools.SVN_RES_ROOT);
+
+        var fileinfos = root_dir.GetFileSystemInfos();
+        for (int i = 0; i < fileinfos.Length; i++)
+        {
+            var file = fileinfos[i] as FileInfo;
+            if (file.Extension == WUtils.PathTools.DOT_LY)
+            {
+                string OutPath = Path.GetFullPath(EditorPathTools.SVN_RES_ROOT);
+                string url = file.FullName.Replace(OutPath, "").Substring(1);
+                url = LoadLocalTable.PathCutOff(url, Format.Change_Z_NotCut);
+                var streamingAssetsPath = Application.streamingAssetsPath + "/" + url;
+                string path = Directory.GetParent(streamingAssetsPath).FullName;
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                if (File.Exists(streamingAssetsPath))
+                {
+                    //Debug.Log("delete=" + Application.streamingAssetsPath + "/" + url);
+                    File.Delete(streamingAssetsPath);
+                }
+                File.Copy(file.FullName, streamingAssetsPath);
+            }
+        }
+
+    }
 }

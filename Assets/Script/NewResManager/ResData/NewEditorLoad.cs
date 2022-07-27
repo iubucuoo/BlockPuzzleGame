@@ -24,7 +24,7 @@ public enum RES_MODEL_INDEX
 
 public class NewEditorLoad
 {
-	public static string[] _RootPathName = new string[] { "Art", "temp/Lua" };
+	public static string[] _RootPathName = new string[] { "Assets/Art", "temp/Lua" };
 	public static string[] _ObjPrefix = new string[] { ".prefab", ".anim", ".png", ".controller", ".bytes", ".json", ".txt", ".cginc", ".shader", ".overrideController",".wav", ".mp3",".xml", ".tpsheet" };
 	public static string _Environment = "/Environment/";
 	public static string _Ignore = "/ignore/";

@@ -214,7 +214,60 @@ public class DiffBuilder
 
 	static Cites _CitesMgr;
 	static bool _StopBuilderForError;
-	/*
+    public static void RealBuildABEditor()
+    {
+        Bind();
+
+        AssetDatabase.Refresh();
+        BuildTables.BuildChinese();
+
+        //0.清空标记
+        AssetDatabase.Refresh();
+        ClearCacheData();
+        ClearABName();
+        FindAllSignFile();//添加所有可标记的
+        FindSameAb();
+        SetSign();//设置ab标记
+        BuilderLog();
+
+
+
+        if (_StopBuilderForError)
+        {
+            //只要保证Newlog.txt是对的其他就不会出错
+            DebugMgr.LogError("停止资源更新 报错了，重置数据");
+            return;
+        }
+        BuilderAB();
+
+        ClearABName();
+        CreateMD5.BuilderMD5Record(true);
+
+    }
+    static void BuilderLog()
+    {
+        string dir = Application.dataPath + "/../ITools/BuilderLog/";
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+        File.WriteAllText(dir + GetTime(),
+            LitJson.JsonMapper.ToJson(_ChangedDependFile));//生成log
+    }
+    //全部查询设置标记
+    private static void FindAllSignFile()
+    {
+        var _ResPaths = AssetDatabase.GetAllAssetPaths();
+        foreach (var item in _ResPaths)
+        {
+            var data = NewResBuilder.CreateSimulateUnit(item);
+            if (data != null)
+            {
+                PushData(data._Path, -1);//需要查询是否被依赖 查找同AB	
+            }
+        }
+    }
+    /*
      *  0.清除标记
         1.当前的文件svn版本和本地存储的版本比对差异 确定Add，Update,del,文件
         2.比对之后 如果发现有些资源本身不标记，但依赖他的资源会标记，那么先放到资源待定了，
@@ -226,7 +279,7 @@ public class DiffBuilder
         8.拷贝本次svn记录
         9.清除标记
     */
-	[MenuItem("Builder/现有资源差异检查")]
+    [MenuItem("Builder/现有资源差异检查")]
 	static void SignDiffFile()
 	{
 		//0.清空标记
@@ -244,32 +297,6 @@ public class DiffBuilder
 				   //9.清除标记
 	}
 
-    static void Sign()
-    {
-        //0.清空标记
-        AssetDatabase.Refresh();
-        ClearCacheData();
-        ClearABName();
-        FindAllSignFile();//添加所有可标记的
-        FindSameAb();
-        SetSign();//设置ab标记
-        BuildLog();//生成log		
-                   //9.清除标记
-    }
-    //全部设置标记
-    private static void FindAllSignFile()
-    {
-        var _ResPaths = AssetDatabase.GetAllAssetPaths();
-        foreach (var item in _ResPaths)
-        {
-            var data = NewResBuilder.CreateSimulateUnit(item);
-            if (data != null)
-            {
-                PushData(data._Path, -1);//需要查询是否被依赖 查找同AB	
-            }
-        }
-    }
-
     [MenuItem("Builder/Real.BuildAB")]
 	public static void BuildABEditor()
 	{
@@ -279,12 +306,12 @@ public class DiffBuilder
 		CommitResRoot(false);
 		DebugMgr.LogError("Real.BuildAB  Over");
 	}
-
-	/// <summary>
-	/// 保证资源处于最新状态（ 用SVN还原并更新资源 再重新处理资源 再上传到SVN ）
-	/// </summary>
-	/// <param name="isJenkins"></param>
-	public static void UpdateOther(bool isJenkins)
+   
+    /// <summary>
+    /// 保证资源处于最新状态（ 用SVN还原并更新资源 再重新处理资源 再上传到SVN ）
+    /// </summary>
+    /// <param name="isJenkins"></param>
+    public static void UpdateOther(bool isJenkins)
 	{
 		//if (!isJenkins)
 		//{
@@ -325,9 +352,8 @@ public class DiffBuilder
 	}
 	static void BuildAB(bool isJenkins)
 	{
-        //SignDiffFile();
+        SignDiffFile();
         //BuilderLua();
-        Sign();
         if (_StopBuilderForError)
 		{
 			//只要保证Newlog.txt是对的其他就不会出错
@@ -338,17 +364,17 @@ public class DiffBuilder
 		BuilderAB();
 
 		#region//这里添加非压缩资源的打资源
-		//ClearABName();//清理标记
-		//SetSign(false);//添加不压缩标记
-		//BuilderAB(BuildAssetBundleOptions.UncompressedAssetBundle);
+		ClearABName();//清理标记
+		SetSign(false);//添加不压缩标记
+		BuilderAB(BuildAssetBundleOptions.UncompressedAssetBundle);
 		#endregion
-		//ExternalTools.SaveAndCommitLog(_NowFileSvn);
+		ExternalTools.SaveAndCommitLog(_NowFileSvn);
 		//SVNUpdate.Ctrl(SVNTYPE.COMMIT, EditorPathTools.SVN_RES_ROOT);//打完ab提交一次  后续有svn与本地的比较
 	}
 
 	static void CommitResRoot(bool isJenkins)
 	{
-		//ClearABName();
+		ClearABName();
 		CreateMD5.BuilderMD5Record(true);
 		if (!isJenkins)
 		{
@@ -363,7 +389,8 @@ public class DiffBuilder
 			_StopBuilderForError = true;
 		}
 	}
-	public static void BuilderAbForJenkins()
+    #region Jenkins
+    public static void BuilderAbForJenkins()
 	{
 		Bind();
 		//jenkins 更新svn
@@ -381,10 +408,10 @@ public class DiffBuilder
 	{
 		CommitResRoot(true);
 	}
+    #endregion
 
-
-	//shader变动以后，默认的增量打包很容易出问题，修改为强制重新打包
-	static void BuilderAB(BuildAssetBundleOptions options = BuildAssetBundleOptions.ChunkBasedCompression | BuildAssetBundleOptions.ForceRebuildAssetBundle)
+    //shader变动以后，默认的增量打包很容易出问题，修改为强制重新打包
+    static void BuilderAB(BuildAssetBundleOptions options = BuildAssetBundleOptions.ChunkBasedCompression | BuildAssetBundleOptions.ForceRebuildAssetBundle)
 	{
 		float _Time = Time.realtimeSinceStartup;
 		var path = EditorPathTools.SVN_RES_ROOT;
@@ -396,7 +423,8 @@ public class DiffBuilder
         BuildPipeline.BuildAssetBundles(path,
             options,
             isIOS ? EditorUserBuildSettings.activeBuildTarget : BuildTarget.Android);
-	}
+        DebugMgr.Log("[BuilderAB ]花费时间=" + (Time.realtimeSinceStartup - _Time));
+    }
 
 	static void SetSign(bool compressed = true)
 	{
@@ -441,7 +469,6 @@ public class DiffBuilder
 		File.WriteAllText(dir + GetTime(),
 			LitJson.JsonMapper.ToJson(log));
 	}
-
 	static string GetTime()
 	{
 		//获取当前时间
@@ -626,7 +653,7 @@ public class DiffBuilder
 	}
 
     [MenuItem("Tools/ClearABName")]
-    static void ClearABName()
+    public static void ClearABName()
 	{
 		float _Time = Time.realtimeSinceStartup;
 		HashSet<string> hash = new HashSet<string>();

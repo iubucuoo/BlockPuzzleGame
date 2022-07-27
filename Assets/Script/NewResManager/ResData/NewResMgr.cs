@@ -61,10 +61,11 @@ public class NewResMgr
 	public void ToFile(string v)
 	{
 		_Data.ToFile(v);
-	}
+        SaveToFile(v);
+    }
 	public void SaveToFile(string v)
 	{
-		_Data.SaveToFile(v);
+        _Data.SaveToFile(v);
 	}
 	public void CopyAbParams(NewResMgr oldMgr)
 	{
