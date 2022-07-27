@@ -13,11 +13,7 @@ enum LoginStatus
     ErrorCfg,
     ErrorDownload,
 }
-public interface IMgr
-{
-    void InitMgr();
-    void ResetMgr();
-}
+
 
 /// <summary>
 ///////////////////////// 这里消息ID关联LUA  正式出包后不能改 会导致id对不上无法热更加载
@@ -48,7 +44,6 @@ public enum RES_ID
 public enum ResLoadModel
 {
     DEFAULT,//默认,全部本地
-    ARTIST,//美工，除了lua，都是本地的
     ONLINE,//线上资源
 }
 //资源中心，主要负责资源管理
@@ -150,7 +145,8 @@ class ResCenter : AssetBase, IMgr
 					 DebugMgr.LogWarning("包内的版本大于缓存内的版本(更新后等同svn上版本)，清理Cache 或 更新svn上美术资源");
 			}
 		}
-		LoadLuaAB();
+        Load();
+        //LoadLuaAB();
 	}
 	void LoadLuaAB()
 	{
@@ -183,7 +179,6 @@ class ResCenter : AssetBase, IMgr
 				_Sum++;
 				if (_Sum == _Count)
 				{
-					ArtAppend();
 					Load();
 				}
 			}, ()=> {
@@ -192,30 +187,21 @@ class ResCenter : AssetBase, IMgr
             );
 		}
 	}
-	//如果是美术加载方式，lua是最新的，其他的都用editor中
-	void ArtAppend()
-	{
-		if (StaticTools._ResLoadModel == ResLoadModel.ARTIST)
-		{
-			var temp = new NewEditorLoad().BuilderResData();
-			//模块替换
-			temp._Data.Switch((int)RES_MODEL_INDEX.lua, _ResMgr._Data.GetModel(RES_MODEL_INDEX.lua));
-		}
-	}
-
+	
 	//加载
 	//0.加载管理脚本
 	//1.加载场景
 	//2.加载lua
 	void Load()
 	{
-		//ScriptMgr.inst.Init();
-		//if (AppParam._GameMode > GameModel.SuperModel)
-		//{
-		//	MainScripts.inst.gameObject.GetOrCreatComponent<SceneMgr>();
-		//	MainScripts.inst.gameObject.GetOrCreatComponent<LuaClient>();//开启lua
-		//}
-	}
+		ScriptMgr.Inst.Init();
+        //if (AppParam._GameMode > GameModel.SuperModel)
+        //{
+        //	MainScripts.inst.gameObject.GetOrCreatComponent<SceneMgr>();
+        //	MainScripts.inst.gameObject.GetOrCreatComponent<LuaClient>();//开启lua
+        //}
+        AllUIPanelManager.Inst.Show(IPoolsType.UI_StartPanel);
+    }
 	public override void ProcessEvent(MessageBase tmpMsg)
 	{
 		switch (tmpMsg.msgId)

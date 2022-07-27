@@ -78,8 +78,7 @@ public class NewResLoop
 			GetNextData(_Data);
 			if (_Data.Count != 0)
 			{
-				if ((StaticTools._ResLoadModel == ResLoadModel.DEFAULT ||
-					(StaticTools._ResLoadModel == ResLoadModel.ARTIST) && _Data.Peek()._ModelID != (int)RES_MODEL_INDEX.lua))
+				if (StaticTools._ResLoadModel == ResLoadModel.DEFAULT)
 				{
 					ResCenter.inst._ResMgr.GetObj(_Data.Pop());
 				}

@@ -11,7 +11,7 @@ public class LanguageEditor : EditorWindow
     private bool isPrettyPrint = false;
     private string filePath = "";
 
-    [MenuItem("Builder/Json Data Editor")]
+    [MenuItem("Tools/Language Json Data EditorWindow")]
     static void Init()
     {
         GetWindow(typeof(LanguageEditor)).Show();

@@ -43,33 +43,36 @@ public class MainC : MonoBehaviour
         AudioMgr.Inst.isPlaying_Music = GameGloab.MusicOnOff == 0;
         AudioMgr.Inst.isPlaying_Sound = GameGloab.SoundIsOnOff == 0;
 
-        ReadStreamingInit();
-    }
 
+        Application.targetFrameRate = 60;
+        gameObject.AddComponent<TimeMgr>();
+
+        MEC.Timing.RunCoroutine(NetStatus());
+        GoogleAdMgr.CheckInstance();//初始化的interstitial在下个update中执行
+        FPS.CheckInstance();
+        foreach (var v in sprites)
+        {
+            Sprites[v.name] = v;
+        }
+        
+        //先载入数据文件
+        //LoadLanguageData();
+        //
+        ScriptMgr.Inst.InitFirstScript();
+    }
+    void Start()
+    {
+    }
+    private void OnApplicationQuit()
+    {
+        ScriptMgr.Inst.Reset();
+    }
     private void ReadStreamingInit()
     {
         string path1 = string.Concat(PathTools.GetWWWAssetBundlePath(true, true), "/GameConfig.json");
         DownloadTools.LoadUrl(path1,5, (s1) =>
         {
-            channle_info = LitJson.JsonMapper.ToObject<channles>(s1.text);
-            DebugMgr.LogError(channle_info.pkgName);
-            Application.targetFrameRate = 60;
-            gameObject.AddComponent<MEC.Timing>();
-            gameObject.AddComponent<TimeMgr>();
-
-            MEC.Timing.RunCoroutine(NetStatus());
-            GoogleAdMgr.CheckInstance();//初始化的interstitial在下个update中执行
-            FPS.CheckInstance();
-            foreach (var v in sprites)
-            {
-                Sprites[v.name] = v;
-            }
-            AllUIPanelManager.Inst.Show(IPoolsType.UI_StartPanel);
-            //先载入数据文件
-            //LoadLanguageData();
-            //
-            var xxx = new ResCenter();
-            xxx.InitMgr();
+            
         });  
     }
 

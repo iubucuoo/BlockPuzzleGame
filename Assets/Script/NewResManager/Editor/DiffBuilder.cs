@@ -277,7 +277,7 @@ public class DiffBuilder
         8.拷贝本次svn记录
         9.清除标记
     */
-    [MenuItem("Builder/现有资源差异检查")]
+    //[MenuItem("Builder/现有资源差异检查")]
 	static void SignDiffFile()
 	{
 		//0.清空标记
@@ -295,7 +295,7 @@ public class DiffBuilder
 				   //9.清除标记
 	}
 
-    [MenuItem("Builder/Real.BuildAB")]
+    //[MenuItem("Builder/Real.BuildAB")]
 	public static void BuildABEditor()
 	{
 		Bind();
@@ -650,7 +650,6 @@ public class DiffBuilder
 		}
 	}
 
-    [MenuItem("Tools/ClearABName")]
     public static void ClearABName()
 	{
 		float _Time = Time.realtimeSinceStartup;

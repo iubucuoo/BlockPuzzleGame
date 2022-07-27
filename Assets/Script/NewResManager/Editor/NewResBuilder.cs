@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class NewResBuilder : Editor
 {
-    //[MenuItem("Builder/Version.bytes转Json")]
+    [MenuItem("Tools/Test~~~~~~~Debug")]
+    public static void TestDebug()
+    {
+        Debug.Log(WUtils.PathTools.WWW_CACHE_VERSION);
+    }
+    //[MenuItem("Tools/Version.bytes转Json")]
     //public static void VersionToJson()
     //{
     //	var version = new NewResMgr(File.Exists(IPathTools.CACHE_VERSION) ? File.ReadAllBytes(IPathTools.CACHE_VERSION) : null);
