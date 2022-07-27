@@ -17,8 +17,6 @@ public class ArtABPostprocessor : AssetPostprocessor
     static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
     {               
         //MarkABName(importedAssets);
-
-
     }
     static void MarkABName(string[] importedAssets)
     {

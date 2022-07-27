@@ -230,8 +230,6 @@ public class DiffBuilder
         SetSign();//设置ab标记
         BuilderLog();
 
-
-
         if (_StopBuilderForError)
         {
             //只要保证Newlog.txt是对的其他就不会出错
@@ -246,7 +244,7 @@ public class DiffBuilder
     }
     static void BuilderLog()
     {
-        string dir = Application.dataPath + "/../ITools/BuilderLog/";
+        string dir = EditorPathTools.VERSION_BUILDERLOG_PATH;
         if (!Directory.Exists(dir))
         {
             Directory.CreateDirectory(dir);
@@ -461,7 +459,7 @@ public class DiffBuilder
 		log.Add("更新", LitJson.JsonMapper.ToJson(_UpdateData));
 		log.Add("删除文件", LitJson.JsonMapper.ToJson(_DeleteData));
 		log.Add("被标记AB", LitJson.JsonMapper.ToJson(_ChangedDependFile));
-		string dir = Application.dataPath + "/../ITools/VersionMgr/BuilderLog/";
+		string dir = EditorPathTools.VERSION_BUILDERLOG_PATH;
 		if (!Directory.Exists(dir))
 		{
 			Directory.CreateDirectory(dir);

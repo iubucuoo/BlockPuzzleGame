@@ -123,24 +123,24 @@ public class ExternalTools
 	internal static Dictionary<string, int> MD5KEY(out int MAXKEY)
 	{
 		MAXKEY = 1;
-		//string dir = _VersionLogPath + "/MD5KEY.txt";
-		//if (File.Exists(dir))
-		//{
-		//	SVNUpdate.Ctrl(SVNTYPE.CLEAN_UP, dir);
-		//	//提交一波资源
-		//	SVNUpdate.Ctrl(SVNTYPE.UPDATE, dir);
-		//	var dic = LitJson.JsonMapper.ToObject<Dictionary<string, int>>(File.ReadAllText(dir));
-		//	foreach (var item in dic)
-		//	{
-		//		if (MAXKEY < item.Value)
-		//		{
-		//			MAXKEY = item.Value;
-		//		}
-		//	}
-		//	MAXKEY += 1;
-		//	return dic;
-		//}
-		return new Dictionary<string, int>();
+        string dir = _VersionLogPath + "/MD5KEY.txt";
+        if (File.Exists(dir))
+        {
+            //SVNUpdate.Ctrl(SVNTYPE.CLEAN_UP, dir);
+            //提交一波资源
+            //SVNUpdate.Ctrl(SVNTYPE.UPDATE, dir);
+            var dic = LitJson.JsonMapper.ToObject<Dictionary<string, int>>(File.ReadAllText(dir));
+            foreach (var item in dic)
+            {
+                if (MAXKEY < item.Value)
+                {
+                    MAXKEY = item.Value;
+                }
+            }
+            MAXKEY += 1;
+            return dic;
+        }
+        return new Dictionary<string, int>();
 	}
 
 	internal static void SaveMD5Key(Dictionary<string, int> data)

@@ -250,11 +250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 668e8864e02a70946a2bd0800adbe154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIRoot: {fileID: 25701078}
-  ContinuousBoom: 0
   sprites:
-  - {fileID: -4049982081064001941, guid: 99dd0ce4826051b4399d5077a18bccf7, type: 3}
-  - {fileID: -3993824124772458005, guid: 99dd0ce4826051b4399d5077a18bccf7, type: 3}
+  - {fileID: -4049982081064001941, guid: bfe48b7b571e95049938ae56f9cd8ba0, type: 3}
+  - {fileID: -3993824124772458005, guid: bfe48b7b571e95049938ae56f9cd8ba0, type: 3}
 --- !u!4 &625082890
 Transform:
   m_ObjectHideFlags: 0

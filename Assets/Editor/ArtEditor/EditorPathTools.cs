@@ -18,6 +18,7 @@ public class EditorPathTools
 	public static string PROJECT_COOLDATA = Application.dataPath + @"\Art\Tables\CoolData";
 
 	public static string BUILDER_DLL_DIR = PROJECT_ROOT + "ITools/BuilderDLL/";
+	public static string VERSION_BUILDERLOG_PATH = PROJECT_ROOT + "/ITools/VersionMgr/BuilderLog/";
 	public static string VERSION_LOG_PATH = PROJECT_ROOT + "/ITools/VersionMgr/VersionLog";
 	public static string SVN_RES_ROOT = RemoveDot(PROJECT_ROOT + "/../NewBuildRes/" +PathTools.PLATFORM);
 	public static string SVN_VERSION = SVN_RES_ROOT + "/Version.bytes";	
