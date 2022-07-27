@@ -8,11 +8,10 @@ public class RequestResMsg : MessageBase
 	public override void OnRecycled()
 	{
 		_ArtUnit = null;
-		msgId = 0;
 	}
 	RequestResMsg SetMsg(ushort _msgId, IArt art)
 	{
-		msgId = _msgId;
+        messageId = _msgId;
 		_ArtUnit = art;
 		return this;
 	}

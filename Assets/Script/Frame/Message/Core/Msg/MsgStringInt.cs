@@ -6,7 +6,7 @@ public class MsgStringInt : MessageBase
 
 	MsgStringInt SetValue(ushort _msgId, string v1, int v2)
 	{
-		msgId = _msgId;
+        messageId = _msgId;
 		_string1 = v1;
 		_int1 = v2;
 		return this;

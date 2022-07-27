@@ -204,7 +204,7 @@ class ResCenter : AssetBase, IMgr
     }
 	public override void ProcessEvent(MessageBase tmpMsg)
 	{
-		switch (tmpMsg.msgId)
+		switch (tmpMsg.messageId)
 		{
 			//通过Lua UI点击登录
 			case (ushort)HotFixListenID.StartCheck:

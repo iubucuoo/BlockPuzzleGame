@@ -33,6 +33,11 @@ public class UI_StartPanel : UIBase
     void OnBtnStart()
     {
         DebugMgr.Log("开始游戏");
+        TableMgr.Inst._Cb = StartGame;
+        MsgSend.GetRes(TableMgr.Inst);
+    }
+    void StartGame()
+    {
         AllUIPanelManager.Inst.Show(IPoolsType.UI_GamePanel);
     }
 }

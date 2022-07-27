@@ -7,23 +7,19 @@ public class MessageBase:IPoolable
     /// 消息ID
     /// <(ushort)/summary>
     public ushort messageId;
-    public ushort msgId;
     
 
     internal MessageBase()
     {
         messageId = 0;
-        msgId = 0;
     }
     internal MessageBase(ushort _messageId)
     {
         messageId = _messageId;
-        msgId = _messageId;
     }
     public MessageBase SetValue(ushort _messageId)
     {
         messageId = _messageId;
-        msgId = _messageId;
         return this;
     }
     /// <(ushort)summary>
@@ -67,7 +63,7 @@ public class MessageBase:IPoolable
     public virtual void OnRecycled()
     {
         messageId = 0;
-        msgId = 0;
+        messageId = 0;
     }
     public virtual void Dispose() { }
 }

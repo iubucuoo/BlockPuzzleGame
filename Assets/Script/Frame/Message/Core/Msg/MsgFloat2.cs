@@ -8,7 +8,7 @@ public class MsgFloat2 : MessageBase
 
 	MsgFloat2 SetValue(ushort _msgId, float v1, float v2)
 	{
-		msgId = _msgId;
+        messageId = _msgId;
 		_f1 = v1;
 		_f2 = v2;
 		return this;

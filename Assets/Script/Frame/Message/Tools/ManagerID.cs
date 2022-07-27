@@ -9,7 +9,6 @@ public enum ManagerID
     /// 网络消息ID
     /// </summary>
     NetManager = 0,
-    NetManagerID = 0,//1w
     /// <summary>
     /// Lua网络消息ID
     /// </summary>

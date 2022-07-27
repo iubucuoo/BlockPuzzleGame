@@ -12,14 +12,14 @@ public class MsgArray : MessageBase
 
 	MsgArray SetValue(ushort _msgId, object[] _objs = null)
 	{
-		msgId = _msgId;
+        messageId = _msgId;
 		objs = _objs;
 		return this;
 	}
 
 	public override void OnRecycled()
 	{
-		msgId = 0;
+        messageId = 0;
 		objs = null;
 	}
 	static MsgArray Create()
