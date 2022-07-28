@@ -60,7 +60,6 @@ public class MessageCenter
     void AnasysisMessage(MessageBase msg)
     {
         ManagerID tmpId = msg.GetMsgType();
-        DebugMgr.LogError(tmpId);
         switch (tmpId)
         {
             case ManagerID.LUIManager: LuaProcess(msg); PoolMgr.Recycle(msg); break;

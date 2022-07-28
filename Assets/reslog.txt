@@ -34,7 +34,6 @@ ID=0,ObjName=bg_LaidBackLOOP,AbName=bgsound,ModelID=1001,ModelName=Audio,Path=As
 
 ---------------------
 AbID=4,Version=0,_Size=1370,_Dependencies=,,AbPath=tables/languageID=0,ObjName=language,AbName=language,ModelID=10,ModelName=tables,Path=Assets/Art/Tables/Language/language.json
-AbID=5,Version=0,_Size=1806,_Dependencies=,,AbPath=tables/tableschineseID=0,ObjName=Item,AbName=tableschinese,ModelID=10,ModelName=tables,Path=Assets/Art/TablesChinese/Item.bytes
 AbID=6,Version=0,_Size=1808,_Dependencies=,,AbPath=tables/chineseID=0,ObjName=Item,AbName=chinese,ModelID=10,ModelName=tables,Path=Assets/Art/Tables/Chinese/Item.bytes
 
 ---------------------

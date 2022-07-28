@@ -40,7 +40,6 @@ class ManagerBase : IEventListen
     /// <param name="msg">消息</param>
     public void SendMsg(MessageBase msg)
     {
-        DebugMgr.LogError("SendMsg     " + ID);
         if (msg.GetMsgType() == ID)
         {
             ProcessEvent(msg);

@@ -37,6 +37,8 @@ public class MainC : MonoBehaviour
         Inst = this;
 #if UNITY_EDITOR
         DebugMgr.EnableLog = true;
+#else
+        DebugMgr.EnableLog = false;
 #endif
         Sprites = new Dictionary<string, Sprite>();
 

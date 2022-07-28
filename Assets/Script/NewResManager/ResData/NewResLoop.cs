@@ -17,11 +17,11 @@ public class NewResLoop
 	Stack<IArt>[] _CurrentData;
 	Queue<IArt>[] _Echelon = new Queue<IArt>[5]
 	{
-		new Queue<IArt>(),//表/配置
-		new Queue<IArt>(),//UI最要紧
-		new Queue<IArt>(),//主角模型/数据
-		new Queue<IArt>(),//模型
-		new Queue<IArt>(),//其他
+		new Queue<IArt>(),//表/配置ResSort.Config
+		new Queue<IArt>(),//UI最要紧ResSort.UI
+		new Queue<IArt>(),//主角模型/数据ResSort.LocalData
+		new Queue<IArt>(),//模型ResSort.Model
+		new Queue<IArt>(),//其他ResSort.Other
 	};
 	int MaxLine = 3;
 	public NewResLoop()
@@ -123,10 +123,6 @@ public class NewResLoop
 									DebugMgr.LogError("异常了=" + abdata._AbPath);
 								}
                                 DebugMgr.LogError(string.Format("finish load {0} {1}", abdata._AbPath, Time.time));
-#if _CHECK_OPTIMIZE
-		if (Time.realtimeSinceStartup - abdata._StartLoadTime > 0.01)
-			if(DebugMgr.CanLogError()) DebugMgr.LogError(string.Format("AssetBundle.LoadFromFileAsync {0} costtime = {1}", path, (int)((Time.realtimeSinceStartup - abdata._StartLoadTime)*1000)));
-#endif
                             }
                             else//已经被done了
 							{

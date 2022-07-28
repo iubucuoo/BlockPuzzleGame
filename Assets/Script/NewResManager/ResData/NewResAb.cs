@@ -242,7 +242,7 @@ public class NewResAb
 	public void UnloadAbAndObj()
 	{
 		var time = (int)(Time.time * 1000);
-		if (_LoadStatus == LoadStatus.Done && time - _LoadTime > _RemoveTime && _MapID != StaticTools.CurrentMapID)
+		if (_LoadStatus == LoadStatus.Done && time - _LoadTime > _RemoveTime )//&& _MapID != StaticTools.CurrentMapID
 		{
 			_LoadStatus = LoadStatus.None;
 			try
