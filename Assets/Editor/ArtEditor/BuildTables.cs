@@ -19,6 +19,11 @@ public class BuildTables : Editor
     }
     static void BuildTable(Language_ tmpLan)
     {
+        string root = string.Format("{0}/{1}", EditorPathTools.PROJECT_TABLES, tmpLan.ToString());
+        if (!Directory.Exists(root))
+        {
+            Directory.CreateDirectory(root);
+        }
         Type baseType = typeof(TableBaseManager);
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
         {
@@ -27,13 +32,13 @@ public class BuildTables : Editor
             {
                 if (baseType.IsAssignableFrom(type) && baseType != type)
                 {
-                    ByteTable(type,  tmpLan);
+                    ByteTable(type, root);
                 }
             }
         }
         AssetDatabase.Refresh();
     }
-    static void ByteTable(Type type,  Language_ lan)
+    static void ByteTable(Type type, string root)
     {
         TableBaseManager tableInstance = Activator.CreateInstance(type) as TableBaseManager;
         if (tableInstance.Open == false )
@@ -42,11 +47,6 @@ public class BuildTables : Editor
         }
         var tableInfo = type.GetMethod("GetData");
         object tableData = tableInfo.Invoke(tableInstance, null);
-        string root = PathTools.PROJECT_TABLES + lan.ToString();
-        if (!Directory.Exists(root))
-        {
-            Directory.CreateDirectory(root);
-        }
         string path = string.Format("{0}/{1}.bytes", root, tableInstance.GetTableName());
         ProtobufTools.SerializeToFile(path, tableData);
     }
