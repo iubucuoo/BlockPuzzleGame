@@ -36,25 +36,21 @@ public class NewResLoop
 
 	public void BeginLoadData(IArt _art)
 	{
-		try
-		{
-            if (_art.ArtName().ToLower().Contains("loginwnd"))
-            {
-                DebugMgr.LogError(string.Format("BeginLoadData {0} {1} ", _art.ArtName(), _art.AbSingleName()));
-            }
+        try
+        {
             var abdata = _art.GetNewResAb;
 			if (abdata.GetLoadPath(out string path, _art._MapID))
 				_Echelon[(int)_art._Sort].Enqueue(_art);
 			else
 			{
-				DebugMgr.LogError(abdata._AbPath+" 需要下载资源 弹界面---建议加传送主城功能");
+				DebugMgr.LogError(abdata._AbPath+" 需要下载资源 弹界面");
 			}
-		}
-		catch (System.Exception ex)
-		{
-			 DebugMgr.LogError(string.Format( "怎么又缺资源了 {0},{1} {2}", _art.AbSingleName(), _art.ArtName(), ex.ToString()));
-		}
-	}
+        }
+        catch (System.Exception ex)
+        {
+            DebugMgr.LogError(string.Format("怎么又缺资源了 {0},{1} {2}", _art.AbSingleName(), _art.ArtName(), ex.ToString()));
+        }
+    }
 	void SetDenpend(Stack<IArt> _Data, NewResAb res)
 	{
 		var indexs = res._Dependencies;
@@ -78,7 +74,7 @@ public class NewResLoop
 			GetNextData(_Data);
 			if (_Data.Count != 0)
 			{
-				if (StaticTools._ResLoadModel == ResLoadModel.DEFAULT)
+				if (!StaticTools.LoadArtIsAb)
 				{
 					ResCenter.inst._ResMgr.GetObj(_Data.Pop());
 				}
@@ -196,7 +192,7 @@ public class NewResLoop
 	float _AutoUnloadTime = NewResAb._RemoveTime;
 	void UnloadAbAndObj()
 	{
-		if (StaticTools._ResLoadModel == ResLoadModel.DEFAULT)
+		if (!StaticTools.LoadArtIsAb)
 		{
 			return;
 		}

@@ -3,65 +3,65 @@
 /// </summary>
 public enum ManagerID
 {
-   
-    
     /// <summary>
     /// 网络消息ID
     /// </summary>
     NetManager = 0,
     /// <summary>
-    /// Lua网络消息ID
+    /// 资源消息ID
     /// </summary>
-    LNetManager = ToolsParms.MessageSpan * 10,
-
-    /// <summary>
-    /// Lua单位消息ID
-    /// </summary>
-    LUnitManager = ToolsParms.MessageSpan * 20,
-    
-    /// <summary>
-    /// Lua资源消息ID
-    /// </summary>
-    LAssetManager = ToolsParms.MessageSpan * 21,
-
-    /// <summary>
-    /// Lua声音消息ID
-    /// </summary>
-    LAudioManager = ToolsParms.MessageSpan * 22,
-
-    /// <summary>
-    /// Lua游戏流程逻辑消息ID
-    /// </summary>
-    LGameManager = ToolsParms.MessageSpan * 23,
-    /// <summary>
-    /// LuaUI界面消息ID
-    /// </summary>
-    LUIManager = ToolsParms.MessageSpan * 24,
-
+    AssetManager = ToolsParms.MessageSpan * 10,
     /// <summary>
     /// 游戏流程逻辑
     /// </summary>
-    GameManager = ToolsParms.MessageSpan * 25,
+    GameManager = ToolsParms.MessageSpan * 11,
     /// <summary>
     /// UI界面消息ID
     /// </summary>
-    UIManager = ToolsParms.MessageSpan * 26,
+    UIManager = ToolsParms.MessageSpan * 12,
     /// <summary>
     /// 单位消息ID
     /// </summary>
-    UnitManager = ToolsParms.MessageSpan * 27,
-    /// <summary>
-    /// 资源消息ID
-    /// </summary>
-    AssetManager = ToolsParms.MessageSpan * 28,
+    UnitManager = ToolsParms.MessageSpan * 13,
     /// <summary>
     /// 声音消息ID
     /// </summary>
-    AudioManager = ToolsParms.MessageSpan * 29,
+    AudioManager = ToolsParms.MessageSpan * 14,
     /// <summary>
     /// 本地请求网络消息ID
     /// </summary>
-    LocalNetManager = ToolsParms.MessageSpan * 30,
+    LocalNetManager = ToolsParms.MessageSpan * 15,
+
+    
+    /// <summary>
+    /// LuaUI界面消息ID
+    /// </summary>
+    LUIManager = ToolsParms.MessageSpan * 16,
+
+    ///// <summary>
+    ///// Lua网络消息ID
+    ///// </summary>
+    //LNetManager = ToolsParms.MessageSpan * 17,
+
+    ///// <summary>
+    ///// Lua单位消息ID
+    ///// </summary>
+    //LUnitManager = ToolsParms.MessageSpan * 18,
+
+    ///// <summary>
+    ///// Lua资源消息ID
+    ///// </summary>
+    //LAssetManager = ToolsParms.MessageSpan * 19,
+
+    ///// <summary>
+    ///// Lua声音消息ID
+    ///// </summary>
+    //LAudioManager = ToolsParms.MessageSpan * 20,
+
+    ///// <summary>
+    ///// Lua游戏流程逻辑消息ID
+    ///// </summary>
+    //LGameManager = ToolsParms.MessageSpan * 21,
 
 }
 /// <summary>

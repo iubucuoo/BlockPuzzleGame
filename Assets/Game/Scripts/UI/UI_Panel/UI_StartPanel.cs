@@ -33,8 +33,15 @@ public class UI_StartPanel : UIBase
     void OnBtnStart()
     {
         DebugMgr.Log("开始游戏");
-        TableMgr.Inst._Cb = StartGame;
-        MsgSend.GetRes(TableMgr.Inst);
+        if (StaticTools.LoadArtIsAb)
+        {
+            TableMgr.Inst._Cb = StartGame;
+            MsgSend.GetRes(TableMgr.Inst);
+        }
+        else
+        {
+            StartGame();
+        }
     }
     void StartGame()
     {

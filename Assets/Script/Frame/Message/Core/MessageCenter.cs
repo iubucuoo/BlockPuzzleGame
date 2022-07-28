@@ -15,7 +15,7 @@ public class MessageCenter
 
     MessageCenter()
     {
-        SendMsgToLua = _base => { }; //(msg) => { LuaBehavMgr.CallLuaMsgFunc(msg); };
+        SendMsgToLua = (msg) => { /*LuaBehavMgr.CallLuaMsgFunc(msg);*/ };
     }
 
     /// <summary>
@@ -60,13 +60,9 @@ public class MessageCenter
     void AnasysisMessage(MessageBase msg)
     {
         ManagerID tmpId = msg.GetMsgType();
+        DebugMgr.LogError(tmpId);
         switch (tmpId)
         {
-            case ManagerID.LAssetManager:
-            case ManagerID.LAudioManager:
-            case ManagerID.LGameManager:
-            case ManagerID.LNetManager:
-            case ManagerID.LUnitManager:
             case ManagerID.LUIManager: LuaProcess(msg); PoolMgr.Recycle(msg); break;
 
             case ManagerID.AssetManager: AssetManager.instance.SendMsg(msg); break;

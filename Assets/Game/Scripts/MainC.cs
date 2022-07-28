@@ -21,7 +21,7 @@ public class MainC : MonoBehaviour
     public static int _width = 90;// 60;
     public static int wh_2 = 45;// 30;
     public static Vector2 DragUp = new Vector2(0, _width * 4);//y高度 对应的倍数
-    
+    public ResLoadModel  _ResLoadModel;
     public bool IsTopScore { get; set; }
     public bool IsRotateState { get; set; }
     public Vector3 RotateGoldAddPos { get; set; }
@@ -54,7 +54,7 @@ public class MainC : MonoBehaviour
         {
             Sprites[v.name] = v;
         }
-        
+        StaticTools._ResLoadModel = _ResLoadModel;
         //先载入数据文件
         //LoadLanguageData();
         //

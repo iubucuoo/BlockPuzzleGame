@@ -20,11 +20,16 @@ enum LoginStatus
 /// </summary>
 public enum HotFixListenID
 {
-    StartCheck = ManagerID.LAssetManager+1,
+    StartCheck = ManagerID.AssetManager + 1,
     StartUpdateRes,
     EnterGame,
     EndUpdateRes,
     Max,
+}
+public enum RES_ID
+{
+    GET_OBJ = HotFixListenID.Max + 1,
+    SaveVersion,
 }
 
 public enum LoadStatus
@@ -35,11 +40,6 @@ public enum LoadStatus
     Downloading,
     Done,
     Error,
-}
-public enum RES_ID
-{
-    GET_OBJ = HotFixListenID.Max + 1,
-    SaveVersion,
 }
 public enum ResLoadModel
 {
@@ -86,7 +86,7 @@ class ResCenter : AssetBase, IMgr
 		RegistEventListen(this, messageIds);
 
 
-		if (StaticTools._ResLoadModel == ResLoadModel.DEFAULT)
+		if (!StaticTools.LoadArtIsAb )
 		{
 			_ResMgr = new NewEditorLoad().BuilderResData();
 			Load();
@@ -210,7 +210,6 @@ class ResCenter : AssetBase, IMgr
 			case (ushort)HotFixListenID.StartCheck:
 				{
 					_MaxSize = 0;
-					StaticTools.IsSwitchScene = true;
 					//1.如果是走AB 需要去服务器上比对相关资源
 					//2.如果是走本地 不需要比对资源，直接Load
 					Timing.RunCoroutine(CanLogin());
@@ -239,7 +238,7 @@ class ResCenter : AssetBase, IMgr
 
 	IEnumerator<float> CanLogin()
 	{
-		if (StaticTools._ResLoadModel != ResLoadModel.DEFAULT)
+		if (StaticTools.LoadArtIsAb)
 		{
 			NetDiff();
 			_LoginStatus = LoginStatus.None;
@@ -351,14 +350,16 @@ class ResCenter : AssetBase, IMgr
 		if (_IsdotLogic)
 		{
 #if UNITY_EDITOR
-			//SceneMgr.LoadScene("Loading");
+            //SceneMgr.LoadScene("Loading");
 #else
-						//SdkMgr.Instance.RestartGame();//重启app
+            //SdkMgr.Instance.RestartGame();//重启app
 #endif
 		}
 		else
-        {//SceneMgr.LoadScene("Loading");
+        {
+            //SceneMgr.LoadScene("Loading");
         }
+        DebugMgr.LogError("SceneMgr.LoadScene(Loading)");
 	}
 
 	public void DownloadChapter(int _ChapterID)
