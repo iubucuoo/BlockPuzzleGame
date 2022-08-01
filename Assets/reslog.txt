@@ -33,12 +33,17 @@ AbID=3,Version=0,_Size=4443814,_Dependencies=,,AbPath=audio/bgsoundID=0,ObjName=
 ID=0,ObjName=bg_LaidBackLOOP,AbName=bgsound,ModelID=1001,ModelName=Audio,Path=Assets/Art/Audio/bgsound/bg_LaidBackLOOP.wav
 
 ---------------------
-AbID=4,Version=0,_Size=1370,_Dependencies=,,AbPath=tables/languageID=0,ObjName=language,AbName=language,ModelID=10,ModelName=tables,Path=Assets/Art/Tables/Language/language.json
-AbID=6,Version=0,_Size=1808,_Dependencies=,,AbPath=tables/chineseID=0,ObjName=Item,AbName=chinese,ModelID=10,ModelName=tables,Path=Assets/Art/Tables/Chinese/Item.bytes
+AbID=11,Version=0,_Size=10430,_Dependencies=9,,AbPath=uiwnds/ui_addrotatepanelID=0,ObjName=UI_AddRotatePanel,AbName=ui_addrotatepanel,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UI_AddRotatePanel/UI_AddRotatePanel.prefab
+AbID=12,Version=0,_Size=7886279,_Dependencies=9,,AbPath=uiwnds/ui_gameoverpanelID=0,ObjName=UI_GameOverPanel,AbName=ui_gameoverpanel,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UI_GameOverPanel/UI_GameOverPanel.prefab
+AbID=9,Version=0,_Size=962965,_Dependencies=,,AbPath=uiwnds/uicommonwndID=0,ObjName=btn_rotate_on #4495,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/btn_rotate_on #4495.png
+ID=0,ObjName=Sprite,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/Sprite.png
+AbID=13,Version=0,_Size=8358679,_Dependencies=9,10,,AbPath=uiwnds/ui_startpanelID=0,ObjName=UI_StartPanel,AbName=ui_startpanel,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UI_StartPanel/UI_StartPanel.prefab
+AbID=14,Version=0,_Size=7942493,_Dependencies=9,,AbPath=uiwnds/ui_setpanelID=0,ObjName=UI_SetPanel,AbName=ui_setpanel,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UI_SetPanel/UI_SetPanel.prefab
+AbID=10,Version=0,_Size=1231941,_Dependencies=,,AbPath=uiwnds/uicommonwnd1ID=0,ObjName=Sprite1,AbName=uicommonwnd1,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd1/Sprite1.png
+AbID=15,Version=0,_Size=7886464,_Dependencies=9,10,,AbPath=uiwnds/ui_gamepanelID=0,ObjName=UI_GamePanel,AbName=ui_gamepanel,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UI_GamePanel/UI_GamePanel.prefab
 
 ---------------------
-AbID=7,Version=0,_Size=963452,_Dependencies=,,AbPath=texturepacker/spriteID=0,ObjName=btn_rotate_on #4495,AbName=sprite,ModelID=1002,ModelName=TexturePacker,Path=Assets/Art/TexturePacker/Sprite/btn_rotate_on #4495.png
-ID=0,ObjName=Sprite,AbName=sprite,ModelID=1002,ModelName=TexturePacker,Path=Assets/Art/TexturePacker/Sprite/Sprite.png
-AbID=8,Version=0,_Size=1231934,_Dependencies=,,AbPath=texturepacker/sprite1ID=0,ObjName=Sprite1,AbName=sprite1,ModelID=1002,ModelName=TexturePacker,Path=Assets/Art/TexturePacker/Sprite1/Sprite1.png
+AbID=4,Version=0,_Size=1370,_Dependencies=,,AbPath=tables/languageID=0,ObjName=language,AbName=language,ModelID=10,ModelName=tables,Path=Assets/Art/Tables/Language/language.json
+AbID=6,Version=0,_Size=1808,_Dependencies=,,AbPath=tables/chineseID=0,ObjName=Item,AbName=chinese,ModelID=10,ModelName=tables,Path=Assets/Art/Tables/Chinese/Item.bytes
 
 ---------------------

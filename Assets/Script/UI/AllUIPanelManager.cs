@@ -13,26 +13,29 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
     //Dictionary<int, UIBase> UIInstanceCache = new Dictionary<int, UIBase>();
     Dictionary<string, UIBase> name2UI = new Dictionary<string, UIBase>();
     Stack<FullPanel> fullPanelList = new Stack<FullPanel>();
-    public UIBase Show(IPoolsType pooltype,bool move = false)
+    public void Show(IPoolsType pooltype,bool move = false)
     {
         string _name = pooltype.ToString();
-        UIBase ui;
-        if (name2UI.ContainsKey(_name))
-        {
-            ui = name2UI[_name];
-            //DebugMgr.LogError(_name + "     " + ui.visible);
-            if (ui.visible)
-                return ui;
-        }
-        else
-        {
-            ui = GetUIClass(pooltype);
-            name2UI[_name] = ui;
-        }
-        //DebugMgr.LogError(_name + "  show   ");
-        ui.Show(move);
-        ShowFullPanel(ui, pooltype);
-        return ui;
+        //MsgSend.GetRes(RES_MODEL_INDEX.uiwnds, _name,(obj)=>{
+            UIBase ui;
+            if (name2UI.ContainsKey(_name))
+            {
+                ui = name2UI[_name];
+                //DebugMgr.LogError(_name + "     " + ui.visible);
+                if (ui.visible)
+                    return;
+                //return ui;
+            }
+            else
+            {
+                ui = GetUIClass(pooltype);
+                name2UI[_name] = ui;
+            }
+            //DebugMgr.LogError(_name + "  show   ");
+            ui.Show(move);
+            ShowFullPanel(ui, pooltype);
+            //return ui;
+        //});
     }
  
     UIBase GetUIClass(IPoolsType pooltype)
