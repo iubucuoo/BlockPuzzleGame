@@ -18,9 +18,8 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
         string _name = pooltype.ToString();
         if (StaticTools.LoadArtIsAb)
         {
-            string tolowname = _name.ToLower();
-            MsgSend.GetRes(RES_MODEL_INDEX.uiwnds, tolowname, tolowname, (obj)=>{
-                ShowBack(obj, _name,pooltype, move);
+            PackageMgr.LoadObjectCallBack(_name, (objname) => {
+                ShowBack(PackageMgr.GetPackageLoad(objname), objname, pooltype, move);
             });
         }
         else
@@ -28,7 +27,7 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
             ShowBack(null, _name, pooltype, move);
         }
     }
-
+ 
     void ShowBack(UnityEngine.Object obj,string _name, IPoolsType pooltype, bool move = false)
     {
         UIBase ui;

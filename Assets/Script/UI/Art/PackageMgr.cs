@@ -5,20 +5,23 @@ public class PackageMgr
 {
 	static PackageMgr instance;
 	static PackageMgr Inst { get { return instance ?? (instance = new PackageMgr()); } }
-	static readonly Dictionary<string,string> PackageLoad = new Dictionary<string, string>();
+	static readonly Dictionary<string, Object> PackageLoad = new Dictionary<string, Object>();
 	static readonly Dictionary<string, ImageArt> _ResourceDatas = new Dictionary<string, ImageArt>();
 	PackageMgr()
 	{
 		TimeMgr.Instance.AddIntervelEvent(TimerClear, 10000, -1);
 	}
-
-	/// <summary>
-	/// 回调CallBack
-	/// </summary>
-	/// <param name="packageName"></param>
-	/// <param name="cbv"></param>
-	/// <param name="unClear"></param>
-	public static void LoadObject(string packageName, System.Action cbv, bool unClear = false)
+    public static void LoadObjectCallBack(string packageName, System.Action<string> cbv)
+    {
+        LoadObject(packageName, () => { cbv(packageName); });
+    }
+    /// <summary>
+    /// 回调CallBack
+    /// </summary>
+    /// <param name="packageName"></param>
+    /// <param name="cbv"></param>
+    /// <param name="unClear"></param>
+    public static void LoadObject(string packageName, System.Action cbv, bool unClear = false)
 	{
 		if (string.IsNullOrEmpty(packageName))
 		{
@@ -73,13 +76,13 @@ public class PackageMgr
     //		return null;
     //	}
     //}
-    public static void AddLoadPackage(string packageName)
+    public static void AddLoadPackage(string packageName,Object obj)
     {
-        PackageLoad[packageName] = packageName;
+        PackageLoad[packageName] = obj;
     }
     public static void RemoveLoadPackage(string packageName)
     {
-        if (PackageLoad.TryGetValue(packageName,out string name))
+        if (PackageLoad.TryGetValue(packageName,out Object obj))
         {
             PackageLoad.Remove(packageName);
         }
@@ -100,7 +103,14 @@ public class PackageMgr
 	{
         return PackageLoad.ContainsKey(wnd);
 	}
-
+    public static Object GetPackageLoad(string name)
+    {
+        if (PackageLoad.TryGetValue(name,out Object obj))
+        {
+            return obj;
+        }
+        return null;
+    }
 	public static void RemovePackage(string packageName)
 	{
 		Inst.ClearMark(packageName);

@@ -92,9 +92,9 @@ public abstract class UIBase: IPoolable
     bool ismove = false;
     void SetVisible(bool _visible, bool Move = false)
     {
+        ismove = Move;
         if (visible == _visible)
             return;
-        ismove = Move;
         visible = _visible;
         DebugMgr.Log(_visible ? "show" : "hide" + WndName);
         if (_visible)

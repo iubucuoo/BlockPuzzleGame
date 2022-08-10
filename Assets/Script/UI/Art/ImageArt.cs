@@ -15,7 +15,8 @@ public class ImageArt : ArtBase
 
 	public override ResSort _Sort => ResSort.UI;
 	public override bool _CanCacheAb => false;
-	public ImageArt(string pkName, System.Action cv, bool _unClear)
+    private Dictionary<string, UnityEngine.Object> AllAssets = new Dictionary<string, UnityEngine.Object>();
+    public ImageArt(string pkName, System.Action cv, bool _unClear)
 	{
 		packageName = pkName;
 		unClear = _unClear;
@@ -76,14 +77,31 @@ public class ImageArt : ArtBase
     public override IEnumerator<float> Loading(AssetBundle ab)
     {
         var objs = ab.LoadAllAssets();
+        for (int j = 0; j < objs.Length; j++)
+        {
+            string objname = objs[j].name;
+            //Debug.LogError(objname);
+            if (AllAssets.ContainsKey(objname))
+            { AllAssets[objname] = objs[j];Debug.Log("ÖØ¸´×ÊÔ´     "+packageName +  "     " + objname);
+            }
+            else
+                AllAssets.Add(objs[j].name, objs[j]);
+        }
         UseArt(objs);
         yield return 0;
         ab.Unload(false);
     }
 
-    public override void UseArt(object[] obj)
-	{
-        PackageMgr.AddLoadPackage(packageName);
+    public override void UseArt(object[] objs)
+    {
+        if (AllAssets.ContainsKey(packageName))
+        {
+            PackageMgr.AddLoadPackage(packageName, AllAssets[packageName]);
+        }
+        else
+        {
+            PackageMgr.AddLoadPackage(packageName, null);
+        }
         Cb();
 	}
 
