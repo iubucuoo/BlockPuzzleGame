@@ -16,28 +16,42 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
     public void Show(IPoolsType pooltype,bool move = false)
     {
         string _name = pooltype.ToString();
-        //MsgSend.GetRes(RES_MODEL_INDEX.uiwnds, _name,(obj)=>{
-            UIBase ui;
-            if (name2UI.ContainsKey(_name))
-            {
-                ui = name2UI[_name];
-                //DebugMgr.LogError(_name + "     " + ui.visible);
-                if (ui.visible)
-                    return;
-                //return ui;
-            }
-            else
-            {
-                ui = GetUIClass(pooltype);
-                name2UI[_name] = ui;
-            }
-            //DebugMgr.LogError(_name + "  show   ");
-            ui.Show(move);
-            ShowFullPanel(ui, pooltype);
-            //return ui;
-        //});
+        if (StaticTools.LoadArtIsAb)
+        {
+            string tolowname = _name.ToLower();
+            MsgSend.GetRes(RES_MODEL_INDEX.uiwnds, tolowname, tolowname, (obj)=>{
+                ShowBack(obj, _name,pooltype, move);
+            });
+        }
+        else
+        {
+            ShowBack(null, _name, pooltype, move);
+        }
     }
- 
+
+    void ShowBack(UnityEngine.Object obj,string _name, IPoolsType pooltype, bool move = false)
+    {
+        UIBase ui;
+        if (name2UI.ContainsKey(_name))
+        {
+            ui = name2UI[_name];
+            //DebugMgr.LogError(_name + "     " + ui.visible);
+            if (ui.visible)
+                return;
+            //return ui;
+        }
+        else
+        {
+            ui = GetUIClass(pooltype);
+            ui.SetObject(obj);
+            name2UI[_name] = ui;
+        }
+        //DebugMgr.LogError(_name + "  show   ");
+
+        ui.Show(move);
+        ShowFullPanel(ui, pooltype);
+        //return ui;
+    }
     UIBase GetUIClass(IPoolsType pooltype)
     {
         //if (UIInstanceCache.TryGetValue((int) pooltype,out UIBase uIBase))

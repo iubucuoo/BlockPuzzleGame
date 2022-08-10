@@ -39,7 +39,6 @@ public class ImageArt : ArtBase
 	protected void LoadEditor(string packageName)
 	{
 		var path = StaticTools.CombStr("Assets/Art/UIWnds/", packageName, "/", packageName);
-        //UIPackage.AddPackage(path);
 		Cb();
 	}
 
@@ -74,16 +73,18 @@ public class ImageArt : ArtBase
 	}
 
 
-	public override IEnumerator<float> Loading(AssetBundle ab)
-	{
-		UseArt(ab);
-		yield return 0;
-	}
+    public override IEnumerator<float> Loading(AssetBundle ab)
+    {
+        var objs = ab.LoadAllAssets();
+        UseArt(objs);
+        yield return 0;
+        ab.Unload(false);
+    }
 
-	public override void UseArt(object obj)
+    public override void UseArt(object[] obj)
 	{
-		//UIPackage.AddPackage(obj as AssetBundle);
-		Cb();
+        PackageMgr.AddLoadPackage(packageName);
+        Cb();
 	}
 
 	public override void FailArt()
@@ -93,6 +94,6 @@ public class ImageArt : ArtBase
 
 	internal void RemoveData()
 	{
-		//UIPackage.RemovePackage(packageName);
-	}
+        PackageMgr.RemoveLoadPackage(packageName);
+    }
 }

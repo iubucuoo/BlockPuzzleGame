@@ -4,15 +4,13 @@ using UnityEngine;
 public class PackageMgr
 {
 	static PackageMgr instance;
-	static PackageMgr inst { get { return instance ?? (instance = new PackageMgr()); } }
+	static PackageMgr Inst { get { return instance ?? (instance = new PackageMgr()); } }
+	static readonly Dictionary<string,string> PackageLoad = new Dictionary<string, string>();
 	static readonly Dictionary<string, ImageArt> _ResourceDatas = new Dictionary<string, ImageArt>();
-	//string this[int packageNum] { get { return LuaUtils.GetPackageName(packageNum); } }
 	PackageMgr()
 	{
 		TimeMgr.Instance.AddIntervelEvent(TimerClear, 10000, -1);
 	}
-
-	
 
 	/// <summary>
 	/// 回调CallBack
@@ -44,49 +42,68 @@ public class PackageMgr
 			}
 		}
 	}
-	//public static GObject CreateObject(int packageNum, string resName)
-	//{
-	//	return CreateObject(inst[packageNum], resName);
-	//}
 
-	//internal static GObject CreateObject(string pakName, string resName)
-	//{
-	//	if (IsLoaded(pakName))
-	//	{
-	//		return UIPackage.CreateObject(pakName, resName).asCom;
-	//	}
-	//	else
-	//	{
-	//		if(DebugMgr.CanLogError()) DebugMgr.LogError("资源包未加载 + " + pakName);
-	//		return null;
-	//	}
-	//}
+    public static Object CreateObject(string pakName, string resName)
+    {
+        if (IsLoaded(pakName))
+        {
+            //生成ui
+            return null;
+        }
+        else
+        {
+            DebugMgr.LogError("资源包未加载 + " + pakName);
+            return null;
+        }
+    }
+    //public static GObject CreateObject(int packageNum, string resName)
+    //{
+    //	return CreateObject(inst[packageNum], resName);
+    //}
 
-	public static void RemoveAll()
+    //internal static GObject CreateObject(string pakName, string resName)
+    //{
+    //	if (IsLoaded(pakName))
+    //	{
+    //		return UIPackage.CreateObject(pakName, resName).asCom;
+    //	}
+    //	else
+    //	{
+    //		if(DebugMgr.CanLogError()) DebugMgr.LogError("资源包未加载 + " + pakName);
+    //		return null;
+    //	}
+    //}
+    public static void AddLoadPackage(string packageName)
+    {
+        PackageLoad[packageName] = packageName;
+    }
+    public static void RemoveLoadPackage(string packageName)
+    {
+        if (PackageLoad.TryGetValue(packageName,out string name))
+        {
+            PackageLoad.Remove(packageName);
+        }
+    }
+    public static void RemoveAll()
 	{
 		var e = _ResourceDatas.GetEnumerator();
-		//while (e.MoveNext())
-		//{
-		//	if (IsLoaded(e.Current.Key))
-		//		UIPackage.RemovePackage(e.Current.Key);
-		//}
+		while (e.MoveNext())
+		{
+			if (IsLoaded(e.Current.Key))
+                RemoveLoadPackage(e.Current.Key);
+		}
 		_ResourceDatas.Clear();
 		e.Dispose();
 	}
 
-	public static void RemovePackage(int packageNum)
-	{
-		//RemovePackage(inst[packageNum]);
-	}
-
 	static bool IsLoaded(string wnd)
 	{
-		return false;
+        return PackageLoad.ContainsKey(wnd);
 	}
 
-	static void RemovePackage(string packageName)
+	public static void RemovePackage(string packageName)
 	{
-		inst.ClearMark(packageName);
+		Inst.ClearMark(packageName);
 	}
 	/// <summary>
 	/// 加载一次标记

@@ -36,8 +36,8 @@ public class NewResLoop
 
 	public void BeginLoadData(IArt _art)
 	{
-        try
-        {
+        //try
+        //{
             var abdata = _art.GetNewResAb;
 			if (abdata.GetLoadPath(out string path, _art._MapID))
 				_Echelon[(int)_art._Sort].Enqueue(_art);
@@ -45,11 +45,11 @@ public class NewResLoop
 			{
 				DebugMgr.LogError(abdata._AbPath+" 需要下载资源 弹界面");
 			}
-        }
-        catch (System.Exception ex)
-        {
-            DebugMgr.LogError(string.Format("怎么又缺资源了 {0},{1} {2}", _art.AbSingleName(), _art.ArtName(), ex.ToString()));
-        }
+        //}
+        //catch (System.Exception ex)
+        //{
+        //    DebugMgr.LogError(string.Format("怎么又缺资源了 {0},{1} {2}", _art.AbSingleName(), _art.ArtName(), ex.ToString()));
+        //}
     }
 	void SetDenpend(Stack<IArt> _Data, NewResAb res)
 	{

@@ -24,6 +24,7 @@ public abstract class UIBase: IPoolable
     public bool visible = false;
     bool loaded = false;
     //bool bBaseUI = true;
+    Object _obj;
     public GameObject WndRoot { get; private set; }
     RectTransform _wndrect;
     RectTransform Wndrect { get {
@@ -187,9 +188,17 @@ public abstract class UIBase: IPoolable
     {
         Destroy();
     }
+    public void SetObject(Object obj)
+    {
+        _obj = obj;
+    }
     void DoLoad()
     {
-        var go = ObjectMgr.InsResource("Panel/" + WndName);
+        GameObject go;
+        if (StaticTools.LoadArtIsAb)
+            go = ObjectMgr.InstantiateObj(_obj) as GameObject;
+        else
+            go = ObjectMgr.InsResource("Panel/" + WndName);
         if (go==null)
             return;
         WndRoot = go;
@@ -212,6 +221,8 @@ public abstract class UIBase: IPoolable
         Hide();
         UnRegistEvents();
         OnDestroy_m();
+        PackageMgr.RemovePackage(WndName);
+        _obj = null;
         Object.Destroy(WndRoot);
         WndRoot = null;
         loaded = false;
