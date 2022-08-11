@@ -6,14 +6,14 @@ public class PackageMgr
 	static PackageMgr instance;
 	static PackageMgr Inst { get { return instance ?? (instance = new PackageMgr()); } }
 	static readonly Dictionary<string, Object> PackageLoad = new Dictionary<string, Object>();
-	static readonly Dictionary<string, ImageArt> _ResourceDatas = new Dictionary<string, ImageArt>();
+	static readonly Dictionary<string, UiWndArt> _ResourceDatas = new Dictionary<string, UiWndArt>();
 	PackageMgr()
 	{
 		TimeMgr.Instance.AddIntervelEvent(TimerClear, 10000, -1);
 	}
-    public static void LoadObjectCallBack(string packageName, System.Action<string> cbv)
+    public static void LoadObjectCallBack(string packageName, System.Action<string> cbv, bool unClear = false)
     {
-        LoadObject(packageName, () => { cbv(packageName); });
+        LoadObject(packageName, () => { cbv(packageName); }, unClear);
     }
     /// <summary>
     /// 回调CallBack
@@ -21,7 +21,7 @@ public class PackageMgr
     /// <param name="packageName"></param>
     /// <param name="cbv"></param>
     /// <param name="unClear"></param>
-    public static void LoadObject(string packageName, System.Action cbv, bool unClear = false)
+    static void LoadObject(string packageName, System.Action cbv, bool unClear = false)
 	{
 		if (string.IsNullOrEmpty(packageName))
 		{
@@ -35,27 +35,37 @@ public class PackageMgr
 		}
 		else
 		{
-			if (_ResourceDatas.TryGetValue(packageName, out ImageArt art))
+			if (_ResourceDatas.TryGetValue(packageName, out UiWndArt art))
 			{
 				art.AddCb(cbv);
 			}
 			else
 			{
-				_ResourceDatas.Add(packageName, new ImageArt(packageName, cbv, unClear));
+				_ResourceDatas.Add(packageName, new UiWndArt(packageName, cbv, unClear));
+                //if (!StaticTools.LoadArtIsAb)
+                //    cbv();
 			}
 		}
 	}
 
-    public static Object CreateObject(string pakName, string resName)
+    public static Object CreateObject(string packageName, string resName)
     {
-        if (IsLoaded(pakName))
+        if (IsLoaded(packageName))
         {
+            if (packageName == resName)
+            {
+                return ObjectMgr.InstantiateObj(GetLoadedObj(resName));
+            }
             //生成ui
+            if (_ResourceDatas.TryGetValue(packageName, out UiWndArt temp))
+            {
+                return ObjectMgr.InstantiateObj(temp.GetRes(resName));
+            }
             return null;
         }
         else
         {
-            DebugMgr.LogError("资源包未加载 + " + pakName);
+            DebugMgr.LogError("资源包未加载 + " + packageName);
             return null;
         }
     }
@@ -98,19 +108,18 @@ public class PackageMgr
 		_ResourceDatas.Clear();
 		e.Dispose();
 	}
-
-	static bool IsLoaded(string wnd)
-	{
-        return PackageLoad.ContainsKey(wnd);
-	}
-    public static Object GetPackageLoad(string name)
+    static Object GetLoadedObj(string wndname)
     {
-        if (PackageLoad.TryGetValue(name,out Object obj))
+        if (PackageLoad.TryGetValue(wndname,out Object obj))
         {
             return obj;
         }
         return null;
     }
+    static bool IsLoaded(string wnd)
+	{
+        return PackageLoad.ContainsKey(wnd);
+	}
 	public static void RemovePackage(string packageName)
 	{
 		Inst.ClearMark(packageName);
@@ -122,7 +131,7 @@ public class PackageMgr
 	/// <param name="onlyLoad"></param>
 	static void MarkResource(string packageName)
 	{
-		if (_ResourceDatas.TryGetValue(packageName, out ImageArt temp))
+		if (_ResourceDatas.TryGetValue(packageName, out UiWndArt temp))
 			temp.Mark();
 	}
 	/// <summary>
@@ -131,7 +140,7 @@ public class PackageMgr
 	/// <param name="packageName"></param>
 	void ClearMark(string packageName)
 	{
-		if (_ResourceDatas.TryGetValue(packageName, out ImageArt temp))
+		if (_ResourceDatas.TryGetValue(packageName, out UiWndArt temp))
 			temp.ClearMark();
 	}
 

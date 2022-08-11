@@ -23,6 +23,10 @@ public class ObjectMgr
     {
         return Object.Instantiate(obj);
     }
+    public static GameObject InstantiateGameObj(string path)
+    {
+        return Object.Instantiate(LoadMainAssetAtPath(path))as GameObject; 
+    }
 
     public static T LoadResource<T>(string path) where T : Object
     {
@@ -45,6 +49,10 @@ public class ObjectMgr
         //		if (stopwatch.ElapsedMilliseconds > 5)
         //			if (DebugMgr.CanLog()) DebugMgr.Log(string.Format("LoadMainAssetAtPath {0} costtime = {1}", obj.name, stopwatch.ElapsedMilliseconds));
         //#endif
+        if (obj==null)
+        {
+            DebugMgr.LogError("obj为空 "+ path);
+        }
         return obj;
 #endif
         return null;

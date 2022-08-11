@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ImageArt : ArtBase
+public class UiWndArt : ArtBase
 {
 	string packageName;
 	string _LowPkgName;
@@ -16,7 +16,7 @@ public class ImageArt : ArtBase
 	public override ResSort _Sort => ResSort.UI;
 	public override bool _CanCacheAb => false;
     private Dictionary<string, UnityEngine.Object> AllAssets = new Dictionary<string, UnityEngine.Object>();
-    public ImageArt(string pkName, System.Action cv, bool _unClear)
+    public UiWndArt(string pkName, System.Action cv, bool _unClear)
 	{
 		packageName = pkName;
 		unClear = _unClear;
@@ -39,14 +39,31 @@ public class ImageArt : ArtBase
 
 	protected void LoadEditor(string packageName)
 	{
-		var path = StaticTools.CombStr("Assets/Art/UIWnds/", packageName, "/", packageName);
-		Cb();
+		var path = StaticTools.CombStr("Assets/Art/UIWnds/", packageName, "/", packageName+".prefab");
+        PackageMgr.AddLoadPackage(packageName, ObjectMgr.LoadMainAssetAtPath(path));
+        Cb();
 	}
 
 	public void AddCb(Action cbv)
 	{
 		Cb += cbv;
 	}
+	public UnityEngine.Object GetRes(string objname)
+    {
+        if (StaticTools.LoadArtIsAb)
+        {
+            if (AllAssets.ContainsKey(objname))
+            {
+                return AllAssets[objname];
+            }
+            return null;
+        }
+        else
+        {
+            var path = StaticTools.CombStr("Assets/Art/UIWnds/", packageName, "/", objname+".prefab");
+            return ObjectMgr.LoadMainAssetAtPath(path);
+        }
+    }
 	public void Mark()
 	{
 		index++;
@@ -82,7 +99,8 @@ public class ImageArt : ArtBase
             string objname = objs[j].name;
             //Debug.LogError(objname);
             if (AllAssets.ContainsKey(objname))
-            { AllAssets[objname] = objs[j];Debug.Log("重复资源     "+packageName +  "     " + objname);
+            {
+                AllAssets[objname] = objs[j];Debug.Log("重复资源     "+packageName +  "     " + objname);
             }
             else
                 AllAssets.Add(objs[j].name, objs[j]);
@@ -94,14 +112,8 @@ public class ImageArt : ArtBase
 
     public override void UseArt(object[] objs)
     {
-        if (AllAssets.ContainsKey(packageName))
-        {
-            PackageMgr.AddLoadPackage(packageName, AllAssets[packageName]);
-        }
-        else
-        {
-            PackageMgr.AddLoadPackage(packageName, null);
-        }
+        AllAssets.TryGetValue(packageName, out UnityEngine.Object obj);
+        PackageMgr.AddLoadPackage(packageName, obj);
         Cb();
 	}
 

@@ -16,19 +16,22 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
     public void Show(IPoolsType pooltype,bool move = false)
     {
         string _name = pooltype.ToString();
-        if (StaticTools.LoadArtIsAb)
-        {
-            PackageMgr.LoadObjectCallBack(_name, (objname) => {
-                ShowBack(PackageMgr.GetPackageLoad(objname), objname, pooltype, move);
-            });
-        }
-        else
-        {
-            ShowBack(null, _name, pooltype, move);
-        }
+        PackageMgr.LoadObjectCallBack(_name, (objname) => {
+            ShowBack(objname, pooltype, move);
+        });
+        //if (StaticTools.LoadArtIsAb)
+        //{
+        //    PackageMgr.LoadObjectCallBack(_name, (objname) => {
+        //        ShowBack(objname, pooltype, move);
+        //    });
+        //}
+        //else
+        //{
+        //    ShowBack( _name, pooltype, move);
+        //}
     }
  
-    void ShowBack(UnityEngine.Object obj,string _name, IPoolsType pooltype, bool move = false)
+    void ShowBack(string _name, IPoolsType pooltype, bool move = false)
     {
         UIBase ui;
         if (name2UI.ContainsKey(_name))
@@ -37,19 +40,15 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
             //DebugMgr.LogError(_name + "     " + ui.visible);
             if (ui.visible)
                 return;
-            //return ui;
         }
         else
         {
             ui = GetUIClass(pooltype);
-            ui.SetObject(obj);
             name2UI[_name] = ui;
         }
         //DebugMgr.LogError(_name + "  show   ");
-
         ui.Show(move);
         ShowFullPanel(ui, pooltype);
-        //return ui;
     }
     UIBase GetUIClass(IPoolsType pooltype)
     {

@@ -201,12 +201,13 @@ class ResCenter : AssetBase, IMgr
         //	MainScripts.inst.gameObject.GetOrCreatComponent<LuaClient>();//开启lua
         //}
         loadindex = 0;
-        PackageMgr.LoadObject("UICommonWnd", InitStart,true);
-        PackageMgr.LoadObject("UICommonWnd1", InitStart,true);
+        PackageMgr.LoadObjectCallBack("UICommonWnd", InitStart,true);
+        PackageMgr.LoadObjectCallBack("UICommonWnd1", InitStart,true);
     }
     int loadindex;
-    void InitStart()
+    void InitStart(string packageName)
     {
+        //DebugMgr.LogError(packageName);
         if (++loadindex==2)
         {
             AllUIPanelManager.Inst.Show(IPoolsType.UI_StartPanel);
