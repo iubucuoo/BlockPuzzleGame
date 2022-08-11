@@ -19,16 +19,6 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
         PackageMgr.LoadObjectCallBack(_name, (objname) => {
             ShowBack(objname, pooltype, move);
         });
-        //if (StaticTools.LoadArtIsAb)
-        //{
-        //    PackageMgr.LoadObjectCallBack(_name, (objname) => {
-        //        ShowBack(objname, pooltype, move);
-        //    });
-        //}
-        //else
-        //{
-        //    ShowBack( _name, pooltype, move);
-        //}
     }
  
     void ShowBack(string _name, IPoolsType pooltype, bool move = false)
@@ -52,22 +42,6 @@ public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
     }
     UIBase GetUIClass(IPoolsType pooltype)
     {
-        //if (UIInstanceCache.TryGetValue((int) pooltype,out UIBase uIBase))
-        //{
-        //    DebugMgr.LogError(pooltype.ToString());
-        //    return uIBase;
-        //}
-        //if (Factorys.TryGetValue((int)pooltype, out CreateInstance mFactory))
-        //{
-        //    uIBase = mFactory.Create() as UIBase;
-        //    UIInstanceCache.Add((int)pooltype, uIBase);
-        //    return uIBase;
-        //}
-        //mFactory = new CreateInstance(pooltype);
-        //Factorys.Add((int)pooltype, mFactory);
-        //uIBase = mFactory.Create() as UIBase;
-        //UIInstanceCache.Add((int)pooltype, uIBase);
-        //return uIBase;
         return PoolMgr.Allocate(pooltype) as UIBase;
     }
 
