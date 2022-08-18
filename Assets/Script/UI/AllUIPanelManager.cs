@@ -9,8 +9,6 @@ public struct FullPanel
 }
 public class AllUIPanelManager : MonoSingleton<AllUIPanelManager>
 {
-    //Dictionary<int, CreateInstance> Factorys = new Dictionary<int, CreateInstance>();
-    //Dictionary<int, UIBase> UIInstanceCache = new Dictionary<int, UIBase>();
     Dictionary<string, UIBase> name2UI = new Dictionary<string, UIBase>();
     Stack<FullPanel> fullPanelList = new Stack<FullPanel>();
     public void Show(IPoolsType pooltype,bool move = false)
