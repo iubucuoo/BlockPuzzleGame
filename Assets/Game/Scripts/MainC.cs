@@ -25,10 +25,7 @@ public class MainC : MonoBehaviour
     public bool IsTopScore { get; set; }
     public bool IsRotateState { get; set; }
     public Vector3 RotateGoldAddPos { get; set; }
-
-    public Dictionary<string, Sprite> Sprites;
-
-
+    
     channles channle_info;
 
     public static MainC Inst;
@@ -40,7 +37,6 @@ public class MainC : MonoBehaviour
 #else
         DebugMgr.EnableLog = false;
 #endif
-        Sprites = new Dictionary<string, Sprite>();
 
         AudioMgr.Inst.isPlaying_Music = GameGloab.MusicOnOff == 0;
         AudioMgr.Inst.isPlaying_Sound = GameGloab.SoundIsOnOff == 0;
@@ -52,10 +48,7 @@ public class MainC : MonoBehaviour
         MEC.Timing.RunCoroutine(NetStatus());
         GoogleAdMgr.CheckInstance();//初始化的interstitial在下个update中执行
         FPS.CheckInstance();
-        foreach (var v in sprites)
-        {
-            Sprites[v.name] = v;
-        }
+ 
         StaticTools._ResLoadModel = _ResLoadModel;
         //先载入数据文件
         //LoadLanguageData();
@@ -77,9 +70,6 @@ public class MainC : MonoBehaviour
             
         });  
     }
-
-    public List<Sprite> sprites = new List<Sprite>();
-    
 
     //bool errorOver = true;
     //void ForegroundErrorOver(string title)

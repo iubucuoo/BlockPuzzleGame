@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class UiWndArt : ArtBase
@@ -39,9 +40,50 @@ public class UiWndArt : ArtBase
 
 	protected void LoadEditor(string packageName)
 	{
-		var path = StaticTools.CombStr("Assets/Art/UIWnds/", packageName, "/", packageName+".prefab");
-        PackageMgr.AddLoadPackage(packageName, ObjectMgr.LoadMainAssetAtPath(path));
-        Cb();
+        UnityEngine.Object pkgobj=null;
+        var des = StaticTools.CombStr("Assets/Art/UIWnds/", packageName, "/");
+        //Debug.LogError("LoadEditor   "+packageName);
+        if (Directory.Exists(des))
+        {
+            DirectoryInfo direction = new DirectoryInfo(des);
+            FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
+           // Debug.Log(files.Length);
+            for (int i = 0; i < files.Length; i++)
+            {
+                if (files[i].Name.EndsWith(".meta"))
+                {
+                    continue;
+                }
+                //Debug.Log("Name:" + files[i].Name + "  |   " + files[i].FullName);
+                var _fullname = files[i].FullName;
+                var _name = files[i].Name;
+                if (_name.EndsWith(".png"))
+                {
+                    string _path = _fullname.Substring(_fullname.IndexOf("Assets"));
+                    UnityEngine.Object[] sprites = UnityEditor.AssetDatabase.LoadAllAssetsAtPath(_path);
+                    foreach (var item in sprites)
+                    {
+                        Debug.Log("__sprite allcount:" + sprites.Length+ " __sprite name:" + item.name ); 
+                        AddAllAssets(item.name, item);
+                    }
+                }
+                else if (_name.EndsWith(".prefab"))
+                {
+                    string _path = _fullname.Substring(_fullname.IndexOf("Assets"));
+                    var obj = ObjectMgr.LoadMainAssetAtPath(_path);
+                    if (obj.name == packageName)
+                    {
+                        pkgobj = obj;
+                        Debug.Log("AddLoadPackage  " + obj.name);
+                    }
+                    Debug.Log("__prefab allcount:1  __prefab name:" + obj.name);
+                    AddAllAssets(obj.name, obj);
+                }
+                //Debug.Log( "FullName:" + files[i].FullName );  
+                //Debug.Log( "DirectoryName:" + files[i].DirectoryName );  
+            }
+        }
+        PackageMgr.AddLoadPackage(packageName, pkgobj);
 	}
 
 	public void AddCb(Action cbv)
@@ -50,19 +92,26 @@ public class UiWndArt : ArtBase
 	}
 	public UnityEngine.Object GetRes(string objname)
     {
-        if (StaticTools.LoadArtIsAb)
+        if (AllAssets.ContainsKey(objname))
         {
-            if (AllAssets.ContainsKey(objname))
-            {
-                return AllAssets[objname];
-            }
-            return null;
+            return AllAssets[objname];
         }
-        else
-        {
-            var path = StaticTools.CombStr("Assets/Art/UIWnds/", packageName, "/", objname+".prefab");
-            return ObjectMgr.LoadMainAssetAtPath(path);
-        }
+        Debug.LogError("找不到   " + objname);
+        return null;
+        //if (StaticTools.LoadArtIsAb)
+        //{
+        //    if (AllAssets.ContainsKey(objname))
+        //    {
+        //        return AllAssets[objname];
+        //    }
+        //    Debug.LogError("找不到   " + objname);
+        //    return null;
+        //}
+        //else
+        //{
+        //    var path = StaticTools.CombStr("Assets/Art/UIWnds/", packageName, "/", objname+".prefab");
+        //    return ObjectMgr.LoadMainAssetAtPath(path);
+        //}
     }
 	public void Mark()
 	{
@@ -96,20 +145,21 @@ public class UiWndArt : ArtBase
         var objs = ab.LoadAllAssets();
         for (int j = 0; j < objs.Length; j++)
         {
-            string objname = objs[j].name;
-            //Debug.LogError(objname);
-            if (AllAssets.ContainsKey(objname))
-            {
-                AllAssets[objname] = objs[j];Debug.Log("重复资源     "+packageName +  "     " + objname);
-            }
-            else
-                AllAssets.Add(objs[j].name, objs[j]);
+            AddAllAssets(objs[j].name, objs[j]);
         }
         UseArt(objs);
         yield return 0;
         ab.Unload(false);
     }
-
+    public void AddAllAssets(string objname, UnityEngine.Object obj)
+    {
+        if (AllAssets.ContainsKey(objname))
+        {
+            AllAssets[objname] = obj; Debug.Log("重复资源     " + packageName + "     " + objname);
+        }
+        else
+            AllAssets.Add(objname, obj);
+    }
     public override void UseArt(object[] objs)
     {
         AllAssets.TryGetValue(packageName, out UnityEngine.Object obj);

@@ -11,11 +11,15 @@ public class ObjectMgr
 //		stopwatch.Start();
 //#endif
         var newobj = Object.Instantiate(obj);
-//#if _CHECK_OPTIMIZE
-//		stopwatch.Stop();
-//		if (stopwatch.ElapsedMilliseconds > 5)
-//			if(DebugMgr.CanLog()) DebugMgr.Log(string.Format("InstantiateObj {0} costtime = {1}", obj.name, stopwatch.ElapsedMilliseconds));
-//#endif
+        //#if _CHECK_OPTIMIZE
+        //		stopwatch.Stop();
+        //		if (stopwatch.ElapsedMilliseconds > 5)
+        //			if(DebugMgr.CanLog()) DebugMgr.Log(string.Format("InstantiateObj {0} costtime = {1}", obj.name, stopwatch.ElapsedMilliseconds));
+        //#endif
+        if (newobj == null)
+        {
+            DebugMgr.LogError("obj为空 " + obj.name);
+        }
         return newobj;
     }
 

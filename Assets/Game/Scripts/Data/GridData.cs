@@ -24,9 +24,9 @@ public class GridData : IPoolable
     void SetSprites()
     {
         if (TrueStatus == 0)
-        { DefImage.sprite = MainC.Inst.Sprites["Dark_BG_BS"]; }
+        { DefImage.sprite = PackageMgr.GetObject("UICommonWnd", "Dark_BG_BS") as Sprite; }//MainC.Inst.Sprites["Dark_BG_BS"]
         else if (TrueStatus == 1)
-        { DefImage.sprite = MainC.Inst.Sprites["Block_Wood"]; }
+        { DefImage.sprite = PackageMgr.GetObject("UICommonWnd", "Block_Wood") as Sprite; }//MainC.Inst.Sprites["Block_Wood"]
         //else if (TrueStatus == 2)
         //{ DefImage.sprite = UIManager.Inst.Sprites["swgrid"]; }
         //else if (TrueStatus == 3)

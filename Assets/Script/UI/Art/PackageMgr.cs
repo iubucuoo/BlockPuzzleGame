@@ -42,23 +42,52 @@ public class PackageMgr
 			else
 			{
 				_ResourceDatas.Add(packageName, new UiWndArt(packageName, cbv, unClear));
-			}
+                if (!StaticTools.LoadArtIsAb)
+                {
+                    cbv();
+                }
+            }
 		}
 	}
-
+    public static Object GetObject(string packageName, string resName)
+    {
+        if (IsLoaded(packageName))
+        {
+            //if (packageName == resName)
+            //{
+            //    return GetLoadedObj(resName);
+            //}
+            //生成ui
+            if (_ResourceDatas.TryGetValue(packageName, out UiWndArt temp))
+            {
+                return temp.GetRes(resName);
+            }
+            return null;
+        }
+        else
+        {
+            DebugMgr.LogError("资源包未加载 + " + packageName);
+            return null;
+        }
+    }
     public static Object CreateObject(string packageName, string resName)
     {
         if (IsLoaded(packageName))
         {
-            if (packageName == resName)
-            {
-                return ObjectMgr.InstantiateObj(GetLoadedObj(resName));
-            }
+            //if (packageName == resName)
+            //{
+            //    return ObjectMgr.InstantiateObj(GetLoadedObj(resName));
+            //}
             //生成ui
             if (_ResourceDatas.TryGetValue(packageName, out UiWndArt temp))
             {
                 return ObjectMgr.InstantiateObj(temp.GetRes(resName));
             }
+            foreach (var item in _ResourceDatas)
+            {
+                DebugMgr.LogError(item.Key);
+            }
+            DebugMgr.LogError("没有资源 " + packageName + "    " + resName);
             return null;
         }
         else
@@ -106,14 +135,6 @@ public class PackageMgr
 		_ResourceDatas.Clear();
 		e.Dispose();
 	}
-    static Object GetLoadedObj(string wndname)
-    {
-        if (PackageLoad.TryGetValue(wndname,out Object obj))
-        {
-            return obj;
-        }
-        return null;
-    }
     static bool IsLoaded(string wnd)
 	{
         return PackageLoad.ContainsKey(wnd);
