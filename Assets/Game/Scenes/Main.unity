@@ -251,9 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ResLoadModel: 0
-  sprites:
-  - {fileID: -4049982081064001941, guid: bfe48b7b571e95049938ae56f9cd8ba0, type: 3}
-  - {fileID: -3993824124772458005, guid: bfe48b7b571e95049938ae56f9cd8ba0, type: 3}
 --- !u!4 &625082890
 Transform:
   m_ObjectHideFlags: 0

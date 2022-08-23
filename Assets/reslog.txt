@@ -4,6 +4,8 @@ ID=0,ObjName=FlowEffect 2,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=
 ID=0,ObjName=BubbleExplodeRed,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/BubbleExplodeRed.prefab
 ID=0,ObjName=BubbleExplodeOrange,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/BubbleExplodeOrange.prefab
 ID=0,ObjName=BubbleExplodeGreen,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/BubbleExplodeGreen.prefab
+AbID=16,Version=0,_Size=68572,_Dependencies=,,AbPath=effects/effectsID=0,ObjName=FlowEffect,AbName=effects,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/FlowEffect.prefab
+ID=0,ObjName=BubbleExplodeYellow,AbName=effects,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplodeYellow.prefab
 
 ---------------------
 AbID=2,Version=0,_Size=569007,_Dependencies=,,AbPath=audio/othersoundID=0,ObjName=movesuccess,AbName=othersound,ModelID=1001,ModelName=Audio,Path=Assets/Art/Audio/othersound/movesuccess.wav
@@ -34,11 +36,12 @@ ID=0,ObjName=bg_LaidBackLOOP,AbName=bgsound,ModelID=1001,ModelName=Audio,Path=As
 
 ---------------------
 AbID=11,Version=0,_Size=10430,_Dependencies=9,,AbPath=uiwnds/ui_addrotatepanelID=0,ObjName=UI_AddRotatePanel,AbName=ui_addrotatepanel,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UI_AddRotatePanel/UI_AddRotatePanel.prefab
-AbID=9,Version=0,_Size=967675,_Dependencies=,,AbPath=uiwnds/uicommonwndID=0,ObjName=blockmin,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/blockmin.prefab
+AbID=9,Version=0,_Size=968516,_Dependencies=,,AbPath=uiwnds/uicommonwndID=0,ObjName=blockmin,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/blockmin.prefab
 ID=0,ObjName=blockdef,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/blockdef.prefab
 ID=0,ObjName=blockdrag,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/blockdrag.prefab
 ID=0,ObjName=addrotateimg,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/addrotateimg.prefab
 ID=0,ObjName=btn_rotate_on #4495,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/btn_rotate_on #4495.png
+ID=0,ObjName=TextTip,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/TextTip.prefab
 ID=0,ObjName=addgridbg,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/addgridbg.prefab
 ID=0,ObjName=Sprite,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/Sprite.png
 AbID=12,Version=0,_Size=7886279,_Dependencies=9,,AbPath=uiwnds/ui_gameoverpanelID=0,ObjName=UI_GameOverPanel,AbName=ui_gameoverpanel,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UI_GameOverPanel/UI_GameOverPanel.prefab
