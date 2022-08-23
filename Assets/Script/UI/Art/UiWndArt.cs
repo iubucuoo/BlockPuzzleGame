@@ -41,11 +41,11 @@ public class UiWndArt : ArtBase
 	protected void LoadEditor(string packageName)
 	{
         UnityEngine.Object pkgobj=null;
-        var des = StaticTools.CombStr("Assets/Art/UIWnds/", packageName, "/");
+        var Dirpath = StaticTools.CombStr("Assets/Art/UIWnds/", packageName, "/");
         //Debug.LogError("LoadEditor   "+packageName);
-        if (Directory.Exists(des))
+        if (Directory.Exists(Dirpath))
         {
-            DirectoryInfo direction = new DirectoryInfo(des);
+            DirectoryInfo direction = new DirectoryInfo(Dirpath);
             FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
            // Debug.Log(files.Length);
             for (int i = 0; i < files.Length; i++)
@@ -63,7 +63,7 @@ public class UiWndArt : ArtBase
                     UnityEngine.Object[] sprites = UnityEditor.AssetDatabase.LoadAllAssetsAtPath(_path);
                     foreach (var item in sprites)
                     {
-                        Debug.Log("__sprite allcount:" + sprites.Length+ " __sprite name:" + item.name ); 
+                        //Debug.Log("__sprite allcount:" + sprites.Length+ " __sprite name:" + item.name ); 
                         AddAllAssets(item.name, item);
                     }
                 }
@@ -74,13 +74,11 @@ public class UiWndArt : ArtBase
                     if (obj.name == packageName)
                     {
                         pkgobj = obj;
-                        Debug.Log("AddLoadPackage  " + obj.name);
+                        //Debug.Log("AddLoadPackage  " + obj.name);
                     }
-                    Debug.Log("__prefab allcount:1  __prefab name:" + obj.name);
+                    //Debug.Log("__prefab allcount:1  __prefab name:" + obj.name);
                     AddAllAssets(obj.name, obj);
                 }
-                //Debug.Log( "FullName:" + files[i].FullName );  
-                //Debug.Log( "DirectoryName:" + files[i].DirectoryName );  
             }
         }
         PackageMgr.AddLoadPackage(packageName, pkgobj);
@@ -98,20 +96,6 @@ public class UiWndArt : ArtBase
         }
         Debug.LogError("找不到   " + objname);
         return null;
-        //if (StaticTools.LoadArtIsAb)
-        //{
-        //    if (AllAssets.ContainsKey(objname))
-        //    {
-        //        return AllAssets[objname];
-        //    }
-        //    Debug.LogError("找不到   " + objname);
-        //    return null;
-        //}
-        //else
-        //{
-        //    var path = StaticTools.CombStr("Assets/Art/UIWnds/", packageName, "/", objname+".prefab");
-        //    return ObjectMgr.LoadMainAssetAtPath(path);
-        //}
     }
 	public void Mark()
 	{
