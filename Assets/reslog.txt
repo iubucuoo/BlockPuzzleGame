@@ -34,9 +34,14 @@ ID=0,ObjName=bg_LaidBackLOOP,AbName=bgsound,ModelID=1001,ModelName=Audio,Path=As
 
 ---------------------
 AbID=11,Version=0,_Size=10430,_Dependencies=9,,AbPath=uiwnds/ui_addrotatepanelID=0,ObjName=UI_AddRotatePanel,AbName=ui_addrotatepanel,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UI_AddRotatePanel/UI_AddRotatePanel.prefab
-AbID=12,Version=0,_Size=7886279,_Dependencies=9,,AbPath=uiwnds/ui_gameoverpanelID=0,ObjName=UI_GameOverPanel,AbName=ui_gameoverpanel,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UI_GameOverPanel/UI_GameOverPanel.prefab
-AbID=9,Version=0,_Size=962965,_Dependencies=,,AbPath=uiwnds/uicommonwndID=0,ObjName=btn_rotate_on #4495,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/btn_rotate_on #4495.png
+AbID=9,Version=0,_Size=967675,_Dependencies=,,AbPath=uiwnds/uicommonwndID=0,ObjName=blockmin,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/blockmin.prefab
+ID=0,ObjName=blockdef,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/blockdef.prefab
+ID=0,ObjName=blockdrag,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/blockdrag.prefab
+ID=0,ObjName=addrotateimg,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/addrotateimg.prefab
+ID=0,ObjName=btn_rotate_on #4495,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/btn_rotate_on #4495.png
+ID=0,ObjName=addgridbg,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/addgridbg.prefab
 ID=0,ObjName=Sprite,AbName=uicommonwnd,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd/Sprite.png
+AbID=12,Version=0,_Size=7886279,_Dependencies=9,,AbPath=uiwnds/ui_gameoverpanelID=0,ObjName=UI_GameOverPanel,AbName=ui_gameoverpanel,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UI_GameOverPanel/UI_GameOverPanel.prefab
 AbID=13,Version=0,_Size=8358679,_Dependencies=9,10,,AbPath=uiwnds/ui_startpanelID=0,ObjName=UI_StartPanel,AbName=ui_startpanel,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UI_StartPanel/UI_StartPanel.prefab
 AbID=14,Version=0,_Size=7942493,_Dependencies=9,,AbPath=uiwnds/ui_setpanelID=0,ObjName=UI_SetPanel,AbName=ui_setpanel,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UI_SetPanel/UI_SetPanel.prefab
 AbID=10,Version=0,_Size=1231941,_Dependencies=,,AbPath=uiwnds/uicommonwnd1ID=0,ObjName=Sprite1,AbName=uicommonwnd1,ModelID=9,ModelName=uiwnds,Path=Assets/Art/UIWnds/UICommonWnd1/Sprite1.png

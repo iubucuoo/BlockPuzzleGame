@@ -113,7 +113,8 @@ public class UI_GamePanel_GroupRotate
         for (int i = 0; i < 3; i++)
         {
             Vector2 pos = new Vector2((i - 1) * (6 * MainC.wh_2), 0);
-            var obj = ObjectMgr.InsResource("Prefab/addrotateimg");
+            GameObject obj = PackageMgr.CreateObject("UICommonWnd", "addrotateimg") as GameObject;
+            //var obj = ObjectMgr.InsResource("Prefab/addrotateimg");
             obj.transform.SetParent(paneljob.ROTATEROOT);
             obj.transform.localPosition = pos;
             obj.transform.localScale = Vector2.one;

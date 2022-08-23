@@ -115,7 +115,8 @@ public class GridData : IPoolable
         resName = res;
         if (GridObj == null)
         {
-            GridObj = ObjectMgr.InsResource(res);
+            GridObj = PackageMgr.CreateObject("UICommonWnd", res.Replace("Prefab/", "")) as GameObject;
+            //GridObj = ObjectMgr.InsResource(res);
             DefImage = GridObj.transform.Find("def").GetComponent<Image>();
             float scale = 1;// UIMgr.Inst.CanvasRect.localScale.x;
             if (PoolType == IPoolsType.GridDataDef)

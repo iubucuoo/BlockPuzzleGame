@@ -40,6 +40,7 @@ public class UiWndArt : ArtBase
 
 	protected void LoadEditor(string packageName)
 	{
+#if UNITY_EDITOR
         UnityEngine.Object pkgobj=null;
         var Dirpath = StaticTools.CombStr("Assets/Art/UIWnds/", packageName, "/");
         //Debug.LogError("LoadEditor   "+packageName);
@@ -82,7 +83,8 @@ public class UiWndArt : ArtBase
             }
         }
         PackageMgr.AddLoadPackage(packageName, pkgobj);
-	}
+#endif
+    }
 
 	public void AddCb(Action cbv)
 	{

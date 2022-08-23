@@ -286,7 +286,8 @@ public class GridGroupMgr : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             Vector2 pos = new Vector2((i - 1) * (6* MainC.wh_2), 0);
-            var obj = ObjectMgr.InsResource("Prefab/addgridbg");
+            var obj = PackageMgr.CreateObject("UICommonWnd", "addgridbg") as GameObject;
+            //var obj = ObjectMgr.InsResource("Prefab/addgridbg");
             obj.transform.SetParent(ADDROOT);
             obj.transform.localPosition = pos;
             obj.transform.localScale = Vector2.one;
