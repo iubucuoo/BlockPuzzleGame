@@ -42,7 +42,7 @@ public class DragingGridMgr
         {
             return pos + GameStatic.DragUp;//拖动位置用来显示
         }
-        return GameGloab.OutScreenV2;
+        return UIStatic.OutScreenV2;
     }
     Vector2 topos;
     public void SetDragDown(PrepAddGridGroup v)
@@ -67,7 +67,7 @@ public class DragingGridMgr
     public void SetDragUp(PrepAddGridGroup v)
     {
         //放手
-        DragRoot.localPosition = GameGloab.OutScreenV2;
+        DragRoot.localPosition = UIStatic.OutScreenV2;
         //ChildParent.localPosition = Vector2.zero;
         PoolMgr.Recycle(prepData);
         IsDrag = false;

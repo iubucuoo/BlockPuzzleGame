@@ -37,9 +37,9 @@ public class UI_GamePanel_GroupRotate
 
     public void AddRotateGoldCount(int v = 0)
     {
-        GameGloab.GoldCount += v;
-        GoldNum.text = GameGloab.GoldCount.ToString();
-        if (GameGloab.GoldCount <= 0)
+        GameStatic.GoldCount += v;
+        GoldNum.text = GameStatic.GoldCount.ToString();
+        if (GameStatic.GoldCount <= 0)
         {
             OffChangeRotate();
         }
@@ -52,7 +52,7 @@ public class UI_GamePanel_GroupRotate
     {
         if (arg0)
         {
-            if (GameGloab.GoldCount <= 0)
+            if (GameStatic.GoldCount <= 0)
             {
                 DebugMgr.LogError("金币不足不能开启");
                 //RotateBnt.SetIsOnWithoutNotify(false);

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public static class GameGloab
 {
-    public static Vector2 OutScreenV2 = new Vector2(5000, 5000);
-
     public static int SoundIsOnOff
     {
         get { return PlayerPrefs.GetInt("SoundIsOn", 0); }
@@ -28,27 +26,4 @@ public static class GameGloab
             }
         }
     }
-    public static int GoldCount
-    {
-        get { return PlayerPrefs.GetInt("GoldCount", 0); }
-        set
-        {
-            if (PlayerPrefs.GetInt("GoldCount", 0) != value)
-            {
-                PlayerPrefs.SetInt("GoldCount", value);
-            }
-        }
-    }
-    public static int Topscore
-    {
-        get { return PlayerPrefs.GetInt("Topscore", 0); }
-        set
-        {
-            if (PlayerPrefs.GetInt("Topscore", 0) != value)
-            {
-                PlayerPrefs.SetInt("Topscore", value);
-            }
-        }
-    }
-
 }

@@ -35,7 +35,7 @@ public class TextTipEffect : UIEventListenBase
     }
     void MoveEnd()
     {
-        transform.localPosition = GameGloab.OutScreenV2;
+        transform.localPosition = UIStatic.OutScreenV2;
         swtext.text = "";
         swtext.gameObject.SetActive(false);
         if (CallBack != null)

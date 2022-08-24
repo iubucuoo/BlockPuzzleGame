@@ -25,7 +25,7 @@ public class UI_GameOverPanelJob : UIEventListenBase
         {
             MsgSend.ToSend((ushort)UITopPanelListenID.WriteTopScore);
             AudioMgr.Inst.PlayNewRecord();//播放 新记录音乐UI
-            newrecordtxt.text = GameGloab.Topscore.ToString();
+            newrecordtxt.text = GameStatic.Topscore.ToString();
         }
         else
         {

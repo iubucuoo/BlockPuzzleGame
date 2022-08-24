@@ -20,7 +20,7 @@ public class UI_GamePanel_Top
         strnownum = wnd.Find("now/Text").GetComponent<Text>();
         setbtn = wnd.Find("SetBtn").GetComponent<Button>();
 
-        SetNowGameTop(GameGloab.Topscore);//初始化top
+        SetNowGameTop(GameStatic.Topscore);//初始化top
         setbtn.onClick.AddListener(OnBtnSwSetPanel);
         ResetTop();
     }
@@ -52,7 +52,7 @@ public class UI_GamePanel_Top
     }
     void ResetTopScore()
     {
-        strtopnum.text = GameGloab.Topscore.ToString();
+        strtopnum.text = GameStatic.Topscore.ToString();
     }
     void ResetNowScore()
     {
@@ -63,9 +63,9 @@ public class UI_GamePanel_Top
     public void SetNowScore(int score)
     {
         SetNowNum(nownum + score);
-        if (nownum > GameGloab.Topscore)
+        if (nownum > GameStatic.Topscore)
         {
-            GameGloab.Topscore = nownum;
+            GameStatic.Topscore = nownum;
             ResetTopScore();
         }
         GameStatic.IsTopScore = IsTopScore();

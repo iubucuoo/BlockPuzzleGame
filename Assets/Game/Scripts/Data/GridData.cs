@@ -19,7 +19,7 @@ public class GridData : IPoolable
     public int TrueStatus { get { return _turestaus; } set { _turestaus = value; _TempStatus = _turestaus; } }//配置里的值，主面板的可修改
     public int _TempStatus;//临时存放的truestatus，如可以放置或着可销毁的时候临时用的
 
-    public Vector3 Position { get { return GridObj ? GridObj.transform.position : (Vector3)GameGloab.OutScreenV2; } }
+    public Vector3 Position { get { return GridObj ? GridObj.transform.position : (Vector3)UIStatic.OutScreenV2; } }
 
     void SetSprites()
     {

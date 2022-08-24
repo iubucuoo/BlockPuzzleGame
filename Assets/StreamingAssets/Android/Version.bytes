@@ -1,0 +1,35 @@
+‰öbubbleexplodeeffects/bubbleexplode"`bubbleexplodeBubbleExplode *effects25Assets/Art/Effects/BubbleExplode/BubbleExplode.prefab"hbubbleexplodeBubbleExplodeBlue *effects29Assets/Art/Effects/BubbleExplode/BubbleExplodeBlue.prefab"^bubbleexplodeFlowEffect 2 *effects24Assets/Art/Effects/BubbleExplode/FlowEffect 2.prefab"fbubbleexplodeBubbleExplodeRed *effects28Assets/Art/Effects/BubbleExplode/BubbleExplodeRed.prefab"lbubbleexplodeBubbleExplodeOrange *effects2;Assets/Art/Effects/BubbleExplode/BubbleExplodeOrange.prefab"jbubbleexplodeBubbleExplodeGreen *effects2:Assets/Art/Effects/BubbleExplode/BubbleExplodeGreen.prefab0◊•¬effectseffects/effects"Feffects
+FlowEffect *effects2$Assets/Art/Effects/FlowEffect.prefab"XeffectsBubbleExplodeYellow *effects2-Assets/Art/Effects/BubbleExplodeYellow.prefab0‹óÑÈ≤
+othersoundaudio/othersound"P
+othersoundmovesuccess È*Audio2+Assets/Art/Audio/othersound/movesuccess.wav"@
+othersoundnew È*Audio2#Assets/Art/Audio/othersound/new.wav"J
+othersoundmovedown È*Audio2(Assets/Art/Audio/othersound/movedown.mp3"T
+othersoundeffectAmazing È*Audio2-Assets/Art/Audio/othersound/effectAmazing.mp3"B
+othersoundover È*Audio2$Assets/Art/Audio/othersound/over.mp3"D
+othersoundclick È*Audio2%Assets/Art/Audio/othersound/click.wav"N
+othersound
+act_rotate È*Audio2*Assets/Art/Audio/othersound/act_rotate.wav"P
+othersoundsfx_combo_5 È*Audio2+Assets/Art/Audio/othersound/sfx_combo_5.mp3"H
+othersoundnewGame È*Audio2'Assets/Art/Audio/othersound/newGame.mp3"P
+othersoundsfx_combo_4 È*Audio2+Assets/Art/Audio/othersound/sfx_combo_4.mp3"T
+othersoundoverNewRecord È*Audio2-Assets/Art/Audio/othersound/overNewRecord.mp3"J
+othersoundmovefail È*Audio2(Assets/Art/Audio/othersound/movefail.mp3"P
+othersoundsfx_combo_2 È*Audio2+Assets/Art/Audio/othersound/sfx_combo_2.mp3"L
+othersound	all_clear È*Audio2)Assets/Art/Audio/othersound/all_clear.wav"N
+othersound
+effectGood È*Audio2*Assets/Art/Audio/othersound/effectGood.mp3"V
+othersoundfirstopen_gift È*Audio2.Assets/Art/Audio/othersound/firstopen_gift.wav"P
+othersoundsfx_combo_3 È*Audio2+Assets/Art/Audio/othersound/sfx_combo_3.mp3"P
+othersoundsfx_combo_6 È*Audio2+Assets/Art/Audio/othersound/sfx_combo_6.mp3"L
+othersound	newRecord È*Audio2)Assets/Art/Audio/othersound/newRecord.mp3"T
+othersoundeffectPerfect È*Audio2-Assets/Art/Audio/othersound/effectPerfect.mp3"D
+othersoundline1 È*Audio2%Assets/Art/Audio/othersound/line1.wav"P
+othersoundeffectGreat È*Audio2+Assets/Art/Audio/othersound/effectGreat.mp3"D
+othersoundpopup È*Audio2%Assets/Art/Audio/othersound/popup.mp30Ø›"…bgsoundaudio/bgsound"Tbgsoundbg_ChaseMENULOOP È*Audio2-Assets/Art/Audio/bgsound/bg_ChaseMENULOOP.wav"Rbgsoundbg_LaidBackLOOP È*Audio2,Assets/Art/Audio/bgsound/bg_LaidBackLOOP.wav0¶ùèª	§ui_addrotatepaneluiwnds/ui_addrotatepanel"nui_addrotatepanelUI_AddRotatePanel 	*uiwnds2<Assets/Art/UIWnds/UI_AddRotatePanel/UI_AddRotatePanel.prefab(	0æQÕ	uicommonwnduiwnds/uicommonwnd"Puicommonwndblockmin 	*uiwnds2-Assets/Art/UIWnds/UICommonWnd/blockmin.prefab"Puicommonwndblockdef 	*uiwnds2-Assets/Art/UIWnds/UICommonWnd/blockdef.prefab"Ruicommonwnd	blockdrag 	*uiwnds2.Assets/Art/UIWnds/UICommonWnd/blockdrag.prefab"Xuicommonwndaddrotateimg 	*uiwnds21Assets/Art/UIWnds/UICommonWnd/addrotateimg.prefab"cuicommonwndbtn_rotate_on #4495 	*uiwnds25Assets/Art/UIWnds/UICommonWnd/btn_rotate_on #4495.png"NuicommonwndTextTip 	*uiwnds2,Assets/Art/UIWnds/UICommonWnd/TextTip.prefab"Ruicommonwnd	addgridbg 	*uiwnds2.Assets/Art/UIWnds/UICommonWnd/addgridbg.prefab"IuicommonwndSprite 	*uiwnds2(Assets/Art/UIWnds/UICommonWnd/Sprite.png0ƒé;†ui_gameoverpaneluiwnds/ui_gameoverpanel"jui_gameoverpanelUI_GameOverPanel 	*uiwnds2:Assets/Art/UIWnds/UI_GameOverPanel/UI_GameOverPanel.prefab(	0«´·êui_startpaneluiwnds/ui_startpanel"^ui_startpanelUI_StartPanel 	*uiwnds24Assets/Art/UIWnds/UI_StartPanel/UI_StartPanel.prefab(	(
+0óñ˛Çui_setpaneluiwnds/ui_setpanel"Vui_setpanelUI_SetPanel 	*uiwnds20Assets/Art/UIWnds/UI_SetPanel/UI_SetPanel.prefab(	0›‚‰x
+uicommonwnd1uiwnds/uicommonwnd1"Muicommonwnd1Sprite1 	*uiwnds2*Assets/Art/UIWnds/UICommonWnd1/Sprite1.png0≈òKäui_gamepaneluiwnds/ui_gamepanel"Zui_gamepanelUI_GamePanel 	*uiwnds22Assets/Art/UIWnds/UI_GamePanel/UI_GamePanel.prefab(	(
+0Ä≠·œ
+jlanguagetables/language"Hlanguagelanguage 
+*tables2(Assets/Art/Tables/Language/language.json0⁄
+_chinesetables/chinese"?chineseItem 
+*tables2$Assets/Art/Tables/Chinese/Item.bytes0ê

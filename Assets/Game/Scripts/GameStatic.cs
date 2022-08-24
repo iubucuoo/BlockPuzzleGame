@@ -12,4 +12,29 @@ public static class GameStatic
     public static bool IsTopScore { get; set; }
     public static bool IsRotateState { get; set; }
     public static Vector3 RotateGoldAddPos { get; set; }
+
+
+
+    public static int GoldCount
+    {
+        get { return PlayerPrefs.GetInt("GoldCount", 0); }
+        set
+        {
+            if (PlayerPrefs.GetInt("GoldCount", 0) != value)
+            {
+                PlayerPrefs.SetInt("GoldCount", value);
+            }
+        }
+    }
+    public static int Topscore
+    {
+        get { return PlayerPrefs.GetInt("Topscore", 0); }
+        set
+        {
+            if (PlayerPrefs.GetInt("Topscore", 0) != value)
+            {
+                PlayerPrefs.SetInt("Topscore", value);
+            }
+        }
+    }
 }

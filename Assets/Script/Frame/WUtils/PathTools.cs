@@ -43,6 +43,9 @@ namespace WUtils
 
         public static string GetPlatformFolderName(RuntimePlatform platform)
         {
+#if UNITY_EDITOR
+            return "Android";
+#else
             switch (platform)
             {
                 case RuntimePlatform.Android:
@@ -58,6 +61,7 @@ namespace WUtils
                 default:
                     return null;
             }
+#endif
         }
 
         public static bool IsEditorPlatform()

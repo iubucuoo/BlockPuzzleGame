@@ -1,4 +1,6 @@
-﻿public enum UILayer
+﻿using UnityEngine;
+
+public enum UILayer
 {
     Background = 1,//背景
     Main,//主界面
@@ -24,6 +26,7 @@ public enum UIHideFunc
 
 public static class UIStatic
 {
+    public static Vector2 OutScreenV2 = new Vector2(5000, 5000);
     static UnityEngine.Transform _uiroot;
     public static UnityEngine.Transform UIRoot_Canvas { get {
             if (_uiroot==null)
