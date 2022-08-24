@@ -84,8 +84,7 @@ namespace WUtils
 
         public static string GetAssetBundleRootPath(bool isStreamingPath = false)
         {
-            string platformFolderName = GetPlatformFolderName(Application.platform);
-            return GetAppFilePath(isStreamingPath) + "/" + platformFolderName;
+            return GetAppFilePath(isStreamingPath) + "/" + PLATFORM;
         }
 
         public static string GetWWWAssetBundlePath(bool isStreamingPath = false, bool JustPath = false)
