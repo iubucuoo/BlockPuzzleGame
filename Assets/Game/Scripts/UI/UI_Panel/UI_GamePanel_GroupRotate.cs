@@ -20,7 +20,7 @@ public class UI_GamePanel_GroupRotate
         RotateBnt = wnd.Find("rotateBtn").GetComponent<Toggle>();
 
 
-        MainC.Inst.RotateGoldAddPos = GoldNum.transform.position;
+        GameStatic.RotateGoldAddPos = GoldNum.transform.position;
         AddRotateImg();
         //GameGloab.GoldCount=0;
         AddRotateGoldCount();
@@ -79,7 +79,7 @@ public class UI_GamePanel_GroupRotate
     {
         //还原待用的组的旋转
         GridGroupMgr.Inst.BackRotate();
-        MainC.Inst.IsRotateState = v;
+        GameStatic.IsRotateState = v;
         SWRotates(v);
 
     }
@@ -112,7 +112,7 @@ public class UI_GamePanel_GroupRotate
     {
         for (int i = 0; i < 3; i++)
         {
-            Vector2 pos = new Vector2((i - 1) * (6 * MainC.wh_2), 0);
+            Vector2 pos = new Vector2((i - 1) * (6 * GameStatic.wh_2), 0);
             GameObject obj = PackageMgr.CreateObject("UICommonWnd", "addrotateimg") as GameObject;
             //var obj = ObjectMgr.InsResource("Prefab/addrotateimg");
             obj.transform.SetParent(paneljob.ROTATEROOT);

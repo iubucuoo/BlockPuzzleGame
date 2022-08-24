@@ -6,8 +6,8 @@ public class GridGroup_Ground : GridGroup
 {
     public GridGroup_Ground()
     {
-        G_width = MainC._width;
-        G_height = MainC._height;
+        G_width = GameStatic._width;
+        G_height = GameStatic._height;
         ResName = "Prefab/blockdef";//默认的背景格子
     }
 

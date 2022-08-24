@@ -48,7 +48,7 @@ public class PrepAddGridGroup : MonoBehaviour
     private void OnClickGroup(GameObject obj)
     {
         DebugMgr.Log("OnClick   " + transform.name);
-        if (!isdraging && MainC.Inst.IsRotateState) //如果 没有被抓起来 并且当前是 旋转的状态 
+        if (!isdraging && GameStatic.IsRotateState) //如果 没有被抓起来 并且当前是 旋转的状态 
         {
             if (M_math.NeedToRotate(minPrepGroup.DataArray))
             {
@@ -69,7 +69,7 @@ public class PrepAddGridGroup : MonoBehaviour
     void UsePrepGridGroup()
     {
         IsUse = true;
-        if (MainC.Inst.IsRotateState)
+        if (GameStatic.IsRotateState)
         {
             MsgSend.ToSend((ushort)UIGroupRotateListenID.HideOne, Index);
         }
@@ -94,7 +94,7 @@ public class PrepAddGridGroup : MonoBehaviour
     {
         minPrepGroup = v;
         rotatePrep = v.DataArray;
-        if (MainC.Inst.IsRotateState)
+        if (GameStatic.IsRotateState)
         {
             MsgSend.ToSend((ushort)UIGroupRotateListenID.SwOne, Index);
         }
@@ -124,7 +124,7 @@ public class PrepAddGridGroup : MonoBehaviour
         {
             AudioMgr.Inst.PlayPlace();
             //如果是旋转过的状态 处理旋转所需的金币值，当值达到0时，关闭旋转开关
-            if (MainC.Inst.IsRotateState && !M_math.IsSameArrays(rotatePrep, minPrepGroup.DataArray))
+            if (GameStatic.IsRotateState && !M_math.IsSameArrays(rotatePrep, minPrepGroup.DataArray))
             {
                 MsgSend.ToSend((ushort)UIGroupRotateListenID.AddRotateGold, -1);
             }
@@ -181,7 +181,7 @@ public class PrepAddGridGroup : MonoBehaviour
         {
             return;
         }
-        if (MainC.Inst.IsRotateState)
+        if (GameStatic.IsRotateState)
         {
             StartTime();  //长按识别 抓起的组
         }

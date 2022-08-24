@@ -40,7 +40,7 @@ public class DragingGridMgr
     {
         if (gamepaneljob.GetLocalPoint_Canv(out Vector2 pos))
         {
-            return pos + MainC.DragUp;//拖动位置用来显示
+            return pos + GameStatic.DragUp;//拖动位置用来显示
         }
         return GameGloab.OutScreenV2;
     }

@@ -6,8 +6,8 @@ public class GridGroup_Prep : GridGroup
 {
     public GridGroup_Prep()
     {
-        G_width = MainC._width;
-        G_height = MainC._height;
+        G_width = GameStatic._width;
+        G_height = GameStatic._height;
         ResName = "Prefab/blockdrag";//拖动出来的格子
     }
 

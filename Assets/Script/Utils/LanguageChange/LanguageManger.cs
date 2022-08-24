@@ -79,5 +79,35 @@ public class LanguageManger //:MonoBehaviour
         }
     }
 
-
+    //void LoadLanguageData()
+    //{
+    //    var ab = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/language.ly");
+    //    StartCoroutine(Loading(ab));
+    //}
+    //IEnumerator<float> Loading(AssetBundle ab)
+    //{
+    //    var objs = ab.LoadAllAssets();
+    //    UseArt(objs);
+    //    yield return 0;
+    //    ab.Unload(false);
+    //}
+    //void UseArt(object[] objs)
+    //{
+    //    foreach (var str in objs)
+    //    {
+    //        var languagedata = JsonUtility.FromJson<LanguageData>((str as TextAsset).text);
+    //        foreach (var v in languagedata.datas)
+    //        {
+    //            if (!LanguageManger.Inst.languagedic.ContainsKey(v.LanguageList))
+    //            {
+    //                Dictionary<string, string> ky = new Dictionary<string, string>();
+    //                foreach (var vv in v.ky)
+    //                {
+    //                    ky.Add(vv.key, vv.value);
+    //                }
+    //                LanguageManger.Inst.languagedic.Add(v.LanguageList, ky);
+    //            }
+    //        }
+    //    }
+    //}
 }

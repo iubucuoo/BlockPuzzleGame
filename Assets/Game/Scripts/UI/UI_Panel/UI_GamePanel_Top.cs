@@ -68,7 +68,7 @@ public class UI_GamePanel_Top
             GameGloab.Topscore = nownum;
             ResetTopScore();
         }
-        MainC.Inst.IsTopScore = IsTopScore();
+        GameStatic.IsTopScore = IsTopScore();
     }
     public void WriteTopScore()
     {
@@ -77,12 +77,12 @@ public class UI_GamePanel_Top
     void SetNowNum(int v)
     {
         nownum = v;
-        MainC.Inst.IsTopScore = IsTopScore();
+        GameStatic.IsTopScore = IsTopScore();
     }
     void SetNowGameTop(int v)
     {
         nowgametop = v;
-        MainC.Inst.IsTopScore = IsTopScore();
+        GameStatic.IsTopScore = IsTopScore();
     }
     bool IsTopScore()
     {

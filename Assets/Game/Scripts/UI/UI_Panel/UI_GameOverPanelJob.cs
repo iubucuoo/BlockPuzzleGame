@@ -18,7 +18,7 @@ public class UI_GameOverPanelJob : UIEventListenBase
 
     void ShowFinish()
     {
-        bool isnewrecord = MainC.Inst.IsTopScore;
+        bool isnewrecord = GameStatic.IsTopScore;
         gameover.SetActive(!isnewrecord);
         newrecord.SetActive(isnewrecord);
         if (isnewrecord)

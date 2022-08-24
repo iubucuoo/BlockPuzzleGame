@@ -96,7 +96,7 @@ public class UI_GamePanelJob : UIEventListenBase
     {
         if (GetLocalPoint_Canv(out Vector2 pos))
         {
-            DragPos = pos + MainC.DragUp;//拖动位置用来显示
+            DragPos = pos + GameStatic.DragUp;//拖动位置用来显示
             SetDragRootPos();
         }
     }
@@ -115,7 +115,7 @@ public class UI_GamePanelJob : UIEventListenBase
             if (GetLocalPoint_BgRoot(out Vector2 pos1))
             {
                 //Debug.Log("鼠标相对于bgroot的ui位置" + pos1 + (oldmousepos - Input.mousePosition).sqrMagnitude);
-                GridGroupMgr.Inst.CheckAvailable(pos1 + MainC.DragUp);//位置检测 用来判断能否放置
+                GridGroupMgr.Inst.CheckAvailable(pos1 + GameStatic.DragUp);//位置检测 用来判断能否放置
             }
             oldmousepos = Input.mousePosition;
         }

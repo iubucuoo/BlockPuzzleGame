@@ -51,7 +51,7 @@ public class UI_AddRotatePanelJob : UIEventListenBase
     }
     void AddRotateGold()
     {
-        float[] _pos = new float[] { MainC.Inst.RotateGoldAddPos.x, MainC.Inst.RotateGoldAddPos.y };
+        float[] _pos = new float[] { GameStatic.RotateGoldAddPos.x, GameStatic.RotateGoldAddPos.y };
         MsgSend.ToSend((ushort)UISwTextEffectListenID.SwEffect, _pos, "+2");
         MsgSend.ToSend((ushort)UIGroupRotateListenID.AddRotateGold, 2);
     }
