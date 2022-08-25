@@ -19,7 +19,6 @@ public class EffectCtrl
 				offsetx = 0,
 				offsety = 0,
 				offsetz = 0,
-				_BoneType = BINDTYPE.NONE,
 			};
 			_Model = ModelPools.Pop(_PkgName, _ResName);
 			if (_Model != null)
@@ -48,7 +47,6 @@ public class EffectCtrl
 				offsetx = 0,
 				offsety = 0,
 				offsetz = 0,
-				_BoneType = BINDTYPE.NONE,
 			};
 			_Model = ModelPools.Pop(_pkgName, _resName);
 			if (_Model != null)

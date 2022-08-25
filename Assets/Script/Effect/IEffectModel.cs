@@ -14,8 +14,6 @@ public struct EffectBaseData
 	public float offsetx;
 	public float offsety;
 	public float offsetz;
-	public BINDTYPE _BoneType;
-	public string _BoneName;
 }
 
 //针对单个特效定义结构
@@ -110,8 +108,8 @@ public class EffectModel : IEffectModel, IArt
 	{
 		_PkgName = pkgName;
 		_ResName = resName;
-		//AppParam._EditorEffectModelNum++;
-		//AppParam._EditorEffectNum++;
+        AppParam._EditorEffectModelNum++;
+        AppParam._EditorEffectNum++;
 		//if (!AppParam._IsUpdateFrame)
 		//{
 		//	return -1;
@@ -216,65 +214,39 @@ public class EffectModel : IEffectModel, IArt
 		_ResName = resName;
 		//随着动作结束而结束
 		MsgSend.GetRes(this);
-		//ResHandleUtil.inst.Load(this);
 	}
 	void InitPos( ref EffectBaseData _Data)
 	{
-		BINDTYPE bindType = _Data._BoneType;
-		
         var offsetx = _Data.offsetx;
         var offsety = _Data.offsety;
         var offsetz = _Data.offsetz;
-        var _BoneName = _Data._BoneName; 
         //如果是被动释放并且是要绑定旋转的，需要设置成绑定坐标
-        if ((bindType == BINDTYPE.SUPER_ROTATE || bindType == BINDTYPE.ROTATE))
-        {
-            bindType = BINDTYPE.COORDINATE;
-        }
-        switch (bindType)
-        {
-            case BINDTYPE.ROTATE:
-            case BINDTYPE.SUPER_ROTATE:
-                SetParent(_CacheTransform, ModelPools.pool);
-                _CacheTransform.localRotation = Quaternion.identity;
-                _CacheTransform.localPosition = new Vector3(offsetx, offsety, offsetz);
-                break;
-            case BINDTYPE.COORDINATE:
-                SetParent(_CacheTransform, ModelPools.pool);
-                _CacheTransform.localPosition =   new Vector3(offsetx, offsety, offsetz);
-                break;
-            default:
-                SetParent(_CacheTransform, ModelPools.pool);
-                _CacheTransform.localEulerAngles = Vector3.zero;
-                float sin = 0;
-                float cos = 0;
-                float locationX = sin * offsetz + cos * offsetx;
-                float locationZ = cos * offsetz - sin * offsetx;
-                _CacheTransform.localPosition =  new Vector3(locationX, offsety, locationZ);
-                break;
-        }
+        SetParent(_CacheTransform, ModelPools.pool);
+        _CacheTransform.localEulerAngles = Vector3.zero;
+        float sin = 0;
+        float cos = 0;
+        float locationX = sin * offsetz + cos * offsetx;
+        float locationZ = cos * offsetz - sin * offsetx;
+        _CacheTransform.localPosition = new Vector3(locationX, offsety, locationZ);
+        
     }
     public void SetParent(Transform A, Transform B)
     {
-        //if(A.parent == null)
-        //	DebugMgr.LogError("First SetParent {0} {1} {2} {3}", A.name, A.GetInstanceID(), B.name, B.GetInstanceID());
-        //else
-        //	DebugMgr.LogError("SetParent {0} {1} From {2} {3} To {4} {5}", A.name, A.GetInstanceID(), A.parent.name, A.parent.GetInstanceID(), B.name, B.GetInstanceID());
         A.parent = B;
     }
     //销毁逻辑进行封装
     public void Over()
 	{
-		//Parent = ModelPools.pool;
+		Parent = ModelPools.pool;
 		position = Vector3.one * -5000;
 		//需要延迟处理特效
 		ModelPools.Push(this);
-		//AppParam._EditorEffectModelNum--;
-		if (_IsLoaded)
+        AppParam._EditorEffectModelNum--;
+        if (_IsLoaded)
 		{
-			//AppParam._EditorEffectNum--;
-		}
-	}
+            AppParam._EditorEffectNum--;
+        }
+    }
 	public void Destroy()
 	{
 		try
