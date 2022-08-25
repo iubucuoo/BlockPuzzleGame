@@ -9,7 +9,7 @@ public interface IArt
     int _ModelID { get; }
     ResSort _Sort { get; }
     NewResAb GetNewResAb { get; }
-    bool UseArt(object obj);
+    void UseArt(object obj);
 
     void UseArt(object[] objs);
     string ArtName();
@@ -95,7 +95,7 @@ public class ArtBase : IArt
         throw new System.NotImplementedException();
     }
 
-    bool IArt.UseArt(object obj)
+    void IArt.UseArt(object obj)
     {
         throw new System.NotImplementedException();
     }

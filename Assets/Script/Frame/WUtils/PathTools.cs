@@ -19,10 +19,9 @@ namespace WUtils
 
         public static string PLATFORM = GetPlatformFolderName(Application.platform);
 
-        public static string GetNetUrlPath { get { return "" + PLATFORM + "/"; } }
+        public static string GetNetUrlPath { get { return "http://192.168.5.15/2d/DouLDL/" + PLATFORM + "/"; } }
         public static string GetNativeResDir = Application.dataPath + "/Art/";
         public static string NET_VERSION { get { return GetNetUrlPath + "Version.bytes"; } }
-
         public static string CACHE_RES_ROOT = GetAppFilePath() + "/" + PLATFORM + "/";
         public static string CACHE_VERSION = CACHE_RES_ROOT + "Version.bytes";
         public static string STREAM_RES_PATH = Application.streamingAssetsPath + "/" + PLATFORM + "/";
