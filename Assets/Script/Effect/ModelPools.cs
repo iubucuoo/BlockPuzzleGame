@@ -93,20 +93,4 @@ sealed public class ModelPools
 		}
 		return queue.Dequeue();
 	}
-
-	public static EffectModel Pop(string pkgName, string resName,   Vector3 diff)
-	{
-		var _PkgName = pkgName;
-		var _ResName = resName;
-
- 
-
-		if (string.IsNullOrEmpty(_PkgName) || string.IsNullOrEmpty(_ResName))
-		{
-			return null;
-		}
-		return Pop(_PkgName, _ResName).SetValue(_PkgName, _ResName, diff);
-	}
-
- 
 }

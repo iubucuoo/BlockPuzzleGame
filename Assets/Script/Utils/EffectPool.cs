@@ -8,8 +8,8 @@ using DG.Tweening;
 public class EffectPool : MonoBehaviour {
 	public static EffectPool Inst ;
 	SpawnPool pool;
-
-	void Awake()
+    EffectCtrl _ReleaseEff = new EffectCtrl();
+    void Awake()
 	{
 		Inst = this;
 	}
@@ -17,12 +17,15 @@ public class EffectPool : MonoBehaviour {
 	void Start () {
 		pool = PoolManager.Pools["EffectPool"];
 	}
-
-	/// <summary>
-	/// Play the specified name and position.
-	/// </summary>
-	/// <param name="name">Name.</param>
-	/// <param name="position">Position.</param>
+    public void PlayEffect(string PkgName, string ResName)
+    {
+        _ReleaseEff.Init(PkgName, ResName);
+    }
+    /// <summary>
+    /// Play the specified name and position.
+    /// </summary>
+    /// <param name="name">Name.</param>
+    /// <param name="position">Position.</param>
     public void Play(string name,Vector3 position)
 	{
 		Transform particleTran = pool.Spawn (name);

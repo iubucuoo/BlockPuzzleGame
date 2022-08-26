@@ -20,8 +20,7 @@ public class ParticalSystemData : MonoBehaviour
 	public TrailRenderer[] trailRenders;
 	public LineRenderer[] lineRenders;
 	public GameObject[] _Gos;
-
-	Vector3 _Diff;
+    
 	Action _Over;
 
 	private void Awake()
@@ -40,11 +39,6 @@ public class ParticalSystemData : MonoBehaviour
 			isinit = true;
 		}		
 	}
-
-	public void SetLineAB( Vector3 diff)
-	{
-		_Diff = diff;
-	}
 	public void Update()
 	{
 		JsTime();
@@ -56,7 +50,6 @@ public class ParticalSystemData : MonoBehaviour
 			ReleaseSkillsSerialize(false);
 			_Over();
 			_Over = null;
-			//_CacheGameObject.SetActive(false);
 			ChangeLayer(12);
 		}
 		_PlayTime += Time.unscaledDeltaTime;
