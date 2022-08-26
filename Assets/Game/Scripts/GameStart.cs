@@ -18,6 +18,7 @@ public class GameStart:MonoBehaviour
         if (++loadindex == 2)
         {
             AllUIPanelManager.Inst.Show(IPoolsType.UI_StartPanel);
+            EffectPool.PlayEffect("bubblefffect", "bubbleexplodeyellow");
         }
     }
 }

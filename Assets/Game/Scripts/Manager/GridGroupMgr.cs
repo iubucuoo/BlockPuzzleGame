@@ -485,7 +485,8 @@ public class GridGroupMgr : MonoBehaviour
             foreach (var v in swClearGridList)
             {
                 v.Initialize();
-                EffectPool.Inst.PlayBubbleExplode(1, v.Position);//播放销毁动画
+                EffectPool.PlayEffect("BubbleEffect", "BubbleExplodeYellow");
+                //EffectPool.Inst.PlayBubbleExplode(1, v.Position);//播放销毁动画
                 //Debug.LogError("播放销毁动画");
             }
             //添加分数;

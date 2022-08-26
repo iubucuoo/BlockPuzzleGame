@@ -4,8 +4,8 @@ ID=0,ObjName=FlowEffect 2,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=
 ID=0,ObjName=BubbleExplodeRed,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/BubbleExplodeRed.prefab
 ID=0,ObjName=BubbleExplodeOrange,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/BubbleExplodeOrange.prefab
 ID=0,ObjName=BubbleExplodeGreen,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/BubbleExplodeGreen.prefab
-AbID=16,Version=0,_Size=68572,_Dependencies=,,AbPath=effects/effectsID=0,ObjName=FlowEffect,AbName=effects,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/FlowEffect.prefab
-ID=0,ObjName=BubbleExplodeYellow,AbName=effects,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplodeYellow.prefab
+AbID=17,Version=0,_Size=68576,_Dependencies=,,AbPath=effects/bubbleeffectID=0,ObjName=FlowEffect,AbName=bubbleeffect,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleEffect/FlowEffect.prefab
+ID=0,ObjName=BubbleExplodeYellow,AbName=bubbleeffect,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleEffect/BubbleExplodeYellow.prefab
 
 ---------------------
 AbID=2,Version=0,_Size=569007,_Dependencies=,,AbPath=audio/othersoundID=0,ObjName=movesuccess,AbName=othersound,ModelID=1001,ModelName=Audio,Path=Assets/Art/Audio/othersound/movesuccess.wav

@@ -17,7 +17,11 @@ public class EffectPool : MonoBehaviour {
 	void Start () {
 		pool = PoolManager.Pools["EffectPool"];
 	}
-    public void PlayEffect(string PkgName, string ResName)
+    public static void PlayEffect(string PkgName, string ResName)
+    {
+        Inst.Play_Effect(PkgName, ResName);
+    }
+    public void Play_Effect(string PkgName, string ResName)
     {
         _ReleaseEff.Init(PkgName, ResName);
     }
