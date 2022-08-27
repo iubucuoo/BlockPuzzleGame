@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 439586}
   - component: {fileID: 19826394}
   - component: {fileID: 19981394}
+  - component: {fileID: 2032234117130429134}
   m_Layer: 5
   m_Name: BubbleExplodeYellow
   m_TagString: Untagged
@@ -4744,3 +4745,30 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2032234117130429134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0355e5b7f9ed26d47bf70ecdf1b6cb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particalSystems:
+  - {fileID: 19826394}
+  animators: []
+  fullPathHashes: 
+  root: {fileID: 439586}
+  _LongTime: 0.5
+  _PlayTime: 0
+  isLoop: 0
+  _Emittings: 
+  isCreateShow: 1
+  _ActionStopDispose: 0
+  trailRenders: []
+  lineRenders: []
+  _Gos:
+  - {fileID: 111030}
