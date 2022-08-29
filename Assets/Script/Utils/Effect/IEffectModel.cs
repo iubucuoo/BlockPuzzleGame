@@ -109,16 +109,6 @@ public class EffectModel : IEffectModel, IArt
 		ReleaseSys(true);
 		return this;
 	}
-
-	public EffectModel SetValue(string pkgName, string resName,  Vector3 diff)
-	{
-		var b = Init(pkgName, resName, true);
-		if (b == 1)
-		{
-			ReleaseSys(true);
-		}
-		return this;
-	}
 	void ReleaseSys(bool b)
 	{
 		if (_HaveSys && _Sys != null)

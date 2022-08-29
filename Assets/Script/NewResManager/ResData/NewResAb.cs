@@ -99,7 +99,7 @@ public class NewResAb
 		}
 		else if (_IsFinish)
 		{
-			path = GetPath(StaticTools._LuaLoadError);
+			path = GetPath(AppParam._LuaLoadError);
 			return true;
 		}
 		return false;//这种情况需要弹窗说需要下载资源

@@ -27,7 +27,7 @@ public class UiWndArt : ArtBase
 
 	private void LoadRes()
 	{
-		if (StaticTools.LoadArtIsAb)
+		if (AppParam.LoadArtIsAb)
 		{
 			_LowPkgName = packageName.ToLower();
 			MsgSend.GetRes(this);

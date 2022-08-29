@@ -42,7 +42,7 @@ public class PackageMgr
 			else
 			{
 				_ResourceDatas.Add(packageName, new UiWndArt(packageName, cbv, unClear));
-                if (!StaticTools.LoadArtIsAb)
+                if (!AppParam.LoadArtIsAb)
                 {
                     cbv();
                 }

@@ -28,8 +28,8 @@ public class UI_SetPanelJob : UIEventListenBase
         BtnResetGame.GetComponent<Button>().onClick.AddListener(OnBtnResetGame);
         MusicToggle.onValueChanged.AddListener(ChangeMusicIsOn);
         SoundToggle.onValueChanged.AddListener(ChangeSoundIsOn);
-        MusicToggle.isOn = GameGloab.MusicOnOff == 0;
-        SoundToggle.isOn = GameGloab.SoundIsOnOff == 0;
+        MusicToggle.isOn = StaticTools.MusicOnOff == 0;
+        SoundToggle.isOn = StaticTools.SoundIsOnOff == 0;
     }
     private void OnBtnResetGame()
     {
@@ -50,14 +50,14 @@ public class UI_SetPanelJob : UIEventListenBase
     void ChangeSoundIsOn(bool ison)
     {
         AudioMgr.Inst.ButtonClick();
-        GameGloab.SoundIsOnOff = ison ? 0 : 1;
+        StaticTools.SoundIsOnOff = ison ? 0 : 1;
         AudioMgr.Inst.isPlaying_Sound = ison;
        
     }
     void ChangeMusicIsOn(bool ison)
     {
         AudioMgr.Inst.ButtonClick();
-        GameGloab.MusicOnOff = ison ? 0 : 1;
+        StaticTools.MusicOnOff = ison ? 0 : 1;
         AudioMgr.Inst.isPlaying_Music = ison;
         if (ison)
         {

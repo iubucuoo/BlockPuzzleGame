@@ -77,7 +77,7 @@ public class MsgSend
     }
     public static void GetRes(IArt art)
     {
-        if (!StaticTools.LoadArtIsAb)
+        if (!AppParam.LoadArtIsAb)
         {
             new NewEditorLoad().BuilderResData().GetObj(art);
         }

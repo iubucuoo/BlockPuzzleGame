@@ -5,29 +5,6 @@ using UnityEngine;
 
 public static class StaticTools
 {
-    public static bool _LuaLoadError;
-    public static ResLoadModel _ResLoadModel;
-    public static bool LoadArtIsAb { get { return _ResLoadModel == ResLoadModel.ONLINE; } }
-    public static int CurrentMapID { get; set; }
-    public static byte _NetStatus;
-    public static byte GetNetState()
-    {
-        //当用户使用移动网络时
-        if (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork)
-        {
-            return 1;
-        }
-        //当用户使用WiFi时  
-        if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
-        {
-            return 2;
-        }
-        //Debug.LogWarning("当前无网络环境");
-        return 0;
-    }
-
-
-
     #region StringBuilder
     static StringBuilder sb = new StringBuilder(255);
     internal static StringBuilder ToString(string str)
@@ -70,4 +47,28 @@ public static class StaticTools
         return sb;
     }
     #endregion
+
+
+    public static int SoundIsOnOff
+    {
+        get { return PlayerPrefs.GetInt("SoundIsOn", 0); }
+        set
+        {
+            if (PlayerPrefs.GetInt("SoundIsOn", 0) != value)
+            {
+                PlayerPrefs.SetInt("SoundIsOn", value);
+            }
+        }
+    }
+    public static int MusicOnOff
+    {
+        get { return PlayerPrefs.GetInt("MusicIsOn", 0); }
+        set
+        {
+            if (PlayerPrefs.GetInt("MusicIsOn", 0) != value)
+            {
+                PlayerPrefs.SetInt("MusicIsOn", value);
+            }
+        }
+    }
 }

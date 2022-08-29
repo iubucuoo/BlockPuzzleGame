@@ -28,8 +28,8 @@ public class MainC : MonoBehaviour
         DebugMgr.EnableLog = false;
 #endif
 
-        AudioMgr.Inst.isPlaying_Music = GameGloab.MusicOnOff == 0;
-        AudioMgr.Inst.isPlaying_Sound = GameGloab.SoundIsOnOff == 0;
+        AudioMgr.Inst.isPlaying_Music = StaticTools.MusicOnOff == 0;
+        AudioMgr.Inst.isPlaying_Sound = StaticTools.SoundIsOnOff == 0;
 
 
         Application.targetFrameRate = 60;
@@ -38,8 +38,8 @@ public class MainC : MonoBehaviour
         MEC.Timing.RunCoroutine(NetStatus());
         GoogleAdMgr.CheckInstance();//初始化的interstitial在下个update中执行
         FPS.CheckInstance();
- 
-        StaticTools._ResLoadModel = _ResLoadModel;
+
+        AppParam._ResLoadModel = _ResLoadModel;
         //先载入数据文件
         //LoadLanguageData();
         //
@@ -69,7 +69,7 @@ public class MainC : MonoBehaviour
     {
         while (true)
         {
-            StaticTools._NetStatus = StaticTools.GetNetState();
+            AppParam._NetStatus = AppParam.GetNetState();
             //通知 lua侧 网络状态
             //var objs = new object[] { GlobalData._NetStatus };
             //FreeSendEvent.GSendMsg((ushort)LMainUIListenID.NetStatus, null, objs);

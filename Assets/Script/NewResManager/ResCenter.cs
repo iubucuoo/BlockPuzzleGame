@@ -86,7 +86,7 @@ class ResCenter : AssetBase, IMgr
 		RegistEventListen(this, messageIds);
 
 
-		if (!StaticTools.LoadArtIsAb )
+		if (!AppParam.LoadArtIsAb )
 		{
 			_ResMgr = new NewEditorLoad().BuilderResData();
 			Load();
@@ -233,7 +233,7 @@ class ResCenter : AssetBase, IMgr
 
 	IEnumerator<float> CanLogin()
 	{
-		if (StaticTools.LoadArtIsAb)
+		if (AppParam.LoadArtIsAb)
 		{
 			NetDiff();
 			_LoginStatus = LoginStatus.None;
@@ -341,7 +341,7 @@ class ResCenter : AssetBase, IMgr
 	}
 	void EndDownLoad(MessageBase tmpMsg)
 	{
-		StaticTools._LuaLoadError = (tmpMsg is MsgInt) && (tmpMsg as MsgInt)._Int_V == 1;
+        AppParam._LuaLoadError = (tmpMsg is MsgInt) && (tmpMsg as MsgInt)._Int_V == 1;
 		if (_IsdotLogic)
 		{
 #if UNITY_EDITOR

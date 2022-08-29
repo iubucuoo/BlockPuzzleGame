@@ -74,7 +74,7 @@ public class NewResLoop
 			GetNextData(_Data);
 			if (_Data.Count != 0)
 			{
-				if (!StaticTools.LoadArtIsAb)
+				if (!AppParam.LoadArtIsAb)
 				{
 					ResCenter.inst._ResMgr.GetObj(_Data.Pop());
 				}
@@ -188,7 +188,7 @@ public class NewResLoop
 	float _AutoUnloadTime = NewResAb._RemoveTime;
 	void UnloadAbAndObj()
 	{
-		if (!StaticTools.LoadArtIsAb)
+		if (!AppParam.LoadArtIsAb)
 		{
 			return;
 		}
