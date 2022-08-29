@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GridData : IPoolable
 {
+    EffectCtrl _ReleaseEff = new EffectCtrl();
     public virtual IPoolsType PoolType { get { return IPoolsType.GridData; } }
     public bool IsRecycled { get; set; }
     public bool IsUse { get; private set; }//判断是否存放了格子
@@ -64,6 +65,16 @@ public class GridData : IPoolable
         IsUse = false;
         TrueStatus = 0;
         SWRevert();
+        var basedata = new EffectBaseData()
+        {
+            offsetx = Position.x,
+            offsety = Position.y,
+            offsetz = Position.z,
+        };
+        _ReleaseEff.Init("bubbleeffect", "BubbleExplodeYellow", basedata);
+        TimeMgr.Instance.AddIntervelEvent((x,y)=> {
+        _ReleaseEff.Destroy();
+        }, 100, 1);
     }
     /// <summary>
     /// 将要删除的展示

@@ -1,10 +1,12 @@
-AbID=1,Version=0,_Size=70359,_Dependencies=,,AbPath=effects/bubbleexplodeID=0,ObjName=BubbleExplode,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/BubbleExplode.prefab
+AbID=1,Version=0,_Size=70358,_Dependencies=,,AbPath=effects/bubbleexplodeID=0,ObjName=BubbleExplode,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/BubbleExplode.prefab
 ID=0,ObjName=BubbleExplodeBlue,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/BubbleExplodeBlue.prefab
 ID=0,ObjName=FlowEffect 2,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/FlowEffect 2.prefab
 ID=0,ObjName=BubbleExplodeRed,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/BubbleExplodeRed.prefab
 ID=0,ObjName=BubbleExplodeOrange,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/BubbleExplodeOrange.prefab
 ID=0,ObjName=BubbleExplodeGreen,AbName=bubbleexplode,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleExplode/BubbleExplodeGreen.prefab
-AbID=17,Version=0,_Size=68576,_Dependencies=,,AbPath=effects/bubbleeffectID=0,ObjName=FlowEffect,AbName=bubbleeffect,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleEffect/FlowEffect.prefab
+AbID=17,Version=0,_Size=71111,_Dependencies=,,AbPath=effects/bubbleeffectID=0,ObjName=FlowEffect,AbName=bubbleeffect,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleEffect/FlowEffect.prefab
+ID=0,ObjName=ToonParticle - Glow Alpha TEX 1,AbName=bubbleeffect,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleEffect/ToonParticle - Glow Alpha TEX 1.png
+ID=0,ObjName=ToonPartilce - Scorched TEX 1,AbName=bubbleeffect,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleEffect/ToonPartilce - Scorched TEX 1.png
 ID=0,ObjName=BubbleExplodeYellow,AbName=bubbleeffect,ModelID=3,ModelName=effects,Path=Assets/Art/Effects/BubbleEffect/BubbleExplodeYellow.prefab
 
 ---------------------

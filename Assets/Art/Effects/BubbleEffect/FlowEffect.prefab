@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 420668}
   - component: {fileID: 19849938}
   - component: {fileID: 19992296}
+  - component: {fileID: -5774594368497357163}
   m_Layer: 5
   m_Name: FlowEffect
   m_TagString: Untagged
@@ -46,8 +47,8 @@ ParticleSystem:
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
-  prewarm: 1
+  looping: 0
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -4577,7 +4578,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 90e986a9c973b834bb1f1b7138402d7f, type: 2}
+  - {fileID: 2100000, guid: 170b7c903cfd8db4ca3a9af5da18aaf3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4623,3 +4624,30 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-5774594368497357163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0355e5b7f9ed26d47bf70ecdf1b6cb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particalSystems:
+  - {fileID: 19849938}
+  animators: []
+  fullPathHashes: 
+  root: {fileID: 420668}
+  _LongTime: 4
+  _PlayTime: 0
+  isLoop: 0
+  _Emittings: 
+  isCreateShow: 1
+  _ActionStopDispose: 0
+  trailRenders: []
+  lineRenders: []
+  _Gos:
+  - {fileID: 141840}

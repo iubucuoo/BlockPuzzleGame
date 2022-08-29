@@ -21,6 +21,8 @@ public class NewResBuilder : Editor
     public static void BuildABEditor()
     {
         DiffBuilder.RealBuildABEditor();
+        AssetDatabase.Refresh();
+        BuildApkTools.CopyToProject();
     }
     [MenuItem("Tools/资源工具/按差异拷贝数据到StreamAsset")]
     public static void CopyInPkg()
