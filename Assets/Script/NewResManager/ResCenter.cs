@@ -93,11 +93,30 @@ class ResCenter : AssetBase, IMgr
 		}
 		else
 		{
-			//就是先判定streamAsset+preaseAssset 哪一份更新			
 			Timing.RunCoroutine(LoadVersion());
 		}
 	}
-	IEnumerator<float> LoadVersion()
+    //都用包内的Stream下的
+    IEnumerator<float> LoadVersion()
+    {
+        NewResMgr _StreamResMgr = null;
+
+        LoadStatus _StreamIsOk = LoadStatus.Loading;
+        DownloadTools.LoadUrl(PathTools.STREAM_VERSION, 30, (obj) =>
+        {
+            _StreamIsOk = LoadStatus.Done;
+            _StreamResMgr = new NewResMgr(obj.data);
+
+        }, (err) => { _StreamIsOk = LoadStatus.Done; DebugMgr.LogError(err); });
+        while (_StreamIsOk != LoadStatus.Done)
+        {
+            yield return 0;
+        }
+        _ResMgr = _StreamResMgr;
+        Load();
+    }
+    //需要检查更新的时候用这个
+	IEnumerator<float> LoadVersionCheck()
 	{
 		NewResMgr _StreamResMgr = null;
 		NewResMgr _CacheResMgr = null;

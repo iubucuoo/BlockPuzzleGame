@@ -35,8 +35,7 @@ public class UI_StartPanel : UIBase
         DebugMgr.Log("开始游戏");
         if (AppParam.LoadArtIsAb)
         {
-            TableMgr.Inst._Cb = StartGame;
-            MsgSend.GetRes(TableMgr.Inst);
+            new TableArt(StartGame);
         }
         else
         {

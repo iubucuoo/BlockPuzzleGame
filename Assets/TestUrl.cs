@@ -26,9 +26,7 @@ public class TestUrl : MonoBehaviour
         {
             Debug.LogError("无法加载网络资源");
         });
-
-        TableMgr.Inst._Cb = Init;
-        MsgSend.GetRes(TableMgr.Inst);
+        new TableArt(Init);
     }
     void Init()
     {

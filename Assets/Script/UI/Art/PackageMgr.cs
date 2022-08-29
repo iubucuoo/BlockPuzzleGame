@@ -1,13 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PackageMgr
+public class PackageMgr:Singleton<PackageMgr>
 {
-	static PackageMgr instance;
-	static PackageMgr Inst { get { return instance ?? (instance = new PackageMgr()); } }
 	static readonly Dictionary<string, Object> PackageLoad = new Dictionary<string, Object>();
 	static readonly Dictionary<string, UiWndArt> _ResourceDatas = new Dictionary<string, UiWndArt>();
-	PackageMgr()
+	public PackageMgr()
 	{
 		TimeMgr.Instance.AddIntervelEvent(TimerClear, 10000, -1);
 	}
@@ -53,11 +51,6 @@ public class PackageMgr
     {
         if (IsLoaded(packageName))
         {
-            //if (packageName == resName)
-            //{
-            //    return GetLoadedObj(resName);
-            //}
-            //生成ui
             if (_ResourceDatas.TryGetValue(packageName, out UiWndArt temp))
             {
                 return temp.GetRes(resName);
@@ -74,10 +67,6 @@ public class PackageMgr
     {
         if (IsLoaded(packageName))
         {
-            //if (packageName == resName)
-            //{
-            //    return ObjectMgr.InstantiateObj(GetLoadedObj(resName));
-            //}
             //生成ui
             if (_ResourceDatas.TryGetValue(packageName, out UiWndArt temp))
             {
@@ -96,23 +85,6 @@ public class PackageMgr
             return null;
         }
     }
-    //public static GObject CreateObject(int packageNum, string resName)
-    //{
-    //	return CreateObject(inst[packageNum], resName);
-    //}
-
-    //internal static GObject CreateObject(string pakName, string resName)
-    //{
-    //	if (IsLoaded(pakName))
-    //	{
-    //		return UIPackage.CreateObject(pakName, resName).asCom;
-    //	}
-    //	else
-    //	{
-    //		if(DebugMgr.CanLogError()) DebugMgr.LogError("资源包未加载 + " + pakName);
-    //		return null;
-    //	}
-    //}
     public static void AddLoadPackage(string packageName,Object obj)
     {
         PackageLoad[packageName] = obj;

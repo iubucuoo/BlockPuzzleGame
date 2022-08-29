@@ -31,7 +31,7 @@ sealed class ModelGroup
 {
 	public Dictionary<string, ModelSingle> data = new Dictionary<string, ModelSingle>();
 }
-sealed public class ModelPools
+sealed public class ModelPools:MonoSingleton<ModelPools>
 {
 	Dictionary<string, ModelGroup> data = new Dictionary<string, ModelGroup>();
 	private static Transform _pool;
@@ -39,59 +39,41 @@ sealed public class ModelPools
 	{
 		get
 		{
-			if (inst != null)
-				return _pool;
+			if (Inst != null)
+				return Inst.transform;
 			return null;
 		}
 	}
 	public static int _SingleMaxNum = 300;
-	static ModelPools _inst;
-	static ModelPools inst
-	{
-		get
-		{
-			if (_inst == null)
-			{
-				_pool = new GameObject("ModelPools").transform;
-                //_pool.parent = UIStatic.UIRoot_Canvas;
-                Object.DontDestroyOnLoad(_pool);
-				_inst = new ModelPools();
-			}
-			return _inst;
-		}
-	}
+	 
 	public static void Push(EffectModel model)
 	{
-		ModelGroup group;
-		if (!inst.data.TryGetValue(model._PkgName, out group))
-		{
-			group = new ModelGroup();
-			inst.data.Add(model._PkgName, group);
-		}
-		ModelSingle queue;
-		if (!group.data.TryGetValue(model._ResName, out queue))
-		{
-			queue = new ModelSingle();
-			group.data.Add(model._ResName, queue);
-		}
-		queue.Enqueue(model);
+        if (!Inst.data.TryGetValue(model._PkgName, out ModelGroup group))
+        {
+            group = new ModelGroup();
+            Inst.data.Add(model._PkgName, group);
+        }
+        if (!group.data.TryGetValue(model._ResName, out ModelSingle queue))
+        {
+            queue = new ModelSingle();
+            group.data.Add(model._ResName, queue);
+        }
+        queue.Enqueue(model);
 		model.Parent = pool;
 
 	}
 	public static EffectModel Pop(string pkgName, string resName)
 	{
-		ModelGroup group;
-		if (!inst.data.TryGetValue(pkgName, out group))
-		{
-			group = new ModelGroup();
-			inst.data.Add(pkgName, group);
-		}
-		ModelSingle queue;
-		if (!group.data.TryGetValue(resName, out queue))
-		{
-			queue = new ModelSingle();
-			group.data.Add(resName, queue);
-		}
-		return queue.Dequeue();
+        if (!Inst.data.TryGetValue(pkgName, out ModelGroup group))
+        {
+            group = new ModelGroup();
+            Inst.data.Add(pkgName, group);
+        }
+        if (!group.data.TryGetValue(resName, out ModelSingle queue))
+        {
+            queue = new ModelSingle();
+            group.data.Add(resName, queue);
+        }
+        return queue.Dequeue();
 	}
 }
