@@ -71,7 +71,8 @@ public class GridData : IPoolable
             offsety = Position.y,
             offsetz = Position.z,
         };
-        _ReleaseEff.Init("bubbleeffect", "BubbleExplodeYellow", basedata);
+        //_ReleaseEff.Init("bubbleeffect", "BubbleExplodeYellow", basedata);
+        _ReleaseEff.Init("bubbleeffect", "VanishFountainMax", basedata);
         TimeMgr.Instance.AddIntervelEvent((x,y)=> {
         _ReleaseEff.Destroy();
         }, 100, 1);
