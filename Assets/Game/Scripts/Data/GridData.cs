@@ -73,9 +73,6 @@ public class GridData : IPoolable
         };
         //_ReleaseEff.Init("bubbleeffect", "BubbleExplodeYellow", basedata);
         _ReleaseEff.Init("bubbleeffect", "VanishFountainMax", basedata);
-        TimeMgr.Instance.AddIntervelEvent((x,y)=> {
-        _ReleaseEff.Destroy();
-        }, 100, 1);
     }
     /// <summary>
     /// 将要删除的展示

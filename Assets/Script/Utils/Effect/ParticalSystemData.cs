@@ -47,7 +47,6 @@ public class ParticalSystemData : MonoBehaviour
 	{
 		if (_Over != null && (_PlayTime > _LongTime || _ActionStopDispose))
 		{
-            
 			ReleaseSkillsSerialize(false);
 			_Over();
 			_Over = null;
@@ -58,11 +57,11 @@ public class ParticalSystemData : MonoBehaviour
 		{
 			SetActive(false);
 		}
-	}
+    }
 	void ChangeLayer(int b)
 	{
-        //internal const int EFFECT_LAYER = 10;
-        //internal const int HIDE_LAYER = 12;
+        //internal const int EFFECT_LAYER = 8;
+        //internal const int HIDE_LAYER = 0;
         var len = _Gos.Length;
 		for (int i = 0; i < len; i++)
 		{
@@ -108,10 +107,8 @@ public class ParticalSystemData : MonoBehaviour
 				for (int i = 0, len = particalSystems.Length; i < len; i++)
 				{
 					ParticleSystem ps = particalSystems[i];
-
 					if (play)
 					{
-						//ps.Stop();
 						ps.Simulate(0);
 						ps.Play();
 					}
@@ -121,7 +118,6 @@ public class ParticalSystemData : MonoBehaviour
 					}
 				}
 			}
-
 			for (int i = 0, len = trailRenders.Length; i < len; i++)
 			{
 				TrailRenderer tr = trailRenders[i];

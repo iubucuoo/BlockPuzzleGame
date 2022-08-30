@@ -31,8 +31,7 @@ public abstract class IEffectModel
 
 public class EffectModel : IEffectModel, IArt
 {
-	Vector3 _Diff;
-	bool isLink;
+    System.Action _Destory;
 	bool readyOver;
 	public EffectModel()
 	{
@@ -84,7 +83,7 @@ public class EffectModel : IEffectModel, IArt
 		unit.SetObj(result);
 		UseArt(result);
 	}
-	int Init( string pkgName, string resName, bool islink = false)
+	void Init( string pkgName, string resName, bool islink = false)
 	{
 		_PkgName = pkgName;
 		_ResName = resName;
@@ -94,20 +93,17 @@ public class EffectModel : IEffectModel, IArt
 		{
 			_IsLoaded = true;
 			_CacheTransform = new GameObject().transform;
-            isLink = islink;
-			CreateEffect(_PkgName, _ResName);
-			return 0;
+            MsgSend.GetRes(this);
 		}
-		return 1;
 	}
-	public EffectModel SetValue(string _PkgName, string _ResName, EffectBaseData basedata, float _Multiple)
+	public void SetValue(System.Action _destory,string _PkgName, string _ResName, EffectBaseData basedata, float _Multiple)
 	{
+        _Destory = _destory;
         Init(_PkgName, _ResName);
 		InitPos(basedata);						
 		var temp = 1 / lossyScale.x;
 		localScale = new Vector3(_Multiple * temp, temp, _Multiple * temp);
 		ReleaseSys(true);
-		return this;
 	}
 	void ReleaseSys(bool b)
 	{
@@ -141,7 +137,11 @@ public class EffectModel : IEffectModel, IArt
             }
         }
 		ReleaseSys(true);
-	}
+        TimeMgr.Instance.AddIntervelEvent((x, y) => {
+            _Destory();
+        }, (int)(_Sys._LongTime*1000), 1);
+
+    }
 	public void UseArt(object[] objs)
 	{
 		throw new System.NotImplementedException();

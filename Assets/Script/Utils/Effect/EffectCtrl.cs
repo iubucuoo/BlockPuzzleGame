@@ -16,9 +16,9 @@ public class EffectCtrl
 		_Model = ModelPools.Pop(_PkgName, _ResName);
 		if (_Model != null)
 		{
-			_Model.SetValue( _PkgName, _ResName, basedata, _Multiple);
+			_Model.SetValue(Destroy, _PkgName, _ResName, basedata, _Multiple);
 		}
-	}
+    }
 
 	internal void SetPosition(float posY)
 	{
@@ -35,7 +35,7 @@ public class EffectCtrl
 			_Model.localScale = new Vector3(_Scale,1, _Scale);//v3缩放
 		}
 	}
-	internal void Destroy()
+	public void Destroy()
 	{
 		if (_Model != null)
 		{
