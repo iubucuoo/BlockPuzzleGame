@@ -4766,11 +4766,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0355e5b7f9ed26d47bf70ecdf1b6cb8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particalSystems: []
+  particalSystems:
+  - {fileID: 19800000}
   animators: []
   fullPathHashes: 
-  root: {fileID: 0}
-  _LongTime: 0
+  root: {fileID: 400000}
+  _LongTime: 1
   _PlayTime: 0
   isLoop: 0
   _Emittings: 
@@ -4778,4 +4779,5 @@ MonoBehaviour:
   _ActionStopDispose: 0
   trailRenders: []
   lineRenders: []
-  _Gos: []
+  _Gos:
+  - {fileID: 100000}
