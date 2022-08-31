@@ -20,7 +20,7 @@ public class NewResBuilder : Editor
     [MenuItem("Tools/资源工具/Real.Build")]
     public static void BuildABEditor()
     {
-        DiffBuilder.RealBuildABEditor();
+        DiffBuilder.MRealBuildABEditor();
         AssetDatabase.Refresh();
         BuildApkTools.CopyToProject();
     }

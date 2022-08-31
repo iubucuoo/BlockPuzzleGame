@@ -24,6 +24,8 @@ public enum RES_MODEL_INDEX
 
 public class NewEditorLoad
 {
+	public static string[] _PassName = new string[] { "prefabs/", "Texture/" };
+	public static string[] _PassNamePrefix = new string[] { ".prefab", ".png" };
 	public static string[] _RootPathName = new string[] { "Assets/Art", "temp/Lua" };
 	public static string[] _ObjPrefix = new string[] { ".prefab", ".anim", ".png", ".controller", ".bytes", ".json", ".txt", ".cginc", ".shader", ".overrideController",".wav", ".mp3",".xml", ".tpsheet" };
 	public static string _Environment = "/Environment/";
@@ -121,18 +123,39 @@ public class NewEditorLoad
         return null;
 	}
 	#region BuilderAB	
+    static int GetPassIndex(string path,string _Prefix)
+    {
+        for (int i = 0; i < _PassNamePrefix.Length; i++)
+        {
+            if (_PassNamePrefix[i] == _Prefix)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
 	static NewResUnit CreateSigleUnit(string path, string _Prefix)
 	{
-		var index = path.LastIndexOf("/");
+        int passindex = GetPassIndex(path, _Prefix);
+        bool haspass = passindex >= 0;
+        var index = path.LastIndexOf("/");
+        if (haspass)
+        {
+            index = path.LastIndexOf(_PassName[passindex]) - 1;
+        }
+        var objName = path.Substring(index + 1).Replace(_Prefix, "");
+        if (haspass)
+        {
+            objName = objName.Replace(_PassName[passindex], "");
+        }
 		if (index < 0)
 		{
 			DebugMgr.LogError("CreateSigleUnit Data=error,Path=" + path  + ",_Prefix=" + _Prefix);
 		}
-		var objName = path.Substring(index + 1).Replace(_Prefix, "");
-		var abPath = path.Substring(0, index);
+        var abPath = path.Substring(0, index);
 		var modelName = GetModelName(abPath, out int _ModelID);
 		var abName = GetAbName(abPath);
-        //Debug.LogError(path + "  _abPath:  " + abPath + "  _abname:  " + abName + "  _objname:  " + objName + " _modelname  " + modelName + "   _modelid  " + _ModelID);
+        //Debug.LogError(path + "  _abPath:  " + abPath + "  _abname:  " + abName + "       _objname:  " + objName + "        _modelname  " + modelName + "       _modelid  " + _ModelID);
         var unit = new NewResUnit()
 		{
 			_ModelName = _ModelID > (int)RES_MODEL_INDEX.other ? modelName : ((RES_MODEL_INDEX)_ModelID).ToString(),

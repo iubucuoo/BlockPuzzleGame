@@ -214,6 +214,30 @@ public class DiffBuilder
 
 	static Cites _CitesMgr;
 	static bool _StopBuilderForError;
+    public static void MRealBuildABEditor()
+    {
+        AssetDatabase.Refresh();
+        Bind();
+        BuildTables.BuildChinese();
+        AssetDatabase.Refresh();
+        ClearCacheData();
+        ClearABName();
+        FindAllSignFile();//添加所有可标记的
+        FindSameAb();
+        SetSign();//设置ab标记
+        BuilderLog();
+
+        if (_StopBuilderForError)
+        {
+            //只要保证Newlog.txt是对的其他就不会出错
+            DebugMgr.LogError("停止资源更新 报错了，重置数据");
+            return;
+        }
+        BuilderAB();
+
+        //ClearABName();
+        CreateMD5.BuilderMD5Record(true);
+    }
     public static void RealBuildABEditor()
     {
         Bind();
