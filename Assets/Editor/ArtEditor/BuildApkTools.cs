@@ -8,26 +8,11 @@ using WUtils;
 
 public class BuildApkTools : Editor
 {
-	public static string tempPath = Application.dataPath;
-	static string outPath;
-    [MenuItem("Tools/打包工具/打Release_Apk")]
-    public static void BuildReleaseApk()
-	{
-		BuildAPK(BuildOptions.None, "3DProject_release.apk");
-	}
-    [MenuItem("Tools/打包工具/打Debug_Apk")]
-    public static void BuildDebugApk()
-	{
-		BuildAPK(BuildOptions.AllowDebugging | BuildOptions.Development, "3DProject_debug.apk");
-	}
-
-     
-
-	static void BuildAPK(BuildOptions options, string apkName)
+	public static void BuildAPK(BuildOptions options, string apkName)
 	{
 		CopyToProject();
 
-		outPath = EditorPathTools.SVN_EXPORT_APK;
+        string outPath = EditorPathTools.SVN_EXPORT_APK;
 
 		if (Directory.Exists(outPath))
 		{

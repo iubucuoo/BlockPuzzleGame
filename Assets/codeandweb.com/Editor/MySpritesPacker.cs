@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Xml;
 public class MySpritesPacker : Editor
 {
-    [MenuItem("Tools/SpritesPacker/TexturePacker")]
     public static void BuildTexturePacker()
     {
         string inputPath = CommandBuild.path_outAltasData;

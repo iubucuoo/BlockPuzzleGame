@@ -10,7 +10,6 @@ using WUtils;
 
 public class BuildTables : Editor
 {
-    [MenuItem("Tools/导出二进制表")]
     public static void BuildChinese()
     {
         TableProcessing.TableClear();

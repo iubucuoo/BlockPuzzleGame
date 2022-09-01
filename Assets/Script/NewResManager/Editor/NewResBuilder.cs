@@ -5,11 +5,7 @@ using UnityEngine;
 
 public class NewResBuilder : Editor
 {
-    [MenuItem("Tools/Test~~~~~~~Debug")]
-    public static void TestDebug()
-    {
-        Debug.Log(WUtils.PathTools.WWW_CACHE_VERSION);
-    }
+    
     //[MenuItem("Tools/Version.bytes转Json")]
     //public static void VersionToJson()
     //{
@@ -17,23 +13,12 @@ public class NewResBuilder : Editor
     //	File.WriteAllText(Application.dataPath + "/version.json", LitJson.JsonMapper.ToJson(version._Data));
     //	Debug.Log("over"+ File.Exists(IPathTools.CACHE_VERSION));
     //}
-    [MenuItem("Tools/资源工具/Real.Build")]
-    public static void BuildABEditor()
-    {
-        DiffBuilder.MRealBuildABEditor();
-        AssetDatabase.Refresh();
-        BuildApkTools.CopyToProject();
-    }
-    [MenuItem("Tools/资源工具/按差异拷贝数据到StreamAsset")]
-    public static void CopyInPkg()
-    {
-        BuildApkTools.CopyToProject();
-    }
+   
     static NewResMgr _NewResMgr;
 	//1.先生成当前的资源
 	//2.资源比对【工程内的资源与上个版本进行比对，版本有差异，相应的资源需要处理】
-	[MenuItem("Tools/资源工具/生成BuilderAB.txt 用于查看")]
-	public static void BuilderAB()
+	
+	public static void BuilderABTxt()
 	{
 		_NewResMgr = null;
 		_NewResMgr = GetNewResMgr();

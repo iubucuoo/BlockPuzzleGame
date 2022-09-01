@@ -14,8 +14,7 @@ public class CommandBuild : Editor
     public static string path_Images = TexturePackerpath + "Images";
     public static string path_outAltasData = TexturePackerpath + "AltasData/";
     public static string path_outAltas = TexturePackerpath + "OutAtlas/";
-
-    [MenuItem("Tools/SpritesPacker/CommandBuild")]
+    
     public static void BuildTexturePacker()
     {
         //选择并设置TP命令行的参数和参数值(包括强制生成2048*2048的图集 --width 2048 --height 2048)

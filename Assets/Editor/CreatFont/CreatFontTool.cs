@@ -6,18 +6,13 @@ using UnityEngine;
 
 public class CreatFontTool : MonoBehaviour
 {
-
-    [MenuItem("Tools/CreateImageFont")]
-    static void XFCreateImageFont()
+    public static void XFCreateImageFont()
     {
-
         if (Selection.objects == null) { return; }
-
         for (int i = 0; i < Selection.objects.Length; i++)
         {
             if (Selection.objects[i].GetType() == typeof(Texture2D))
             {
-
                 CreateImageFont(Selection.objects[i] as Texture2D);
             }
         }
