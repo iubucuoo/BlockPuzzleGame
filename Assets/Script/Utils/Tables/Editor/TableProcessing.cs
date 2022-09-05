@@ -24,7 +24,7 @@ public class TableProcessing : Editor
         
         if (!File.Exists(fmpathstr))
         {
-            DebugMgr.LogError("文件不存在:" + fmpathstr);
+            Log.Error("文件不存在:" + fmpathstr);
             return ;
         }
         StringBuilder sb = new StringBuilder();
@@ -70,11 +70,11 @@ public class TableProcessing : Editor
         }
         if (ischange)
         {
-            DebugMgr.Log(string.Format( "修改成功，{0}表的ID: {1} 的{2}字段值改为 {3} ", cfgname,tableid, changekey, changevalue));
+            Log.Info(string.Format( "修改成功，{0}表的ID: {1} 的{2}字段值改为 {3} ", cfgname,tableid, changekey, changevalue));
             TableStrTool.CreatFile(fmpathstr, sb);
         }
         else
-            DebugMgr.LogError(string.Format("修改失败，是否{0}表的ID:{1} 或者{2}字段 不存在", cfgname, tableid, changekey));
+            Log.Error(string.Format("修改失败，是否{0}表的ID:{1} 或者{2}字段 不存在", cfgname, tableid, changekey));
     }
 
     public static void CfgCreateTLC(string pathstr)
@@ -82,7 +82,7 @@ public class TableProcessing : Editor
         string fmpathstr = string.Format(@"{0}\StarEdit\StarEdit\bin\Debug\data\", pathstr);
         if (!Directory.Exists(fmpathstr))
         {
-            DebugMgr.LogError("路径不存在" + fmpathstr);
+            Log.Error("路径不存在" + fmpathstr);
             return;
         }
         TableClear();
@@ -142,7 +142,7 @@ public class TableProcessing : Editor
 					if (TableSign.Header.Equals(lines[0]))
 					{
 						string fileName = info.Substring(info.LastIndexOf("\\") + 1);
-						DebugMgr.Log("表处理__" + fileName.Replace(".txt", ""));
+						Log.Info("表处理__" + fileName.Replace(".txt", ""));
 						TobeCS.CreatCS(lines, fileName);
 						//cs脚本处理
 						TobeLua.Creat_lua(lines, fileName);
@@ -163,7 +163,7 @@ public class TableProcessing : Editor
         DirectoryInfo dir = new DirectoryInfo(path);
 		if (!dir.Exists)
 		{
-			DebugMgr.LogError("路径不存在" + path);
+			Log.Error("路径不存在" + path);
 			return;
 		}
 		string[] FileNames = Directory.GetFiles(dir.FullName);

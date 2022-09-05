@@ -150,7 +150,7 @@ public class UI_GamePanelJob : UIEventListenBase
         //DebugMgr.LogError("----messageId----" + tmpMsg.messageId);
         if (gamepanel==null || toppanel == null ||!gamepanel.visible)
         {
-            DebugMgr.LogError("startpanel or  toppanel 未显示");
+            Log.Error("startpanel or  toppanel 未显示");
             return;
         }
         switch (tmpMsg.messageId)

@@ -112,7 +112,7 @@ public class EasyToolsEditor : Editor
     {
         PlayerPrefs.DeleteAll();
         Directory.Delete(Application.persistentDataPath, true);
-        DebugMgr.Log("Clear Success");
+        Log.Info("Clear Success");
     }
 
     [MenuItem("EasyTools/对象池状态", false, 201)]

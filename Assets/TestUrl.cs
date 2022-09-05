@@ -30,7 +30,7 @@ public class TestUrl : MonoBehaviour
     }
     void Init()
     {
-        DebugMgr.LogError("TableMgr.inst._Cb");
+        Log.Error("TableMgr.inst._Cb");
     }
     // Update is called once per frame
     void Update()

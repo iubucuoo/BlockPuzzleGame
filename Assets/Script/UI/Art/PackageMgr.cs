@@ -23,7 +23,7 @@ public class PackageMgr:Singleton<PackageMgr>
 	{
 		if (string.IsNullOrEmpty(packageName))
 		{
-			DebugMgr.LogError("资源包名BUG");
+			Log.Error("资源包名BUG");
 			return;
 		}
 		if (IsLoaded(packageName))
@@ -59,7 +59,7 @@ public class PackageMgr:Singleton<PackageMgr>
         }
         else
         {
-            DebugMgr.LogError("资源包未加载 + " + packageName);
+            Log.Error("资源包未加载 + " + packageName);
             return null;
         }
     }
@@ -74,14 +74,14 @@ public class PackageMgr:Singleton<PackageMgr>
             }
             foreach (var item in _ResourceDatas)
             {
-                DebugMgr.LogError(item.Key);
+                Log.Error(item.Key);
             }
-            DebugMgr.LogError("没有资源 " + packageName + "    " + resName);
+            Log.Error("没有资源 " + packageName + "    " + resName);
             return null;
         }
         else
         {
-            DebugMgr.LogError("资源包未加载 + " + packageName);
+            Log.Error("资源包未加载 + " + packageName);
             return null;
         }
     }

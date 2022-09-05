@@ -20,7 +20,7 @@ class ManagerBase : IEventListen
         EventNode tmp;
         if (!eventTree.TryGetValue(tmpMsg.messageId, out tmp))
         {
-            DebugMgr.LogError(string.Format("在{0}中没有对 这个消息进行监听", tmpMsg.GetMsgType()));//, MessageCenter.instance.MsgIDToString(tmpMsg.messageId)
+            Log.Error(string.Format("在{0}中没有对 这个消息进行监听", tmpMsg.GetMsgType()));//, MessageCenter.instance.MsgIDToString(tmpMsg.messageId)
             return;
         }
         else
@@ -109,7 +109,7 @@ class ManagerBase : IEventListen
                 EventNode curNode = tmpNode.next;
                 if (curNode == null)
                 {
-                    DebugMgr.LogWarning(string.Format("当前{0}的事件树下:{1}的节点中没有此监听", ID.ToString(), Id));
+                    Log.Warning(string.Format("当前{0}的事件树下:{1}的节点中没有此监听", ID.ToString(), Id));
                 }
                 else
                 {
@@ -120,7 +120,7 @@ class ManagerBase : IEventListen
         }
         else
         {
-            DebugMgr.LogWarning(string.Format("当前{0}的事件树下没有此ID:{1}的节点", ID.ToString(), Id));
+            Log.Warning(string.Format("当前{0}的事件树下没有此ID:{1}的节点", ID.ToString(), Id));
         }
     }
     /// <summary>

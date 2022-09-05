@@ -18,7 +18,7 @@ public class ObjectMgr
         //#endif
         if (newobj == null)
         {
-            DebugMgr.LogError("obj为空 " + obj.name);
+            Log.Error("obj为空 " + obj.name);
         }
         return newobj;
     }
@@ -55,7 +55,7 @@ public class ObjectMgr
         //#endif
         if (obj==null)
         {
-            DebugMgr.LogError("obj为空 "+ path);
+            Log.Error("obj为空 "+ path);
         }
         return obj;
 #endif

@@ -15,7 +15,7 @@ public class BuildTable : Editor
 		TableProcessing.TableClear();
 		AssetDatabase.Refresh();
 		BuildTables();
-		DebugMgr.Log("BuildTable  bytes  OverOver");
+		Log.Info("BuildTable  bytes  OverOver");
 	}
 
 	static void BuildTables()
@@ -60,7 +60,7 @@ public class BuildTable : Editor
 		string tableRoot = @"Assets\Art\Tables\Chinese\Item.bytes";// Item 
 		var txta = ObjectMgr.LoadMainAssetAtPath(tableRoot) as TextAsset;
 		object result = ProtobufTools.Deserialize(typeof(Item[]), txta.bytes);
-		DebugMgr.LogError(result);
+		//Log.Error(result);
 	}
 	 
 	static void TestSetData(object tableData, string name)

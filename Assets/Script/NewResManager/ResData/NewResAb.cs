@@ -251,7 +251,7 @@ public class NewResAb
 			}
 			catch
 			{
-                DebugMgr.LogError(string.Format( "AssetBundle 回收异常处理, AbPath={0}", _AbPath));
+                Log.Error(string.Format( "AssetBundle 回收异常处理, AbPath={0}", _AbPath));
 			}
 		}
 

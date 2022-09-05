@@ -12,7 +12,7 @@ public class UI_StartPanel : UIBase
     public override void OnDestroy_m()
     {
         startbtn.onClick.RemoveListener(OnBtnStart);
-        DebugMgr.Log("RemoveListener");
+        Log.Info("RemoveListener");
     }
     public override void OnCreate()
     {
@@ -23,16 +23,16 @@ public class UI_StartPanel : UIBase
     void Init()
     {
         startbtn = WndRoot.transform.Find("Button").GetComponent<Button>();
-        DebugMgr.Log("Init");
+        Log.Info("Init");
     }
     void InitEvent()
     {
         startbtn.onClick.AddListener(OnBtnStart);
-        DebugMgr.Log("InitEvent");
+        Log.Info("InitEvent");
     }
     void OnBtnStart()
     {
-        DebugMgr.Log("开始游戏");
+        Log.Info("开始游戏");
         if (AppParam.LoadArtIsAb)
         {
             new TableArt(StartGame);

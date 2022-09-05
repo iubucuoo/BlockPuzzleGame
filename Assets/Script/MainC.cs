@@ -23,9 +23,9 @@ public class MainC : MonoBehaviour
     {
         Inst = this;
 #if UNITY_EDITOR
-        DebugMgr.EnableLog = true;
+        Log.EnableLog = true;
 #else
-        DebugMgr.EnableLog = false;
+        Log.EnableLog = false;
 #endif
 
         AudioMgr.Inst.isPlaying_Music = StaticTools.MusicOnOff == 0;

@@ -25,7 +25,7 @@ public class CaneraShaker : UIEventListenBase
     }
     public void PlayShake()
     {
-        DebugMgr.LogError("shake");
+        Log.Error("shake");
         StartCoroutine(Shake(.15f, 20));
     }
     public override void InitEventListen()

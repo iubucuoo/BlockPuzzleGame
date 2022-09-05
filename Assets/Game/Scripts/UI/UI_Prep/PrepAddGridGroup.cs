@@ -16,7 +16,7 @@ public class PrepAddGridGroup : MonoBehaviour
         {
             if (canuse != value)
             {
-                DebugMgr.Log("cant use   " + transform.name);
+                Log.Info("cant use   " + transform.name);
                 minPrepGroup.SetCanUseStatus(value);//设置要不要变灰的表现
             }
             canuse = value;
@@ -47,7 +47,7 @@ public class PrepAddGridGroup : MonoBehaviour
     }
     private void OnClickGroup(GameObject obj)
     {
-        DebugMgr.Log("OnClick   " + transform.name);
+        Log.Info("OnClick   " + transform.name);
         if (!isdraging && GameStatic.IsRotateState) //如果 没有被抓起来 并且当前是 旋转的状态 
         {
             if (M_math.NeedToRotate(minPrepGroup.DataArray))
@@ -60,7 +60,7 @@ public class PrepAddGridGroup : MonoBehaviour
             }
             else
             {
-                DebugMgr.LogError("不需要旋转");
+                Log.Error("不需要旋转");
             }
         }
         //再放置成功之后判断是否旋转后跟没旋转前是否相同，不相同则减掉一个旋转用的金币
@@ -86,7 +86,7 @@ public class PrepAddGridGroup : MonoBehaviour
     {
         if (!GridGroupMgr.Inst.IsCanPrepNext())
         {
-            DebugMgr.LogError("游戏结束");
+            Log.Error("游戏结束");
             AllUIPanelManager.Inst.Show(IPoolsType.UI_GameOverPanel);
         }
     }
@@ -109,7 +109,7 @@ public class PrepAddGridGroup : MonoBehaviour
     public void OnPointerUp(GameObject eventData)
     {
         //CaneraShaker.Inst.PlayShake();测试代码
-        DebugMgr.Log("OnPointerUp   " + transform.name);
+        Log.Info("OnPointerUp   " + transform.name);
         StopTime();
         if (!isdraging)
         {
@@ -171,7 +171,7 @@ public class PrepAddGridGroup : MonoBehaviour
     {
         isdrag = false;
         isdraging = false;
-        DebugMgr.Log("OnPointerDown   " + transform.name);
+        Log.Info("OnPointerDown   " + transform.name);
         //return;
         if (IsUse)//
         {
@@ -202,7 +202,7 @@ public class PrepAddGridGroup : MonoBehaviour
     {
         if (!isdrag && isdraging)
         {
-            DebugMgr.Log("OnDrag " + transform.name);
+            Log.Info("OnDrag " + transform.name);
             DragingGridMgr.Inst.SetDrag(true);
             isdrag = true;
         }

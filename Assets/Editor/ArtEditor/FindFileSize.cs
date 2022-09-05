@@ -56,9 +56,9 @@ class FindFileSize
         foreach (FileInfo NextFile in theFolder.GetFiles())
         {
 
-            DebugMgr.Log(root);
+            Log.Info(root);
             var respath =  NextFile.FullName.Replace("\\","/");
-            DebugMgr.Log(respath);
+            Log.Info(respath);
             if (respath.Contains(root))
             {
                 if (!Ignore(respath))

@@ -139,7 +139,7 @@ public class ParticalSystemData : MonoBehaviour
 		}
 		catch (Exception e)
 		{
-			DebugMgr.LogError(gameObject.name + "特效资源有点问题，需要点一下脚本上面的[绑定数据] \n" + e.ToString());
+			Log.Error(gameObject.name + "特效资源有点问题，需要点一下脚本上面的[绑定数据] \n" + e.ToString());
 		}
 	}
 }

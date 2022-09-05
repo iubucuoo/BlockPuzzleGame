@@ -75,7 +75,7 @@ public class TobeLuaStrTool : Editor
 			}
 			catch
 			{
-				DebugMgr.LogError("______表结构错误  表名: " + file_name + "    字段名: " + list_z.name + "    字段内容: " + unit_z);
+				Log.Error("______表结构错误  表名: " + file_name + "    字段名: " + list_z.name + "    字段内容: " + unit_z);
 			}
 		}
 		return _tmp;
@@ -266,7 +266,7 @@ public class TobeLuaStrTool : Editor
 			valuestr = "{" + valuestr + "}";
 		}
 		else
-			DebugMgr.LogError("二进制转表  表的值不是int类型__" + _value);
+			Log.Error("二进制转表  表的值不是int类型__" + _value);
 		return valuestr;
 	}
 }

@@ -201,7 +201,7 @@ public class EffectModel : IEffectModel, IArt
 		}
 		catch (System.Exception e)
 		{//增加异常捕捉，之前陈文强出现了一次 报错
-			DebugMgr.LogError(string.Format("资源回收出现异常pkgName={0}，ResName={1},{2}", _PkgName, _ResName, e.ToString()));
+			Log.Error(string.Format("资源回收出现异常pkgName={0}，ResName={1},{2}", _PkgName, _ResName, e.ToString()));
 		}
 	}
 }

@@ -230,7 +230,7 @@ public class DiffBuilder
         if (_StopBuilderForError)
         {
             //只要保证Newlog.txt是对的其他就不会出错
-            DebugMgr.LogError("停止资源更新 报错了，重置数据");
+            Log.Error("停止资源更新 报错了，重置数据");
             return;
         }
         BuilderAB();
@@ -257,7 +257,7 @@ public class DiffBuilder
         if (_StopBuilderForError)
         {
             //只要保证Newlog.txt是对的其他就不会出错
-            DebugMgr.LogError("停止资源更新 报错了，重置数据");
+            Log.Error("停止资源更新 报错了，重置数据");
             return;
         }
         BuilderAB();
@@ -326,7 +326,7 @@ public class DiffBuilder
 		UpdateOther(false);
 		BuildAB(false);
 		CommitResRoot(false);
-		DebugMgr.LogError("Real.BuildAB  Over");
+		Log.Error("Real.BuildAB  Over");
 	}
    
     /// <summary>
@@ -379,7 +379,7 @@ public class DiffBuilder
         if (_StopBuilderForError)
 		{
 			//只要保证Newlog.txt是对的其他就不会出错
-			DebugMgr.LogError("停止资源更新 报错了，重置数据");
+			Log.Error("停止资源更新 报错了，重置数据");
 			return;
 		}
 
@@ -445,7 +445,7 @@ public class DiffBuilder
         BuildPipeline.BuildAssetBundles(path,
             options,
             isIOS ? EditorUserBuildSettings.activeBuildTarget : BuildTarget.Android);
-        DebugMgr.Log("[BuilderAB ]花费时间=" + (Time.realtimeSinceStartup - _Time));
+        Log.Info("[BuilderAB ]花费时间=" + (Time.realtimeSinceStartup - _Time));
     }
 
 	static void SetSign(bool compressed = true)
@@ -669,7 +669,7 @@ public class DiffBuilder
 				PushData(data._Path, -1);
 
 				//,出现被删除的资源不属于标记,那么这个资源如果属于被依赖的资源，被标记的资源一定会修改 不然肯定出错。 这个地方需要测试一下#GLZ
-				DebugMgr.LogWarning("可能需要被依赖=" + data._Path);
+				Log.Warning("可能需要被依赖=" + data._Path);
 			}
 		}
 	}
@@ -696,6 +696,6 @@ public class DiffBuilder
 			AssetImporter.GetAtPath(item).SetAssetBundleNameAndVariant("", "");
 		}
 		AssetDatabase.RemoveUnusedAssetBundleNames();
-		DebugMgr.Log("[ClearABName3 ]花费时间=" + (Time.realtimeSinceStartup - _Time));
+		Log.Info("[ClearABName3 ]花费时间=" + (Time.realtimeSinceStartup - _Time));
 	}
 }

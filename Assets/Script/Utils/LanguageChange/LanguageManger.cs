@@ -74,7 +74,7 @@ public class LanguageManger //:MonoBehaviour
         }
         else
         {
-            DebugMgr.LogError("当前语言不存在");
+            Log.Error("当前语言不存在");
             return null;
         }
     }

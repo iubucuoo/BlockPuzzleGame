@@ -54,7 +54,7 @@ public class UI_GamePanel_GroupRotate
         {
             if (GameStatic.GoldCount <= 0)
             {
-                DebugMgr.LogError("金币不足不能开启");
+                Log.Error("金币不足不能开启");
                 //RotateBnt.SetIsOnWithoutNotify(false);
 
                 RotateBnt.isOn = false;

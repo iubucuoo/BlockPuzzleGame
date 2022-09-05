@@ -107,7 +107,7 @@ class ResCenter : AssetBase, IMgr
             _StreamIsOk = LoadStatus.Done;
             _StreamResMgr = new NewResMgr(obj.data);
 
-        }, (err) => { _StreamIsOk = LoadStatus.Done; DebugMgr.LogError(err); });
+        }, (err) => { _StreamIsOk = LoadStatus.Done; Log.Error(err); });
         while (_StreamIsOk != LoadStatus.Done)
         {
             yield return 0;
@@ -129,7 +129,7 @@ class ResCenter : AssetBase, IMgr
 			_StreamIsOk = LoadStatus.Done;
 			_StreamResMgr = new NewResMgr(obj.data);
 
-		}, (err) => { _StreamIsOk = LoadStatus.Done;  DebugMgr.LogError(err); });
+		}, (err) => { _StreamIsOk = LoadStatus.Done;  Log.Error(err); });
 
 
 		DownloadTools.LoadUrl(PathTools.WWW_CACHE_VERSION, 30, (obj) =>
@@ -137,7 +137,7 @@ class ResCenter : AssetBase, IMgr
 			_CacheResMgr = new NewResMgr(obj.data);
 			_CacheIsOk = LoadStatus.Done;
 
-		}, (err) => { _CacheIsOk = LoadStatus.Done;  DebugMgr.LogError(err); });
+		}, (err) => { _CacheIsOk = LoadStatus.Done;  Log.Error(err); });
 
 		//等version 配置下载完成
 		while (_CacheIsOk != LoadStatus.Done || _StreamIsOk != LoadStatus.Done)
@@ -147,13 +147,13 @@ class ResCenter : AssetBase, IMgr
 
 		if (_StreamResMgr == null)
 		{
-			 DebugMgr.LogError("StreamAsset 路径下没有 Version.bytes");
+			 Log.Error("StreamAsset 路径下没有 Version.bytes");
 		}
 		else
 		{
 			if (_CacheResMgr == null)
 			{
-				 DebugMgr.LogError(PathTools.CACHE_VERSION + "=>没有资源 可能被清缓存/首次运行");
+				 Log.Error(PathTools.CACHE_VERSION + "=>没有资源 可能被清缓存/首次运行");
 				_ResMgr = _StreamResMgr;
 			}
 			else
@@ -161,7 +161,7 @@ class ResCenter : AssetBase, IMgr
 				bool isUseCache = _CacheResMgr._Version >= _StreamResMgr._Version;
 				_ResMgr = isUseCache ? _CacheResMgr : _StreamResMgr;
 				if (!isUseCache)
-					 DebugMgr.LogWarning("包内的版本大于缓存内的版本(更新后等同svn上版本)，清理Cache 或 更新svn上美术资源");
+					 Log.Warning("包内的版本大于缓存内的版本(更新后等同svn上版本)，清理Cache 或 更新svn上美术资源");
 			}
 		}
         Load();
@@ -188,7 +188,7 @@ class ResCenter : AssetBase, IMgr
 
 				if (ab == null)
 				{
-					DebugMgr.LogError("加载Lua路径为空== " + newResAb._AbPath);
+					Log.Error("加载Lua路径为空== " + newResAb._AbPath);
 				}
 				else
 				{
@@ -201,7 +201,7 @@ class ResCenter : AssetBase, IMgr
 					Load();
 				}
 			}, ()=> {
-                DebugMgr.LogError(string.Format("加载Lua ab文件失败 path = {0}, name = {1}", newResAb._AbPath, newResAb._AbName)); 
+                Log.Error(string.Format("加载Lua ab文件失败 path = {0}, name = {1}", newResAb._AbPath, newResAb._AbName)); 
             }
             );
 		}
@@ -292,7 +292,7 @@ class ResCenter : AssetBase, IMgr
 						//查到对应的ab了
 						if (ab._VersionNum != tempAb._VersionNum)
 						{
-							 DebugMgr.LogWarning("需要下载[更新]" + ab._AbPath + "=>" + ab._VersionNum + " size= " + ab._Size + ";net_VersionNum=" + tempAb._VersionNum);
+							 Log.Warning("需要下载[更新]" + ab._AbPath + "=>" + ab._VersionNum + " size= " + ab._Size + ";net_VersionNum=" + tempAb._VersionNum);
 							DeleteAb(tempAb);
 						}
 						else
@@ -305,12 +305,12 @@ class ResCenter : AssetBase, IMgr
 						if (tempAb._Size == 0)
 						{
 							//没有查到对应的ab，需要去服务器下载
-							 DebugMgr.LogError("需要下载[新增],出现这种情况ab资源没有打，但verions.bytes 生成了，" + tempAb._AbPath + "=>" + tempAb._VersionNum + " size= " + tempAb._AbName);
+							 Log.Error("需要下载[新增],出现这种情况ab资源没有打，但verions.bytes 生成了，" + tempAb._AbPath + "=>" + tempAb._VersionNum + " size= " + tempAb._AbName);
 						}
 						else
 						{
 							//没有查到对应的ab，需要去服务器下载
-							 DebugMgr.LogWarning("需要下载[新增]" + tempAb._AbPath + "=>" + tempAb._VersionNum + " size= " + tempAb._Size);
+							 Log.Warning("需要下载[新增]" + tempAb._AbPath + "=>" + tempAb._VersionNum + " size= " + tempAb._Size);
 						}
 						DeleteAb(tempAb);
 					}
@@ -318,7 +318,7 @@ class ResCenter : AssetBase, IMgr
 			}
 			_ResMgr = tempResMgr;
 			SetNeedDownList();
-		}, (err) => {  DebugMgr.LogError("配置没有请求到：" + PathTools.NET_VERSION + ";error" + err); _LoginStatus = LoginStatus.ErrorCfg; });
+		}, (err) => {  Log.Error("配置没有请求到：" + PathTools.NET_VERSION + ";error" + err); _LoginStatus = LoginStatus.ErrorCfg; });
 	}
 
 	void SetNeedDownList()
@@ -338,7 +338,7 @@ class ResCenter : AssetBase, IMgr
 		}
 		if (_DownloadList.Count > 0)
 		{
-			 DebugMgr.LogWarning("NeedDownLoad:" + _DownloadList.Count);
+			 Log.Warning("NeedDownLoad:" + _DownloadList.Count);
 			//LoginMgr.CheckResCallback(true);
 		}
 		else
@@ -373,7 +373,7 @@ class ResCenter : AssetBase, IMgr
         {
             //SceneMgr.LoadScene("Loading");
         }
-        DebugMgr.LogError("SceneMgr.LoadScene(Loading)");
+        Log.Error("SceneMgr.LoadScene(Loading)");
 	}
 
 	public void DownloadChapter(int _ChapterID)
@@ -386,7 +386,7 @@ class ResCenter : AssetBase, IMgr
 				for (int j = 0; j < abs.Count; j++)
 				{
 					if (!abs[j]._IsFinish)
-						DebugMgr.Log("添加下载的内容  " + abs[j]._AbName + "  size = " + abs[j]._Size);
+						Log.Info("添加下载的内容  " + abs[j]._AbName + "  size = " + abs[j]._Size);
 					_DownloadThread.DownQueue(abs[j]);
 				}
 			}
@@ -419,7 +419,7 @@ class ResCenter : AssetBase, IMgr
 		if (tempAb._AbPath.Contains(PathTools.DllABPath))
 		{
 			_IsdotLogic = true;
-			 DebugMgr.LogError("更新c# dll");
+			 Log.Error("更新c# dll");
 		}
 		tempAb._DownloadID = -1;
 		tempAb._IsFinish = false;
@@ -427,7 +427,7 @@ class ResCenter : AssetBase, IMgr
 		if (File.Exists(path))
 		{
 			File.Delete(path);
-			 DebugMgr.LogWarning("干掉包外资源");
+			 Log.Warning("干掉包外资源");
 		}
 	}
 

@@ -92,7 +92,7 @@ public class NewResMgr
 			}
 			else
 			{
-                DebugMgr.LogError("逻辑上出现问题了，不能查不到数据 ab path=" + depens[i]);
+                Log.Error("逻辑上出现问题了，不能查不到数据 ab path=" + depens[i]);
 			}
 		}
 		return _list.ToArray();

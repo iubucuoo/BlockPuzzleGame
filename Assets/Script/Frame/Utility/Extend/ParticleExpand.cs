@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class BaseExpand
+public static class ParticleExpand
 {
     public static float GetMinValue(this AnimationCurve curve)
     {

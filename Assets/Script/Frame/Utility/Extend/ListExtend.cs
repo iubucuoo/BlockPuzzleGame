@@ -4,7 +4,7 @@ namespace WUtils
 {
     public static class ListExtend
     {
-        public static bool GHaveAdd<T>(this List<T> tmpList, T obj)
+        public static bool IsHaveAdd<T>(this List<T> tmpList, T obj)
         {
             if (!tmpList.Contains(obj))
             {

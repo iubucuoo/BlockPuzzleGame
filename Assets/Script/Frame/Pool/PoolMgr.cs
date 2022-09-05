@@ -36,7 +36,7 @@ public class PoolMgr:Singleton<PoolMgr>
         }
         else
         {
-            DebugMgr.LogError("字典中不存在的类型" + typeint);//字典中不存在的类型
+            Log.Error("字典中不存在的类型" + typeint);//字典中不存在的类型
         }
     }
     public void ClearAll()
@@ -58,7 +58,7 @@ public class PoolMgr:Singleton<PoolMgr>
         }
         else
         {
-             DebugMgr.Log("字典中不存在的类型 == " + type);
+             Log.Info("字典中不存在的类型 == " + type);
         }
     }
     public static void Recycle(IPoolable pool)

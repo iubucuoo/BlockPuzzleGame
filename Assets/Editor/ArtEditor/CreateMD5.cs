@@ -55,7 +55,7 @@ public class CreateMD5 : Editor
 						}
 
 					}
-					DebugMgr.LogError(string.Format("NewResData 没有找到相关的 Modelname={0},AbName={1}，极有可能是不属于svn数据", GetModelName(model_ab), GetAbName(model_ab)));
+					Log.Error(string.Format("NewResData 没有找到相关的 Modelname={0},AbName={1}，极有可能是不属于svn数据", GetModelName(model_ab), GetAbName(model_ab)));
 				}
 			}
 		}
@@ -140,7 +140,7 @@ public class CreateMD5 : Editor
 			path = PathTools.STREAM_VERSION;
 			if (!File.Exists(path))
 			{
-				DebugMgr.LogError("读取上一个版本号失败，请检查文件是否存在" + path);
+				Log.Error("读取上一个版本号失败，请检查文件是否存在" + path);
 				return;
 			}
 		}
@@ -157,7 +157,7 @@ public class CreateMD5 : Editor
 		else
 		{
 			newVersion = 1;
-			DebugMgr.LogError("读取版本号格式错误,重0开始");
+			Log.Error("读取版本号格式错误,重0开始");
 		}
 
 		//格式
@@ -174,7 +174,7 @@ public class CreateMD5 : Editor
 		if (Directory.Exists(Path))
 		{
 			DeleteDir(Path);
-			DebugMgr.Log("清理本地文件 Success");
+			Log.Info("清理本地文件 Success");
 		}
 	} 
 
@@ -245,7 +245,7 @@ public class CreateMD5 : Editor
 			}
 		}
 
-		DebugMgr.Log("ProtoTipMake Success");
+		Log.Info("ProtoTipMake Success");
 
 	}
 
@@ -283,7 +283,7 @@ public class CreateMD5 : Editor
 				}
 				else
 				{
-					DebugMgr.LogError("GK:BUG AbPath=null _AbName=" + ab._AbName);
+					Log.Error("GK:BUG AbPath=null _AbName=" + ab._AbName);
 				}
 			}
 		}

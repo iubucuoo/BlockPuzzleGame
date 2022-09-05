@@ -24,7 +24,7 @@ public class BuildApkTools : Editor
 
 		string[] outScenes = { "Assets/Game/Scenes/Main.unity"};
 		BuildPipeline.BuildPlayer(outScenes, outPath + "/" + apkName, target, options);
-		DebugMgr.Log("Build success");
+		Log.Info("Build success");
 	}
     
 	static void DeleteUnUseFiles(string path)

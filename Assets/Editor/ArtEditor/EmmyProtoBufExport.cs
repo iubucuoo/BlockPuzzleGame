@@ -68,8 +68,8 @@ public class ProBufAPIFiled
 		List<string> strList = SplitLine(lineStr);
 		if (strList.Count < 2 || strList.Count > 3)
 		{
-			DebugMgr.LogError("格式错误");
-			DebugMgr.Log(lineStr);
+			Log.Error("格式错误");
+			Log.Info(lineStr);
 			return;
 		}
 
@@ -172,7 +172,7 @@ public class ProBufAPIEnum
 			}
 			catch (System.Exception ex)
 			{
-				DebugMgr.Log(ex.ToString());
+				Log.Info(ex.ToString());
 			}
 		}
 	}

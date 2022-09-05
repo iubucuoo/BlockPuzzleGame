@@ -192,7 +192,7 @@ public abstract class UIBase: IPoolable
         GameObject go = PackageMgr.CreateObject(WndName, WndName) as GameObject;
         if (go == null)
         {
-            DebugMgr.LogError("go == null");
+            Log.Error("go == null");
             return;
         }
         WndRoot = go;

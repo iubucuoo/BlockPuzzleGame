@@ -72,7 +72,7 @@ public class TobeCfg : Editor
 						_USEData.Add(_id, Uselinedata);
 				}
 				else
-					DebugMgr.LogError(string.Format("获取星球编辑器出现问题  {0} 无法转成int", unit[0]));
+					Log.Error(string.Format("获取星球编辑器出现问题  {0} 无法转成int", unit[0]));
 			}
 		}
 	}

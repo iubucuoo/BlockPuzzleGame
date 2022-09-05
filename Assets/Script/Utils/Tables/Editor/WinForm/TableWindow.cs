@@ -41,13 +41,13 @@ public class TableWindow : EditorWindow
 		if (GUILayout.Button("保存设置", GUILayout.ExpandWidth(false)))
 		{
 			if (Setpathstr == pathstr)
-				DebugMgr.LogError("地址相同");
+				Log.Error("地址相同");
 			else if (!Directory.Exists(Setpathstr))
-				DebugMgr.LogError("地址不存在");
+				Log.Error("地址不存在");
 			else
 			{
 				SetStarUrl(Setpathstr);
-				DebugMgr.Log("设置成功");
+				Log.Info("设置成功");
 			}
 		}
 	}

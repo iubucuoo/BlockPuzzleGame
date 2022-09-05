@@ -43,12 +43,12 @@ public class NewResLoop
 				_Echelon[(int)_art._Sort].Enqueue(_art);
 			else
 			{
-				DebugMgr.LogError(abdata._AbPath+" 需要下载资源 弹界面");
+				Log.Error(abdata._AbPath+" 需要下载资源 弹界面");
 			}
         }
         catch (System.Exception ex)
         {
-            DebugMgr.LogError(string.Format("怎么又缺资源了 {0},{1} {2}", _art.AbSingleName(), _art.ArtName(), ex.ToString()));
+            Log.Error(string.Format("怎么又缺资源了 {0},{1} {2}", _art.AbSingleName(), _art.ArtName(), ex.ToString()));
         }
     }
 	void SetDenpend(Stack<IArt> _Data, NewResAb res)
@@ -106,23 +106,23 @@ public class NewResLoop
 							while (abdata._LoadStatus == LoadStatus.Loading)//同ab再被加载中
 							{
 								yield return 0;//另一条协程再加载中......
-                                               DebugMgr.LogWarning(string.Format("wait load {0} {1}", abdata._AbPath, Time.time));
+                                               Log.Warning(string.Format("wait load {0} {1}", abdata._AbPath, Time.time));
                             }
                             if (abdata._LoadStatus != LoadStatus.Loading && abdata._LoadStatus != LoadStatus.Done)//还没开始下载
 							{
-                                DebugMgr.LogWarning(string.Format("start load {0} {1}", abdata._AbPath, Time.time));
+                                Log.Warning(string.Format("start load {0} {1}", abdata._AbPath, Time.time));
                                 abdata._LoadStatus = LoadStatus.Loading;
 								abdata._StartLoadTime = Time.realtimeSinceStartup;
 								if (abdata.GetLoadPath(out string path, loadData._MapID))
 								{
-                                    DebugMgr.LogWarning(string.Format("AssetBundle.LoadFromFile {0} {1}", path, Time.time));
+                                    Log.Warning(string.Format("AssetBundle.LoadFromFile {0} {1}", path, Time.time));
 									_Ab = AssetBundle.LoadFromFile(path);
 								}
 								else
 								{
-									DebugMgr.LogError("异常了=" + abdata._AbPath);
+									Log.Error("异常了=" + abdata._AbPath);
 								}
-                                DebugMgr.LogWarning(string.Format("finish load {0} {1}", abdata._AbPath, Time.time));
+                                Log.Warning(string.Format("finish load {0} {1}", abdata._AbPath, Time.time));
                             }
                             else//已经被done了
 							{
@@ -135,13 +135,13 @@ public class NewResLoop
 						{
 							continue;
 						}
-						DebugMgr.LogWarning(string.Format( "wait art {0} {1}", abdata._AbPath, Time.time));
+						Log.Warning(string.Format( "wait art {0} {1}", abdata._AbPath, Time.time));
 						//近一步加载Obj
 						if (loadData.IsWaitArt(abdata._ID))
 						{
 							yield return Timing.WaitUntilDone(Timing.RunCoroutine(loadData.Loading(_Ab)));
 						}
-						DebugMgr.LogWarning(string.Format( "finish art {0} {1}", abdata._AbPath, Time.time));
+						Log.Warning(string.Format( "finish art {0} {1}", abdata._AbPath, Time.time));
 						SetAssetBundle(loadData, abdata, _Ab);
 					}
 				}

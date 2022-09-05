@@ -104,7 +104,7 @@ public class ParticalSystemDataEditor : Editor
         else
         {
             myTarget.root = myTarget.transform;
-            DebugMgr.Log("ParticalSystemDataEditor.root " + myTarget.root.name);
+            Log.Info("ParticalSystemDataEditor.root " + myTarget.root.name);
         }
 		EditorGUILayout.PropertyField(isLoop);
 		EditorGUILayout.PropertyField(_LongTime);

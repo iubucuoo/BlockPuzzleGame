@@ -214,7 +214,7 @@ public class TableStrTool//:Editor
 			case "char": return 2;
 			case "String": return 2;
 			default:
-				 DebugMgr.LogError("没有" + str + "格式");
+				 Log.Error("没有" + str + "格式");
 				return 0;
 		}
 	}
@@ -263,7 +263,7 @@ public class TableStrTool//:Editor
 		{
 			File.Delete(path);
 		}
-		 DebugMgr.Log(path);
+		 Log.Info(path);
 		File.WriteAllText(path, sb.ToString(), Encoding.UTF8);
 #if UNITY_EDITOR
 		UnityEditor.AssetDatabase.Refresh();

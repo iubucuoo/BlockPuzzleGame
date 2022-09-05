@@ -150,7 +150,7 @@ public class NewEditorLoad
         }
 		if (index < 0)
 		{
-			DebugMgr.LogError("CreateSigleUnit Data=error,Path=" + path  + ",_Prefix=" + _Prefix);
+			Log.Error("CreateSigleUnit Data=error,Path=" + path  + ",_Prefix=" + _Prefix);
 		}
         var abPath = path.Substring(0, index);
 		var modelName = GetModelName(abPath, out int _ModelID);

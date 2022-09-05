@@ -148,7 +148,7 @@ public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
 
     private void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
     {
-        DebugMgr.LogError("广告请求加载失败。" + e.LoadAdError.GetMessage());
+        Log.Error("广告请求加载失败。" + e.LoadAdError.GetMessage());
     }
 
     private void HandleOnAdLoaded(object sender, EventArgs e)
@@ -181,7 +181,7 @@ public class GoogleAdMgr : MonoSingleton<GoogleAdMgr>
         }
         else
         {
-            DebugMgr.LogError("广告没有加载完成");
+            Log.Error("广告没有加载完成");
             if (error!=null)
             {
                 error.Invoke();
