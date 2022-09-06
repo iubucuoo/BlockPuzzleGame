@@ -37,7 +37,7 @@ public class MainC : MonoBehaviour
 
         MEC.Timing.RunCoroutine(NetStatus());
         GoogleAdMgr.CheckInstance();//初始化的interstitial在下个update中执行
-        FPS.CheckInstance();
+        DebugTool.CheckInstance();
 
         AppParam._ResLoadModel = _ResLoadModel;
         //先载入数据文件

@@ -79,7 +79,7 @@ public class MsgSend
     {
         if (!AppParam.LoadArtIsAb)
         {
-            new NewEditorLoad().BuilderResData().GetObj(art);
+            new EditorLoad().BuilderResData().GetObj(art);
         }
         else
         {

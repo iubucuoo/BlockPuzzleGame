@@ -2,22 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-public class NewResMgr
+public class ResMgr
 {
 	public int _Version { get { return _Data._Version; } }
-	public NewResData _Data;
-	public NewResMgr()
+	public ResData _Data;
+	public ResMgr()
 	{
-		_Data = new NewResData();
+		_Data = new ResData();
 	}
-	public NewResMgr(byte[] data)
+	public ResMgr(byte[] data)
 	{
 		if (data != null)
 		{
-			_Data = ProtobufTools.Deserialize<NewResData>(data);
+			_Data = ProtobufTools.Deserialize<ResData>(data);
 		}
 	}
-	public void PushUnit(NewResUnit unit)
+	public void PushUnit(ResUnit unit)
 	{
 		_Data.PushUnit(unit);
 	}
@@ -32,28 +32,28 @@ public class NewResMgr
 	/// <param name="_AbName"></param>
 	/// <param name="ab"></param>
 	/// <returns></returns>
-	public bool GetAB(string _ModelName, string _AbName, out NewResAb ab)
+	public bool GetAB(string _ModelName, string _AbName, out ResAb ab)
 	{
 		return _Data.GetAb(_ModelName, _AbName, out ab);
 	}
-	public bool GetAB(int _ModelID, int _DownLoadId, ref int _SortID, out NewResAb ab)
+	public bool GetAB(int _ModelID, int _DownLoadId, ref int _SortID, out ResAb ab)
 	{
 		return _Data.GetAb(_ModelID, _DownLoadId, ref _SortID, out ab);
 	}
-	internal bool GetObj(int modelID, string _AbName, out NewResUnit unit)
+	internal bool GetObj(int modelID, string _AbName, out ResUnit unit)
 	{
 		return _Data.GetObj(modelID, _AbName, out unit);
 	}
 
-	public bool GetAB(int _ModelID, string _AbName, out NewResAb ab)
+	public bool GetAB(int _ModelID, string _AbName, out ResAb ab)
 	{
 		return _Data.GetAb(_ModelID, _AbName, out ab);
 	}
-	public bool GetABForAbID(int _AbID, out NewResAb ab)
+	public bool GetABForAbID(int _AbID, out ResAb ab)
 	{
 		return _Data.GetABForAbID(_AbID, out ab);
 	}
-	public bool FindResUnit(string path, out NewResUnit temp)
+	public bool FindResUnit(string path, out ResUnit temp)
 	{
 		return _Data.FindResUnit(path, out temp);
 	}
@@ -67,7 +67,7 @@ public class NewResMgr
 	{
         _Data.SaveToFile(v);
 	}
-	public void CopyAbParams(NewResMgr oldMgr)
+	public void CopyAbParams(ResMgr oldMgr)
 	{
 		if (oldMgr._Data != null)
 		{
@@ -86,7 +86,7 @@ public class NewResMgr
 		for (int i = 0; i < depens.Length; i++)
 		{
 			var sp = depens[i].Split('.')[0].Split('/');
-			if (GetAB(GetModelName(sp), GetAbName(sp), out NewResAb ab))
+			if (GetAB(GetModelName(sp), GetAbName(sp), out ResAb ab))
 			{
 				_list.Add(ab._ID);
 			}
@@ -105,7 +105,7 @@ public class NewResMgr
 	{
 		return sp[sp.Length == 1 ? 0 : 1];
 	}
-	public NewResModel GetModel(RES_MODEL_INDEX index)
+	public ResModel GetModel(RES_MODEL_INDEX index)
 	{
 		return _Data.GetModel(index);
 	}

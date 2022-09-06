@@ -22,7 +22,7 @@ public enum RES_MODEL_INDEX
 	other,
 }
 
-public class NewEditorLoad
+public class EditorLoad
 {
 	public static string[] _PassName = new string[] { "prefabs/", "Texture/" };
 	public static string[] _PassNamePrefix = new string[] { ".prefab", ".png" };
@@ -36,12 +36,12 @@ public class NewEditorLoad
 	static Dictionary<string, int> _DefaultModelName;
 	static Dictionary<int, string> _AppendModelName;
 
-	NewResMgr _NewResMgr;
+	ResMgr _NewResMgr;
 	static int _ModelIndex = 1000;
 
-	public NewResMgr BuilderResData()
+	public ResMgr BuilderResData()
 	{
-		_NewResMgr = new NewResMgr();
+		_NewResMgr = new ResMgr();
 #if UNITY_EDITOR
 		//builder AB的时候 这个会报错
 		AssetDatabase.Refresh();//刷新一下，确保全部资源都再
@@ -96,7 +96,7 @@ public class NewEditorLoad
 		_AppendModelName = new Dictionary<int, string>();
 	}
 
-	public static NewResUnit CreateUnit(string respath)
+	public static ResUnit CreateUnit(string respath)
 	{
 		if (respath.Contains(_Ignore) || respath.Contains(_Environment))
 		{
@@ -134,7 +134,7 @@ public class NewEditorLoad
         }
         return -1;
     }
-	static NewResUnit CreateSigleUnit(string path, string _Prefix)
+	static ResUnit CreateSigleUnit(string path, string _Prefix)
 	{
         int passindex = GetPassIndex(path, _Prefix);
         bool haspass = passindex >= 0;
@@ -156,7 +156,7 @@ public class NewEditorLoad
 		var modelName = GetModelName(abPath, out int _ModelID);
 		var abName = GetAbName(abPath);
         //Debug.LogError(path + "  _abPath:  " + abPath + "  _abname:  " + abName + "       _objname:  " + objName + "        _modelname  " + modelName + "       _modelid  " + _ModelID);
-        var unit = new NewResUnit()
+        var unit = new ResUnit()
 		{
 			_ModelName = _ModelID > (int)RES_MODEL_INDEX.other ? modelName : ((RES_MODEL_INDEX)_ModelID).ToString(),
 			_ModelID = _ModelID,

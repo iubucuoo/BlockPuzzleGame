@@ -4,7 +4,7 @@ using System.Text;
 using UnityEngine;
 
 [ProtoBuf.ProtoContract]
-public class NewResUnit
+public class ResUnit
 {
 	[ProtoBuf.ProtoMember(1)]
 	public int _ID;

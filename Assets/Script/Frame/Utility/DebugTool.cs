@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FPS : MonoSingleton<FPS>
+public class DebugTool : MonoSingleton<DebugTool>
 {
     float windowScale
     {
@@ -23,9 +23,8 @@ public class FPS : MonoSingleton<FPS>
     {
         var scale = windowScale;
         GUI.matrix = Matrix4x4.Scale(new Vector3(scale, scale, scale));
-        if (GUILayout.Button(("FPS: " + m_FPSConter.FPS), GUILayout.ExpandWidth(true), GUILayout.Height(80))){
+        GUILayout.Button(("FPS: " + m_FPSConter.FPS), GUILayout.ExpandWidth(true), GUILayout.Height(80));
 
-        }
-  
+
     }
 }

@@ -68,7 +68,7 @@ public class BuildApkTools : Editor
         {
             Directory.Delete(PathTools.STREAM_RES_PATH, true);
         }
-		var _CacheResMgr = new NewResMgr(File.ReadAllBytes(EditorPathTools.SVN_VERSION));
+		var _CacheResMgr = new ResMgr(File.ReadAllBytes(EditorPathTools.SVN_VERSION));
 		for (int i = 0; i < _CacheResMgr._Data._Count; i++)
 		{
 			var tempModel = _CacheResMgr._Data[i];

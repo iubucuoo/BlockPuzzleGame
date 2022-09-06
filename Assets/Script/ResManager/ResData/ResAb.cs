@@ -4,7 +4,7 @@ using UnityEngine;
 using WUtils;
 
 [ProtoBuf.ProtoContract]
-public class NewResAb
+public class ResAb
 {
 	[ProtoBuf.ProtoMember(1)]
 	public int _ID;//ID先通过旧配置进行赋值，然后新的配置从新生成。生成的规则1.必须保存唯一性，
@@ -13,7 +13,7 @@ public class NewResAb
 	[ProtoBuf.ProtoMember(3)]
 	public string _AbPath;
 	[ProtoBuf.ProtoMember(4)]
-	public NewResUnit[] _Data;
+	public ResUnit[] _Data;
 	[ProtoBuf.ProtoMember(5)]
 	public int[] _Dependencies;
 	[ProtoBuf.ProtoMember(6)]
@@ -27,7 +27,7 @@ public class NewResAb
 	public int _CurSize;
 	public int _curSize { get { if (_IsFinish) { return _Size; } return _CurSize; } }
 	public int _Count { get { return _Data == null ? 0 : _Data.Length; } }
-	public NewResUnit this[int index] { get { return _Data == null ? null : _Data[index]; } set { _Data[index] = value; } }
+	public ResUnit this[int index] { get { return _Data == null ? null : _Data[index]; } set { _Data[index] = value; } }
 
 	public int _MapID;//请求资源的时候 所在的MapID
 
@@ -125,16 +125,16 @@ public class NewResAb
 	}
 	public string _NetUrl { get { return PathTools.GetNetUrlPath + AbPathAndSuffix(_AbPath); } }
 
-	public NewResAb()
+	public ResAb()
 	{
 
 	}
 
-	public NewResAb(string name)
+	public ResAb(string name)
 	{
 		_AbName = name;
 	}
-	internal void PushUnit(NewResUnit unit)
+	internal void PushUnit(ResUnit unit)
 	{
 		for (int i = 0; i < _Count; i++)
 		{
@@ -145,7 +145,7 @@ public class NewResAb
 				return;
 			}
 		}
-		var _TempDatas = new NewResUnit[_Count + 1];
+		var _TempDatas = new ResUnit[_Count + 1];
 		for (int i = 0; i < _Count; i++)
 		{
 			_TempDatas[i] = this[i];
@@ -193,7 +193,7 @@ public class NewResAb
 		}
 		return false;
 	}
-	internal bool GetObj(string artName, out NewResUnit unit)
+	internal bool GetObj(string artName, out ResUnit unit)
 	{
 		unit = null;
 		for (int i = 0; i < _Count; i++)
@@ -218,7 +218,7 @@ public class NewResAb
 #endif
 	}
 
-	internal bool FindResUnit(string path, out NewResUnit temp)
+	internal bool FindResUnit(string path, out ResUnit temp)
 	{
 		temp = null;
 		for (int i = 0; i < _Count; i++)
@@ -231,7 +231,7 @@ public class NewResAb
 		}
 		return false;
 	}
-	internal void CopyAbParams(NewResAb other)
+	internal void CopyAbParams(ResAb other)
 	{
 		_Dependencies = other._Dependencies;//1.先拷贝相关的数据，2.以覆盖的形式处理依赖数据
 	}

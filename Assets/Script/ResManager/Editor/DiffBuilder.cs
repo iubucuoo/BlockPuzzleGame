@@ -282,7 +282,7 @@ public class DiffBuilder
         var _ResPaths = AssetDatabase.GetAllAssetPaths();
         foreach (var item in _ResPaths)
         {
-            var data = NewResBuilder.CreateSimulateUnit(item);
+            var data = ResBuilder.CreateSimulateUnit(item);
             if (data != null)
             {
                 PushData(data._Path, -1);//需要查询是否被依赖 查找同AB	
@@ -458,9 +458,9 @@ public class DiffBuilder
                 continue;
             }
             //最后添加标记的时候 在Environment下不标记
-            if (!item.Key.Contains(NewEditorLoad._Environment))
+            if (!item.Key.Contains(EditorLoad._Environment))
 			{
-				var abPath = NewResBuilder.GetAbKeyBuilder(item.Key);
+				var abPath = ResBuilder.GetAbKeyBuilder(item.Key);
 				if (!string.IsNullOrEmpty(abPath))
 				{
 					var importer = AssetImporter.GetAtPath(item.Key);
@@ -512,7 +512,7 @@ public class DiffBuilder
 		List<string> _Data = new List<string>();
 		foreach (var item in _ChangedDependFile)
 		{
-			var ab = NewResBuilder.GetNewResAb(item.Key);
+			var ab = ResBuilder.GetNewResAb(item.Key);
 			if (ab != null)//==null 这种情况，说明被干掉的资源，彻底没有相关的ab了
 			{
 				for (int i = 0; i < ab._Count; i++)
@@ -531,7 +531,7 @@ public class DiffBuilder
 		_Data.Clear();
 		foreach (var item in _ChangedDependFile)
 		{
-			var ab = NewResBuilder.GetNewResAb(item.Key);
+			var ab = ResBuilder.GetNewResAb(item.Key);
 			if (ab != null)//==null 这种情况，说明被干掉的资源，彻底没有相关的ab了
 			{
 				for (int i = 0; i < ab._Count; i++)
@@ -609,7 +609,7 @@ public class DiffBuilder
 			for (int i = 0; i < datas.Length; i++)
 			{
 				var temp = datas[i];
-				if (NewResBuilder.NeedAbSign(temp, out NewResUnit _ResUnit))
+				if (ResBuilder.NeedAbSign(temp, out ResUnit _ResUnit))
 				{
 					PushData(temp);
 				}
@@ -627,7 +627,7 @@ public class DiffBuilder
 		{
 			var temp = v.unit[i];
 			SignFileDepend(temp);
-			if (NewResBuilder.NeedAbSign(temp.path, out NewResUnit _ResUnit))
+			if (ResBuilder.NeedAbSign(temp.path, out ResUnit _ResUnit))
 			{
 				PushData(temp.path);
 			}
@@ -639,7 +639,7 @@ public class DiffBuilder
 		//2.删 需要查找之前属于哪个资源		
 		foreach (var item in _Data)
 		{
-			if (NewResBuilder.NeedAbSign(item.Key, out NewResUnit _ResUnit))
+			if (ResBuilder.NeedAbSign(item.Key, out ResUnit _ResUnit))
 			{
 				//if(DebugMgr.CanLog()) DebugMgr.Log("需要被标记=" + item.Key);
 				PushData(item.Key);
@@ -662,7 +662,7 @@ public class DiffBuilder
 
 		foreach (var item in _DeleteData)
 		{
-			var data = NewResBuilder.CreateSimulateUnit(item.Key);
+			var data = ResBuilder.CreateSimulateUnit(item.Key);
 			if (data != null)
 			{
 				//需要查询是否被依赖 查找同AB			

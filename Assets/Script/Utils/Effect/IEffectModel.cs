@@ -42,8 +42,8 @@ public class EffectModel : IEffectModel, IArt
 	public int _ModelID => (int)RES_MODEL_INDEX.effects;
 	public ResSort _Sort => ResSort.Other;
 
-	public NewResAb GetNewResAb { get { ResCenter.inst._ResMgr.GetAB(_ModelID, AbSingleName(), out NewResAb ab); return ab; } }
-	public NewResUnit GetNewResUnit { get { ResCenter.inst._ResMgr.GetObj(_ModelID, ArtName(), out NewResUnit unit); return unit; } }
+	public ResAb GetNewResAb { get { ResCenter.inst._ResMgr.GetAB(_ModelID, AbSingleName(), out ResAb ab); return ab; } }
+	public ResUnit GetNewResUnit { get { ResCenter.inst._ResMgr.GetObj(_ModelID, ArtName(), out ResUnit unit); return unit; } }
 
 	public bool _CanCacheObj => true;
 

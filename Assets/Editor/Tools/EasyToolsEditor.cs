@@ -25,7 +25,7 @@ public class EasyToolsEditor : Editor
     [MenuItem("EasyTools/资源工具/生成BuilderAB.txt 本地资源结构", false, 101)]
     public static void BuilderABTxt()
     {
-        NewResBuilder.BuilderABTxt();
+        ResBuilder.BuilderABTxt();
     }
     #endregion
 

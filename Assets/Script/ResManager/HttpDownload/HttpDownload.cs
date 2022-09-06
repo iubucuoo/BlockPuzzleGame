@@ -12,7 +12,7 @@ public enum GameStage : byte
 public class DownloadThread
 {
 	object downObj;
-	List<NewResAb> _UIDownFiles = new List<NewResAb>();
+	List<ResAb> _UIDownFiles = new List<ResAb>();
 	GameStage _Stage;
 	public bool isStop = false;
 	public Thread downloadThread;
@@ -47,7 +47,7 @@ public class DownloadThread
 		}
 	}
 
-	NewResAb GetDataDown()
+	ResAb GetDataDown()
 	{
 		if (_UIDownFiles.Count > 0)
 		{
@@ -67,7 +67,7 @@ public class DownloadThread
 		_UIDownFiles.Clear();
 	}
 
-	public void DownQueue(NewResAb data)
+	public void DownQueue(ResAb data)
 	{
 		//data._LoadStatus = LoadStatus.Downloading;
 		//这样可以在主线程初始化_url,减少多线程问题      
@@ -132,7 +132,7 @@ public class DownloadThread
 	public int speed = 1024;
 
 
-	void Call(NewResAb resdata)
+	void Call(ResAb resdata)
 	{
 		try
 		{
@@ -264,7 +264,7 @@ public class DownloadThread
 		response = null;
 		return len;
 	}
-	void Error(NewResAb resdata)
+	void Error(ResAb resdata)
 	{
 		if (_Stage == GameStage.Foreground)//如果是在前端下载中断,后台没有网络不做处理
 		{
@@ -294,12 +294,12 @@ public class DownloadThread
 		Call(resdata);
 	}
 	public Action<int> _Process;
-	public Action<NewResAb> ResDownCB;//后续可能会加条件
-	void Process(int x, int max, NewResAb resdata)
+	public Action<ResAb> ResDownCB;//后续可能会加条件
+	void Process(int x, int max, ResAb resdata)
 	{
 		_Process?.Invoke(x);
 	}
-	void MarkFinish(NewResAb data)
+	void MarkFinish(ResAb data)
 	{
 		data._IsFinish = true;
 		data.Move();

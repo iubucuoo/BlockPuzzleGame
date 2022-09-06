@@ -8,7 +8,7 @@ public interface IArt
     int _MapID { get; set; }
     int _ModelID { get; }
     ResSort _Sort { get; }
-    NewResAb GetNewResAb { get; }
+    ResAb GetNewResAb { get; }
     void UseArt(object obj);
 
     void UseArt(object[] objs);
@@ -29,7 +29,7 @@ public class ArtBase : IArt
 
     public virtual ResSort _Sort => throw new System.NotImplementedException();
 
-    public virtual NewResAb GetNewResAb { get { ResCenter.inst._ResMgr.GetAB(_ModelID, AbSingleName(), out NewResAb ab); return ab; } }
+    public virtual ResAb GetNewResAb { get { ResCenter.inst._ResMgr.GetAB(_ModelID, AbSingleName(), out ResAb ab); return ab; } }
 
     public virtual bool _CanCacheObj => true;
     public virtual bool _CanCacheAb => true;
@@ -103,12 +103,12 @@ public class ArtBase : IArt
 
 public class DependArt : ArtBase
 {
-    public DependArt(NewResAb ab)
+    public DependArt(ResAb ab)
     {
         _Ab = ab;
     }
-    NewResAb _Ab;
+    ResAb _Ab;
 
-    public override NewResAb GetNewResAb { get { return _Ab; } }
+    public override ResAb GetNewResAb { get { return _Ab; } }
 
 }

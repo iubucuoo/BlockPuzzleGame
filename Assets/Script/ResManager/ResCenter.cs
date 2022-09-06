@@ -50,13 +50,13 @@ public enum ResLoadModel
 class ResCenter : AssetBase, IMgr
 {
     public static ResCenter inst;
-	public NewResMgr _ResMgr;
-	NewResLoop _LoadLoop;
+	public ResMgr _ResMgr;
+	ResLoop _LoadLoop;
 	DownloadThread _DownloadThread;
-	List<NewResAb> _DownloadList;
+	List<ResAb> _DownloadList;
 	LoginStatus _LoginStatus;
 
-	NewResUI resUI = new NewResUI();
+	ResUI resUI = new ResUI();
 	//ScLightMapMgr lightMapMgr = new ScLightMapMgr();
 	public int _Version { get { return inst._ResMgr._Version; } }
 
@@ -67,9 +67,9 @@ class ResCenter : AssetBase, IMgr
 	public void InitMgr()
 	{
 		inst = this;
-		_LoadLoop = new NewResLoop();
+		_LoadLoop = new ResLoop();
 		_DownloadThread = new DownloadThread();
-		_DownloadList = new List<NewResAb>();
+		_DownloadList = new List<ResAb>();
 
 		resUI.InitMgr();
 		//lightMapMgr.InitMgr();
@@ -88,7 +88,7 @@ class ResCenter : AssetBase, IMgr
 
 		if (!AppParam.LoadArtIsAb )
 		{
-			_ResMgr = new NewEditorLoad().BuilderResData();
+			_ResMgr = new EditorLoad().BuilderResData();
 			Load();
 		}
 		else
@@ -99,13 +99,13 @@ class ResCenter : AssetBase, IMgr
     //都用包内的Stream下的
     IEnumerator<float> LoadVersion()
     {
-        NewResMgr _StreamResMgr = null;
+        ResMgr _StreamResMgr = null;
 
         LoadStatus _StreamIsOk = LoadStatus.Loading;
         DownloadTools.LoadUrl(PathTools.STREAM_VERSION, 30, (obj) =>
         {
             _StreamIsOk = LoadStatus.Done;
-            _StreamResMgr = new NewResMgr(obj.data);
+            _StreamResMgr = new ResMgr(obj.data);
 
         }, (err) => { _StreamIsOk = LoadStatus.Done; Log.Error(err); });
         while (_StreamIsOk != LoadStatus.Done)
@@ -118,8 +118,8 @@ class ResCenter : AssetBase, IMgr
     //需要检查更新的时候用这个
 	IEnumerator<float> LoadVersionCheck()
 	{
-		NewResMgr _StreamResMgr = null;
-		NewResMgr _CacheResMgr = null;
+		ResMgr _StreamResMgr = null;
+		ResMgr _CacheResMgr = null;
 
 		LoadStatus _StreamIsOk = LoadStatus.Loading;
 		LoadStatus _CacheIsOk = LoadStatus.Loading;
@@ -127,14 +127,14 @@ class ResCenter : AssetBase, IMgr
 		DownloadTools.LoadUrl(PathTools.STREAM_VERSION, 30, (obj) =>
 		{
 			_StreamIsOk = LoadStatus.Done;
-			_StreamResMgr = new NewResMgr(obj.data);
+			_StreamResMgr = new ResMgr(obj.data);
 
 		}, (err) => { _StreamIsOk = LoadStatus.Done;  Log.Error(err); });
 
 
 		DownloadTools.LoadUrl(PathTools.WWW_CACHE_VERSION, 30, (obj) =>
 		{
-			_CacheResMgr = new NewResMgr(obj.data);
+			_CacheResMgr = new ResMgr(obj.data);
 			_CacheIsOk = LoadStatus.Done;
 
 		}, (err) => { _CacheIsOk = LoadStatus.Done;  Log.Error(err); });
@@ -279,7 +279,7 @@ class ResCenter : AssetBase, IMgr
 			_LoginStatus = LoginStatus.LoadCfg;
 			_IsdotLogic = false;
 			//把新增/更新/删除查出来，主要还是路径，没有变化自然不用
-			var tempResMgr = new NewResMgr(obj.data);
+			var tempResMgr = new ResMgr(obj.data);
 			//_ResMgr
 			for (int i = 0; i < tempResMgr._Data._Count; i++)
 			{
@@ -287,7 +287,7 @@ class ResCenter : AssetBase, IMgr
 				for (int j = 0; j < tempModel._Count; j++)
 				{
 					var tempAb = tempModel[j];
-					if (_ResMgr.GetABForAbID(tempAb._ID, out NewResAb ab))
+					if (_ResMgr.GetABForAbID(tempAb._ID, out ResAb ab))
 					{
 						//查到对应的ab了
 						if (ab._VersionNum != tempAb._VersionNum)
@@ -378,7 +378,7 @@ class ResCenter : AssetBase, IMgr
 
 	public void DownloadChapter(int _ChapterID)
 	{
-		if (NewResUI._inst._Chapters.TryGetValue(_ChapterID, out Chapter v))
+		if (ResUI._inst._Chapters.TryGetValue(_ChapterID, out Chapter v))
 		{
 			for (int i = 0; i < v._Data.Count; i++)
 			{
@@ -394,7 +394,7 @@ class ResCenter : AssetBase, IMgr
 			_DownloadThread.ResDownCB = ResUIDownCB;
 		}
 	}
-	void ResUIDownCB(NewResAb data)
+	void ResUIDownCB(ResAb data)
 	{
 		_ChapterCurSize += data._Size;//给下载界面显示每秒下载的量与估算下载完成时间
 									  // DebugMgr.LogError("下载回调  下载完成资源 ={0}   下载size = {1}", data._AbName, data._Size);
@@ -413,7 +413,7 @@ class ResCenter : AssetBase, IMgr
 		_CurSize += v;
 		// DebugMgr.LogError("下载回调热更的    下载size = {0}", v);
 	}
-	void DeleteAb(NewResAb tempAb)
+	void DeleteAb(ResAb tempAb)
 	{
 		//查找是否有 dll/main 有则表示更新c#代码
 		if (tempAb._AbPath.Contains(PathTools.DllABPath))

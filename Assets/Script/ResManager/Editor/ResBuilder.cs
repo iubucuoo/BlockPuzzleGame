@@ -3,7 +3,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-public class NewResBuilder : Editor
+public class ResBuilder : Editor
 {
     
     //[MenuItem("Tools/Version.bytes转Json")]
@@ -14,7 +14,7 @@ public class NewResBuilder : Editor
     //	Debug.Log("over"+ File.Exists(IPathTools.CACHE_VERSION));
     //}
    
-    static NewResMgr _NewResMgr;
+    static ResMgr _NewResMgr;
 	//1.先生成当前的资源
 	//2.资源比对【工程内的资源与上个版本进行比对，版本有差异，相应的资源需要处理】
 	
@@ -25,42 +25,42 @@ public class NewResBuilder : Editor
 
 		File.WriteAllText(Application.dataPath + "/BuilderAB.txt", LitJson.JsonMapper.ToJson(_NewResMgr._Data));
 	}
-	public static bool NeedAbSign(string path, out NewResUnit temp)
+	public static bool NeedAbSign(string path, out ResUnit temp)
 	{
 		GetNewResMgr();
 		return _NewResMgr.FindResUnit(path, out temp);
 	}
-	public static NewResUnit CreateSimulateUnit(string path)
+	public static ResUnit CreateSimulateUnit(string path)
 	{
 		GetNewResMgr();
-		return NewEditorLoad.CreateUnit(path);
+		return EditorLoad.CreateUnit(path);
 	}
 	public static string GetAbKeyBuilder(string path)
 	{
 		GetNewResMgr();
-		if (_NewResMgr.FindResUnit(path, out NewResUnit temp))
+		if (_NewResMgr.FindResUnit(path, out ResUnit temp))
 		{
 			return temp._ModelName + "/" + temp._AbName;
 		}
 		return null;
 	}
-	public static NewResAb GetNewResAb(string path)
+	public static ResAb GetNewResAb(string path)
 	{
 		GetNewResMgr();
-		if (_NewResMgr.FindResUnit(path, out NewResUnit temp))
+		if (_NewResMgr.FindResUnit(path, out ResUnit temp))
 		{
-			if (_NewResMgr.GetAB(temp._ModelID, temp._AbName, out NewResAb ab))
+			if (_NewResMgr.GetAB(temp._ModelID, temp._AbName, out ResAb ab))
 			{
 				return ab;
 			}
 		}
 		return null;
 	}
-	static NewResMgr GetNewResMgr()
+	static ResMgr GetNewResMgr()
 	{
 		if (_NewResMgr == null)
 		{
-			_NewResMgr = new NewEditorLoad().BuilderResData();
+			_NewResMgr = new EditorLoad().BuilderResData();
 		}
 		return _NewResMgr;
 	}

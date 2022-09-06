@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ChapterUnit
 {
-	public ChapterUnit() { _Abs = new List<NewResAb>(); }
+	public ChapterUnit() { _Abs = new List<ResAb>(); }
 	public int _ID;
 	public int _MAX { get; private set; }
 	public int _Current
@@ -19,8 +19,8 @@ public class ChapterUnit
 			return cur;
 		}
 	}
-	public List<NewResAb> _Abs;
-	public void Add(NewResAb ab)
+	public List<ResAb> _Abs;
+	public void Add(ResAb ab)
 	{
 		_Abs.Add(ab);
 		_MAX += ab._Size;
@@ -47,7 +47,7 @@ public class Chapter
 		}
 	}
 	public bool IsDownOver => _Current >= _MAX;
-	internal void Add(NewResAb ab)
+	internal void Add(ResAb ab)
 	{
 		ChapterUnit _temp = null;
 		for (int i = 0; i < _Data.Count; i++)
@@ -71,10 +71,10 @@ public class Chapter
 	}
 }
 
-public class NewResUI : IMgr
+public class ResUI : IMgr
 {
 	public Dictionary<int, Chapter> _Chapters = new Dictionary<int, Chapter>();
-	public static NewResUI _inst;
+	public static ResUI _inst;
 	static int max = 0;
 	public static int MaxChapter
 	{

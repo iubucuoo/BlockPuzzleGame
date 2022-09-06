@@ -32,15 +32,15 @@ namespace ModelSys
 				return ResSort.UI;
 			}
 		}
-		public NewResUnit GetNewResUnit { get { ResCenter.inst._ResMgr.GetObj(_ModelID, ArtName(), out NewResUnit unit); return unit; } }
-		public override NewResAb GetNewResAb
+		public ResUnit GetNewResUnit { get { ResCenter.inst._ResMgr.GetObj(_ModelID, ArtName(), out ResUnit unit); return unit; } }
+		public override ResAb GetNewResAb
 		{
 			get
 			{
 				var unit = GetNewResUnit;
 				if (unit != null)
 				{
-					ResCenter.inst._ResMgr.GetAB(_ModelID, unit._AbName, out NewResAb ab);
+					ResCenter.inst._ResMgr.GetAB(_ModelID, unit._AbName, out ResAb ab);
 					return ab;
 				}
 				else

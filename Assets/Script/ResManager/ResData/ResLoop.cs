@@ -12,7 +12,7 @@ public enum ResSort
 	Other,
 }
 
-public class NewResLoop
+public class ResLoop
 {
 	Stack<IArt>[] _CurrentData;
 	Queue<IArt>[] _Echelon = new Queue<IArt>[5]
@@ -24,7 +24,7 @@ public class NewResLoop
 		new Queue<IArt>(),//其他ResSort.Other
 	};
 	int MaxLine = 3;
-	public NewResLoop()
+	public ResLoop()
 	{
 		_CurrentData = new Stack<IArt>[MaxLine];
 		for (int i = 0; i < MaxLine; i++)
@@ -51,14 +51,14 @@ public class NewResLoop
             Log.Error(string.Format("怎么又缺资源了 {0},{1} {2}", _art.AbSingleName(), _art.ArtName(), ex.ToString()));
         }
     }
-	void SetDenpend(Stack<IArt> _Data, NewResAb res)
+	void SetDenpend(Stack<IArt> _Data, ResAb res)
 	{
 		var indexs = res._Dependencies;
 		if (indexs != null)
 		{
 			for (int z = 0; z < indexs.Length; z++)
 			{
-				if (ResCenter.inst._ResMgr.GetABForAbID(indexs[z], out NewResAb depenAb))
+				if (ResCenter.inst._ResMgr.GetABForAbID(indexs[z], out ResAb depenAb))
 				{
 					_Data.Push(new DependArt(depenAb));
 					SetDenpend(_Data, depenAb);
@@ -154,7 +154,7 @@ public class NewResLoop
 		}
 	}
 
-	bool SetArt(IArt loadData, NewResAb abdata)
+	bool SetArt(IArt loadData, ResAb abdata)
 	{
 		if (loadData is DependArt)
 		{
@@ -162,7 +162,7 @@ public class NewResLoop
 		}
 		else if (!string.IsNullOrEmpty(loadData.ArtName()))
 		{
-			if (abdata.GetObj(loadData.ArtName(), out NewResUnit _u))
+			if (abdata.GetObj(loadData.ArtName(), out ResUnit _u))
 			{
 				if (_u._Obj != null)
 				{
@@ -173,7 +173,7 @@ public class NewResLoop
 		}
 		return false;
 	}
-	void SetAssetBundle(IArt art, NewResAb _NewResAB, AssetBundle _ab)
+	void SetAssetBundle(IArt art, ResAb _NewResAB, AssetBundle _ab)
 	{
 		if (art._CanCacheAb)
 		{
@@ -185,7 +185,7 @@ public class NewResLoop
 			_NewResAB._LoadStatus = LoadStatus.None;
 		}
 	}
-	float _AutoUnloadTime = NewResAb._RemoveTime;
+	float _AutoUnloadTime = ResAb._RemoveTime;
 	void UnloadAbAndObj()
 	{
 		if (!AppParam.LoadArtIsAb)
@@ -196,7 +196,7 @@ public class NewResLoop
 		if (_AutoUnloadTime < 0)
 		{
 			ResCenter.inst._ResMgr.UnloadAbAndObj();
-			_AutoUnloadTime = NewResAb._RemoveTime;
+			_AutoUnloadTime = ResAb._RemoveTime;
 		}
 	}
 	void GetNextData(Stack<IArt> _Data)

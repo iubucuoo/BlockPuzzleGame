@@ -20,11 +20,11 @@ public class CreateMD5 : Editor
 		AssetDatabase.Refresh();//操作前先刷新一下
 		string path = EditorPathTools.SVN_RES_ROOT;
 		var _VersionPath = EditorPathTools.SVN_VERSION;// path + "/Version.bytes";
-		var _OldResMgr = new NewResMgr(File.Exists(_VersionPath) ? File.ReadAllBytes(_VersionPath) : null);//需要从旧的版本配置中获得依赖关系配置
+		var _OldResMgr = new ResMgr(File.Exists(_VersionPath) ? File.ReadAllBytes(_VersionPath) : null);//需要从旧的版本配置中获得依赖关系配置
 
         var list = FindFileSize.GetDic();
 
-		var _NewResMgr = new NewEditorLoad().BuilderResData();//本地的资源---这里忽略 Environment 下的资源
+		var _NewResMgr = new EditorLoad().BuilderResData();//本地的资源---这里忽略 Environment 下的资源
 		foreach (var item in list)
 		{
 			//过滤无用资源监测
@@ -34,7 +34,7 @@ public class CreateMD5 : Editor
 				var ab_file = PathTools.GetSubPath(sp[0], 1);
 				var _AbPath = ab_file.Split('.');
 				var model_ab = _AbPath[0].Split('/');
-				if (_NewResMgr.GetAB(GetModelName(model_ab), GetAbName(model_ab), out NewResAb ab))
+				if (_NewResMgr.GetAB(GetModelName(model_ab), GetAbName(model_ab), out ResAb ab))
 				{
                     //Debug.Log("" + sp);
 					ab._VersionNum = int.Parse(sp[1]);
@@ -74,7 +74,7 @@ public class CreateMD5 : Editor
 			//SVNUpdate.Ctrl(SVNTYPE.COMMIT, EditorPathTools.SVN_RES_ROOT);
 		}
 	}
-	static void SetDownloadID(NewResMgr _NewResMgr)
+	static void SetDownloadID(ResMgr _NewResMgr)
 	{
 		//var datas = ResDownloadManager.GetData();
 		//for (int i = 0; i < datas.Length; i++)
@@ -110,7 +110,7 @@ public class CreateMD5 : Editor
 	{
 		return sp[sp.Length == 1 ? 0 : 1];
 	}
-	static void GetDependencies(NewResMgr _NewResMgr)
+	static void GetDependencies(ResMgr _NewResMgr)
 	{
 		AssetBundle manifesetLoader = AssetBundle.LoadFromFile(EditorPathTools.SVN_ASSETBUNDLE_MANIFEST);
 		AssetBundleManifest abManifest = manifesetLoader.LoadAsset("AssetBundleManifest") as AssetBundleManifest;
@@ -122,7 +122,7 @@ public class CreateMD5 : Editor
 			var sp = item.Split('.')[0].Split('/');
 			var depensint = _NewResMgr.GetAbs(depens);
 
-			if (_NewResMgr.GetAB(GetModelName(sp), GetAbName(sp), out NewResAb ab))
+			if (_NewResMgr.GetAB(GetModelName(sp), GetAbName(sp), out ResAb ab))
 			{
 				ab.SetDependencies(depensint);
 			}
@@ -249,7 +249,7 @@ public class CreateMD5 : Editor
 
 	}
 
-	public static void BuilderID(NewResData data)
+	public static void BuilderID(ResData data)
 	{
 		var dic = ExternalTools.MD5KEY(out int MAXKEY);
 		for (int i = 0; i < data._Count; i++)

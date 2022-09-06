@@ -5,24 +5,24 @@ using System.Text;
 using UnityEngine;
 
 [ProtoBuf.ProtoContract]
-public class NewResData
+public class ResData
 {
 	[ProtoBuf.ProtoMember(1)]
 	public int _Version;
 	[ProtoBuf.ProtoMember(2)]
-	public NewResModel[] _Data;
+	public ResModel[] _Data;
 
 	public int _Count { get { return _Data != null ? _Data.Length : 0; } }
-	public NewResModel this[int i]
+	public ResModel this[int i]
 	{
 		get
 		{
 			return _Data != null ? _Data[i] : null;
 		}
 	}
-	public void PushUnit(NewResUnit unit)
+	public void PushUnit(ResUnit unit)
 	{
-		NewResModel temp;
+		ResModel temp;
 		for (int i = 0; i < _Count; i++)
 		{
 			temp = _Data[i];
@@ -32,9 +32,9 @@ public class NewResData
 				return;
 			}
 		}
-		temp = new NewResModel(unit._ModelID, unit._ModelName);
+		temp = new ResModel(unit._ModelID, unit._ModelName);
 		temp.PushUnit(unit);
-		NewResModel[] _TempDatas = new NewResModel[_Count + 1];
+		ResModel[] _TempDatas = new ResModel[_Count + 1];
 		for (int i = 0; i < _Count; i++)
 		{
 			_TempDatas[i] = this[i];
@@ -43,7 +43,7 @@ public class NewResData
 		_Data = _TempDatas;
 	}
 
-	internal void CopyAbParams(NewResData oldMgr)
+	internal void CopyAbParams(ResData oldMgr)
 	{
 		for (int i = 0; i < _Count; i++)
 		{
@@ -60,7 +60,7 @@ public class NewResData
 		}
 	}
 
-	internal bool GetObj(int modelID, string artName, out NewResUnit unit)
+	internal bool GetObj(int modelID, string artName, out ResUnit unit)
 	{
 		unit = null;
 		for (int i = 0; i < _Count; i++)
@@ -78,7 +78,7 @@ public class NewResData
 	}
 
 
-	internal bool GetABForAbID(int abID, out NewResAb ab)
+	internal bool GetABForAbID(int abID, out ResAb ab)
 	{
 		ab = null;
 		for (int i = 0; i < _Data.Length; i++)
@@ -130,7 +130,7 @@ public class NewResData
 		}
 		Log.Error(art.AbSingleName() + "=>" + art.ArtName());
 	}
-	internal bool GetAb(int modelID, int downloadId, ref int _SortID, out NewResAb res)
+	internal bool GetAb(int modelID, int downloadId, ref int _SortID, out ResAb res)
 	{
 		res = null;
 		for (int i = 0; i < _Count; i++)
@@ -150,7 +150,7 @@ public class NewResData
 		}
 		return false;
 	}
-	internal bool GetAb(int modelID, string abName, out NewResAb res)
+	internal bool GetAb(int modelID, string abName, out ResAb res)
 	{
 		res = null;
 		for (int i = 0; i < _Count; i++)
@@ -171,7 +171,7 @@ public class NewResData
 		return false;
 	}
 
-	internal void Switch(int _ModelIndex, NewResModel newResModel)
+	internal void Switch(int _ModelIndex, ResModel newResModel)
 	{
 		for (int i = 0; i < _Count; i++)
 		{
@@ -182,7 +182,7 @@ public class NewResData
 		}
 	}
 
-	internal bool GetAb(string modelName, string abName, out NewResAb res)
+	internal bool GetAb(string modelName, string abName, out ResAb res)
 	{
 		res = null;
 		for (int i = 0; i < _Count; i++)
@@ -197,7 +197,7 @@ public class NewResData
 		return false;
 	}
 
-	internal bool FindResUnit(string path, out NewResUnit temp)
+	internal bool FindResUnit(string path, out ResUnit temp)
 	{
 		temp = null;
 		for (int i = 0; i < _Count; i++)
@@ -209,7 +209,7 @@ public class NewResData
 		}
 		return false;
 	}
-	public NewResModel GetModel(RES_MODEL_INDEX index)
+	public ResModel GetModel(RES_MODEL_INDEX index)
 	{
 		for (int i = 0; i < _Count; i++)
 		{
