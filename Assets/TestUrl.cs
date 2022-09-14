@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using WUtils.Utils;
 
 public class TestUrl : MonoBehaviour
 {

@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace WUtils.Utils
-{
+ 
     public enum ResType
     {
         COM = 0,
@@ -135,4 +134,4 @@ namespace WUtils.Utils
         {
         }
     }
-}
+ 
