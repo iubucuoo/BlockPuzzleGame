@@ -466,7 +466,7 @@ public class DiffBuilder
 					var importer = AssetImporter.GetAtPath(item.Key);
 					if (importer != null)
 					{
-						importer.SetAssetBundleNameAndVariant(abPath, PathTools.SUFFIX);
+						importer.SetAssetBundleNameAndVariant(abPath, PathTools.AbSUFFIX);
 					}
 					else
 					{

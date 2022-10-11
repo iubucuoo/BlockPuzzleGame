@@ -78,7 +78,7 @@ public class BuildApkTools : Editor
 				if (tempAb._DownloadID == 0)
 				{
 					var _abPath = tempAb._AbPath;
-					var fileName = _abPath + PathTools.DOT_LY;
+					var fileName = _abPath + PathTools.DOT_AbSUFFIX;
 					if (_abPath.Contains(PathTools.DllABPath))
 					{
 						fileName = _abPath + PathTools.Dot_Logic;
@@ -105,7 +105,7 @@ public class BuildApkTools : Editor
         for (int i = 0; i < fileinfos.Length; i++)
         {
             var file = fileinfos[i] as FileInfo;
-            if (file.Extension == WUtils.PathTools.DOT_LY)
+            if (file.Extension == WUtils.PathTools.DOT_AbSUFFIX)
             {
                 string OutPath = Path.GetFullPath(EditorPathTools.SVN_RES_ROOT);
                 string url = file.FullName.Replace(OutPath, "").Substring(1);

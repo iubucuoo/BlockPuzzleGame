@@ -8,24 +8,22 @@ namespace WUtils
         public const char SIGN = '|';
         public const string MD5BODY = "{0}|{1}|{2}|{3}|{4}|{5}";
         public const string ALL_VERSION = "Version|{0}\nCVersion|{1}";
-        public static string DOT_LY = ".bundle";//点后缀
-        public static string SUFFIX = "bundle";
+        public static string DOT_AbSUFFIX = ".bundle";//点后缀
+        public static string AbSUFFIX = "bundle";
         public static string DllABPath = "dll/main";
         public static string Dot_Logic = ".logic";
 
         public static string Log = Application.dataPath + "/../Log.txt";
 
-        public static string PROJECT_TABLES = Application.dataPath + "/Art/Tables";
-
         public static string PLATFORM = GetPlatformFolderName(Application.platform);
-
         public static string GetNetUrlPath { get { return "http://192.168.5.15/2d/DouLDL/" + PLATFORM + "/"; } }
         public static string GetNativeResDir = Application.dataPath + "/Art/";
+        public static string PROJECT_TABLES = GetNativeResDir + "Tables";
+
         public static string NET_VERSION { get { return GetNetUrlPath + "Version.bytes"; } }
         public static string CACHE_RES_ROOT = GetAppFilePath() + "/" + PLATFORM + "/";
         public static string CACHE_VERSION = CACHE_RES_ROOT + "Version.bytes";
-        public static string STREAM_RES_PATH = Application.streamingAssetsPath + "/" + PLATFORM + "/";
-
+        public static string STREAM_RES_PATH = GetAppFilePath(true) + "/" + PLATFORM + "/";
         public static string STREAM_VERSION = STREAM_RES_PATH + "Version.bytes";
         public static string WWW_CACHE_RES_ROOT =
 #if !UNITY_EDITOR

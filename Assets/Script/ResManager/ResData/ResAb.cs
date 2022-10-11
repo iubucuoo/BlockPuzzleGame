@@ -120,7 +120,7 @@ public class ResAb
 		}
 		else
 		{
-			return _abpath + PathTools.DOT_LY;
+			return _abpath + PathTools.DOT_AbSUFFIX;
 		}
 	}
 	public string _NetUrl { get { return PathTools.GetNetUrlPath + AbPathAndSuffix(_AbPath); } }

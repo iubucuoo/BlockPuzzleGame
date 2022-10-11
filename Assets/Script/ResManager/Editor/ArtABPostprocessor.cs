@@ -104,9 +104,9 @@ public class ArtABPostprocessor : AssetPostprocessor
             {
                 importer.assetBundleName = abName;                
             }
-            if (importer.assetBundleVariant != PathTools.SUFFIX)
+            if (importer.assetBundleVariant != PathTools.AbSUFFIX)
             {
-                importer.assetBundleVariant = PathTools.SUFFIX;
+                importer.assetBundleVariant = PathTools.AbSUFFIX;
             }
         }
         else
